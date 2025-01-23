@@ -1,0 +1,121 @@
+/* Fonts */
+    @font-face {
+        font-family: "AppleGaramond";
+        src: url("fonts/AppleGaramond.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "AppleGaramondLight";
+        src: url("fonts/AppleGaramond-Light.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "BarcodeFont";
+        src: url("fonts/BarcodeFont.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "RainyHearts";
+        src: url("fonts/rainyhearts.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Daydream";
+        src: url("fonts/Daydream.ttf") format("truetype");
+    }
+
+/* Animations */
+    @keyframes bannerAnim {
+        0% {font-size: 28pt;}
+        50% {font-size: 0pt;}
+        100% {font-size: 28pt;}
+    }
+
+/* Elements */
+    body {
+        background-color: black;
+        background-image: url("images/doitforyou.png");
+        background-repeat: repeat;
+        color: white;
+        font-size: 14pt;
+        image-rendering: pixelated;
+        overflow-x: hidden;
+        margin: 0;
+        margin-top: 10px;
+        font-family:"RainyHearts";
+    }
+    footer {
+        text-align: center;
+        color: #fc8e4e;
+    }
+    h1 {
+        margin: 0;
+    }
+    h2 {
+        color: #fc8e4e;
+        text-shadow: -5px 5px #bd0707;
+        font-family: "Daydream";
+    }
+    h3 {
+        color: #fc8e4e;
+        margin: 0;
+    }
+    a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+
+/* Classes */
+    .banner {
+        font-family: "BarcodeFont";
+        font-size: 28pt;
+        margin: 0;
+        text-align: center;
+        padding-top: 5px;
+    }
+    .bannerTextGradient {
+        background: linear-gradient(to top, white, black);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .navlink {
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+    .container {
+        width: 900px;
+        margin: 0 auto;
+    }
+    .maintd {
+        width: 675px;
+        vertical-align: baseline;
+    }
+    .menutd {
+        width: 225px;
+        max-width: 225px;
+        vertical-align: baseline;
+    }
+    .box {
+        background-color: black;
+        border: 2px solid darkgray;
+        border-radius: 4px;
+        padding: 10px 15px;
+        margin: 5px;
+    }
+    .mainMarquee {
+        font-size: 24pt;
+    }
+    .pfp {
+        float: left;
+        width: 125px;
+        margin: 25px 25px 10px 0px;
+        border: 1px solid #fc8e4e;
+    }
+    .spinner {
+        float: left;
+    }
