@@ -107,15 +107,47 @@
         padding: 10px 15px;
         margin: 5px;
     }
+    .box::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    .wiki {
+        border: 2px solid darkgray;
+        border-radius: 4px;
+        padding: 10px;
+        margin: 0px 20px 0px 0px;
+        width: 50%;
+        text-align: left;
+        float: left;
+        position: relative;
+    }
     .mainMarquee {
         font-size: 24pt;
     }
     .pfp {
         float: left;
-        width: 125px;
-        margin: 25px 25px 10px 0px;
+        width: 200px;
         border: 1px solid #fc8e4e;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .spinner {
         float: left;
+    }
+/* Page Specific */
+    .blogGrid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: auto;
+        display: grid;
+    }
+    .blogItem {
+        width: 252px;
+        display: inline-block;
+    }
+
+    .blogItem:hover {
+        cursor: pointer;
+        text-decoration: underline;
     }
