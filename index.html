@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <HTML>
     <head>
-        <script type="text/javascript" src="main.js"></script>
+        <title>Lexie's Homepage</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="A critter's little hub for all its tidbits, trinkets, and relics.">
+        <meta name="author" content="shoebby">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script type="module" src="main.js"></script>
         <link rel="stylesheet" href="mainstyle.css">
     </head>
     <body>
+        <header>
+            <img src="images/favicon.ico" style="float: left;" id="playbgm">
+            <span style="float: left; margin-left: 10px;" id="bgmText">< 'click me to play some tunes!'</span>
+        </header>
         <div class="container">
             <div class="banner bannerTextGradient">
                 <h1>THIS IS THE HOMEPAGE OF THE USER SHOEBBY ALSO KNOWN AS LEXIE</h1>
@@ -107,20 +118,30 @@
                                 <br>
                                 <br>
                                 <span>
-                                    > <b><a href="blogpost-penplot.html" style="color: #fc8e4e;">Pen Plotters, Fractals, and Other Whimsical Tangents</a></b> - 00/00/0000
+                                    ⚞ <b><a href="blogpost-penplot.html" style="color: #fc8e4e;">Pen Plotters, Fractals, and Other Whimsical Tangents</a></b> ⚟ 00/00/0000
                                 </span>
                                 <br>
                             </div>
                             <div id="projectsBox" class="box">
-                                <h2 style="display: inline;">Main Projects</h2>
+                                <h2 style="display: inline;">Trinkets and Relics</h2>
                                 <br>
                                 <br>
-                                <h3><a href="" style="color: #fc8e4e;">Project 1</a></h3>
-                                <p>Summary of project 1</p>
-                                <h3><a href="" style="color: #fc8e4e;">Project 2</a></h3>
-                                <p>Summary of project 2</p>
-                                <h3><a href="" style="color: #fc8e4e;">Project 3</a></h3>
-                                <p>Summary of project 3</p>
+                                <h3><a href="https://shoebby.itch.io/the-anders-cyclopaedia" style="color: #fc8e4e;">☰ The Anders Cyclopaedia</a></h3>
+                                <p style="margin: 0 0 20px 0;">
+                                    A game about exploring and compiling the wilderness of a parallel universe.
+                                    <br><br>
+                                    Currently only a demo version is available, progress is slow and might halt in the near future.
+                                </p>
+                                <h3><a href="https://shoebby.itch.io/oneirophobiaphrenia" style="color: #fc8e4e;">☰ ONEIRO(PHOBIA/PHRENIA)</a></h3>
+                                <p style="margin: 0 0 20px 0;">
+                                    A game about dreams, through the rectangular lens of a CRT TV.
+                                </p>
+                                <h3><a href="https://github.com/shoebby/DRAAD" style="color: #fc8e4e;">☰ DRAAD</a></h3>
+                                <p style="margin: 0 0 20px 0;">
+                                    A point-and-click adventure, currently being worked on.
+                                    <br><br>
+                                    Not much to show yet apart from the repository, maybe more soon!
+                                </p>
                                 <h3>Various Other Projects:</h3>
                                 <p>
                                     <a href="">small proj</a> ✩ 
@@ -196,21 +217,32 @@
                                 <br>
                                 <a class="navlink" href="https://shoebby.tumblr.com/">☾ Tumblr</a>
                                 <br>
+                                <a class="navlink" href="">☾ 'shoebby' on discord!</a>
                             </div>
-                            <marquee>
-                                <img src="images/buttons/button-cuppydog.jpg">
-                                <img src="images/buttons/button-likecomputer.jpg">
-                                <img src="images/buttons/button-ralsei.gif">
-                                <img src="images/buttons/button-88-2.gif">
-                                <img src="images/buttons/button-hill.gif">
-                            </marquee>
-                            <marquee>
-                                <img src="images/buttons/button-imgay.jpg">
-                                <img src="images/buttons/button-internetarchive.gif">
-                                <img src="images/buttons/button-vibri.gif">
-                                <img src="images/buttons/button-wikipedia.gif">
-                                <img src="images/buttons/button-trans.jpg">
-                            </marquee>
+
+                            <div style="padding: 5px;">
+                                <img src="images/buttons/button-cuppydog.jpg" style="width: 100px; margin-right: 9px;">
+                                <img src="images/buttons/button-likecomputer.jpg" style="width: 100px;">
+                                <img src="images/buttons/button-ralsei.gif" style="width: 100px;margin-right: 9px;">
+                                <img src="images/buttons/button-88-2.gif"style="width: 100px;">
+                                <img src="images/buttons/button-hill.gif" style="width: 100px;margin-right: 9px;">
+                                <img src="images/buttons/button-imgay.jpg" style="width: 100px;">
+                                <img src="images/buttons/button-internetarchive.gif" style="width: 100px;margin-right: 9px;">
+                                <img src="images/buttons/button-vibri.gif" style="width: 100px;">
+                                <img src="images/buttons/button-wikipedia.gif" style="width: 100px;margin-right: 9px;">
+                                <img src="images/buttons/button-trans.jpg"style="width: 100px;">
+                            </div>
+
+                            <div class="box">
+                                <h3 style="margin-bottom: 10px;">Listening To...</h3>
+                                <a id="trackLink" href="#" target="_blank">
+                                    <div id="trackBox">
+                                        <img id="trackCover" src="images/placeholder.jpg">
+                                        <span id="trackName">Track Name</span>
+                                        <span id="trackArtist">Artist</span>
+                                    </div>
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

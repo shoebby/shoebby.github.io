@@ -93,6 +93,7 @@
     }
     .maintd {
         width: 675px;
+        max-width: 675px;
         vertical-align: baseline;
     }
     .menutd {
@@ -136,6 +137,41 @@
     .spinner {
         float: left;
     }
+
+/* Music Tracker */
+    #trackLink {
+        font-weight: normal;
+    }
+    #trackBox {
+        height: 50px;
+    }
+    #trackCover {
+        border: 1px solid #fc8e4e;
+        float: left;
+
+        margin-right: 5px;
+        width: 50px;
+        height: 50px;
+    }
+    #trackName {
+        display: inline-block;
+        width: 120px;
+        
+        font-weight: bold;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    #trackArtist {
+        display: inline-block;
+        width: 120px;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
 /* Page Specific */
     .blogGrid {
         grid-template-columns: repeat(3, 1fr);

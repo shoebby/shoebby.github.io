@@ -20,5 +20,9 @@
     "@eslint/js": "^9.18.0",
     "eslint": "^9.18.0",
     "globals": "^15.14.0"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "use-last-fm": "^0.6.1"
   }
 }
