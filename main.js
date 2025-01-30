@@ -3,25 +3,25 @@ import "./node_modules/jquery/dist/jquery.js";
 //how tf do i not make it need to do this bru
 window.onload = () => {
     //background music
-    var bgm = new Audio("sounds/strawberriesandlancables.mp3");
-    var bgmText = document.getElementById("bgmText");
-    var playbutton = document.getElementById("playbgm");
+    // var bgm = new Audio("sounds/strawberriesandlancables.mp3");
+    // var bgmText = document.getElementById("bgmText");
+    // var playbutton = document.getElementById("playbgm");
 
-    bgm.loop = true;
+    // bgm.loop = true;
     
-    playbutton.onclick = function () {
-        if (isPlaying(bgm)) {
-            bgmText.innerHTML = "< 'click me to play some tunes!'";
-            bgm.pause();
-            return;
-        }
-        bgmText.innerHTML = "< 'click me to pause these tunes!'";
-        bgm.play();
-    }
+    // playbutton.onclick = function () {
+    //     if (isPlaying(bgm)) {
+    //         bgmText.innerHTML = "< 'click me to play some tunes!'";
+    //         bgm.pause();
+    //         return;
+    //     }
+    //     bgmText.innerHTML = "< 'click me to pause these tunes!'";
+    //     bgm.play();
+    // }
 
-    function isPlaying(audioEl) {
-        return !audioEl.paused;
-    }
+    // function isPlaying(audioEl) {
+    //     return !audioEl.paused;
+    // }
 
     //checking last.fm for most recent track
     var link = document.getElementById("trackLink");
@@ -30,6 +30,7 @@ window.onload = () => {
     var artist = document.getElementById("trackArtist");
 
     function CurrentlyPlaying() {
+        // eslint-disable-next-line no-undef
         $.get(`http://ws.audioscrobbler.com/2.0/`,
             {
                 "method": "user.getrecenttracks",
