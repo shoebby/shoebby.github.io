@@ -5,6 +5,96 @@
         <link rel="stylesheet" href="mainstyle.css">
     </head>
     <body>
-        Hi
+        <div class="banner bannerTextGradient" style="width: 100%;">
+            <h1 style="white-space: nowrap;">
+                PEN PLOTTERS FRACTALS AND OTHER WHIMSICAL TANGENTS PEN PLOTTERS FRACTALS AND OTHER WHIMSICAL TANGENTS PEN PLOTTERS FRACTALS AND OTHER WHIMSICAL TANGENTS 
+                PEN PLOTTERS FRACTALS AND OTHER WHIMSICAL TANGENTS PEN PLOTTERS FRACTALS AND OTHER WHIMSICAL TANGENTS PEN PLOTTERS FRACTALS AND OTHER WHIMSICAL TANGENTS 
+                PEN PLOTTERS FRACTALS AND OTHER WHIMSICAL TANGENTS PEN PLOTTERS FRACTALS AND OTHER WHIMSICAL TANGENTS PEN PLOTTERS FRACTALS AND OTHER WHIMSICAL TANGENTS 
+            </h1>
+        </div>
+
+        <div class="container">
+            <div class="box" style="text-align: center;">
+                <a class="navlink" href="index.html">Back 2 Home</a> - 
+                <a class="navlink" href="blogindex.html">Back 2 Blog</a>
+            </div>
+
+            <span style="float: right;">00/00/2025</span>
+            <h3>Pen Plotters, Fractals, and Other Whimsical Tangents</h3>
+            <div class="box">
+                <p>
+                    For my current master's I've been fucking around with these nifty older machines called 'pen Plotters'. In essence, these machines draw based on
+                    given instructions sent over a COM port. It is janky, imperfect, surprisingly precise, and I absolutely love it.
+                </p>
+                <div style="display: flex; align-items: flex-start;">
+                    <img src="images/blogimgs/penplot-3.jpg" style="width: 300px; margin-right: 10px;">
+                    <p style="margin: 0;">
+                        One of the first results from experimenting with this hardware were these things called lenses; a number of increasingly small/large circles
+                        with variance in how filled in they are. They are visually appealing (to me atleast) and might make for a cool tattoo someday I think, as
+                        have a surprising number of people also said.
+                        <br><Br>
+                        Here I found that the results from a pen plotter arent quite digital and not quite analog, but an interesting inbetween. It's clearly drawn,
+                        you can see where the pen is picked up and placed down and it bleeds in a very hand-written sort of way, but it is mechanically precise like 
+                        how a modern printer would be!
+                        <br><br>
+                        I saw a lot of potential in this for making interesting graphics, textures, whatever honestly. and so I set out to mess around with it more,
+                        especially with writing python scripts that help generate the instructions necessary to make things like these efficiently, and also, 
+                        semi-randomly generated.
+                    </p>
+                </div>
+                <p class="codeSnippet" style="margin-top: 10px; margin-bottom: 0;">
+                    import random # cuz im a widdle wandom :3c
+                    <br><br>
+                    lineType = 0<br>
+                    lineLength = 0
+                    <br><br>
+                    print("rows")<br>
+                    rows = int(input())<br>
+                    print("columns")<br>
+                    columns = int(input())
+                    <br><br>
+                    print("spacing")
+                    <br><br>
+                    print("x coord")<br>
+                    xCoord = int(input())<br>
+                    print("y coord")<br>
+                    yCoord = int(input())
+                    <br><br>
+                    print("how many cirgle per lens")<br>
+                    circles = int(input())<br>
+                    print("starting radius")<br>
+                    radius = int(input())<br>
+                    print("how many spacing betwwen cirgles")<br>
+                    gap = int(input())
+                    <br><br>
+                    print("naem of fiel (will add .hgl)")<br>
+                    filename = input() + ".hgl"<br>
+                    file = open(filename, "w")
+                    <br><br>
+                    file.write("IN;\n")<br>
+                    file.write("SP1;\n")<br>
+                    file.write("PU" + str(xCoord) + "," + str(yCoord) + ";\n")<br>
+                    file.write("LT;\n")<br>
+                    file.write("CI" + str(radius) + ";\n")
+                    <br><br>
+                    for y in range(0,columns):<br>
+                    &emsp;for z in range(0,rows):<br>
+                    &emsp;&emsp;for x in range(0, circles):<br>
+                    &emsp;&emsp;&emsp;lineType = random.randint(1,6)<br>
+                    &emsp;&emsp;&emsp;lineLength = random.randint(1,5)<br>
+                    &emsp;&emsp;&emsp;radius += gap
+                    <br><br>
+                    &emsp;&emsp;&emsp;file.write("LT" + str(lineType) + "," + str(lineLength) + ";\n")<br>
+                    &emsp;&emsp;&emsp;file.write("CI" + str(radius) + ";\n")<br>
+                    <br><br>
+                    file.close()
+                </p>
+                <p style="margin: 0;">
+                    <small>sample script to generate instructions for a set number of lenses
+                    in a grid with set and/or randomized variables</small>
+                </p>
+                Side tangent: fractals! they are very cool
+            </div>
+        </div>
     </body>
 </HTML>
