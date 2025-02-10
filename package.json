@@ -19,10 +19,13 @@
   "devDependencies": {
     "@eslint/js": "^9.18.0",
     "eslint": "^9.18.0",
-    "globals": "^15.14.0"
+    "globals": "^15.14.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
   },
   "dependencies": {
     "jquery": "^3.7.1",
+    "three": "^0.173.0",
     "use-last-fm": "^0.6.1"
   }
 }

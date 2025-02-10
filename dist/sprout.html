@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<HTML>
+    <head>
+        <title>Sprout!</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Generate tree fractals and unfractal them to make them look cool">
+        <meta name="author" content="shoebby">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <link rel="stylesheet" href="sprout.css">
+    </head>
+    <body>
+        <div style="width: 300px; float: right;">
+            <div style="width: 300px;">Depth: <span id="output_depth">0</span></div>
+            <input type="range" min="1" max="15" value="8" class="slider" id="slider_depth">
+            <br>
+
+            <div>Angle Left: <span id="output_angleL">0</span></div>
+            <input type="range" min="0" max="180" value="45" class="slider" id="slider_angleL">
+            <br>
+
+            <div>Angle Right: <span id="output_angleR">0</span></div>
+            <input type="range" min="0" max="180" value="45" class="slider" id="slider_angleR">
+            <br>
+
+            <div>Start X-pos: <span id="output_startX">0</span></div>
+            <input type="range" min="0" max="1500" value="750" class="slider" id="slider_startX">
+            <br>
+
+            <div>Start Y-pos: <span id="output_startY">0</span></div>
+            <input type="range" min="0" max="800" value="800" class="slider" id="slider_startY">
+            <br>
+
+            <div>End X-pos: <span id="output_endX">0</span></div>
+            <input type="range" min="0" max="1500" value="750" class="slider" id="slider_endX">
+            <br>
+
+            <div>End Y-pos: <span id="output_endY">0</span></div>
+            <input type="range" min="0" max="800" value="650" class="slider" id="slider_endY">
+            <br>
+
+            <div>Ratio: <span id="output_ratio">0</span></div>
+            <input type="range" min="0.00" max="2.00" step="0.05" value=".75" class="slider" id="slider_ratio">
+            <br>
+            <input type="button" value="Tree!" id="treeButton">
+            <br>
+            <input type="button" value="Clear!" id="clearButton">
+        </div>
+        
+        <canvas id="treeCanvas" width="1500" height="800" style="border: 1px solid black;">
+        
+        <script src="main.js"></script>
+    </body>
+</HTML>
