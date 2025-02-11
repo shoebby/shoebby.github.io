@@ -99,14 +99,25 @@ function rotate(vector, angle) {
 */
 function tree(x1, y1, x2, y2, angleLeft, angleRight, ratio, depth) {
     console.log("entered tree depth: " + depth)
+    console.log("(" + x1 + ", " + y1 + ") to (" + x2 + ", " + y2 + ")");
+
     if (depth <= 0) {
         return;
+    }
+    
+    ctx.strokeStyle = "rgb(" + (parseInt(depth)*10) + " " + (parseInt(depth)*3) + " " + (parseInt(depth)*14) + ")";
+
+    if (depth == 1) {
+        ctx.fillStyle = "white";
+        ctx.strokeStyle = "white";
+        ctx.beginPath();
+        ctx.arc(x2, y2, 5, 0, Math.PI * 2, false);
+        ctx.fill();
     }
 
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
     ctx.stroke();
-    console.log("(" + x1 + ", " + y1 + ") to (" + x2 + ", " + y2 + ")");
 
     var base = new Vector2(x2 - x1, y2 - y1);
 

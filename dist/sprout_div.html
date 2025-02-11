@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<HTML>
+    <head>
+        <title>Divvy Sprout!</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Generate tree fractals using divs style and grace">
+        <meta name="author" content="shoebby">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <link rel="stylesheet" href="sprout_div.css">
+    </head>
+    <body>
+        <script>
+            document.body.onload = tree(8, null, 45, .75, [255, 150, 107]);
+
+            function tree(depth, parent, angle, ratio, color) {
+                if (depth == 0) {
+                    return;
+                }
+
+                const newBranch = document.createElement("div");
+
+                newBranch.classList.add("branchDiv");
+                
+                if (parent != null) {
+                    parent.appendChild(newBranch);
+                    newBranch.style.width = (parent.offsetWidth * ratio) + "px";
+                    newBranch.style.position = "absolute";
+                    newBranch.style.left = "100%";
+                    newBranch.style.transformOrigin = "0% 50%";
+                    newBranch.style.rotate = angle + "deg";
+                    newBranch.style.backgroundColor = "rgb(" + color[0] + " " + color[1] + " " + color[2] + ")";
+                } else if (parent == null) {
+                    document.body.appendChild(newBranch);
+
+                    newBranch.style.position = "absolute";
+                    newBranch.style.left = "0%";
+                    newBranch.style.top = "500px";
+                    newBranch.style.backgroundColor = "rgb(" + color[0] + " " + color[1] + " " + color[2] + ")";
+                }
+                
+                color[0] -= 1
+                color[1] -= 1
+                color[2] -= 1
+                parent = newBranch;
+                tree(depth - 1, newBranch, angle, ratio, color)
+                tree(depth - 1, newBranch, -angle, ratio, color)
+            }
+        </script>
+    <body>
