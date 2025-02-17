@@ -37,6 +37,7 @@
             <br><br>
             <input type="button" value="destroy a tree!" onclick="destroyTree();">
         </div>
+
         <script>
             const input_startLength = document.getElementById("startLength");
             const input_angleLeft = document.getElementById("angleLeft");
@@ -49,7 +50,7 @@
             var angleLeft = input_angleLeft.value;
             var angleRight = input_angleRight.value;
             var ratio = input_ratio.value / 100;
-            var color = [255, 0, 150];
+            var color = [255, 0, 150, 50];
             var depth = input_depth.value;
             var treeNum = input_treeNum.value;
 
@@ -86,33 +87,33 @@
 
             function tree(startLength, startRot, depth, parent, angle, ratio, color) {
                 if (depth == 0) {
-                    parent.style.backgroundColor = "rgb(255 255 255)";
+                    parent.style.backgroundColor = "rgba(255 255 255 0.2)";
                     return;
                 }
 
                 const newBranch = document.createElement("div");
-
                 newBranch.classList.add("branchDiv");
                 newBranch.setAttribute("id", "branch");
+                newBranch.innerHTML = "<span>A BRANCH!</span>"
                 
                 if (parent != null) {
                     parent.appendChild(newBranch);
-                    
-                    newBranch.style.width = (parent.offsetWidth * ratio) + "px";
-                    newBranch.style.left = "100%";
-                    newBranch.style.transformOrigin = "0% 50%";
-                    newBranch.style.transform = "rotate(" + angle + "deg)";
-                    newBranch.style.backgroundColor = "rgb(" + (255 - newBranch.offsetWidth) + " " + color[1] + " " + color[2] + ")";
+
+                    newBranch.style.setProperty('--w', parent.offsetWidth * ratio + "px");
+                    newBranch.style.setProperty('--a', angle + "deg");
+
                 } else if (parent == null) {
+                    newBranch.classList.add("rootDiv");
                     document.body.appendChild(newBranch);
 
-                    newBranch.style.width = startLength + "px";
-                    newBranch.style.left = "50%";
-                    newBranch.style.top = "50%";
-                    newBranch.style.transformOrigin = "0% 50%";
-                    newBranch.style.transform = "rotate(" + startRot + "deg)";
-                    newBranch.style.backgroundColor = "rgb(" + (255 - newBranch.offsetWidth) + " " + color[1] + " " + color[2] + ")";
+                    newBranch.style.setProperty('--w', startLength + "px");
+                    newBranch.style.setProperty('--a', startRot + "deg");
                 }
+
+                newBranch.style.setProperty('--colorR', 255 - newBranch.offsetWidth);
+                newBranch.style.setProperty('--colorG', color[1]);
+                newBranch.style.setProperty('--colorB', color[2]);
+                newBranch.style.setProperty('--colorA', 1);
 
                 parent = newBranch;
                 tree(startLength, startRot, depth - 1, newBranch, angleLeft, ratio, color);

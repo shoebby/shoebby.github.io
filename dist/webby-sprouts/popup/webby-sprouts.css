@@ -8,29 +8,32 @@ a {
     color: white;
 }
 
+.hidden {
+    display: none;
+}
+
 .branchDiv {
     position: absolute;
     width: var(--w);
-    height: 4px;
+    height: 2px;
     left: 100%;
     transform-origin: 0% 50%;
     transform: rotate(var(--a));
-    display: flex;
 
     background-color: rgba(var(--colorR), var(--colorG), var(--colorB), var(--colorA));
-    color: rgba(255, 73, 164, 0.466);
+    color: rgba(0, 0, 0, 0);
     /* background: radial-gradient(closest-side, white, black); */
     border-radius: 5px;
     animation-name: branchFlow;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
+    animation-duration: 0s;
+    animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     /* mix-blend-mode: difference; */
 }
 
 .rootDiv {
     left: 50%;
-    top: 50%;
+    top: 0%;
     transform-origin: 0% 50%;
 }
 
@@ -40,12 +43,6 @@ a {
 }
 
 @keyframes branchFlow {
-    0% {
-        height: 0;
-        color: rgba(255, 131, 73, 0);
-    }
-    100% {
-        height: 4px;
-        color: rgba(255, 73, 164, 0.466);
-    }
+    0% {rotate: 0deg;}
+    100% {rotate: 360deg;}
 }
