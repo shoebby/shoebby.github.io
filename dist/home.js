@@ -1,4 +1,5 @@
-import "./node_modules/jquery/dist/jquery.js";
+import "../node_modules/jquery/dist/jquery.js";
+const API_KEY = "a05aca9720151593bd06836456f9cce2";
 
 //how tf do i not make it need to do this bru
 window.onload = () => {

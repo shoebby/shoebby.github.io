@@ -10,41 +10,113 @@
         <link rel="stylesheet" href="sprout_div.css">
     </head>
     <body>
+        <div style="position: absolute;">
+            <a href="home.html">home</a>
+            <br><br>
+            <label for="startLength">Starting Length (pixels)</label>
+            <input type="number" id="startLength" min="0" max="500" value="150">
+            <br>
+            <label for="angleLeft">Left Angle (degrees)</label>
+            <input type="number" id="angleLeft" min="0" max="360" value="45">
+            <br>
+            <label for="angleRight">Right Angle (degrees)</label>
+            <input type="number" id="angleRight" min="0" max="360" value="45">
+            <br>
+            <label for="ratio">Ratio (/100)</label>
+            <input type="number" id="ratio" min="0" max="100" value="75">
+            <br>
+            <label for="depth">Depth</label>
+            <input type="number" id="depth" min="0" max="20" value="8">
+            <br>
+            <label for="treeNum">Amount of trees</label>
+            <input type="number" id="treeNum" min="1" max="64" value="1">
+            <br><br>
+            <input type="button" value="get those trees going!" onclick="
+            initTrees(treeNum);
+            ">
+            <br><br>
+            <input type="button" value="destroy a tree!" onclick="destroyTree();">
+        </div>
         <script>
-            document.body.onload = tree(8, null, 45, .75, [255, 150, 107]);
+            const input_startLength = document.getElementById("startLength");
+            const input_angleLeft = document.getElementById("angleLeft");
+            const input_angleRight = document.getElementById("angleRight");
+            const input_ratio = document.getElementById("ratio");
+            const input_depth = document.getElementById("depth");
+            const input_treeNum = document.getElementById("treeNum");
 
-            function tree(depth, parent, angle, ratio, color) {
+            var startLength = input_startLength.value
+            var angleLeft = input_angleLeft.value;
+            var angleRight = input_angleRight.value;
+            var ratio = input_ratio.value / 100;
+            var color = [255, 0, 150];
+            var depth = input_depth.value;
+            var treeNum = input_treeNum.value;
+
+            input_startLength.oninput = function () {
+                startLength = this.value;
+            }
+            input_angleLeft.oninput = function () {
+                angleLeft = this.value;
+            }
+            input_angleRight.oninput = function () {
+                angleRight = this.value;
+            }
+            input_ratio.oninput = function () {
+                ratio = this.value / 100;
+            }
+            input_depth.oninput = function () {
+                depth = this.value;
+            }
+            input_treeNum.oninput = function () {
+                treeNum = this.value;
+            }
+
+            function initTrees(treeAmount) {
+                var startAngle = 360 / treeAmount;
+
+                for (i = 0; i < treeAmount; i++) {
+                    tree(startLength, startAngle*i, depth, null, null, ratio, color);
+                }
+            }
+
+            function destroyTree() {
+                document.body.removeChild(document.getElementById("branch"));
+            }
+
+            function tree(startLength, startRot, depth, parent, angle, ratio, color) {
                 if (depth == 0) {
+                    parent.style.backgroundColor = "rgb(255 255 255)";
                     return;
                 }
 
                 const newBranch = document.createElement("div");
 
                 newBranch.classList.add("branchDiv");
+                newBranch.setAttribute("id", "branch");
                 
                 if (parent != null) {
                     parent.appendChild(newBranch);
+                    
                     newBranch.style.width = (parent.offsetWidth * ratio) + "px";
-                    newBranch.style.position = "absolute";
                     newBranch.style.left = "100%";
                     newBranch.style.transformOrigin = "0% 50%";
-                    newBranch.style.rotate = angle + "deg";
-                    newBranch.style.backgroundColor = "rgb(" + color[0] + " " + color[1] + " " + color[2] + ")";
+                    newBranch.style.transform = "rotate(" + angle + "deg)";
+                    newBranch.style.backgroundColor = "rgb(" + (255 - newBranch.offsetWidth) + " " + color[1] + " " + color[2] + ")";
                 } else if (parent == null) {
                     document.body.appendChild(newBranch);
 
-                    newBranch.style.position = "absolute";
-                    newBranch.style.left = "0%";
-                    newBranch.style.top = "500px";
-                    newBranch.style.backgroundColor = "rgb(" + color[0] + " " + color[1] + " " + color[2] + ")";
+                    newBranch.style.width = startLength + "px";
+                    newBranch.style.left = "50%";
+                    newBranch.style.top = "50%";
+                    newBranch.style.transformOrigin = "0% 50%";
+                    newBranch.style.transform = "rotate(" + startRot + "deg)";
+                    newBranch.style.backgroundColor = "rgb(" + (255 - newBranch.offsetWidth) + " " + color[1] + " " + color[2] + ")";
                 }
-                
-                color[0] -= 1
-                color[1] -= 1
-                color[2] -= 1
+
                 parent = newBranch;
-                tree(depth - 1, newBranch, angle, ratio, color)
-                tree(depth - 1, newBranch, -angle, ratio, color)
+                tree(startLength, startRot, depth - 1, newBranch, angleLeft, ratio, color);
+                tree(startLength, startRot, depth - 1, newBranch, -angleRight, ratio, color);
             }
         </script>
     <body>
