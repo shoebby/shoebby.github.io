@@ -18,9 +18,5 @@
         "default_icon": "icons/placeholder.jpg",
         "default_title": "Webby Sprouts",
         "default_popup": "popup/webby-sprouts.html"
-    },
-
-    "web_accessible_resources": [
-        "images/soft.PNG"
-    ]
+    }
 }
