@@ -13,32 +13,96 @@
         <div style="position: absolute;">
             <a href="index.html">home</a>
             <br><br>
-            <label for="startLength">Starting Length (pixels)</label>
-            <input type="number" id="startLength" min="0" max="500" value="150">
+            <div style="border: 1px solid white; padding: 10px; background-color: black;">
+                <h2 style="margin: 0;">Fractal Variables</h2>
+
+                <label for="startLength">Starting Length (pixels)</label>
+                <input type="number" id="startLength" min="0" max="500" value="150">
+                <br>
+                <label for="angleLeft">Left Angle (degrees)</label>
+                <input type="number" id="angleLeft" min="0" max="360" value="45">
+                <br>
+                <label for="angleRight">Right Angle (degrees)</label>
+                <input type="number" id="angleRight" min="0" max="360" value="45">
+                <br>
+                <label for="ratio">Ratio (/100)</label>
+                <input type="number" id="ratio" min="0" max="100" value="75">
+                <br>
+                <label for="depth">Depth</label>
+                <input type="number" id="depth" min="0" max="20" value="8">
+                <br>
+                <label for="treeNum">Amount of trees</label>
+                <input type="number" id="treeNum" min="1" max="64" value="1">
+            </div>
             <br>
-            <label for="angleLeft">Left Angle (degrees)</label>
-            <input type="number" id="angleLeft" min="0" max="360" value="45">
+            <div style="border: 1px solid white; padding: 10px; background-color: black;">
+                <h2 style="margin: 0;">Style Variables</h2>
+
+                <label for="body_bg">Background Colour: </label>
+                <input type="color" id="body_bg">
+                <br>
+                <label for="br_height">Height (pixels): </label>
+                <input type="number" id="br_height" value="4">
+                <br>
+                <label for="br_borderRadius">Border Radius (pixels): </label>
+                <input type="number" id="br_borderRadius" value="0">
+                <br>
+                <label for="br_blendMode">Blend Mode: </label>
+                <select id="br_blendMode" name="blend modes">
+                    <option value="normal">normal</option>
+                    <option value="multiply">multiply</option>
+                    <option value="screen">screen</option>
+                    <option value="overlay">overlay</option>
+                    <option value="darken">darken</option>
+                    <option value="lighten">lighten</option>
+                    <option value="color-dodge">color-dodge</option>
+                    <option value="color-burn">color-burn</option>
+                    <option value="hard-light">hard-light</option>
+                    <option value="soft-light">soft-light</option>
+                    <option value="difference">difference</option>
+                    <option value="exclusion">exclusion</option>
+                    <option value="hue">hue</option>
+                    <option value="saturation">saturation</option>
+                    <option value="color">color</option>
+                    <option value="luminosity">luminosity</option>
+                    <option value="plus-darker">plus-darker</option>
+                    <option value="plus-lighter">plus-lighter</option>
+                </select>
+                <br>
+                <label for="br_background">Fill: </label>
+                <input type="text" id="br_background" value="white">
+                <br>
+                <label for="br_borderWidth">Border Width (pixels): </label>
+                <input type="number" id="br_borderWidth" value="0">
+                <br>
+                <label for="br_borderColour">Border Colour: </label>
+                <input type="color" id="br_borderColour">
+                <br>
+                <label for="br_borderType">Border Type: </label>
+                <select id="br_borderType" name="border types">
+                    <option value="none">none</option>
+                    <option value="dotted">dotted</option>
+                    <option value="dashed">dashed</option>
+                    <option value="solid">solid</option>
+                    <option value="double">double</option>
+                    <option value="groove">groove</option>
+                    <option value="ridge">ridge</option>
+                    <option value="inset">inset</option>
+                    <option value="outset">outset</option>
+                    <option value="hidden">hidden</option>
+                </select>
+                <br>
+            </div>
             <br>
-            <label for="angleRight">Right Angle (degrees)</label>
-            <input type="number" id="angleRight" min="0" max="360" value="45">
-            <br>
-            <label for="ratio">Ratio (/100)</label>
-            <input type="number" id="ratio" min="0" max="100" value="75">
-            <br>
-            <label for="depth">Depth</label>
-            <input type="number" id="depth" min="0" max="20" value="8">
-            <br>
-            <label for="treeNum">Amount of trees</label>
-            <input type="number" id="treeNum" min="1" max="64" value="1">
-            <br><br>
-            <input type="button" value="get those trees going!" onclick="
-            initTrees(treeNum);
-            ">
+            <input type="button" value="get those trees going!" onclick="initTrees(treeNum);">
             <br><br>
             <input type="button" value="destroy a tree!" onclick="destroyTree();">
+            <br><br>
         </div>
 
         <script>
+            var depthStep;
+
             const input_startLength = document.getElementById("startLength");
             const input_angleLeft = document.getElementById("angleLeft");
             const input_angleRight = document.getElementById("angleRight");
@@ -50,7 +114,6 @@
             var angleLeft = input_angleLeft.value;
             var angleRight = input_angleRight.value;
             var ratio = input_ratio.value / 100;
-            var color = [255, 0, 150, 50];
             var depth = input_depth.value;
             var treeNum = input_treeNum.value;
 
@@ -73,11 +136,56 @@
                 treeNum = this.value;
             }
 
+            const input_style_bodyBackgroundColour = document.getElementById("body_bg");
+
+            const input_style_branchHeight = document.getElementById("br_height");
+            const input_style_branchBorderRadius = document.getElementById("br_borderRadius");
+            const input_style_branchBlendMode = document.getElementById("br_blendMode");
+            const input_style_branchBackground = document.getElementById("br_background");
+
+            const input_style_branchBorderWidth = document.getElementById("br_borderWidth");
+            const input_style_branchBorderColour = document.getElementById("br_borderColour");
+            const input_style_branchBorderType = document.getElementById("br_borderType");
+
+            document.documentElement.style.setProperty("--bodyBackgroundColor", input_style_bodyBackgroundColour.value)
+            document.documentElement.style.setProperty("--height", input_style_branchHeight.value + "px");
+            document.documentElement.style.setProperty("--borderRad", input_style_branchBorderRadius.value + "px");
+            document.documentElement.style.setProperty("--blendMode", input_style_branchBlendMode.value);
+            document.documentElement.style.setProperty("--branchBackground", input_style_branchBackground.value);
+            document.documentElement.style.setProperty("--borderWidth", input_style_branchBorderWidth.value + "px");
+            document.documentElement.style.setProperty("--borderColour", input_style_branchBorderColour.value);
+            document.documentElement.style.setProperty("--borderType", input_style_branchBorderType.value);
+
+            input_style_bodyBackgroundColour.oninput = function () {
+                document.documentElement.style.setProperty("--bodyBackgroundColor", this.value);
+            }
+            input_style_branchHeight.oninput = function () {
+                document.documentElement.style.setProperty("--height", this.value + "px");
+            }
+            input_style_branchBorderRadius.oninput = function () {
+                document.documentElement.style.setProperty("--borderRad", this.value + "px");
+            }
+            input_style_branchBlendMode.oninput = function () {
+                document.documentElement.style.setProperty("--blendMode", this.value);
+            }
+            input_style_branchBackground.oninput = function () {
+                document.documentElement.style.setProperty("--branchBackground", this.value);
+            }
+            input_style_branchBorderWidth.oninput = function () {
+                document.documentElement.style.setProperty("--borderWidth", this.value + "px");
+            }
+            input_style_branchBorderColour.oninput = function () {
+                document.documentElement.style.setProperty("--borderColour", this.value);
+            }
+            input_style_branchBorderType.oninput = function () {
+                document.documentElement.style.setProperty("--borderType", this.value);
+            }
+
             function initTrees(treeAmount) {
                 var startAngle = 360 / treeAmount;
-
+                depthstep = 255 / depth;
                 for (i = 0; i < treeAmount; i++) {
-                    tree(startLength, startAngle*i, depth, null, null, ratio, color);
+                    tree(startLength, startAngle*i, depth, null, null, ratio);
                 }
             }
 
@@ -85,9 +193,13 @@
                 document.body.removeChild(document.getElementById("treeBranch"));
             }
 
-            function tree(startLength, startRot, depth, parent, angle, ratio, color) {
+            function tree(startLength, startRot, depth, parent, angle, ratio) {
                 if (depth == 0) {
-                    parent.style.backgroundColor = "rgba(255 255 255 0.2)";
+                    const newBranch = document.createElement("div");
+                    newBranch.classList.add("branch");
+                    newBranch.classList.add("flower");
+                    newBranch.setAttribute("id", "treeBranch");
+                    parent.appendChild(newBranch);
                     return;
                 }
 
@@ -111,14 +223,14 @@
 
                 newBranch.innerHTML = "<span>" + newBranch.offsetWidth + "</span>"
 
-                newBranch.style.setProperty('--colorR', 50);
-                newBranch.style.setProperty('--colorG', 255 - newBranch.offsetWidth);
-                newBranch.style.setProperty('--colorB', 255);
+                newBranch.style.setProperty('--colorR', 255);
+                newBranch.style.setProperty('--colorG', 255 - (depth * depthstep));
+                newBranch.style.setProperty('--colorB', 0);
                 newBranch.style.setProperty('--colorA', 1);
 
                 parent = newBranch;
-                tree(startLength, startRot, depth - 1, newBranch, angleLeft, ratio, color);
-                tree(startLength, startRot, depth - 1, newBranch, -angleRight, ratio, color);
+                tree(startLength, startRot, depth - 1, newBranch, angleLeft, ratio);
+                tree(startLength, startRot, depth - 1, newBranch, -angleRight, ratio);
             }
         </script>
     <body>
