@@ -19,7 +19,7 @@
                 <a class="navlink" href="blogindex.html">Back 2 Blog</a>
             </div>
 
-            <span style="float: right;">00/00/2025</span>
+            <span style="float: right;">24/02/2025</span>
             <h3>Pen Plotters, Fractals, and Other Whimsical Tangents</h3>
             <div class="box">
                 <p>
@@ -93,8 +93,86 @@
                     <small>sample script to generate instructions for a set number of lenses
                     in a grid with set and/or randomized variables</small>
                 </p>
-                Side tangent: fractals! they are very cool
+                <br>
+                <div style="display: flex; align-items: flex-start;">
+                    <p style="margin: 0;">
+                        Side tangent: fractals! they are very cool, and using Python it's possible to generate a set of instructions for a pen plotter to draw them!
+                        You simply specify the start and end point of the first branch and go from there, creating in this case a binary tree fractal, much like the
+                        one you can see on the right here >>>>.
+                        <br><br>
+                        But what if you introduce
+                        <span style="background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41,
+                        #f9a825, #ff5722); background-clip: text; -webkit-text-fill-color: transparent;">randomness</span>?
+                        <br><br>
+                        Well then you have a lot of variables you can mess with, for example what if you randomize the branch angle between two set thresholds,
+                        and do the same with the ratio? Turns out you end up with very organic-looking tree structures! Example below vvvvvv.
+                    </p>
+                    <img src="images/blogimgs/penplot-2.jpg" style="width: 300px; margin-left: 10px;">
+                </div>
+                <div>
+                    <img src="images/blogimgs/penplot-5.PNG" style="width: 855px; margin-top: 10px;">
+                    <p style="margin: 0;">
+                        <small>Depth: N/A but probably 15 or so; angles: randomized between 10 and 60 degrees; ratio: randomized between 0.5 and 1;</small>
+                    </p>
+                </div>
+                <p class="codeSnippet" style="margin-top: 10px; margin-bottom: 0;">
+                    def tree(x1, y1, x2, y2, angleLeft, angleRight, ratio, depth):
+                    <br><br>
+                    <span style="color: green;">&emsp;# this line makes this function halt when it finishes doing the set amount of recursions</span><br>
+                    &emsp;if depth == 0: return
+                    <br><br>
+                    <span style="color: green;">&emsp;# write the instructions for the current line to the .hgl file</span><br>
+                    &emsp;file.write(f'PU {round(x1)},{round(y1)};\n')<br>
+                    &emsp;file.write(f'PD {round(x2)},{round(y2)};\n')
+                    <br><br>
+                    <span style="color: green;">&emsp;# set the next two branches' starting position and rotations</span><br>
+                    &emsp;base = np.array([x2 - x1, y2 - y1])<br>
+                    &emsp;new_base = base * ratio<br>
+                    &emsp;right = rotate(new_base, angleRight)<br>
+                    &emsp;left = rotate(new_base, -angleLeft)
+                    <br><br>
+                    <span style="color: green;">&emsp;# set the end position of the two next branches</span><br>
+                    &emsp;end = np.array([x2, y2])<br>
+                    &emsp;right_end = np.add(end, right)<br>
+                    &emsp;left_end = np.add(end, left)
+                    <br><br>
+                    <span style="color: green;">&emsp;# call this function again using the newly established variables, this time deducting 1 from the depth to count one recursion as done</span><br>
+                    &emsp;tree(x2, y2, right_end[0], right_end[1], angleLeft, angleRight, ratio, depth - 1)<br>
+                    &emsp;tree(x2, y2, left_end[0], left_end[1], angleLeft, angleRight, ratio, depth - 1)
+                </p>
+                <p style="margin: 0;">
+                    <small>the function that generates branches recursively, based on a buncha variables</small>
+                </p>
+                <br>
+                <div style="display: flex; align-items: flex-start;">
+                    <p style="margin: 0;">
+                        These explorations made me interested in generative art, not the evil swimming pool-evaporating kind, but the tuneable kind, which I can
+                        hopefully do more with in my coming project(s)! First up has been a browser extension called
+                        <a href="https://addons.mozilla.org/en-US/firefox/addon/webby-sprouts/">Webby Sprouts</a>, which takes the open webpage's DOM and turns it
+                        into a tree fractal; visualizing the bones of a website.
+                        <br><br>
+                        Turns out: a lot of websites have a sort of finger print, their DOM is visually distinct to a certain extent! The Facebook Fan, Bluesky
+                        Reed, Itch Twins, it's cool poster material, and it can become a fun toy in and of itself I think.
+                        <br><br>
+                        And yes, every single branch is an individual div, rotated and sized based on its parent div, so in the DOM it's also a fractal in a dropdown
+                        kind of way, fucking SUE me Jana!!!!!!
+                        <br><br>
+                        So what now? I'm going to finish up the Weeby Sprouts browser extension to make it more customizeable, more fun, more playful! After that
+                        who knows, maybe do this stuff in 3D?
+                    </p>
+                    <div>
+                        <img src="images/blogimgs/penplot-6.PNG" style="width: 300px; margin-left: 10px;">
+                        <p style="margin: 0;">
+                            <small>The famed Bluesky Reed</small>
+                        </p>
+                    </div>
+                    
+                </div>
+                <br>
             </div>
+            <footer>
+                <span>(c) 2025 shoebby. All Rights Reserved.</span>
+            </footer>
         </div>
     </body>
 </HTML>

@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <HTML>
     <head>
-        <title>Lexie's Homepage</title>
         <meta charset="UTF-8">
-        <meta name="description" content="A critter's little hub for all its tidbits, trinkets, and relics.">
-        <meta name="author" content="shoebby">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>LexieLand</title>
+        <meta name="description" content="The home of a critter and its many wonderful tidbits, trinkets, and relics.
+        If you ask it politely it might even share them with you!">
+        <meta property="og:image" content="http://lexie.zapto.org:1337/images/embedimg.jpg">
+
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
         <script type="module" src="home.js"></script>
         <link rel="stylesheet" href="mainstyle.css">
     </head>
     <body>
-        <header>
-            <img src="images/favicon.ico" style="float: left;margin-left: 10px; margin-top: 10px;">
-        </header>
         <div class="container">
             <div class="banner bannerTextGradient">
                 <h1>THIS IS THE HOMEPAGE OF THE USER SHOEBBY ALSO KNOWN AS LEXIE</h1>
             </div>
-
-            <table>
+            <img src="images/favicon.ico" class="buddy" id="buddy">
+            <table class="buddyParent">
                 <tbody>
                     <tr>
                         <!-- main -->
                         <td class="maintd">
-                            <div id="introBox" class="box">
+                            <div id="introBox" class="box" style="display: flex;">
                                 <div class="wiki">
                                     <img id="pfp" class="pfp" src="images/mutt.PNG">
                                     <br><br><br><br><br><br><br><br><br><br>
@@ -78,31 +78,35 @@
                                         <span style="color:#fc8e4e">Zaddies:</span> Doré, Klimt, Muscha, Vrubel
                                     </p>
                                 </div>
-                                <h2 id="welcomeBox" style="display: inline;">Whoa!!! Hello!!!!!!</h2>
-                                <br>
-                                <p style="text-align: justify;">
-                                    My name is Alexandria but most people call me Lexie, this is my little 'hub' where I have my
-                                    links and projects and all such things.
+                                <div>
+                                    <h2 id="welcomeBox" class="spinner">
+                                        Whoa!!! Hello!!!!!!
+                                    </h2>
                                     <br>
-                                    <br>
-                                    I primarily make games, and most things I make are related to that. You can find all of that
-                                    to the right under 'workz' and more about me <a href="">here</a>!
-                                    <br>
-                                    <br>
-                                    My non-work related hobbies include Gunpla: Qubeley is my favourite and so far I've managed to find
-                                    the HG, HG Mk.2, and MG kits! Besides that I like to paint miniatures, currently warhammer, and do crafts
-                                    of all sorts.
-                                    <br>
-                                    Recently I got into clothing customization (fucking around with bleach), and soon I hope to be able to mess
-                                    around with leatherworking!
-                                    <br>
-                                    <br>
-                                    My current goal is to make and get a home NAS working with my partner, so we can store and watch our [LEGALLY ACQUIRED]
-                                    media! Among other things such as hosting things, like a peertube instance, and maybe even this website!
-                                    <br>
-                                    <br>
-                                    Feel free to reach out thru my socials or add me on pisscorp!
-                                </p>
+                                    <p style="text-align: justify;">
+                                        My name is Alexandria but most people call me Lexie, this is my little 'hub' where I have my
+                                        links and projects and all such things.
+                                        <br>
+                                        <br>
+                                        I primarily make games, and most things I make are related to that. You can find all of that
+                                        to the right under 'workz' and more about me <a href="">here</a>!
+                                        <br>
+                                        <br>
+                                        My non-work related hobbies include Gunpla: Qubeley is my favourite and so far I've managed to find
+                                        the HG, HG Mk.2, and MG kits! Besides that I like to paint miniatures, currently warhammer, and do crafts
+                                        of all sorts.
+                                        <br>
+                                        Recently I got into clothing customization (fucking around with bleach), and soon I hope to be able to mess
+                                        around with leatherworking!
+                                        <br>
+                                        <br>
+                                        My current goal is to make and get a home NAS working with my partner, so we can store and watch our [LEGALLY ACQUIRED]
+                                        media! Among other things such as hosting things, like a peertube instance, and maybe even this website!
+                                        <br>
+                                        <br>
+                                        Feel free to reach out thru my socials or add me on pisscorp!
+                                    </p>
+                                </div>
                             </div>
                             <div class="mainMarquee">
                                 <marquee>
@@ -113,16 +117,18 @@
                                 </marquee>
                             </div>
                             <div id="blogBox" class="box">
-                                <h2 style="display: inline;">Blog</h2>
+                                <h2 class="spinner">Blog</h2>
                                 <br>
                                 <br>
                                 <span>
-                                    ⚞ <b><a href="blogpost-penplot.html" style="color: #fc8e4e;">Pen Plotters, Fractals, and Other Whimsical Tangents</a></b> ⚟ 00/00/0000
+                                    ⚞ <b><a href="blogpost-penplot.html" style="color: #fc8e4e;">
+                                        Pen Plotters, Fractals, and Other Whimsical Tangents
+                                    </a></b> ⚟ 24/02/2025
                                 </span>
                                 <br>
                             </div>
                             <div id="projectsBox" class="box">
-                                <h2 style="display: inline;">Trinkets and Relics</h2>
+                                <h2 class="spinner">Trinkets and Relics</h2>
                                 <br>
                                 <br>
                                 <h3><a href="https://shoebby.itch.io/the-anders-cyclopaedia" style="color: #fc8e4e;">☰ The Anders Cyclopaedia</a></h3>
@@ -145,20 +151,20 @@
                                 <p>
                                     <a href="sprout.html">Sprout!</a> ✩ 
                                     <a href="sprout_div.html">Divvy Sprout!</a> ✩
+                                    <a href="https://addons.mozilla.org/en-US/firefox/addon/webby-sprouts/">Webby Sprouts!</a> ✩
                                 </p>
-                                <p></p>
                             </div>
                         </td>
                         <!-- side -->
                         <td class="menutd">
                             <div class="box">
                                 <!-- <img src="one.jpg" style="max-width: 25%; position: relative; vertical-align: top;"> -->
-                                <h2 style="display: inline;">Quests</h2>
+                                <h2 class="spinner">Quests</h2>
                                 <br>
                                 <br>
                                 <a class="navlink" href="index.html">♡ The Home</a>
                                 <br>
-                                <a class="navlink" href="about.html">♡ The Lexie</a>
+                                <a class="navlink underConstruction" href="about.html">⚠ The Lexie</a>
                                 <br>
                                 <a class="navlink" href="blogindex.html">♡ The Blog</a>
                                 <br>
@@ -166,21 +172,21 @@
                                 
 
                                 <h3>Workz</h3>
-                                <a class="navlink" href="">☆ Games</a>
+                                <a class="navlink underConstruction" href="">⚠ Games</a>
                                 <br>
-                                <a class="navlink" href="">☆ Drawings</a>
+                                <a class="navlink underConstruction" href="">⚠ Drawings</a>
                                 <br>
-                                <a class="navlink" href="">☆ Videos</a>
+                                <a class="navlink underConstruction" href="">⚠ Videos</a>
                                 <br>
-                                <a class="navlink" href="">☆ Music</a>
+                                <a class="navlink underConstruction" href="">⚠ Music</a>
                                 <br>
-                                <a class="navlink" href="">☆ Resources</a>
+                                <a class="navlink underConstruction" href="">⚠ Resources</a>
                                 <br>
                                 <a class="navlink" href="https://github.com/shoebby">☆ GitHub</a>
                                 <br>
-                                <a class="navlink" href="">☆ Gunpla Zone</a>
+                                <a class="navlink underConstruction" href="">⚠ Gunpla Zone</a>
                                 <br>
-                                <a class="navlink" href="">☆ Crafts</a>
+                                <a class="navlink underConstruction" href="">⚠ Crafts</a>
 
                                 <h3>Trackerz</h3>
                                 <a class="navlink" href="https://letterboxd.com/shoebby/">☼ Letterboxd</a>
@@ -228,31 +234,6 @@
                     </tr>
                 </tbody>
             </table>
-            <Br>
-            
-            <!-- SCM Music Player https://www.scmplayer.net -->
-            <script type="text/javascript" src="https://www.scmplayer.net/script.js" 
-            data-config="{
-                'skin':'https://static.tumblr.com/su8juwr/Zfumrzudp/domo.css',
-                'volume':24,
-                'autoplay':false,
-                'shuffle':true,
-                'repeat':1,
-                'placement':'bottom',
-                'showplaylist':false,
-                'playlist':[{'title':'Orchid - New Jersey Vs. Valhalla','url':'https://www.youtube.com/watch?v=xU2vt4lKED8'},
-                {'title':'I Hate Sex - January 24','url':'https://www.youtube.com/watch?v=CyXvXjhzhcE'},
-                {'title':'I Hate Myself - Urban Barbie','url':'https://www.youtube.com/watch?v=QB9-XRPuQYE&list=OLAK5uy_ksJjNKp2eiojRt3B1cOcukmUTuc3LZmlk&index=2'},
-                {'title':'Klaus Schulze - Freeze','url':'https://www.youtube.com/watch?v=Ks5OZuEDnPk'},
-                {'title':'TK from Ling Tosite Sigure - Unravel','url':'https://www.youtube.com/watch?v=Fve_lHIPa-I'},
-                {'title':'Minasheep - LUCKY','url':'https://www.youtube.com/watch?v=Fp8FY4p0mPQ'},
-                {'title':'Psychoangel - Sakuracon09','url':'https://www.youtube.com/watch?v=K9447wwJ_AI'},
-                {'title':'Jea - Lol It Out','url':'https://www.youtube.com/watch?v=tEkzJdHGE0A'},
-                {'title':'Persona Trinity Soul - Burning Men%27s Soul','url':'https://www.youtube.com/watch?v=6plVf2T6AOo'},
-                {'title':'The Pillows - Ride On Shooting Star','url':'https://www.youtube.com/watch?v=K4_Qzx-E2LQ'}]}" >
-            </script>
-            <!-- SCM Music Player script end -->
-            
             <footer>
                 <span>(c) 2025 shoebby. All Rights Reserved.</span>
             </footer>

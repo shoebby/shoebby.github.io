@@ -93,8 +93,7 @@
 
                 const newBranch = document.createElement("div");
                 newBranch.classList.add("branchDiv");
-                newBranch.setAttribute("id", "branch");
-                newBranch.innerHTML = "<span>A BRANCH!</span>"
+                newBranch.setAttribute("id", "branch");                
                 
                 if (parent != null) {
                     parent.appendChild(newBranch);
@@ -109,6 +108,8 @@
                     newBranch.style.setProperty('--w', startLength + "px");
                     newBranch.style.setProperty('--a', startRot + "deg");
                 }
+
+                newBranch.innerHTML = "<span>" + newBranch.offsetWidth + "</span>"
 
                 newBranch.style.setProperty('--colorR', 255 - newBranch.offsetWidth);
                 newBranch.style.setProperty('--colorG', color[1]);

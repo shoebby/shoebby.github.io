@@ -22,7 +22,7 @@ a {
     /* background: radial-gradient(closest-side, white, black); */
     border-radius: 5px;
     animation-name: branchFlow;
-    animation-duration: 2s;
+    animation-duration: 5s;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
     /* mix-blend-mode: difference; */
