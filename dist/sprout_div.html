@@ -11,7 +11,7 @@
     </head>
     <body>
         <div style="position: absolute;">
-            <a href="home.html">home</a>
+            <a href="index.html">home</a>
             <br><br>
             <label for="startLength">Starting Length (pixels)</label>
             <input type="number" id="startLength" min="0" max="500" value="150">
@@ -82,7 +82,7 @@
             }
 
             function destroyTree() {
-                document.body.removeChild(document.getElementById("branch"));
+                document.body.removeChild(document.getElementById("treeBranch"));
             }
 
             function tree(startLength, startRot, depth, parent, angle, ratio, color) {
@@ -92,8 +92,8 @@
                 }
 
                 const newBranch = document.createElement("div");
-                newBranch.classList.add("branchDiv");
-                newBranch.setAttribute("id", "branch");                
+                newBranch.classList.add("branch");
+                newBranch.setAttribute("id", "treeBranch");                
                 
                 if (parent != null) {
                     parent.appendChild(newBranch);
@@ -102,7 +102,7 @@
                     newBranch.style.setProperty('--a', angle + "deg");
 
                 } else if (parent == null) {
-                    newBranch.classList.add("rootDiv");
+                    newBranch.classList.add("root");
                     document.body.appendChild(newBranch);
 
                     newBranch.style.setProperty('--w', startLength + "px");
@@ -111,9 +111,9 @@
 
                 newBranch.innerHTML = "<span>" + newBranch.offsetWidth + "</span>"
 
-                newBranch.style.setProperty('--colorR', 255 - newBranch.offsetWidth);
-                newBranch.style.setProperty('--colorG', color[1]);
-                newBranch.style.setProperty('--colorB', color[2]);
+                newBranch.style.setProperty('--colorR', 50);
+                newBranch.style.setProperty('--colorG', 255 - newBranch.offsetWidth);
+                newBranch.style.setProperty('--colorB', 255);
                 newBranch.style.setProperty('--colorA', 1);
 
                 parent = newBranch;

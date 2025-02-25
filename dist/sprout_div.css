@@ -8,7 +8,7 @@ a {
     color: white;
 }
 
-.branchDiv {
+.branch {
     position: absolute;
     width: var(--w);
     height: 4px;
@@ -22,19 +22,19 @@ a {
     /* background: radial-gradient(closest-side, white, black); */
     border-radius: 5px;
     animation-name: branchFlow;
-    animation-duration: 5s;
+    animation-duration: 0s;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
     /* mix-blend-mode: difference; */
 }
 
-.rootDiv {
+.root {
     left: 50%;
     top: 50%;
     transform-origin: 0% 50%;
 }
 
-.branchDiv:hover {
+.branch:hover {
     color: white;
     background-color: orange;
 }
