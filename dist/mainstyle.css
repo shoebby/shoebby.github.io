@@ -55,6 +55,7 @@
         color: #fc8e4e;
         text-shadow: -5px 5px #bd0707;
         font-family: "Daydream";
+        margin: 0;
     }
     h3 {
         color: #fc8e4e;
@@ -135,12 +136,26 @@
         transform: translateX(-50%);
     }
     .spinner {
-        float: left;
+        display: inline-block;
+        transition: transform 1s ease-in-out;
+        transform-origin: center;
     }
     .codeSnippet {
         font-family: 'Courier New', Courier, monospace;
-        background-color: darkslategray;
+        background-color: rgb(21, 41, 41);
         font-size: 10pt;
+        border: white dashed 1px;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .underConstruction {
+        color: yellow;
+    }
+    .buddy {
+        position: absolute;
+        top: 77px;
+        transform: translateX(var(--xpos)) scaleX(var(--flip));
+        width: 25px;
     }
 
 /* Music Tracker */
