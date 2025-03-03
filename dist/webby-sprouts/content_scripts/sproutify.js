@@ -43,7 +43,7 @@ var color = [255, 0, 150, 50];
         const newBranch = document.createElement("div");
 
         newBranch.classList.add("branchDiv");
-        newBranch.innerHTML = "<span>" + parentElement + "</span>";
+        newBranch.innerHTML = "<span style='transform:rotate(-90deg);'>" + parentElement + "</span>";
         parentElement.classList.add("branchElement");
 
         if (parentBranch != null) {
@@ -60,10 +60,19 @@ var color = [255, 0, 150, 50];
             newBranch.style.setProperty('--a', "90deg");
         }
 
-        newBranch.style.setProperty('--colorR', 255 - newBranch.offsetWidth);
-        newBranch.style.setProperty('--colorG', color[1]);
-        newBranch.style.setProperty('--colorB', color[2]);
+        newBranch.style.setProperty('--colorR', 255);
+        newBranch.style.setProperty('--colorG', 255 - newBranch.offsetWidth);
+        newBranch.style.setProperty('--colorB', 0);
         newBranch.style.setProperty('--colorA', 1);
+
+        if (newBranch.hasChildNodes() == false) {
+            const newBulb = document.createElement("div");
+            newBulb.classList.add("branchDiv");
+
+            newBulb.style.height = "50px";
+            newBulb.style.width = "50px";
+            newBulb.style.backgroundColor = "white";
+        }
 
         var siblings = parentElement.children;
 

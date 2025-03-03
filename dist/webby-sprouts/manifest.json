@@ -18,5 +18,10 @@
         "default_icon": "icons/placeholder.jpg",
         "default_title": "Webby Sprouts",
         "default_popup": "popup/webby-sprouts.html"
-    }
+    },
+
+    "content_scripts": [ {
+        "matches": ["<all_urls>"],
+        "css": ["content_scripts/sproutify.css"]
+    }]
 }

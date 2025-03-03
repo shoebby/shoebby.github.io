@@ -1,0 +1,37 @@
+.branchDiv { 
+    position: absolute;
+    display: flex;
+    width: var(--w);
+    height: 2px;
+    left: 100%;
+    transform-origin: 0% 50%;
+    transform: rotate(var(--a));
+    background-color: rgba(var(--colorR), var(--colorG), var(--colorB), var(--colorA));
+    color: rgba(0, 0, 0, 0);
+    font-size: 16pt;
+
+    animation-name: branchFlow;
+    animation-duration: 0s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+.rootDiv {
+    left: 50%;
+    top: 0%;
+    transform-origin: 0% 50%;
+}
+.branchDiv:hover {
+    color: white;
+    background-color: white;
+}
+@keyframes branchFlow {
+    0% {
+        width: 200px;
+    }
+    50% {
+        width: 0px;
+    }
+    100% {
+        width: 200px;
+    }
+}
