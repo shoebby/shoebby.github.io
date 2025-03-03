@@ -119,21 +119,14 @@
         border-radius: 4px;
         padding: 10px;
         margin: 0px 20px 0px 0px;
-        width: 50%;
-        text-align: left;
-        float: left;
-        position: relative;
     }
     .mainMarquee {
         font-size: 24pt;
     }
     .pfp {
         float: left;
-        width: 200px;
+        width: 99%;
         border: 1px solid #fc8e4e;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
     }
     .spinner {
         display: inline-block;
