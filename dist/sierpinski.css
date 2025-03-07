@@ -1,0 +1,33 @@
+body {
+    background-color: black;
+}
+
+.point {
+    position: absolute;
+
+    background-color: white;
+    width: 16px;
+    height: 16px;
+    border-radius: 100px;
+    margin-top: 250px;
+
+    animation-name: spin;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes spin {
+    0% {
+        margin-top: 0px;
+    }
+    40% {
+        margin-top: 250px;
+    }
+    60% {
+        margin-top: 250px;
+    }
+    100% {
+        margin-top: 0px;
+    }
+}
