@@ -13,25 +13,35 @@
         <div style="position: absolute;">
             <a href="index.html">home</a>
             <br><br>
-            <input type="button" value="get that sierpinski going!" onclick="init(7);">
+            <input type="button" value="get that sierpinski going!" onclick="init(8);">
             <br><br>
             <input type="button" value="destroy a sierpinski!" onclick="destroySierpinsk();">
         </div>
 
         <script>
-            var colorStep
+            var colorStep;
+            var sizeStep;
+            var rotStep;
+            var startSize = 8;
 
             function init(depth) {
                 colorStep = 255 / depth;
+                sizeStep = startSize / depth;
+                rotStep = 80 / depth;
+
                 const startPoint = document.createElement("div");
                 startPoint.classList.add("point");
                 startPoint.setAttribute("id", "point");
                 document.body.appendChild(startPoint);
 
                 startPoint.style.left = "50%";
-                startPoint.style.top = "900px";
+                startPoint.style.top = "500px";
 
-                sierpinsk([[0, -400], [400, 200], [-400, 200]], depth, startPoint, .5);
+                //traditional sierpinski triangle
+                sierpinsk([[0, -200], [200, 100], [-200, 100]], depth, startPoint, .5);
+
+                //variance
+                //sierpinsk([[100, 0], [-100, 0], [0, -150], [0, 300]], depth, startPoint, .5);
             }
 
             function destroySierpinsk() {
@@ -51,8 +61,8 @@
                     newPixel.style.left = points[i][0] + "px";
                     newPixel.style.top = points[i][1] + "px";
 
-                    newPixel.style.backgroundColor = "rgb(" + colorStep * depth + ", 50, 160)"
-
+                    newPixel.style.backgroundColor = "rgb(160, " + (colorStep * depth) / 4 + ", " + colorStep * depth + ")";
+                    //newPixel.style.transform = "rotate(" + rotStep * depth + "deg)"
                     var newPoints = points.map((point) => point.map((coord) => coord * ratio));
 
                     sierpinsk(newPoints, depth - 1, newPixel, ratio);

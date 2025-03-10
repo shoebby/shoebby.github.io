@@ -1,3 +1,7 @@
+:root {
+    --s: 1;
+}
+
 body {
     background-color: black;
 }
@@ -6,13 +10,15 @@ body {
     position: absolute;
 
     background-color: white;
-    width: 16px;
-    height: 16px;
-    border-radius: 100px;
-    margin-top: 250px;
+    width: 1px;
+    height: 1px;
+    border-radius: 0px;
+    transform-origin: 50% 50%;
+    margin-top: 0px;
+    transform: rotate(0deg) scale(1);
 
     animation-name: spin;
-    animation-duration: 5s;
+    animation-duration: 0s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
 }
