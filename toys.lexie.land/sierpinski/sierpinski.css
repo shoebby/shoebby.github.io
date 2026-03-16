@@ -4,20 +4,37 @@
 
 body {
     background-color: black;
+    color: white;
+}
+
+input {
+    background: black;
+    color: lime;
+    border: 1px dotted white;
+    border-radius: 0;
+    width: 100%;
 }
 
 .point {
     position: absolute;
 
-    margin-top: "0px";
-    margin-left: "0px";
+    width: 2px;
+    height: 2px;
 
     border-radius: 999px;
-    transform-origin: center;
+    transform-origin: 50%;
     animation-name: spin;
     animation-duration: .2s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+}
+
+#pointValues {
+    width: 100px;
+}
+
+#pointName {
+    margin-bottom: .2em;
 }
 
 @keyframes spin {
@@ -27,4 +44,10 @@ body {
     }
     100% {
     }
+}
+
+@media print {
+  input, label, p, #pointValues {
+    display: none;
+  }
 }
