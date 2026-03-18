@@ -7,7 +7,6 @@
         <meta name="description" content="Web toys built entirely or in large part by Alexandria van Eekelen, toydev at large.">
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="https://unpkg.com/98.css">
         <script src="index.js" type="module"></script>
         <script src="index_startup.js" type="module"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -17,531 +16,64 @@
         <div id="startupOverlay">
             <div id="scanlines">
                 <div class="title">
-                    <span><accent>V</accent>isunov<accent>OS</accent></span>
+                    <span>
+                        <vee>V</vee>isunov<ooh>O</ooh><ess>S</ess>
+                    </span>
                 </div>
                 <div class="buttonContainer">
-                    <button target="startup">Boot!</button>
-                    <button target="quickstart">Quickboot!</button>
+                    <p>
+                        < A TOYISTIC WEB-OS />
+                        <br>
+                        < BY ALEXANDRIA FRANKA MARIA VAN EEKELEN />
+                        <br>
+                        < REAL CLOWNS PLAY FULLSCREEN (F11) />
+                    </p>
+                    <button target="startup">BOOT</button>
+                    <button target="quickstart">QUICKBOOT</button>
                 </div>
             </div>
         </div>
 
         <div class="static bin"><p class="folderName">Recycling Bin</p></div>
         <div class="static myComputer"><p class="folderName">Visit lexie.land!</p></div>
-        <a value="Recurse3" target="openWindow" link="./recurse3/"><div class="static recurse"><p class="folderName">Recurse^3</p></div></a>
-        <a value="DivBrush" target="openWindow" link="./divbrush/"><div class="static divbrush"><p class="folderName">DivBrush</p></div></a>
+
+        <a value="Recurse^3"        target="openWindow" link="./recurse3/"      icon="./images/placeholder.jpg">    <div class="static recurse"><p class="folderName">Recurse^3</p></div></a>
+        <a value="DivBrush"         target="openWindow" link="./divbrush/"      icon="./images/icon_divbrush.png">  <div class="static divbrush"><p class="folderName">DivBrush</p></div></a>
+        <a value="About VisunovOS"  target="openWindow"  link="./about.html"     icon="./images/placeholder.jpg">    <div class="static about"><p class="folderName">About VisunovOS</p></div></a>
+        <a value="Pop-Up Collager"  target="openWindow" link="./popupcollager/" icon="./images/icon_collage.png">   <div class="static popupcollage"><p class="folderName">Pop-Up Collager</p></div></a>
+        <a value="Sierpinskinator"  target="openWindow" link="./sierpinski/"    icon="./images/icon_sierpinsk.png"> <div class="static sierpinski"><p class="folderName">Sierpinskinator</p></div></a>
+        <a value="Div-Sprouter"     target="openWindow" link="./sprout/"        icon="./images/icon_sprout.png">    <div class="static sprout"><p class="folderName">Div-Sprouter</p></div></a>
+
         <a value="Poppy" target="openPoppy"><div class="static poppy"><p class="folderName">Poppy</p></div></a>
-        <a value="About VisunovOS" target="openWindow" link="./about.html"><div class="static about"><p class="folderName">About VisunovOS</p></div></a>
-        <a value="PopUpCollager" target="openWindow" link="./popupcollager/"><div class="static popupcollage"><p class="folderName">Pop-Up Collager</p></div></a>
-        <a value="Sierpinski" target="openWindow" link=".//sierpinski/"><div class="static sierpinski"><p class="folderName">Sierpinskinator</p></div></a>
-        <a value="DivSprout" target="openWindow" link="./sprout/"><div class="static sprout"><p class="folderName">Div-Sprouter</p></div></a>
         <a target="guyMode"><div class="static guymode"><p class="folderName">Guy Mode</p></div></a>
         <a target="openSettings"><div class="static settings"><p class="folderName">Settings</p></div></a>
-
-        <!--INTERACTIVE FOLDERS-->
-
-        <!-- <details id="cat_fractal" class="openable">
-            <summary><p class="folderName">Fractals</p></summary>
-            <div class="container window">
-                <div class="title-bar">
-                    <div class="title-bar-text"><img src="images/webtoys/exploring.png" style="height: 1em; margin-right: .5em;">Exploring - Fractals (C:)</div>
-                    <div class="title-bar-controls">
-                    <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize" target="maximize"></button>
-                    <button aria-label="Close" target="close"></button>
-                    </div>
-                </div>
-                <fieldset style="padding: 4px 0 4px 2px; font-weight: bold;">
-                    <div class="field-row">
-                        <fieldset style="padding: .5em 0; margin-right: .6em;"></fieldset>
-                        <span style="margin-right: .6em;"><u>F</u>ile</span>
-                        <span style="margin-right: .6em;"><u>E</u>dit</span>
-                        <span style="margin-right: .6em;"><u>V</u>iew</span>
-                        <span style="margin-right: .6em;"><u>T</u>ools</span>
-                        <span style="margin-right: .6em;"><u>H</u>elp</span>
-                    </div>
-                </fieldset>
-                <div class="sunken-panel" style="height: 100%; width: 29%; display: inline-block;">
-                    <table style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>Folders<span style="float: right; font-weight: bold;">X</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><img src="images/webtoys/icon_desktop.png" style="margin-right: .5em; height: 1em;">Desktop</td>
-                            </tr>
-                            <tr>
-                                <td>├ <img src="images/webtoys/icon_mypc.png" style="margin-right: .5em; height: 1em;">Lexie.Land</td>
-                            </tr>
-                            <tr>
-                                <td>│ ├ <img src="images/webtoys/icon_drive.png" style="margin-right: .5em; height: 1em;">Vault (C:)</td>
-                            </tr>
-                            <tr>
-                                <td>│ │ ├ <img src="images/webtoys/icon_folder.png" style="margin-right: .5em; height: 1em;"><span style="background-color: #000080; color: white;">Fractals</span></td>
-                            </tr>
-                            <tr>
-                                <td>│ │ ├ <img src="images/webtoys/icon_folder.png" style="margin-right: .5em; height: 1em;">Pop-Up Windows</td>
-                            </tr>
-                            <tr>
-                                <td>│ │ └ <img src="images/webtoys/icon_folder.png" style="margin-right: .5em; height: 1em;">Art Toys</td>
-                            </tr>
-                            <tr>
-                                <td>│ ├ <img src="images/webtoys/icon_drive.png" style="margin-right: .5em; height: 1em;">External Drive (D:)</td>
-                            </tr>
-                            <tr>
-                                <td>│ └ <img src="images/webtoys/icon_drive.png" style="margin-right: .5em; height: 1em;">Torrents (Z:)</td>
-                            </tr>
-                            <tr>
-                                <td>└ <img src="images/webtoys/icon_bin.png" style="margin-right: .5em; height: 1em;">Recycling Bin</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="sunken-panel" style="height: 100%; width: 70%; display: inline-block;">
-                    <table class="interactive" style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>URL</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Recurse3</td>
-                                <td><a value="Recurse^3" target="openWindow" link="./recurse3.html"><u>toys.lexie.land/recurse3.html</u></a></td>
-                                <td>Completed</td>
-                            </tr>
-                            <tr>
-                                <td>Divvy Sprout!</td>
-                                <td><a value="Divvy Sprout!" target="openWindow" link="./sprout_div.html"><u>toys.lexie.land/sprout_div.html</u></a></td>
-                                <td>Completed</td>
-                            </tr>
-                            <tr>
-                                <td>Sierpinski Doubt!</td>
-                                <td><a value="Sierpinski Doubt!" target="openWindow" link="./sierpinski.html"><u>www.lexie.land/dist/sierpinski.html</u></a></td>
-                                <td>Completed</td></a>
-                            </tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="window-body">
-                    <p>Made during a prolonged psychotic episode of Fractal Obsession.</p>
-                </div>
-                <div class="status-bar">
-                    <p class="status-bar-field">4 object(s) (plus 3 hidden)</p>
-                    <p class="status-bar-field">13.12KB</p>
-                    <p class="status-bar-field"><img src='images/webtoys/icon_folder.png' style="height: .9em; padding-top: .1em;"> Fractals</p>
-                </div>
-            </div>
-        </details> -->
-
-        <!-- <details id="cat_popup" class="openable">
-            <summary><p class="folderName">Pop-Up Windows</p></summary>
-            <div class="container window" style="width: 36vw;">
-                <div class="title-bar">
-                    <div class="title-bar-text"><img src="images/webtoys/exploring.png" style="height: 1em; margin-right: .5em;">Exploring - Pop-Up Windows (C:)</div>
-                    <div class="title-bar-controls">
-                    <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize" target="maximize"></button>
-                    <button aria-label="Close" target="close"></button>
-                    </div>
-                </div>
-                <fieldset style="padding: 4px 0 4px 2px; font-weight: bold;">
-                    <div class="field-row">
-                        <fieldset style="padding: .5em 0; margin-right: .6em;"></fieldset>
-                        <span style="margin-right: .6em;"><u>F</u>ile</span>
-                        <span style="margin-right: .6em;"><u>E</u>dit</span>
-                        <span style="margin-right: .6em;"><u>V</u>iew</span>
-                        <span style="margin-right: .6em;"><u>T</u>ools</span>
-                        <span style="margin-right: .6em;"><u>H</u>elp</span>
-                    </div>
-                </fieldset>
-                <div class="sunken-panel" style="height: 100%; width: 29%; display: inline-block;">
-                    <table style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>Folders<span style="float: right; font-weight: bold;">X</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><img src="images/webtoys/icon_desktop.png" style="margin-right: .5em; height: 1em;">Desktop</td>
-                            </tr>
-                            <tr>
-                                <td>├ <img src="images/webtoys/icon_mypc.png" style="margin-right: .5em; height: 1em;">Lexie.Land</td>
-                            </tr>
-                            <tr>
-                                <td>│ ├ <img src="images/webtoys/icon_drive.png" style="margin-right: .5em; height: 1em;">Vault (C:)</td>
-                            </tr>
-                            <tr>
-                                <td>│ │ ├ <img src="images/webtoys/icon_folder.png" style="margin-right: .5em; height: 1em;">Fractals</td>
-                            </tr>
-                            <tr>
-                                <td>│ │ ├ <img src="images/webtoys/icon_folder.png" style="margin-right: .5em; height: 1em;"><span style="background-color: #000080; color: white;">Pop-Up Windows</span></td>
-                            </tr>
-                            <tr>
-                                <td>│ │ └ <img src="images/webtoys/icon_folder.png" style="margin-right: .5em; height: 1em;">Art Toys</td>
-                            </tr>
-                            <tr>
-                                <td>│ ├ <img src="images/webtoys/icon_drive.png" style="margin-right: .5em; height: 1em;">External Drive (D:)</td>
-                            </tr>
-                            <tr>
-                                <td>│ └ <img src="images/webtoys/icon_drive.png" style="margin-right: .5em; height: 1em;">Torrents (Z:)</td>
-                            </tr>
-                            <tr>
-                                <td>└ <img src="images/webtoys/icon_bin.png" style="margin-right: .5em; height: 1em;">Recycling Bin</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="sunken-panel" style="height: 100%; width: 70%; display: inline-block;">
-                    <table class="interactive" style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>URL</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Pop-Up Collage Maker</td>
-                                <td><a value="Pop-Up Collager" target="openWindow" link="./popupcollager/index.html"><u>www.lexie.land/dist/popupcollager/index.html</u></a></td>
-                                <td>In Progress</td>
-                            </tr>
-                            <tr>
-                                <td>Pop-Up Princess</td>
-                                <td><a value="Pop-Up Princess" target="openWindow" link="./popupprincess.html"><u>www.lexie.land/dist/popupprincess.html</u></a></td>
-                                <td>Completed</td>
-                            </tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="window-body">
-                    <p>Who knew that pop-up windows could be used for good?</p>
-                </div>
-                <div class="status-bar">
-                    <p class="status-bar-field">2 object(s) (plus 8 hidden)</p>
-                    <p class="status-bar-field">2.1KB</p>
-                    <p class="status-bar-field"><img src='images/webtoys/icon_folder.png' style="height: .9em; padding-top: .1em;"> Pop-Up Windows</p>
-                </div>
-            </div>
-        </details> -->
-
-        <!-- <details id="cat_art" class="openable">
-            <summary><p class="folderName">Art Toys</p></summary>
-            <div class="container window" style="width: 36vw;">
-                <div class="title-bar">
-                    <div class="title-bar-text"><img src="images/webtoys/exploring.png" style="height: 1em; margin-right: .5em;">Exploring - Art Toys (C:)</div>
-                    <div class="title-bar-controls">
-                    <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize" target="maximize"></button>
-                    <button aria-label="Close" target="close"></button>
-                    </div>
-                </div>
-                <fieldset style="padding: 4px 0 4px 2px; font-weight: bold;">
-                    <div class="field-row">
-                        <fieldset style="padding: .5em 0; margin-right: .6em;"></fieldset>
-                        <span style="margin-right: .6em;"><u>F</u>ile</span>
-                        <span style="margin-right: .6em;"><u>E</u>dit</span>
-                        <span style="margin-right: .6em;"><u>V</u>iew</span>
-                        <span style="margin-right: .6em;"><u>T</u>ools</span>
-                        <span style="margin-right: .6em;"><u>H</u>elp</span>
-                    </div>
-                </fieldset>
-                <div class="sunken-panel" style="height: 100%; width: 29%; display: inline-block;">
-                    <table style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>Folders<span style="float: right; font-weight: bold;">X</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><img src="images/webtoys/icon_desktop.png" style="margin-right: .5em; height: 1em;">Desktop</td>
-                            </tr>
-                            <tr>
-                                <td>├ <img src="images/webtoys/icon_mypc.png" style="margin-right: .5em; height: 1em;">Lexie.Land</td>
-                            </tr>
-                            <tr>
-                                <td>│ ├ <img src="images/webtoys/icon_drive.png" style="margin-right: .5em; height: 1em;">Vault (C:)</td>
-                            </tr>
-                            <tr>
-                                <td>│ │ ├ <img src="images/webtoys/icon_folder.png" style="margin-right: .5em; height: 1em;">Fractals</td>
-                            </tr>
-                            <tr>
-                                <td>│ │ ├ <img src="images/webtoys/icon_folder.png" style="margin-right: .5em; height: 1em;">Pop-Up Windows</td>
-                            </tr>
-                            <tr>
-                                <td>│ │ └ <img src="images/webtoys/icon_folder.png" style="margin-right: .5em; height: 1em;"><span style="background-color: #000080; color: white;">Art Toys</span></td>
-                            </tr>
-                            <tr>
-                                <td>│ ├ <img src="images/webtoys/icon_drive.png" style="margin-right: .5em; height: 1em;">External Drive (D:)</td>
-                            </tr>
-                            <tr>
-                                <td>│ └ <img src="images/webtoys/icon_drive.png" style="margin-right: .5em; height: 1em;">Torrents (Z:)</td>
-                            </tr>
-                            <tr>
-                                <td>└ <img src="images/webtoys/icon_bin.png" style="margin-right: .5em; height: 1em;">Recycling Bin</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="sunken-panel" style="height: 100%; width: 70%; display: inline-block;">
-                    <table class="interactive" style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>URL</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Critter Crafter</td>
-                                <td><a value="Pop-Up Princess" target="openWindow" link="./critterCrafter/index.html"><u>www.lexie.land/dist/critterCrafter/index.html</u></a></td>
-                                <td>In Progress</td>
-                            </tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                            <tr><td></td><td></td><td></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="window-body">
-                    <p>Various toy-like webpages to make wonderfully odd creations.</p>
-                </div>
-                <div class="status-bar">
-                    <p class="status-bar-field">1 object(s) (plus 14 hidden)</p>
-                    <p class="status-bar-field">0.9KB</p>
-                    <p class="status-bar-field"><img src='images/webtoys/icon_folder.png' style="height: .9em; padding-top: .1em;"> Art Toys</p>
-                </div>
-            </div>
-        </details> -->
-
-        <Details id="cat_media" class="winMedia openable">
-            <summary><p class="folderName">Windows Media Player</p></summary>
-            <div class="container window" style="width: 25vw;">
-                <div class="title-bar">
-                    <div class="title-bar-text"><img src="images/webtoys/icon_winMedia.png" style="height: 1em; margin-right: .5em;">Windows Media Player</div>
-                    <div class="title-bar-controls">
-                    <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize" target="maximize"></button>
-                    <button aria-label="Close" target="close"></button>
-                    </div>
-                </div>
-                <fieldset style="padding: 4px 0 4px 8px;">
-                    <div class="field-row">
-                        <span style="margin-right: .6em;"><u>F</u>ile</span>
-                        <span style="margin-right: .6em;"><u>V</u>iew</span>
-                        <span style="margin-right: .6em;"><u>P</u>lay</span>
-                        <span style="margin-right: .6em;"><u>F</u>avourites</span>
-                        <span style="margin-right: .6em;"><u>G</u>o</span>
-                        <span style="margin-right: .6em;"><u>H</u>elp</span>
-                    </div>
-                </fieldset>
-                <fieldset style="padding: 4px 0 4px 8px;">
-                    <div class="field-row" style="float: right;">
-                        <span style="margin-right: .6em;"><img style="margin-right: .3em; height: 1em;" src="images/webtoys/icon_music.png">Music</span>
-                        <span style="margin-right: .6em;"><img style="margin-right: .3em; height: 1em;" src="images/webtoys/icon_guy.png">Guy Time</span>
-                        <span style="margin-right: .6em;"><img style="margin-right: .3em; height: 1em;" src="images/webtoys/icon_help.png">Media Guide</span>
-                    </div>
-                </fieldset>
-                <div class="window-body" style="width: 98%; height: 98%; margin: 1%;">
-                    <iframe style="width: 99%; height: 70%;" src=""></iframe>
-
-                    <div class="field-row" style="width: 100%; display: flex;">
-                        <button disabled style="flex: 1;">⏮</button>
-                        <button style="flex: 1;" target="toggleMusic" state="paused">▶</button>
-                        <button disabled style="flex: 1;">⏭</button>
-                    </div>
-
-                    <div class="sunken-panel;" style="margin-top: 1%;">
-                        <table style="text-align: right; width: 100%; background-color: black; color: white;">
-                            <tbody>
-                                <tr>
-                                    <td style="width: 25%; border-bottom: solid 1px white; padding: 4px 0;">Show:</td>
-                                    <td style="border-bottom: solid 1px white; text-align: left;">N/A</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 6px 0 0 0;">Clip:</td>
-                                    <td style="text-align: left;">Strawberries && LAN-CABLES</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 3px 0;">Author:</td>
-                                    <td style="text-align: left;">shoebby (Alexandria van Eekelen)</td>
-                                </tr>
-                                <tr>
-                                    <td style="border-bottom: solid 1px white; padding: 0 0 6px 0;">Copyright:</td>
-                                    <td style="border-bottom: solid 1px white; text-align: left;">CC BY-NC-SA 4.0</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 6px 0;"></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </Details>
-
-        <!-- START BAR -->
-
-        <div class="startBar">
-            <details class="startButtonWrapper">
-                <summary><div class="startButton"></div></summary>
-                <div class="window startMenu">
-                    <div class="startMenu-vert"><b>Windows</b>98</div>
-                    <div class="startMenu-list">
-                        <table class="interactive">
-                            <tr>
-                                <td style="width: 40px;"><img src="images/webtoys/guymode.png"></td>
-                                <td><a target="guyMode" link=""><u>G</u>uy Mode</a></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40px;"><img src="images/webtoys/documents.png"></td>
-                                <td>
-                                    <details class="details_docs">
-                                        <summary class="summary_docs"><u>D</u>ocuments</summary>
-                                        <div class="window" style="position: absolute; left: 175px; top: 45px;">
-                                            <table class="interactive documents-list">
-                                                <tr>
-                                                    <td><img src="images/webtoys/htm.png"></td>
-                                                    <td style="padding-right: 1vw;">
-                                                        <input type="button" value="How To Blow Up A Pipeline" target="openWindow" link="https://ia800307.us.archive.org/16/items/how-to-blow-up-a-pipeline-andreas-malm-z-lib.org-1/How%20to%20Blow%20Up%20a%20Pipeline%20%28Andreas%20Malm%29%20%28z-lib.org%29%281%29.pdf">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="images/webtoys/htm.png"></td>
-                                                    <td style="padding-right: 1vw;">
-                                                        <input type="button" value="Reading Writing Interfaces: From the Digital to the Bookbound" target="openWindow" link="https://www.researchgate.net/publication/364886181_Reading_Writing_Interfaces_From_the_Digital_to_the_Bookbound">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="images/webtoys/htm.png"></td>
-                                                    <td style="padding-right: 1vw;">
-                                                        <input type="button" value="Mindstorms: Children, Computers, and Powerful Ideas" target="openWindow" link="https://worrydream.com/refs/Papert_1980_-_Mindstorms,_1st_ed.pdf">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="images/webtoys/htm.png"></td>
-                                                    <td style="padding-right: 1vw;">
-                                                        <input type="button" value="The Fire Next Time" target="openWindow" link="https://files.blogs.baruch.cuny.edu/wp-content/blogs.dir/4905/files/2016/08/The-Fire-Next-Time.pdf">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="images/webtoys/htm.png"></td>
-                                                    <td style="padding-right: 1vw;">
-                                                        <input type="button" value="Blessed Is The Flame" target="openWindow" link="https://theanarchistlibrary.org/library/serafinski-blessed-is-the-flame">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="images/webtoys/htm.png"></td>
-                                                    <td style="padding-right: 1vw;">
-                                                        <input type="button" value="Noise & Capitalism" target="openWindow" link="https://audio-lab.org/wp-content/uploads/2011/11/audiolab_noise_capitalism.pdf">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="images/webtoys/htm.png"></td>
-                                                    <td style="padding-right: 1vw;">
-                                                        <input type="button" value="The Artistic Impetus Model" target="openWindow" link="https://www.jstor.org/stable/pdf/40650333.pdf">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="images/webtoys/htm.png"></td>
-                                                    <td style="padding-right: 1vw;">
-                                                        <input type="button" value="Visual Thinking" target="openWindow" link="https://gwern.net/doc/psychology/1969-arnheim-visualthinking.pdf">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="images/webtoys/htm.png"></td>
-                                                    <td style="padding-right: 1vw;">
-                                                        <input type="button" value="From Monopolies To Tiny Tools By Solo Devs" target="openWindow" link="https://www.nathalielawhead.com/candybox/from-monopolies-to-tiny-tools-by-solo-devs">
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </details>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40px;"><img src="images/webtoys/settings.png"></td>
-                                <td><a target="openSettings"><u>S</u>ettings</a></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </details>
-
-            <fieldset style="position: relative; top: 1px; bottom: 1px; padding: .7em 0; float: left;"></fieldset>
-
-            <img style="position: relative; top: 3px; float: left; margin: 0 5px;" src="images/webtoys/icon_desktop.png">
-            <img style="position: relative; top: 3px; float: left; margin: 0 5px;" src="images/webtoys/icon_ie.png">
-            <img style="position: relative; top: 3px; float: left; margin: 0 5px;" src="images/webtoys/icon_msn.png">
-            <img style="position: relative; top: 3px; float: left; margin: 0 5px;" src="images/webtoys/icon_chart.png">
-            <img style="position: relative; top: 3px; float: left; margin: 0 5px;" src="images/webtoys/icon_regedit.png">
-            <img style="position: relative; top: 3px; float: left; margin: 0 5px;" src="images/webtoys/icon_sat.png">
-            <img style="position: relative; top: 3px; float: left; margin: 0 5px;" src="images/webtoys/icon_term.png">
-            <img style="position: relative; top: 3px; float: left; margin: 0 5px;" src="images/webtoys/icon_tree.png">
-
-            <fieldset style="position: relative; top: 1px; bottom: 1px; padding: .7em 0; float: left;"></fieldset>
-            
-            <span class="startButtonWrapper">Made with 98.css</span>
-            <span class="startButtonWrapper">icons from Alex Meub</span>
-            <span class="startBar_time">
-                <img style="position: relative; top: 3px; margin: 0 2px 0 0;" src="images/webtoys/icon_sun.png">
-                <img style="position: relative; top: 3px; margin: 0 2px 0 0;" src="images/webtoys/icon_help.png">
-                <img style="position: relative; top: 3px; margin: 0 2px 0 0;" src="images/webtoys/icon_cal.png">
-                <img style="position: relative; top: 3px; margin: 0 2px 0 0;" src="images/webtoys/icon_keeb.png">
-                <img style="position: relative; top: 3px; margin: 0 2px 0 0;" src="images/webtoys/icon_vol.png">
-            </span>
-        </div>
-
+        <a target="spinny"><div class="static spinny"><p class="folderName">Spinny</p></div></a>
+        
         <div id="settings" class="window container" style="display: none;">
             <div class="title-bar">
-                <div class="title-bar-text"><img src="images/webtoys/settings.png" style="height: 1em; margin-right: .5em;">Settings</div>
+                <div class="title-bar-image"><img src="images/icon_settings.png"></div>
+                <div class="title-bar-text">Settings</div>
                 <div class="title-bar-controls">
-                    <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize" disabled></button>
-                    <button aria-label="Close" target="closeSettings"></button>
+                    <button aria-label="Close" target="closeSettings">X</button>
                 </div>
             </div>
-            <fieldset style="padding: 4px 0 4px 8px;">
-                <div class="field-row">
-                    <span style="margin-right: .6em;"><u>V</u>iew</span>
-                    <span style="margin-right: .6em;"><u>G</u>o</span>
-                    <span style="margin-right: .6em;"><u>H</u>elp</span>
-                </div>
-            </fieldset>
-            <div class="window-body" style="margin: 1%; height: 80%;">
-                <img src="images/webtoys/settings.png" style="float: right;">
+            <div class="window-body">
                 <fieldset>
                     <legend>Display Settings</legend>
-                    <div class="field-row">
-                        <input checked type="checkbox" id="toggle_sl" name="toggle_sl"/>
-                        <label for="toggle_sl">Scanlines</label>
+                    <div class="field-column">
+                        <p>
+                            <input checked type="checkbox" id="toggle_sl" name="toggle_sl"/>
+                            <label for="toggle_sl">Scanlines</label>
+                        </p>
+                        <p>
+                            <label for="set_bg">Wallpaper:</label>
+                            <input style="width: 100%;" type="text" id="set_bg" name="set_bg" value="hsl(181, 89%, 28%)"/>
+                        </p>
+                        <p>
+                            <label for="set_bg">Window Frame:</label>
+                            <input type="color" id="set_frame" name="set_frame"/>
+                        </p>
+                        
                     </div>
                 </fieldset>
                 <fieldset>
@@ -556,25 +88,14 @@
 
         <div id="windowNaked" class="window" style="display: none;">
             <div class="title-bar">
-                <div class="title-bar-text"><img src="images/webtoys/icon_app.png" style="height: 1em; margin-right: .5em;">Recurse^3</div>
+                <div class="title-bar-image"><img src="images/icon_settings.png"></div>
+                <div class="title-bar-text">Recurse^3</div>
                 <div class="title-bar-controls">
-                    <button aria-label="Minimize"></button>
-                    <button aria-label="Restore"></button>
-                    <button aria-label="Close" target="closeInstWindow"></button>
+                    <button aria-label="Close" target="closeInstWindow">X</button>
                 </div>
             </div>
-            <fieldset style="padding: 4px 0 4px 8px;">
-                <div class="field-row">
-                    <span style="margin-right: .6em;"><u>F</u>ile</span>
-                    <span style="margin-right: .6em;"><u>V</u>iew</span>
-                    <span style="margin-right: .6em;"><u>P</u>lay</span>
-                    <span style="margin-right: .6em;"><u>F</u>avourites</span>
-                    <span style="margin-right: .6em;"><u>G</u>o</span>
-                    <span style="margin-right: .6em;"><u>H</u>elp</span>
-                </div>
-            </fieldset>
-            <div class="window-body" style="margin: 1%;">
-                <iframe style="width: 100%; height: 90vh;" src=""></iframe>
+            <div class="window-body">
+                <iframe src=""></iframe>
             </div>
         </div>
 
@@ -593,7 +114,7 @@
         </div>
 
         <script>
-            const powerHum = new Audio('./sounds/webtoys/powerHum.mp3');
+            const powerHum = new Audio('./sounds/webtoys/powerhum.mp3');
             powerHum.loop = true;
             powerHum.play();
         </script>

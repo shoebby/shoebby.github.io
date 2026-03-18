@@ -10,23 +10,7 @@ const guyLines = [
     'sounds/webtoys/jc_risk.mp3',
     'sounds/webtoys/jc_wontletdown.mp3',
 ];
-
-
-document.querySelectorAll('table.interactive').forEach(element => {
-    element.addEventListener('click', (event) => {
-        const highlightedClass = 'highlighted';
-        const isRow = element => element.tagName === 'TR' && element.parentElement.tagName === 'TBODY';
-        const newlySelectedRow = event.composedPath().find(isRow);
-        const previouslySelectedRow = Array.from(newlySelectedRow.parentElement.children).filter(isRow).find(element => element.classList.contains(highlightedClass));
-        if(previouslySelectedRow){
-            previouslySelectedRow.classList.toggle(highlightedClass);
-        }
-
-        if (newlySelectedRow) {
-            newlySelectedRow.classList.toggle(highlightedClass);
-        }
-    })
-});
+const mainStyle = document.styleSheets[0];
 
 $( function() {
     $( ".container" ).draggable({
@@ -39,6 +23,25 @@ $( function() {
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
+}
+
+function changeStylesheetRule(stylesheet, selector, property, value) {
+    // Make the strings lowercase
+    selector = selector.toLowerCase();
+    property = property.toLowerCase();
+    value = value.toLowerCase();
+    
+    // Change it if it exists
+    for(var i = 0; i < stylesheet.cssRules.length; i++) {
+        var rule = stylesheet.cssRules[i];
+        if(rule.selectorText === selector) {
+            rule.style[property] = value;
+            return;
+        }
+    }
+  
+    // Add it if it does not
+    stylesheet.insertRule(selector + " { " + property + ": " + value + "; }", 0);
 }
 
 
@@ -69,7 +72,18 @@ if (this.checked) {
         powerHum.pause();
     }
 });
-
+settingsWindow.querySelector("#set_bg").addEventListener('input', function() {
+    document.body.style.background = this.value;
+});
+settingsWindow.querySelector("#set_frame").addEventListener('change', function() {
+    changeStylesheetRule(mainStyle, ".title-bar", "background", this.value);
+    changeStylesheetRule(mainStyle, ".window-body", "border-left-color", this.value);
+    changeStylesheetRule(mainStyle, ".window-body", "border-right-color", this.value);
+    changeStylesheetRule(mainStyle, ".window-body", "border-bottom-color", this.value);
+    changeStylesheetRule(mainStyle, "#settings", "border-left-color", this.value);
+    changeStylesheetRule(mainStyle, "#settings", "border-right-color", this.value);
+    changeStylesheetRule(mainStyle, "#settings", "border-bottom-color", this.value);
+});
 
 
 //guymode
@@ -95,7 +109,18 @@ function guyMode() {
     playAudio(guyLines[getRandomInt(guyLines.length)]);
 }
 
+//spinny
+document.querySelector("a[target='spinny']").addEventListener('click', (event) => {spinny()});
 
+function spinny() {
+    let allDivs = document.querySelectorAll("div");
+
+    for (let i = 0; i < allDivs.length; i++){
+        allDivs[i].style.setProperty("rotate", getRandomInt(360) + "deg");
+    }
+
+    playAudio("./sounds/webtoys/poppyHonk.mp3");
+}
 
 // poppy
 const poppy = document.querySelector("#poppy");
@@ -221,25 +246,25 @@ function playAudio(path) {
 }
 
 
-const playButton = document.querySelector("button[target='toggleMusic']");
-let playState = playButton.getAttribute("state");
-let song = new Audio('sounds/strawberriesandlancables.mp3');
-song.volume = 0.2;
-const visualizerIframe = document.querySelector("#cat_media iframe");
+// const playButton = document.querySelector("button[target='toggleMusic']");
+// let playState = playButton.getAttribute("state");
+// let song = new Audio('sounds/strawberriesandlancables.mp3');
+// song.volume = 0.2;
+// const visualizerIframe = document.querySelector("#cat_media iframe");
 
-playButton.addEventListener('click', function() {
-    if (playState === "paused") {
-        playButton.innerHTML = "⏸";
-        playState = "playing";
-        visualizerIframe.setAttribute("src", "./visualizer.html");
-        song.play();
-    } else if (playState === "playing") {
-        playButton.innerHTML = "▶";
-        playState = "paused";
-        visualizerIframe.setAttribute("src", "");
-        song.pause();
-    }
-});
+// playButton.addEventListener('click', function() {
+//     if (playState === "paused") {
+//         playButton.innerHTML = "⏸";
+//         playState = "playing";
+//         visualizerIframe.setAttribute("src", "./visualizer.html");
+//         song.play();
+//     } else if (playState === "playing") {
+//         playButton.innerHTML = "▶";
+//         playState = "paused";
+//         visualizerIframe.setAttribute("src", "");
+//         song.pause();
+//     }
+// });
 
 
 
@@ -274,14 +299,13 @@ document.querySelectorAll("button[target='close']").forEach(element => {
     })
 });
 
-
-
 // creating and closing instantiated windows
 document.querySelectorAll("input[target='openWindow'], a[target='openWindow']").forEach(element => {
     element.addEventListener('click', (event) => {
         const page_title = element.getAttribute("value");
         const page_url = element.getAttribute("link");
-        openWindow(page_title, page_url);
+        const page_icon = element.getAttribute("icon");
+        openWindow(page_title, page_url, page_icon);
     })
 });
 document.querySelectorAll("button[target='closeInstWindow']").forEach(element => {
@@ -289,13 +313,20 @@ document.querySelectorAll("button[target='closeInstWindow']").forEach(element =>
         element.parentNode.parentNode.parentNode.remove();
     })
 });
-function openWindow(title, url) {
+function openWindow(title, url, icon) {
     const newWindow = windowTemplate.cloneNode(true);
     newWindow.setAttribute('id', title);
     document.body.appendChild(newWindow);
-    newWindow.setAttribute('style', 'display: block; width: 99.7vw; height: 97vh; position: fixed; top: 0; left: 0; z-index: 999;');
+    newWindow.setAttribute('style', 'display: block; width: 90vw; height: 90vh; position: fixed; top: 5vh; left: 5vw; z-index: 999;');
     newWindow.querySelector("button[target='closeInstWindow']").addEventListener('click', (event) => {newWindow.remove();});
     newWindow.querySelectorAll("button, input, a").forEach(element => {element.addEventListener('click', (event) => {playAudio('./sounds/webtoys/click.mp3')})});
-    newWindow.querySelector('div.title-bar-text').innerHTML = "<img src='images/webtoys/icon_app.png' style='height: 1em; margin-right: .5em;'>" + title;
+    newWindow.querySelector('img').setAttribute('src', icon);
+    newWindow.querySelector('div.title-bar-text').innerHTML = title;
     newWindow.querySelector('iframe').setAttribute('src', url);
+
+    $( newWindow ).draggable({
+        handle: ".title-bar",
+        stack: ".ui-draggable", /* Stack the currently dragged item on top of all other items. */
+		distance: 0, /* I believe this has to do with mouse distance? */
+    });
 }
