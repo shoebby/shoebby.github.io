@@ -4,13 +4,35 @@
 }
 
 html, body {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     overflow: hidden;
     padding: 0;
+    margin: 0;
     font-size: 1.5vh;
+    font-family: 'f25';
 }
 
+textarea, input {
+    font-size: 1.3vh;
+}
+
+#canvas {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: whitesmoke;
+
+    z-index: -999;
+}
+
+.brush {
+    position: absolute;
+    transform-origin: 50%;
+    pointer-events: none;
+}
+
+/* #region title seq */
 #divBrush_bootOverlay {
     position: absolute;
     width: 100%;
@@ -96,8 +118,10 @@ html, body {
     font-size: 20vh;
     rotate: -8deg;
 
-    background: url("../images/webtoys/guymode.png"), black;
-    background-size: 100%;
+    background-image: url("../images/guymode.png");
+    background-size: 150%;
+    background-position: 50%;
+    background-repeat: no-repeat;
     background-clip: text;
 
     margin: 0 -50px;
@@ -113,71 +137,327 @@ html, body {
 
     margin: 0 -50px;
 }
+/* #endregion */
 
-#canvas {
-    width: 100%;
-    height: 100%;
-
-    background-color: whitesmoke;
-
-    z-index: -999;
-}
-
-#toolbar {
-    position: fixed;
+/* #region toolsGen */
+#tools {
+    position: absolute;
     top: 0;
     left: 0;
 
-    border-bottom: 2px solid black;
+    width: 100vw;
+    height: 100vh;
 
+    pointer-events: none;
+}
+.tool {
+    position: absolute;
+}
+.tool .tool-content, summary, details, .handle {
+    pointer-events: all;
+}
+.handle {
+    position: absolute;
+    right: -3vw;
+    top: 3.5vh;
+
+    width: 5vh;
     height: 5vh;
 
-    width: 100%;
-
-    display: flex;
-    flex-direction: row;
-
-    background-color: silver;
+    cursor: grab;
+    z-index: 1;
 }
-#toolbar summary {
-    height: 100%;
+.handle:hover {
+    filter: brightness(1.5);
 }
-#toolbar details {
-    border: 2px solid black;
-    
+.tool summary {
+    font-family: 'f25';
+    font-size: 2vh;
+    text-align: left;
+
+    user-select: none;
+}
+.tool label {
+    user-select: none;
+}
+.tool details {
     padding: .2vw;
-    
-    flex: 1;
-
     cursor: pointer;
 }
-#toolbar details[open] {
+#tools details[open] {
     font-weight: bold;
-    background-color: rgb(36, 36, 36);
-    border: 2px solid white;
-    color: white;
 }
-#toolbar .preview {
-    flex: .5;
+.tool-content {
+    position: absolute;
+
+    text-align: left;
+}
+/* #endregion */
+
+/* #region toolsSpecific */
+
+.preview {
+    right: 1vw;
+    top: 1vh;
+
+    background: url("assets/ui_preview.png");
+    background-size: contain;
+
+    width: 10vw;
+    height: 10vw;
+
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.tool-content {
-    position: absolute;
-    top: 5vh;
+.preview .handle {
+    background: url("assets/ui_hold_preview.png");
+    background-size: contain;
 
-    background-color: silver;
+    right: 4.5vw;
+    top: -.5vw;
+    rotate: -16deg;
 
-    border: 2px solid black;
-
-    padding: 1vw;
-
-    text-align: right;
+    width: 5vw;
+    height: 5vw;
 }
+.saver {
+    left: 2vw;
+    bottom: 2vh;
 
-.brush {
-    position: absolute;
-    transform-origin: 50%;
-    pointer-events: none;
+    background: url("assets/ui_saver.webp");
+    background-size: contain;
+
+    width: 10vw;
+    height: 10vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.saver:hover {
+    filter: brightness(1.5);
+}
+.saver button {
+    width: 100%;
+    height: 100%;
+
+    cursor: pointer;
+    pointer-events: all;
+    background: none;
+    border: none;
+}
+.saver .handle {
+    background: url("assets/ui_hold_saver.png");
+    background-size: contain;
+
+    right: -.3vw;
+    top: 1.5vw;
+    rotate: 16deg;
+
+    width: 5vw;
+    height: 5vw;
+}
+.mover {
+    left: 80vw;
+    bottom: 10vh;
+    text-shadow: #FFF 0 0 .1vw, #FFF 0 0 .5vw, #FFF 0 0 1vw;
+}
+.mover .tool-content {
+    background: url("assets/ui_mover.gif");
+    background-size: cover;
+}
+.mover summary {
+    margin-top: 2vw;
+    width: 17vw;
+}
+.mover .handle {
+    background: url("assets/ui_hold_mover.png");
+    background-size: contain;
+
+    left: 13vw;
+    top: -.25vw;
+    rotate: 40deg;
+
+    width: 4.5vw;
+    height: 4.5vw;
+}
+.shaver {
+    right: 15vw;
+    bottom: 20vh;
+}
+.shaver .tool-content {
+    width: 11vw;
+
+    background: gray;
+    border-bottom-right-radius: 999px;
+    border-bottom: 1vw solid silver;
+    border-right: 1vw solid silver;
+}
+.shaver .handle {
+    background: url("assets/ui_hold_shaver.png");
+    background-size: contain;
+
+    left: -5.3vw;
+    top: -2.5vw;
+    rotate: 0;
+
+    width: 6vw;
+    height: 6vw;
+
+    z-index: 0;
+}
+.fencer {
+    right: 15vw;
+    top: 20vh;
+}
+.fencer .tool-content {
+    width: 11vw;
+    padding-top: 11vw;
+
+    background: url("assets/ui_fencer.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.fencer summary {
+    position: relative;
+    top: -2vh;
+    left: 4vw;
+    z-index: 2;
+    color: white;
+}
+.fencer .cape {
+    position: relative;
+    top: -2vh;
+    right: -1.2vw;
+    width: 10vw;
+    background: black;
+    color: white;
+    padding: .5vw;
+
+    box-sizing: border-box;
+    border-left: groove #f701ff .3vw;
+    border-right: dashed #01A600 .3vw;
+    border-bottom: dotted #FF7101 .3vw;
+}
+.fencer .handle {
+    background: url("assets/ui_hold_ringer.webp");
+    background-size: contain;
+
+    left: .2vw;
+    top: .1vw;
+    rotate: 0;
+
+    width: 11vw;
+    height: 11vw;
+}
+.fencer .handle:hover {
+    filter: invert(.3);
+}
+.filler {
+    left: 92vw;
+    top: 45vh;
+}
+.filler .tool-content {
+    width: 5vw;
+    height: 9vw;
+
+    background: url("assets/ui_filler.webp");
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    color: white;
+}
+.filler textarea {
+    position: relative;
+    top: -5vw;
+    left: -5vw;
+
+    z-index: -1;
+
+    width: 10vw;
+    height: 5vw;
+    rotate: 45deg;
+
+    background: url("assets/ui_filler_streak.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    
+    border: none;
+
+    color: white;
+    text-shadow: #000 0 0 .1vw, #000 0 0 .5vw, #000 0 0 1vw;
+}
+.filler .handle {
+    background: url("assets/ui_hold_filler.webp");
+    background-size: contain;
+
+    top: 9.2vw;
+    right: -5.5vw;
+    rotate: 0;
+
+    width: 5.5vw;
+    height: 6vw;
+}
+.stretcher {
+    left: 1vw;
+    top: 1vh;
+}
+.stretcher .tool-content {
+    width: 14vw;
+    height: 3.2vw;
+    padding-top: 3vw;
+
+    background: url("assets/ui_stretcher.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.stretcher summary {
+    position: relative;
+    top: -4.5vh;
+    left: 2.5vw;
+
+    width: 8vw;
+    z-index: 2;
+}
+.stretcher .dough {
+    position: relative;
+    top: -5.5vh;
+    left: 1.5vw;
+
+    width: 10vw;
+    height: 9vw;
+
+    z-index: -1;
+
+    padding-top: 2.5vw;
+
+    background: url("assets/ui_stretcher_dough.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: #000;
+    text-shadow: #FFF 0 0 .1vw, #FFF 0 0 .5vw, #FFF 0 0 1vw;
+}
+.stretcher .dough input {
+    width: 7vw;
+}
+.stretcher .handle {
+    background: url("assets/ui_hold_stretcher.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    top: 0;
+    left: 0;
+    rotate: 0;
+
+    width: 14.4vw;
+    height: 3.2vw;
+
+    z-index: 1;
+}
+/* #endregion */

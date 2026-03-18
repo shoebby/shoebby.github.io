@@ -1,4 +1,16 @@
+import stringifyStylesheet from 'https://unpkg.com/stringify-css-stylesheet/index.js'
+
+$( function() {
+    $( ".tool" ).draggable({
+        handle: ".handle",
+        stack: ".ui-draggable", /* Stack the currently dragged item on top of all other items. */
+		distance: 0, /* I believe this has to do with mouse distance? */
+    });
+} );
+
 let isDrawing = false;
+let strokeOrder = 0;
+let strokingCount = 0;
 
 const dotTemplate = document.createElement('div');
 
@@ -6,10 +18,14 @@ const canvasEl = document.querySelector("#canvas");
 
 canvasEl.onmousemove = handleMouseMove;
 canvasEl.onmousedown = (event) => { isDrawing = true; setStroke(dotTemplate); handleMouseMove(event);}
-canvasEl.onmouseup = (event) => { isDrawing = false };
+canvasEl.onmouseup = (event) => { isDrawing = false; };
+
+const paintStyle = document.createElement("style");
+document.head.appendChild(paintStyle);
+const paintStyleSheet = paintStyle.sheet;
 
 function handleMouseMove(event) {
-    var dot, eventDoc, doc, body, pageX, pageY;
+    let dot, eventDoc, doc, body, pageX, pageY;
 
     event = event || window.event;
 
@@ -25,10 +41,14 @@ function handleMouseMove(event) {
         (doc && doc.scrollTop  || body && body.scrollTop  || 0) -
         (doc && doc.clientTop  || body && body.clientTop  || 0 );
     }
-    if (isDrawing)
+    if (isDrawing) {
+        strokingCount++;
         draw(event);
-    else
+    }
+    else {
+        strokingCount = 0;
         return;
+    }
 }
 
 function setStroke(target) {
@@ -49,16 +69,18 @@ function setStroke(target) {
     target.style.setProperty("width", input_width.value + "px");
     target.style.setProperty("height", input_height.value + "px");
 
-    target.style.setProperty("animation", "brushAnim " + input_animSettings.value);
+    target.style.setProperty("animation", `brushAnim${strokeOrder} ${input_animSettings.value}`);
+    paintStyleSheet.insertRule(`@keyframes brushAnim${strokeOrder} {${input_animation.value}}`);
 
     target.className = "brush";
+
+    strokeOrder++;
 }
 
 function draw(event) {
     let newDot = dotTemplate.cloneNode();
-    let shadow = newDot.attachShadow({ mode: "open" });
-    shadow.adoptedStyleSheets = [new CSSStyleSheet()];
-    shadow.adoptedStyleSheets[0].replaceSync("@keyframes brushAnim {" + input_animation.value + "}");
+
+    newDot.style.animationDelay = (0.02 * strokingCount) + "s";
 
     newDot.style.left = event.pageX - (input_width.value/2) + "px";
     newDot.style.top = event.pageY - (input_height.value/2) + "px";
@@ -77,8 +99,6 @@ const input_borderRadius = document.querySelector("#borderRadius");
 const input_animation = document.querySelector("#animation");
 const input_animSettings = document.querySelector("#animSettings");
 
-const input_saveCanvas = document.querySelector("#saveCanvas");
-
 const overlay = document.querySelector("#divBrush_bootOverlay");
 document.querySelector("button[target='closeOverlay']").addEventListener('click', function() {
     overlay.remove();
@@ -89,12 +109,13 @@ let previewShadow = previewBrush.attachShadow({ mode: "open" });
 
 function SetPreview() {
     setStroke(previewBrush);
+    previewBrush.style.setProperty("animation", `brushAnim ${input_animSettings.value}`);
     previewShadow.adoptedStyleSheets = [new CSSStyleSheet()];
     previewShadow.adoptedStyleSheets[0].replaceSync("@keyframes brushAnim {" + input_animation.value + "}");
 }
 
 document.querySelectorAll("input, textarea, details").forEach(element => {
-    element.addEventListener('click', function() {
+    element.addEventListener('input', function() {
         SetPreview();
     })
 });
@@ -103,3 +124,15 @@ SetPreview();
 document.querySelector("button[target='saveCanvas']").addEventListener('click', function() {
     capture();
 });
+
+function capture() {
+    let htmlContent = [`<head><style>${stringifyStylesheet(paintStyleSheet)}</style></head>` + canvasEl.innerHTML];
+    let bl = new Blob(htmlContent, {type: "text/html"});
+    let a = document.createElement("a");
+    a.href = URL.createObjectURL(bl);
+    a.download = "work-of-art.html";
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.innerHTML = "beep boop downloading";
+    a.click();
+}

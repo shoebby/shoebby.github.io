@@ -36,89 +36,94 @@ body {
     overflow: hidden;
 }
 
+red {
+    color: red;
+}
+
 /* #region folders */
 .static {
     position: absolute;
     background-size: 100%;
-    width: 50px;
-    height: 50px;
+    width: 2.5vw;
+    height: 2.5vw;
     cursor: pointer;
     z-index: -1;
 }
 
 .folderName {
     position: relative;
-    top: 60px;
-    right: 25px;
+    top: 3vw;
+    right: 1.25vw;
     color: white;
-    text-shadow: #000 0 0 2px, #000 0 0 5px, #000 0 0 10px;
+    text-shadow: #000 0 0 .1vw, #000 0 0 .5vw, #000 0 0 1vw;
     text-align: center;
     margin: 0;
-    width: 100px;
+    width: 5vw;
     cursor: pointer;
+    user-select: none;
 }
 /* #endregion */
 
 /* #region apps */
 .bin {
-    left: 35px;
-    top: 35px;
+    left: 2.5vw;
+    top: 2.5vw;
     background-image: url(images/placeholder.jpg);
 }
 .myComputer {
-    left: 35px;
-    top: 135px;
+    left: 2.5vw;
+    top: 7.5vw;
     background-image: url(images/placeholder.jpg);
 }
 .recurse {
-    left: 135px;
-    top: 135px;
-    background-image: url(images/webtoys/icon_recurse.png);
+    left: 7.5vw;
+    top: 7.5vw;
+    background-image: url(images/icon_recurse.png);
 }
 .divbrush {
-    left: 135px;
-    top: 235px;
+    left: 7.5vw;
+    top: 12.5vw;
     background-image: url(images/icon_divbrush.png);
 }
 .poppy {
-    left: 235px;
-    top: 35px;
-    background-image: url(images/webtoys/poppy.png);
+    left: 12.5vw;
+    top: 2.5vw;
+    background-image: url(images/poppy.png);
 }
 .about {
-    left: 35px;
-    bottom: 135px;
+    left: 2.5vw;
+    bottom: 12.5vw;
     background-image: url(images/placeholder.jpg);
 }
 .popupcollage {
-    left: 135px;
-    top: 335px;
+    left: 7.5vw;
+    top: 17.5vw;
     background-image: url(images/icon_collage.png);
 }
 .sierpinski {
-    left: 235px;
-    top: 335px;
+    left: 12.5vw;
+    top: 17.5vw;
     background-image: url(images/icon_sierpinsk.png);
 }
 .sprout {
-    left: 235px;
-    top: 435px;
+    left: 12.5vw;
+    top: 22.5vw;
     background-image: url(images/icon_sprout.png);
 }
 .settings {
-    left: 335px;
-    top: 435px;
+    left: 17.5vw;
+    top: 22.5vw;
     background-image: url(images/icon_settings.png);
 }
 .guymode {
-    left: 535px;
-    top: 135px;
-    background-image: url(images/webtoys/guymode.png);
+    left: 27.5vw;
+    top: 7.5vw;
+    background-image: url(images/guymode.png);
 }
 .spinny {
-    left: 535px;
-    top: 235px;
-    background-image: url(images/placeholder.jpg);
+    left: 27.5vw;
+    top: 12.5vw;
+    background-image: url(images/icon_spinny.png);
 }
 /* #endregion */
 
@@ -161,6 +166,7 @@ body {
     line-height: 2vh;
     flex-grow: 1;
     overflow: hidden;
+    user-select: none;
 
     font-size: 4.5vh;
     text-transform: uppercase;
@@ -333,10 +339,12 @@ body {
     padding: 1vw;
     min-width: 10vw;
     max-width: 15vw;
+
+    font-size: 1.5vh;
 }
 #poppy img {
-    width: 222px;
-    height: 333px;
+    width: 10vw;
+    height: 15vw;
 
     animation: poppyAnim 2s linear infinite;
 }
@@ -347,10 +355,7 @@ body {
 }
 /* #endregion */
 
-red {
-    color: red;
-}
-
+/* #region settings */
 #settings {
     width: 20vw;
     border-left: .3vw solid;
@@ -368,3 +373,29 @@ red {
 #settings .window-body fieldset {
     margin: 1vh .5vw 1vh .5vw;
 }
+/* #endregion */
+
+/* #region taskbar */
+#taskbar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    height: 5vh;
+    width: 100vw;
+
+    background: red;
+    border-top: .1vw solid black;
+
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+#taskbar #clock {
+    margin: 1vw;
+    border: .1vw solid black;
+
+    font-size: 1.5vh;
+    font-weight: 700;
+}
+/* #endregion */

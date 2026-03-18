@@ -75,7 +75,7 @@ if (this.checked) {
 settingsWindow.querySelector("#set_bg").addEventListener('input', function() {
     document.body.style.background = this.value;
 });
-settingsWindow.querySelector("#set_frame").addEventListener('change', function() {
+settingsWindow.querySelector("#set_frame").addEventListener('input', function() {
     changeStylesheetRule(mainStyle, ".title-bar", "background", this.value);
     changeStylesheetRule(mainStyle, ".window-body", "border-left-color", this.value);
     changeStylesheetRule(mainStyle, ".window-body", "border-right-color", this.value);
@@ -83,6 +83,7 @@ settingsWindow.querySelector("#set_frame").addEventListener('change', function()
     changeStylesheetRule(mainStyle, "#settings", "border-left-color", this.value);
     changeStylesheetRule(mainStyle, "#settings", "border-right-color", this.value);
     changeStylesheetRule(mainStyle, "#settings", "border-bottom-color", this.value);
+    changeStylesheetRule(mainStyle, "#taskbar", "background", this.value);
 });
 
 
@@ -117,6 +118,7 @@ function spinny() {
 
     for (let i = 0; i < allDivs.length; i++){
         allDivs[i].style.setProperty("rotate", getRandomInt(360) + "deg");
+        allDivs[i].style.setProperty("transition", ".2s");
     }
 
     playAudio("./sounds/webtoys/poppyHonk.mp3");
@@ -178,7 +180,7 @@ function progressPoppy() {
             poppyDialog.innerHTML = "<b>Recurse^3</b> lets you trees out of divs, using CSS styling for positioning and making the branches look pretty!<br>My favourite recipe is width === height, a high border radius, and a radial gradient to make them look like balls!";
             break;
         case 4:
-            document.querySelector("#Recurse3").remove();
+            document.querySelector(".window").remove();
             document.querySelector(".divbrush").click();
 
             movePoppy(5, 25, 50, -140);
@@ -186,7 +188,7 @@ function progressPoppy() {
             poppyDialog.innerHTML = "<b>DivBRUSH</b> lets you draw using self-styled divs! You can apply complex background patterns, borders, and animations to your brush to create one-of-a-kind artworks!";
             break;
         case 5:
-            document.querySelector("#DivBrush").remove();
+            document.querySelector(".window").remove();
             document.querySelector(".popupcollage").click();
 
             movePoppy(5, 10, 50, -140);
@@ -195,29 +197,18 @@ function progressPoppy() {
 
             break;
         case 6:
-            document.querySelector("#PopUpCollager").remove();
-            document.querySelector("#cat_media summary").click();
+            document.querySelector(".window").remove();
 
             movePoppy(35, 10, 60, -150);
 
-            poppyDialog.innerHTML = "Now over to the media player, it lets you listen to songs while you work, with a pretty visualizer to boot!";
+            poppyDialog.innerHTML = "The <b>Taskbar</b> contains a variety of things, like a clock, a media player, and maybe more...";
             break;
         case 7:
-            document.querySelector("#cat_media summary").click();
+            movePoppy(70, 85, 10, 90);
 
-            document.querySelector("#cat_fractal summary").click();
-            document.querySelector("#cat_popup summary").click();
-            //document.querySelector("#cat_art summary").click();
-
-            movePoppy(60, 35, 10, 90);
-
-            poppyDialog.innerHTML = "These folders contain some additional programs and websites that you can play around with, not to mention a couple of additional secrets findable in the OS...";
+            poppyDialog.innerHTML = "Ignore the recycling bin! Whatever you do, do <b>NOT</b> open it!";
             break;
         case 8:
-            document.querySelector("#cat_fractal summary").click();
-            document.querySelector("#cat_popup summary").click();
-            //document.querySelector("#cat_art summary").click();
-
             movePoppy(50, 50, 100, 0);
 
             poppyDialog.innerHTML = "I wish I could tell you more, but this is just a demo version of <red>V</red>isunov<red>OS</red>, so look around and get excited for when 1.0 comes your way!";

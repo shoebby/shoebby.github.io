@@ -6,6 +6,8 @@
     <meta name="description" content="Draw divs with your cursor!">
     <link rel="stylesheet" href="divbrush.css">
     <script src="divbrush.js" type="module"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 </head>
 <body>
     <div id="divBrush_bootOverlay">
@@ -22,65 +24,96 @@
 
     <div id="canvas"></div>
 
-    <div id="toolbar">
-        <div class="preview">
+    <div id="tools">
+        <div class="preview tool">
+            <div class="handle"></div>
             <div class="peviewBrush"></div>
         </div>
-        <details>
-            <summary>Dimensions (in px)</summary>
-            <div class="tool-content">
-                <label for="width">Width: </label>
-                <input id="width" type="number" value="25">
-                <br>
-                <label for="height">Height: </label>
-                <input id="height" type="number" value="25">
-            </div>
-        </details>
 
-        <details>
-            <summary>Background</summary>
+        <div class="stretcher tool">
+            <div class="handle"></div>
+            
+            <details class="tool-content">
+                <summary>STRETCHER</summary>
+                <div class="dough">
+                    <label for="width">Width: </label>
+                    <br>
+                    <input id="width" type="number" value="25">
+                    <br>
+                    <label for="height">Height: </label>
+                    <br>
+                    <input id="height" type="number" value="25">
+                </div>
+            </details>
+        </div>
 
-            <div class="tool-content">
+        <div class="filler tool">
+            <div class="handle"></div>
+
+            <details class="tool-content">
+                <summary>FILLER</summary>
+
                 <textarea id="background" cols="40" rows="2">black</textarea>
-            </div>
-        </details>
+            </details>
+        </div>
 
-        <details>
-            <summary>Border</summary>
+        <div class="fencer tool">
+            <div class="handle"></div>
 
-            <div class="tool-content">
-                <label for="borderL">Left</label>
-                <textarea id="borderL" cols="40" rows="1">2px solid orangered</textarea>
-                <br>
-                <label for="borderR">Right</label>
-                <textarea id="borderR" cols="40" rows="1">2px solid orangered</textarea>
-                <br>
-                <label for="borderT">Top</label>
-                <textarea id="borderT" cols="40" rows="1">0px solid black</textarea>
-                <br>
-                <label for="borderB">Bottom</label>
-                <textarea id="borderB" cols="40" rows="1">0px solid black</textarea>
-            </div>
-        </details>
+            <details class="tool-content">
+                <summary>FENCER</summary>
+                <div class="cape">
+                    <label for="borderL">Left</label>
+                    <br>
+                    <textarea id="borderL" cols="20" rows="1">2px solid orangered</textarea>
+                    <br>
+                    <label for="borderR">Right</label>
+                    <br>
+                    <textarea id="borderR" cols="20" rows="1">2px solid orangered</textarea>
+                    <br>
+                    <label for="borderT">Top</label>
+                    <br>
+                    <textarea id="borderT" cols="20" rows="1">0px solid black</textarea>
+                    <br>
+                    <label for="borderB">Bottom</label>
+                    <br>
+                    <textarea id="borderB" cols="20" rows="1">0px solid black</textarea>
+                </div>
+            </details>
+        </div>
 
-        <details>
-            <summary>Border Radius</summary>
+        <div class="shaver tool">
+            <div class="handle"></div>
 
-            <div class="tool-content">
+            <details class="tool-content">
+                <summary>SHAVER</summary>
+
                 <input id="borderRadius" type="number" value="0">
-            </div>
-        </details>
+            </details>
+        </div>
 
-        <details>
-            <summary>Animation</summary>
+        <div class="mover tool">
+            <div class="handle"></div>
 
-            <div class="tool-content">
-                <label for="animation">Rotating: </label>
-                <textarea id="animation" cols="40" rows="3">0%{rotate:0deg;transform:scale(1);background:black}50%{transform:scale(2.5);background:white}100%{rotate:360deg;transform:scale(1);background:black}</textarea>
+            <details class="tool-content">
+                <summary>MOVER</summary>
+
+                <label for="animation">Keyframes: </label>
+                <br>
+                <textarea id="animation" cols="40" rows="3"></textarea>
+                <br>
                 <label for="animSettings">Animation Settings: </label>
+                <br>
                 <textarea id="animSettings" cols="40" rows="1">infinite 2s linear</textarea>
-            </div>
-        </details>
+            </details>
+        </div>
+
+        <div class="saver tool">
+            <div class="handle"></div>
+            <button target="saveCanvas"></button>
+        </div>
+
+        
     </div>
 
     <script>
