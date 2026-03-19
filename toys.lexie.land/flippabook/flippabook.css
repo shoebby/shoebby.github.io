@@ -1,0 +1,108 @@
+html, body {
+    margin: 0;
+    overflow: hidden;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 18vw 82vw;
+    grid-template-rows: 10% 90%;
+    gap: 0;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+#toolbar {
+    background-color: red;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: 1;
+
+    width: 100%;
+    height: 100%;
+}
+
+#slides {
+    background-color: blue;
+    grid-column: 1;
+    grid-row: 2;
+
+    width: 100%;
+    height: 100%;
+
+    flex-direction: column;
+    align-items: center;
+    padding: 1vw;
+
+    overflow: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: black red;
+}
+
+.slide-thumbnail {
+    width: 16vw;
+    height: 9vw;
+
+    margin-bottom: 1vw;
+
+    background-color: white;
+
+    box-sizing: border-box;
+}
+.slide-thumbnail button {
+    width: 100%;
+    height: 100%;
+
+    background: none;
+    border: none;
+    
+    cursor: pointer;
+}
+.addPage {
+    width: 16vw;
+    height: 3vw;
+
+    margin-bottom: 1vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.addPage button {
+    width: 3vw;
+    height: 3vw;
+
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#editor {
+    background-color: yellow;
+    grid-column: 2;
+    grid-row: 2;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#currentSlide {
+    width: 70vw;
+    height: 39vw;
+}
+.editslide {
+    width: 100%;
+    height: 100%;
+
+    background-color: white;
+
+    position: relative;
+    top: 0;
+    left: 0;
+}

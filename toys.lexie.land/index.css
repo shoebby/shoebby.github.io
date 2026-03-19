@@ -125,6 +125,11 @@ red {
     top: 12.5vw;
     background-image: url(images/icon_spinny.png);
 }
+.flippa {
+    left: 2.5vw;
+    top: 22.5vw;
+    background-image: url(images/placeholder.jpg);
+}
 /* #endregion */
 
 /* #region window */
