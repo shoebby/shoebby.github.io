@@ -21,6 +21,27 @@ html, body {
 
     width: 100%;
     height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+}
+#toolbar button {
+    border: none;
+    background: none;
+    width: 4vw;
+    height: 4vw;
+}
+#toolbar button:hover {
+    filter: saturate(3) contrast(3) drop-shadow(-3px -3px 0 white) drop-shadow(3px 3px 0 white);
+
+    cursor: pointer;
+}
+#toolbar button img {
+    width: 100%;
+    height: 100%;
 }
 
 #slides {
@@ -49,6 +70,7 @@ html, body {
     background-color: white;
 
     box-sizing: border-box;
+    border: none;
 }
 .slide-thumbnail button {
     width: 100%;
@@ -64,7 +86,7 @@ html, body {
     height: 3vw;
 
     margin-bottom: 1vw;
-
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,4 +127,36 @@ html, body {
     position: relative;
     top: 0;
     left: 0;
+
+    display: none;
+    overflow: hidden;
+}
+
+.thumb-focused {
+    border: 6px solid red;
+}
+.slide-focused {
+    display: block;
+}
+
+.obj {
+    position: absolute;
+    max-height: 100%;
+}
+div.obj {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+}
+iframe.obj {
+    width: 100%;
+    height: 100%;
+
+    border: 2px solid black;
+    box-sizing: border-box;
+
+    pointer-events: none;
 }

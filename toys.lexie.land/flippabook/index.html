@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="flippabook.css">
     <script src="flippabook.js" type="module"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 </head>
 <body>
     <div class="main-grid">
         <div id="toolbar">
-            TOOLBAR
+            <button target="skewer"><img src="assets/skewer.png"></button>
+            <button target="shuffler"><img src="assets/shuffler.png"></button>
+            <button target="gun"><img src="assets/gun_inactive.png"></button>
         </div>
         <div id="slides">
             <div id="slidesContainer">
                 <div class="slide-thumbnail thumb1">
                     <button target="focusPage" value="1">1</button>
+                    <canvas class="thumb-canvas"></canvas>
                 </div>
             </div>
             <div class="addPage">
