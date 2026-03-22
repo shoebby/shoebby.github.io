@@ -32,6 +32,23 @@ a {
     display: inline-block;
     margin: 0 auto;
 }
+.image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+.image img {
+    width: 50%;
+}
+.image small {
+    font-style: italic;
+    text-align: center;
+
+    padding-top: .5em;
+}
 
 .hl {
     cursor: pointer;
