@@ -130,7 +130,7 @@ function capture() {
     let bl = new Blob(htmlContent, {type: "text/html"});
     let a = document.createElement("a");
     a.href = URL.createObjectURL(bl);
-    a.download = "work-of-art.html";
+    a.download = "drag-me-into-flippabook.html";
     a.hidden = true;
     document.body.appendChild(a);
     a.innerHTML = "beep boop downloading";

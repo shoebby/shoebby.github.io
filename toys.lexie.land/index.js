@@ -124,6 +124,15 @@ function spinny() {
     playAudio("./sounds/webtoys/poppyHonk.mp3");
 }
 
+//bin
+
+document.querySelector("a[target='bin']").addEventListener('click', (event) => {bin()});
+
+function bin() {
+    openWindow("Recycling Bin", "./bin/", "./images/placeholder.jpg");
+}
+
+
 // poppy
 const poppy = document.querySelector("#poppy");
 const poppyBox = poppy.querySelector("div");
@@ -201,19 +210,22 @@ function progressPoppy() {
 
             movePoppy(35, 10, 60, -150);
 
-            poppyDialog.innerHTML = "The <b>Taskbar</b> contains a variety of things, like a clock, a media player, and maybe more...";
+            poppyDialog.innerHTML = "The <b>Taskbar</b> contains a variety of things, like a clock, a media playe-...";
             break;
         case 7:
+            poppyDialog.innerHTML = "Oh, wait, it's not implemented yet. Whoops, awkwardddd ehe moving on...";
+            break;
+        case 8:
             movePoppy(70, 85, 10, 90);
 
             poppyDialog.innerHTML = "Ignore the recycling bin! Whatever you do, do <b>NOT</b> open it!";
             break;
-        case 8:
+        case 9:
             movePoppy(50, 50, 100, 0);
 
             poppyDialog.innerHTML = "I wish I could tell you more, but this is just a demo version of <red>V</red>isunov<red>OS</red>, so look around and get excited for when 1.0 comes your way!";
             break;
-        case 9:
+        case 10:
             poppyDialog.innerHTML = "<red>V</red>isunov<red>OS</red>, storycrafting the HTML way!";
             break;
         default:
