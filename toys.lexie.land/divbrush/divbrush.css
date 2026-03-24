@@ -406,7 +406,6 @@ textarea, input {
 .stretcher .tool-content {
     width: 14vw;
     height: 3.2vw;
-    padding-top: 3vw;
 
     background: url("assets/ui_stretcher.png");
     background-size: contain;
@@ -414,21 +413,19 @@ textarea, input {
 }
 .stretcher summary {
     position: relative;
-    top: -4.5vh;
-    left: 2.5vw;
+    top: 1vh;
+    left: 2.75vw;
 
     width: 8vw;
     z-index: 2;
 }
 .stretcher .dough {
     position: relative;
-    top: -5.5vh;
+    top: 3vh;
     left: 1.5vw;
 
     width: 10vw;
     height: 9vw;
-
-    z-index: -1;
 
     padding-top: 2.5vw;
 
@@ -459,5 +456,239 @@ textarea, input {
     height: 3.2vw;
 
     z-index: 1;
+}
+.presets {
+    left: 72vw;
+    top: 45vh;
+
+    background: url(assets/ui_drawer.jpg);
+    background-size: cover;
+
+    width: 15vw;
+    height: 8vh;
+}
+.presets .handle {
+    background: url("assets/ui_hold_preview.png");
+    filter: hue-rotate(85deg);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    top: -2vh;
+    right: -1vw;
+    rotate: 45deg;
+    scale: 2;
+
+    z-index: 1;
+}
+.presets .handle:hover {
+    filter: invert(1);
+}
+.presets .tool-content {
+    color: white;
+    
+    pointer-events: none;
+}
+.presets .tool-content summary {
+    position: relative;
+    top: 0;
+    left: 0;
+
+    width: 15vw;
+    height: 8vh;
+}
+.presets .tool-content .drawer {
+    width: 15vw;
+    height: 40vh;
+
+    position: relative;
+    bottom: 50vh;
+    left: -.5vw;
+
+    background: url("assets/ui_drawer_inside.webp");
+    background-size: cover;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: .5vw;
+    row-gap: .5vw;
+
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: brown black;
+}
+.presets .tool-content .drawer a {
+    width: 4vw;
+    height: 4vw;
+
+    background: #00000059;
+    border: 2px dashed black;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    pointer-events: all;
+}
+.presets .tool-content .drawer a:hover {
+    border: 4px dashed white;
+}
+.presets .tool-content .drawer a.active {
+    border: 4px dashed white;
+}
+/* #endregion */
+
+/* #region presets */
+.drawerPreview {
+    width: 3vw;
+    height: 3vw;
+
+    box-sizing: border-box;
+}
+.guymode {
+    background: url('https://toys.lexie.land/images/guymode.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+}
+.moon {
+    background: black;
+    border-left: 10px solid yellow;
+    border-bottom: 10px solid yellow;
+    border-radius: 999px;
+}
+.pillar {
+    background: white;
+    border-bottom: 4px solid blue;
+    border-top: 4px solid blue;
+
+    animation: pillar 2s linear infinite;
+}
+@keyframes pillar {
+    0% { rotate: 0deg; }
+    100% { rotate: 360deg; }
+}
+.orbit {
+    border-radius: 999px;
+
+    border-left: 12px dotted black;
+    border-bottom: 8px dotted gray;
+    border-right: 2px dotted lightgray;
+    border-top: none;
+
+    animation: pillar 2s linear infinite;
+}
+.light {
+    background: white;
+    border-radius: 999px;
+    width: 20px;
+    height: 20px;
+
+    filter: drop-shadow(0 0 2px white) drop-shadow(0 0 5px yellow) drop-shadow(0 0 10px orangered);
+}
+.worm {
+    height: 30px;
+    border-radius: 999px;
+
+    animation: worm infinite 1s linear;
+}
+@keyframes worm {
+    0% {
+        background-color: #fffb00ff;
+        transform: translateX(-20px) scale(1);
+    }
+    25% {
+        transform: scale(1.5);
+    }
+    50% {
+        background-color: #0fc20fff;
+        transform: translateX(20px) scale(1);
+    }
+    75% {
+        transform: scale(1.5);
+    }
+    100% {
+        background-color: #fffb00ff;
+        transform: translateX(-20px) scale(1);
+    }
+}
+.wiggly {
+    background-color: #f701ff;
+    border-radius: 999px;
+    width: 30px;
+    height: 30px;
+
+    animation: wiggly .5s linear infinite;
+}
+@keyframes wiggly {
+    0%, 100% { scale: 1; } 50% { scale: 1.5; }
+}
+.leaf {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(to top left, green 0%, green 48%, orange 49%, orange 51%, green 52%, green 100%);
+    border-left: orange 5px solid;
+    border-bottom: orange 5px solid;
+    border-radius: 999px 0px;
+    transform-origin: top left;
+
+    animation: leaf 5s ease-out infinite;
+}
+@keyframes leaf {
+    0%, 100% { transform: translateX(50%) rotate(0deg); }
+    50% { transform: translateX(50%) rotate(90deg); }
+}
+.jitter {
+    width: 10px;
+
+    background: black;
+    border-radius: 999px;
+
+    animation: jitter .5s linear infinite;
+}
+@keyframes jitter {
+    0%, 100% {
+        transform-origin: 50%;
+        transform: translate(0, 0);
+        box-shadow: #ff000038 8px -1px 0;
+    }
+    10% {
+        transform: translate(-9px, 1px);
+        box-shadow: #ff00009d 6px -7px 0;
+    }
+    20% {
+        transform: translate(1px, -5px);
+        box-shadow: #ff000080 0px -7px 0;
+    }
+    30% {
+        transform: translate(-5px, -3px);
+        box-shadow: #ff000038 1px 7px 0;
+    }
+    40% {
+        transform: translate(4px, 2px);
+        box-shadow: #ff000038 -9px 5px 0;
+    }
+    50% {
+        transform: translate(-3px, -8px);
+        box-shadow: #ff000038 -6px 3px 0;
+    }
+    60% {
+        transform: translate(1px, -2px);
+        box-shadow: #ff000038 -7px 1px 0;
+    }
+    70% {
+        transform: translate(1px, 9px);
+        box-shadow: #ff000038 6px 8px 0;
+    }
+    80% {
+        transform: translate(-4px, 3px);
+        box-shadow: #ff000038 2px -6px 0;
+    }
+    90% {
+        transform: translate(-7px, 4px);
+        box-shadow: #ff000038 -5px 1px 0;
+    }
 }
 /* #endregion */

@@ -8,9 +8,23 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
+
+        overflow-x: hidden;
     }
     img {
         height: 30vh;
+        animation: wakeUp 5s linear 1, continue 1s ease-in-out infinite, continue 1s ease-in-out infinite;
+    }
+    @keyframes wakeUp {
+        0% {    filter: opacity(0); scale: 0; }
+        100% {  filter: opacity(1); scale: 1; }
+    }
+    @keyframes continue {
+        0%      {   rotate: 10deg;   transform: translateY(1vh);    }
+        25%     {                   transform: translateY(-1vh);    }
+        50%     {   rotate: -10deg;  transform: translateY(1vh);    }
+        75%     {                   transform: translateY(-1vh);    }
+        100%    {   rotate: 10deg;   transform: translateY(1vh);    }
     }
 </style>
 </head>

@@ -233,8 +233,6 @@ function progressPoppy() {
     }
 }
 
-
-
 // audio functionality
 document.querySelectorAll("button, summary, input, a").forEach(element => {
     element.addEventListener('click', (event) => {
@@ -247,29 +245,6 @@ function playAudio(path) {
     const audio = new Audio(path);
     audio.play();
 }
-
-
-// const playButton = document.querySelector("button[target='toggleMusic']");
-// let playState = playButton.getAttribute("state");
-// let song = new Audio('sounds/strawberriesandlancables.mp3');
-// song.volume = 0.2;
-// const visualizerIframe = document.querySelector("#cat_media iframe");
-
-// playButton.addEventListener('click', function() {
-//     if (playState === "paused") {
-//         playButton.innerHTML = "⏸";
-//         playState = "playing";
-//         visualizerIframe.setAttribute("src", "./visualizer.html");
-//         song.play();
-//     } else if (playState === "playing") {
-//         playButton.innerHTML = "▶";
-//         playState = "paused";
-//         visualizerIframe.setAttribute("src", "");
-//         song.pause();
-//     }
-// });
-
-
 
 // maximizing and closing windows
 document.querySelectorAll("button[target='maximize']").forEach(element => {
