@@ -18,7 +18,7 @@ const dotTemplate = document.createElement('div');
 const canvasEl = document.querySelector("#canvas");
 
 canvasEl.onmousemove = handleMouseMove;
-canvasEl.onmousedown = (event) => { isDrawing = true; setStroke(dotTemplate); handleMouseMove(event);}
+canvasEl.onmousedown = (event) => { isDrawing = true; if (!erasing) { setStroke(dotTemplate, false) }; handleMouseMove(event);}
 canvasEl.onmouseup = (event) => { isDrawing = false; };
 
 const mainStyle = document.styleSheets[0];
@@ -26,6 +26,20 @@ const mainStyle = document.styleSheets[0];
 const paintStyle = document.createElement("style");
 document.head.appendChild(paintStyle);
 const paintStyleSheet = paintStyle.sheet;
+
+const undoButton = document.querySelector("button[target='undo']");
+const comboTitle = document.querySelector(".comboTitle");
+
+const alertTemplate = document.querySelector(".alert");
+function alert(string) {
+    let newAlert = alertTemplate.cloneNode(true);
+    newAlert.style.display = "block";
+    newAlert.innerHTML = string;
+    document.body.appendChild(newAlert);
+    setTimeout(function(){
+        newAlert.remove();
+    }, 5000);
+}
 
 function handleMouseMove(event) {
     let dot, eventDoc, doc, body, pageX, pageY;
@@ -46,7 +60,7 @@ function handleMouseMove(event) {
     }
     if (isDrawing) {
         if (erasing) {
-            
+            return;
         } else {
             strokingCount++;
             draw(event);
@@ -58,7 +72,7 @@ function handleMouseMove(event) {
     }
 }
 
-function setStroke(target) {
+function setStroke(target, ispreview) {
     target.style.setProperty("position", "absolute");
     target.style.setProperty("transform-origin", "50%");
 
@@ -80,9 +94,10 @@ function setStroke(target) {
     target.style.setProperty("animation", `brushAnim${strokeOrder} ${input_animSettings.value}`);
     paintStyleSheet.insertRule(`@keyframes brushAnim${strokeOrder} {${input_animation.value}}`);
 
-    target.className = "brush";
-
-    strokeOrder++;
+    if (!ispreview) {
+        target.classList = `brush stroke${strokeOrder}`;
+        tallyCombo(1);
+    }
 }
 
 function draw(event) {
@@ -117,8 +132,7 @@ const previewBrush = document.querySelector(".peviewBrush");
 let previewShadow = previewBrush.attachShadow({ mode: "open" });
 
 function SetPreview() {
-    setStroke(previewBrush);
-    previewBrush.classList = "";
+    setStroke(previewBrush, true);
     previewBrush.style.setProperty("animation", `brushAnim ${input_animSettings.value}`);
     previewShadow.adoptedStyleSheets = [new CSSStyleSheet()];
     previewShadow.adoptedStyleSheets[0].replaceSync("@keyframes brushAnim {" + input_animation.value + "}");
@@ -136,6 +150,7 @@ document.querySelector("button[target='saveCanvas']").addEventListener('click', 
 });
 
 const eraserButton = document.querySelector("button[target='toggleEraser']");
+
 eraserButton.addEventListener('click', function() {
     toggleEraser();
 });
@@ -155,12 +170,74 @@ function toggleEraser() {
 
     if (erasing) {
         document.body.style.cursor = "url('./assets/cursor_eraser.png') 16 16, auto";
-        mainStyle.cssRules[4].style.pointerEvents = "auto";
+        mainStyle.cssRules[0].style.pointerEvents = "auto";
         eraserButton.style.filter = "drop-shadow(1px 1px 0 black) drop-shadow(1px -1px 0 black) drop-shadow(-1px 1px 0 black) drop-shadow(-1px -1px 0 black) brightness(100)"
     } else if (!erasing) {
         document.body.style.cursor = "auto";
-        mainStyle.cssRules[4].style.pointerEvents = "none";
+        mainStyle.cssRules[0].style.pointerEvents = "none";
         eraserButton.style.filter = "drop-shadow(0 0 2px white) drop-shadow(0 0 5px yellow) drop-shadow(0 0 10px orangered)";
+    }
+}
+
+undoButton.addEventListener('click', function() {
+    if (strokeOrder > 0) {
+        document.querySelectorAll(`.stroke${strokeOrder - 1}`).forEach(element => {
+            element.remove();
+        });
+        tallyCombo(-1);
+    } else {
+        alert("ALERT -- Nothing to undo!");
+    }
+})
+function between(x, min, max) {
+  return x >= min && x <= max;
+}
+function tallyCombo(modifier) {
+    strokeOrder += modifier;
+
+    undoButton.innerHTML = strokeOrder;
+
+    if (between(strokeOrder, 0, 5)) {
+        document.body.style.background = "white";
+        comboTitle.innerHTML = "<emphasis>D</emphasis>ull...";
+
+        comboTitle.style.transform = "rotateX(15deg) rotateY(15deg) rotateZ(15deg)";
+    }
+    else if (between(strokeOrder, 6, 10)) {
+        document.body.style.background = "orangered";
+        comboTitle.innerHTML = "<emphasis>C</emphasis>aptivating!";
+
+        comboTitle.style.transform = "rotateX(45deg) rotateY(-25deg) rotateZ(15deg)";
+    }
+    else if (between(strokeOrder, 11, 15)) {
+        document.body.style.background = "red";
+        comboTitle.innerHTML = "<emphasis>B</emphasis>rilliant!";
+
+        comboTitle.style.transform = "rotateX(35deg) rotateY(35deg) rotateZ(-15deg)";
+    }
+    else if (between(strokeOrder, 16, 20)) {
+        document.body.style.background = "blue";
+        comboTitle.innerHTML = "<emphasis>A</emphasis>rtistic!";
+
+        comboTitle.style.transform = "rotateX(360deg) rotateY(35deg) rotateZ(-15deg)";
+    }
+    else if (between(strokeOrder, 21, 25)) {
+        document.body.style.background = "magenta";
+        comboTitle.innerHTML = "<emphasis>S</emphasis>himmering!";
+
+        comboTitle.style.transform = "rotateX(360deg) rotateY(720deg) rotateZ(-15deg)";
+    }
+    else if (between(strokeOrder, 26, 30)) {
+        document.body.style.background = "lime";
+        comboTitle.innerHTML = "<emphasis>S</emphasis>ick <emphasis>S</emphasis>kills!!";
+
+        comboTitle.style.transform = "rotateX(-35deg) rotateY(15deg) rotateZ(1800deg)";
+    }
+    else if (between(strokeOrder, 31, 35)) {
+        document.body.style.background = "black";
+        comboTitle.innerHTML = "<emphasis>S</emphasis>uper <emphasis>S</emphasis>tunning <emphasis>S</emphasis>lay!!!";
+
+        comboTitle.style.transform = "rotateX(3600deg) rotateY(3600deg) rotateZ(3600deg)";
     }
 }
 
@@ -347,6 +424,6 @@ function setBrush(brush) {
     default:
         console.log(`we outta ${brush}.`);
     }
-    setStroke(dotTemplate);
+    setStroke(dotTemplate, false);
     SetPreview();
 }

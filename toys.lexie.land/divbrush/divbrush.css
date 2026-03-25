@@ -1,6 +1,20 @@
+.brush {
+    position: absolute;
+    transform-origin: 50%;
+    pointer-events: none;
+}
+
 @font-face {
     font-family: 'f25';
     src: url("../fonts/F25_Bank_Printer_Bold.ttf");
+}
+@font-face {
+    font-family: 'badaboom';
+    src: url("../fonts/badaboom.TTF");
+}
+@font-face {
+    font-family: 'apple';
+    src: url("../fonts/AppleGaramond-Light.ttf");
 }
 
 html, body {
@@ -11,6 +25,8 @@ html, body {
     margin: 0;
     font-size: 1.5vh;
     font-family: 'f25';
+
+    transition: 5s;
 }
 
 textarea, input {
@@ -26,10 +42,33 @@ textarea, input {
     z-index: -999;
 }
 
-.brush {
+.alert {
     position: absolute;
-    transform-origin: 50%;
-    pointer-events: none;
+    top: -8vh;
+    left: 37.5%;
+    display: none;
+
+    padding: 1vw;
+    color: white;
+    text-align: center;
+
+    width: 25vw;
+    height: 8vh;
+
+    background: gray;
+
+    border-left: 4px solid darkgray;
+    border-right: 4px solid darkgray;
+    border-bottom: 4px solid darkgray;
+    box-sizing: border-box;
+
+    animation: alert 5s ease-out 1;
+}
+@keyframes alert {
+    0% { top: -8vh; }
+    10% { top: 0; }
+    80% { top: 0; }
+    100% { top: -8vh; }
 }
 
 /* #region title seq */
@@ -624,6 +663,82 @@ textarea, input {
 }
 .eraser details > summary:first-of-type {
     list-style-type: none;
+}
+.undo {
+    left: 64vw;
+    bottom: -3vh;
+
+    background: url("./assets/ui_comboUndo.png");
+    background-size: cover;
+    background-position: 0% 50%;
+
+    width: 14vw;
+    height: 26vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.undo .handle {
+    background: white;
+    mix-blend-mode: color;
+
+    left: 16%;
+    top: -2%;
+    rotate: -30deg;
+
+    height: 8vw;
+    width: 2vw;
+
+    z-index: 1;
+}
+.undo .handle:hover {
+    background: orangered;
+    border: 2px solid black;
+    border-radius: 2px;
+}
+.undo button {
+    pointer-events: all;
+    cursor: pointer;
+
+    width: 8.5vw;
+    height: 8vw;
+
+    background: url("./assets/undo.png");
+    background-size: cover;
+    border: none;
+    filter: drop-shadow(.05em 0 0 black) drop-shadow(-.05em 0 0 black) drop-shadow(0 .05em 0 black) drop-shadow(0 -.05em 0 black);
+
+    font-size: 5vw;
+    font-family: 'badaboom';
+    color: white;
+    -webkit-text-stroke: #000 .05em;
+
+    animation: comboSway 2s linear infinite;
+}
+@keyframes comboSway {
+    0%, 100% { rotate: -15deg; }
+    50% { rotate: 15deg; }
+}
+.undo .comboTitle {
+    position: absolute;
+    top: 19vw;
+    left: 3vw;
+
+    transform: rotateX(15deg) rotateY(15deg) rotateZ(15deg);
+    
+    font-size: 4vw;
+    font-family: 'apple';
+    text-align: left;
+    line-height: 1vw;
+
+    text-shadow: 0 0 2px magenta, 0 0 5px magenta, 0 0 20px magenta;
+
+    transition: 2s;
+}
+.undo .comboTitle emphasis {
+    font-size: 8vw;
+    color: white;
 }
 /* #endregion */
 
