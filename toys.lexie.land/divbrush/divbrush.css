@@ -266,6 +266,8 @@ textarea, input {
 .mover .tool-content {
     background: url("assets/ui_mover.gif");
     background-size: cover;
+    border-left: 6px dotted white;
+    border-right: 6px dotted white;
 }
 .mover summary {
     margin-top: 2vw;
@@ -537,6 +539,91 @@ textarea, input {
 }
 .presets .tool-content .drawer a.active {
     border: 4px dashed white;
+}
+.eraser {
+    left: 72vw;
+    top: 10vh;
+
+    background-size: cover;
+
+    width: 9vw;
+    height: 10vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.eraser .handle {
+    background: url("assets/ui_hold_preview.png");
+    filter: hue-rotate(-85deg);
+    background-size: contain;
+    
+    transform: scaleX(-1);
+
+    top: 9vw;
+    left: 3.5vw;
+    scale: 2;
+
+    z-index: 1;
+}
+.eraser .handle:hover {
+    filter: hue-rotate(150deg);
+}
+.eraser .tool-content button {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    position: relative;
+    left: 1vw;
+
+    width: 1.5vw;
+    height: 1.5vw;
+    rotate: 420deg;
+    font-size: 1vw;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    filter: drop-shadow(0 0 2px white) drop-shadow(0 0 5px yellow) drop-shadow(0 0 10px orangered);
+}
+.eraser .tool-content:open > button {
+    animation: appleFall 2s linear 1;
+}
+.eraser .tool-content {
+    background: url(./assets/ui_eraser.png);
+    background-size: cover;
+
+    width: 9vw;
+    height: 10vw;
+}
+.eraser .tool-content:open {
+    animation: treeShake 2s linear 1;
+}
+@keyframes appleFall {
+    0% {top: -5vw; rotate: 90deg;}
+    100% {top: 0; rotate: 420deg;}
+}
+@keyframes treeShake {
+    0%, 100% {transform-origin: 50% 100%; transform: rotate(0deg);}
+    25% {transform: rotate(5deg);}
+    50% {transform: rotate(-10deg);}
+    75% {transform: rotate(5deg);}
+}
+.eraser .tool-content summary {
+    position: relative;
+    top: 0;
+    left: 0;
+
+    width: 9vw;
+    height: 10vw;
+}
+.eraser details summary::-webkit-details-marker {
+    display:none;
+}
+.eraser details > summary:first-of-type {
+    list-style-type: none;
 }
 /* #endregion */
 

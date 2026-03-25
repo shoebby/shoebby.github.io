@@ -3,14 +3,15 @@ import stringifyStylesheet from 'https://unpkg.com/stringify-css-stylesheet/inde
 $( function() {
     $( ".tool" ).draggable({
         handle: ".handle",
-        stack: ".ui-draggable", /* Stack the currently dragged item on top of all other items. */
-		distance: 0, /* I believe this has to do with mouse distance? */
+        stack: ".ui-draggable",
+		distance: 0,
     });
 } );
 
 let isDrawing = false;
 let strokeOrder = 0;
 let strokingCount = 0;
+let erasing = false;
 
 const dotTemplate = document.createElement('div');
 
@@ -19,6 +20,8 @@ const canvasEl = document.querySelector("#canvas");
 canvasEl.onmousemove = handleMouseMove;
 canvasEl.onmousedown = (event) => { isDrawing = true; setStroke(dotTemplate); handleMouseMove(event);}
 canvasEl.onmouseup = (event) => { isDrawing = false; };
+
+const mainStyle = document.styleSheets[0];
 
 const paintStyle = document.createElement("style");
 document.head.appendChild(paintStyle);
@@ -42,8 +45,12 @@ function handleMouseMove(event) {
         (doc && doc.clientTop  || body && body.clientTop  || 0 );
     }
     if (isDrawing) {
-        strokingCount++;
-        draw(event);
+        if (erasing) {
+            
+        } else {
+            strokingCount++;
+            draw(event);
+        }
     }
     else {
         strokingCount = 0;
@@ -54,7 +61,6 @@ function handleMouseMove(event) {
 function setStroke(target) {
     target.style.setProperty("position", "absolute");
     target.style.setProperty("transform-origin", "50%");
-    target.style.setProperty("pointer-events", "none");
 
     target.style.setProperty("background", input_background.value);
     target.style.setProperty("background-repeat", "no-repeat");
@@ -112,6 +118,7 @@ let previewShadow = previewBrush.attachShadow({ mode: "open" });
 
 function SetPreview() {
     setStroke(previewBrush);
+    previewBrush.classList = "";
     previewBrush.style.setProperty("animation", `brushAnim ${input_animSettings.value}`);
     previewShadow.adoptedStyleSheets = [new CSSStyleSheet()];
     previewShadow.adoptedStyleSheets[0].replaceSync("@keyframes brushAnim {" + input_animation.value + "}");
@@ -127,6 +134,35 @@ SetPreview();
 document.querySelector("button[target='saveCanvas']").addEventListener('click', function() {
     capture();
 });
+
+const eraserButton = document.querySelector("button[target='toggleEraser']");
+eraserButton.addEventListener('click', function() {
+    toggleEraser();
+});
+function toggleEraser() {
+    erasing = !erasing;
+
+    document.querySelectorAll(".brush").forEach(element => {
+        element.addEventListener('mouseover', function() {
+            if (erasing)
+                element.style.transition = "2s";
+                element.style.top = "150vh";
+                setTimeout(function(){
+                    element.remove();
+                }, 2000);
+        });
+    });
+
+    if (erasing) {
+        document.body.style.cursor = "url('./assets/cursor_eraser.png') 16 16, auto";
+        mainStyle.cssRules[4].style.pointerEvents = "auto";
+        eraserButton.style.filter = "drop-shadow(1px 1px 0 black) drop-shadow(1px -1px 0 black) drop-shadow(-1px 1px 0 black) drop-shadow(-1px -1px 0 black) brightness(100)"
+    } else if (!erasing) {
+        document.body.style.cursor = "auto";
+        mainStyle.cssRules[4].style.pointerEvents = "none";
+        eraserButton.style.filter = "drop-shadow(0 0 2px white) drop-shadow(0 0 5px yellow) drop-shadow(0 0 10px orangered)";
+    }
+}
 
 function capture() {
     let htmlContent = [`<head><style>${stringifyStylesheet(paintStyleSheet)}</style></head>` + canvasEl.innerHTML];
@@ -309,7 +345,7 @@ function setBrush(brush) {
         input_filter =              "none";
         break;
     default:
-        console.log(`Sorry, we are out of ${brush}.`);
+        console.log(`we outta ${brush}.`);
     }
     setStroke(dotTemplate);
     SetPreview();
