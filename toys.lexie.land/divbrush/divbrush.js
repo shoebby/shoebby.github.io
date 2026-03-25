@@ -9,9 +9,12 @@ $( function() {
 } );
 
 let isDrawing = false;
+let erasing = false;
 let strokeOrder = 0;
 let strokingCount = 0;
-let erasing = false;
+
+const undo_swishes = ["./assets/audio/undo_swish_1.mp3", "./assets/audio/undo_swish_2.mp3", "./assets/audio/undo_swish_3.mp3"]
+let swishCount = 0;
 
 const dotTemplate = document.createElement('div');
 
@@ -29,6 +32,19 @@ const paintStyleSheet = paintStyle.sheet;
 
 const undoButton = document.querySelector("button[target='undo']");
 const comboTitle = document.querySelector(".comboTitle");
+const comboFlames = document.querySelector(".comboFlames");
+const flameSound = new Audio();
+flameSound.src = "./assets/audio/flames.mp3";
+flameSound.loop = true;
+flameSound.volume = 0;
+flameSound.play();
+const storm = document.createElement("video");
+storm.classList = "storm";
+storm.src = "./assets/storm.mp4";
+storm.loop = true;
+storm.volume = 0;
+document.body.appendChild(storm);
+storm.play();
 
 const alertTemplate = document.querySelector(".alert");
 function alert(string) {
@@ -39,6 +55,14 @@ function alert(string) {
     setTimeout(function(){
         newAlert.remove();
     }, 5000);
+}
+
+function playSound(string, vol) {
+    let snd = new Audio();
+    snd.src = string;
+    snd.volume = vol;
+    snd.load();
+    snd.play();
 }
 
 function handleMouseMove(event) {
@@ -181,10 +205,18 @@ function toggleEraser() {
 
 undoButton.addEventListener('click', function() {
     if (strokeOrder > 0) {
+        if (document.querySelectorAll(`.stroke${strokeOrder - 1}`) == null) {
+            tallyCombo(-1);
+            return;
+        }
         document.querySelectorAll(`.stroke${strokeOrder - 1}`).forEach(element => {
             element.remove();
         });
         tallyCombo(-1);
+        playSound(undo_swishes[swishCount], .5);
+
+        swishCount++;
+        if (swishCount > undo_swishes.length - 1) { swishCount = 0; }
     } else {
         alert("ALERT -- Nothing to undo!");
     }
@@ -194,7 +226,6 @@ function between(x, min, max) {
 }
 function tallyCombo(modifier) {
     strokeOrder += modifier;
-
     undoButton.innerHTML = strokeOrder;
 
     if (between(strokeOrder, 0, 5)) {
@@ -202,42 +233,62 @@ function tallyCombo(modifier) {
         comboTitle.innerHTML = "<emphasis>D</emphasis>ull...";
 
         comboTitle.style.transform = "rotateX(15deg) rotateY(15deg) rotateZ(15deg)";
+        comboFlames.style.top = "90vh";
+        flameSound.volume = 0;
     }
     else if (between(strokeOrder, 6, 10)) {
         document.body.style.background = "orangered";
         comboTitle.innerHTML = "<emphasis>C</emphasis>aptivating!";
 
         comboTitle.style.transform = "rotateX(45deg) rotateY(-25deg) rotateZ(15deg)";
+        comboFlames.style.top = "70vh";
+        flameSound.volume = .01;
     }
     else if (between(strokeOrder, 11, 15)) {
         document.body.style.background = "red";
         comboTitle.innerHTML = "<emphasis>B</emphasis>rilliant!";
 
         comboTitle.style.transform = "rotateX(35deg) rotateY(35deg) rotateZ(-15deg)";
+        comboFlames.style.top = "65vh";
+        flameSound.volume = .05;
     }
     else if (between(strokeOrder, 16, 20)) {
         document.body.style.background = "blue";
         comboTitle.innerHTML = "<emphasis>A</emphasis>rtistic!";
 
         comboTitle.style.transform = "rotateX(360deg) rotateY(35deg) rotateZ(-15deg)";
+        comboFlames.style.top = "60vh";
+        flameSound.volume = .1;
     }
     else if (between(strokeOrder, 21, 25)) {
         document.body.style.background = "magenta";
         comboTitle.innerHTML = "<emphasis>S</emphasis>himmering!";
 
         comboTitle.style.transform = "rotateX(360deg) rotateY(720deg) rotateZ(-15deg)";
+        comboFlames.style.top = "50vh";
+        flameSound.volume = .2;
     }
     else if (between(strokeOrder, 26, 30)) {
         document.body.style.background = "lime";
         comboTitle.innerHTML = "<emphasis>S</emphasis>ick <emphasis>S</emphasis>kills!!";
 
         comboTitle.style.transform = "rotateX(-35deg) rotateY(15deg) rotateZ(1800deg)";
+        comboFlames.style.top = "40vh";
+        flameSound.volume = .3;
+
+        storm.style.filter = "opacity(0)"
+        storm.volume = 0;
     }
     else if (between(strokeOrder, 31, 35)) {
         document.body.style.background = "black";
         comboTitle.innerHTML = "<emphasis>S</emphasis>uper <emphasis>S</emphasis>tunning <emphasis>S</emphasis>lay!!!";
 
         comboTitle.style.transform = "rotateX(3600deg) rotateY(3600deg) rotateZ(3600deg)";
+        comboFlames.style.top = "10vh";
+        flameSound.volume = .7;
+
+        storm.style.filter = "opacity(1)"
+        storm.volume = 1;
     }
 }
 
@@ -424,6 +475,6 @@ function setBrush(brush) {
     default:
         console.log(`we outta ${brush}.`);
     }
-    setStroke(dotTemplate, false);
+    setStroke(dotTemplate, true);
     SetPreview();
 }

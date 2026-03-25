@@ -48,12 +48,9 @@ textarea, input {
     left: 37.5%;
     display: none;
 
-    padding: 1vw;
+    padding: .5vw 4vw .5vw 4vw;
     color: white;
     text-align: center;
-
-    width: 25vw;
-    height: 8vh;
 
     background: gray;
 
@@ -62,13 +59,16 @@ textarea, input {
     border-bottom: 4px solid darkgray;
     box-sizing: border-box;
 
-    animation: alert 5s ease-out 1;
+    transform-origin: 80% 0%;
+
+    animation: alert 5s linear 1;
 }
 @keyframes alert {
-    0% { top: -8vh; }
-    10% { top: 0; }
-    80% { top: 0; }
-    100% { top: -8vh; }
+    0% { top: -8vh; transform: rotate(0deg); }
+    10% { top: 0; transform: rotate(0deg); }
+    50% { top: 0; transform: rotate(0deg); }
+    80% { top: 0; transform: rotate(-5deg); }
+    100% { top: 120vh; transform: rotate(-75deg); }
 }
 
 /* #region title seq */
@@ -739,6 +739,35 @@ textarea, input {
 .undo .comboTitle emphasis {
     font-size: 8vw;
     color: white;
+}
+.comboFlames {
+    position: absolute;
+    top: 90vh;
+    left: 0;
+    
+    width: 100vw;
+    height: 100vh;
+
+    background: url(./assets/flames.gif);
+    background-size: contain;
+
+    z-index: -5;
+
+    transition: 2s;
+}
+.storm {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    z-index: -6;
+
+    filter: opacity(0);
+
+    transition: 1s;
 }
 /* #endregion */
 
