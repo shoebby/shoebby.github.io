@@ -115,10 +115,10 @@ function setStroke(target, ispreview) {
 
     target.style.setProperty("filter", input_filter);
 
-    target.style.setProperty("animation", `brushAnim${strokeOrder} ${input_animSettings.value}`);
-    paintStyleSheet.insertRule(`@keyframes brushAnim${strokeOrder} {${input_animation.value}}`);
-
     if (!ispreview) {
+        target.style.setProperty("animation", `brushAnim${strokeOrder} ${input_animSettings.value}`);
+        paintStyleSheet.insertRule(`@keyframes brushAnim${strokeOrder} {${input_animation.value}}`, paintStyleSheet.cssRules.length);
+
         target.classList = `brush stroke${strokeOrder}`;
         tallyCombo(1);
     }
@@ -237,8 +237,8 @@ function tallyCombo(modifier) {
         flameSound.volume = 0;
     }
     else if (between(strokeOrder, 6, 10)) {
-        document.body.style.background = "orangered";
-        comboTitle.innerHTML = "<emphasis>C</emphasis>aptivating!";
+        document.body.style.background = "orange";
+        comboTitle.innerHTML = "<emphasis>C</emphasis>athartic!";
 
         comboTitle.style.transform = "rotateX(45deg) rotateY(-25deg) rotateZ(15deg)";
         comboFlames.style.top = "70vh";
@@ -253,7 +253,7 @@ function tallyCombo(modifier) {
         flameSound.volume = .05;
     }
     else if (between(strokeOrder, 16, 20)) {
-        document.body.style.background = "blue";
+        document.body.style.background = "magenta";
         comboTitle.innerHTML = "<emphasis>A</emphasis>rtistic!";
 
         comboTitle.style.transform = "rotateX(360deg) rotateY(35deg) rotateZ(-15deg)";
@@ -261,8 +261,8 @@ function tallyCombo(modifier) {
         flameSound.volume = .1;
     }
     else if (between(strokeOrder, 21, 25)) {
-        document.body.style.background = "magenta";
-        comboTitle.innerHTML = "<emphasis>S</emphasis>himmering!";
+        document.body.style.background = "cyan";
+        comboTitle.innerHTML = "<emphasis>S</emphasis>immering!";
 
         comboTitle.style.transform = "rotateX(360deg) rotateY(720deg) rotateZ(-15deg)";
         comboFlames.style.top = "50vh";

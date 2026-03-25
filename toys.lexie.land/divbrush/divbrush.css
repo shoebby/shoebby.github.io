@@ -33,9 +33,17 @@ textarea, input {
     font-size: 1.3vh;
 }
 
-#canvas {
+.container {
     width: 70vw;
     height: 39vw;
+
+    margin-left: 15vw;
+    margin-top: 5vw;
+}
+
+#canvas {
+    height: 100%;
+    width: 100%;
 
     background-color: whitesmoke;
 
@@ -236,8 +244,8 @@ textarea, input {
 /* #region toolsSpecific */
 
 .preview {
-    right: 1vw;
-    top: 1vh;
+    right: 12vw;
+    top: 3vh;
 
     background: url("assets/ui_preview.png");
     background-size: contain;
@@ -298,8 +306,8 @@ textarea, input {
     height: 5vw;
 }
 .mover {
-    left: 80vw;
-    bottom: 10vh;
+    left: -5vw;
+    bottom: 30vh;
     text-shadow: #FFF 0 0 .1vw, #FFF 0 0 .5vw, #FFF 0 0 1vw;
 }
 .mover .tool-content {
@@ -324,8 +332,8 @@ textarea, input {
     height: 4.5vw;
 }
 .shaver {
-    right: 15vw;
-    bottom: 20vh;
+    right: 1vw;
+    bottom: 28vh;
 }
 .shaver .tool-content {
     width: 11vw;
@@ -350,7 +358,7 @@ textarea, input {
 }
 .fencer {
     right: 15vw;
-    top: 20vh;
+    bottom: 10vh;
 }
 .fencer .tool-content {
     width: 11vw;
@@ -396,8 +404,8 @@ textarea, input {
     filter: invert(.3);
 }
 .filler {
-    left: 92vw;
-    top: 45vh;
+    right: 8vw;
+    top: -15vh;
 }
 .filler .tool-content {
     width: 5vw;
@@ -441,8 +449,8 @@ textarea, input {
     height: 6vw;
 }
 .stretcher {
-    left: 1vw;
-    top: 1vh;
+    right: 4vw;
+    bottom: 20vh;
 }
 .stretcher .tool-content {
     width: 14vw;
@@ -499,8 +507,8 @@ textarea, input {
     z-index: 1;
 }
 .presets {
-    left: 72vw;
-    top: 45vh;
+    left: 35vw;
+    bottom: 0vh;
 
     background: url(assets/ui_drawer.jpg);
     background-size: cover;
@@ -580,8 +588,8 @@ textarea, input {
     border: 4px dashed white;
 }
 .eraser {
-    left: 72vw;
-    top: 10vh;
+    left: 14vw;
+    bottom: 5vh;
 
     background-size: cover;
 
@@ -666,7 +674,7 @@ textarea, input {
 }
 .undo {
     left: 64vw;
-    bottom: -3vh;
+    bottom: -35vh;
 
     background: url("./assets/ui_comboUndo.png");
     background-size: cover;
