@@ -11,6 +11,14 @@ body {
 a {
     color: white;
 }
+h0 {
+    display: block;
+    font-size: 5em;
+    padding-top: .2em;
+    line-height: .65em;
+
+    text-transform: uppercase;
+}
 .sidenote {
     display: none;
     position: absolute;
