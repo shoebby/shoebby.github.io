@@ -39,9 +39,14 @@ a {
     align-items: center;
 
     width: 100%;
+
+    margin: 1em 0 1em 0;
 }
-.image img {
+.image img, video {
     width: 50%;
+}
+.image video {
+    width: 80%;
 }
 .image small {
     font-style: italic;
