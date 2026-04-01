@@ -9,6 +9,7 @@ const slidesContainer = document.querySelector("#slidesContainer");
 
 let activeSlide;
 let activeThumb;
+let slides = [];
 
 function randomIntFromInterval(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -191,9 +192,89 @@ function handleFiles(files) {
         else {
             return;
         }
-        
     }
 }
+// #endregion
+
+// #region exporting
+
+function urlToPromise(url) {
+    return new Promise(function(resolve, reject) {
+        JSZipUtils.getBinaryContent(url, function (err, data) {
+            if(err) {
+                reject(err);
+            } else {
+                resolve(data);
+            }
+        });
+    });
+}
+
+const exportBtn = document.querySelector("button[target='export']");
+exportBtn.addEventListener('click', (event) => {
+        ExportSlides();
+});
+function ExportSlides() {
+    let zip = new JSZip();
+
+    let slides = document.querySelectorAll(".editslide");
+
+    slides.forEach((element, index) => {
+        element.querySelectorAll(".obj").forEach(element => {
+            element.style.position = "absolute";
+            element.style.maxHeight = "100%";
+        });
+        element.querySelectorAll("div.obj").forEach(element => {
+            element.style.top = "0";
+            element.style.left = "0";
+            element.style.width = "100%";
+            element.style.height = "100%";
+        });
+        element.querySelectorAll("iframe.obj").forEach(element => {
+            element.style.width = "100%";
+            element.style.height = "100%";
+            element.style.border = "2px solid black";
+            element.style.boxSizing = "border-box";
+            element.style.pointerEvents = "none";
+        });
+
+        const container = document.createElement("div");
+        container.style.display = "flex";
+        container.style.justifyContent = "center";
+        container.style.alignItems = "center";
+        container.style.width = "100vw";
+        container.style.height = "100vh";
+        container.style.overflow = "hidden";
+        container.style.background = "black";
+
+        const page = document.createElement("div");
+        page.style.background = "white";
+        page.style.width = "70vw";
+        page.style.height = "39vw";
+        page.style.position = "relative";
+        page.style.overflow = "hidden";
+
+        let elementClone = element.cloneNode(true);
+
+        container.appendChild(page);
+        page.appendChild(elementClone);
+
+        let htmlContent = [`<!DOCTYPE html><head><style>html,body{margin: 0; overflow: hidden;}</style></head><body>` + container.outerHTML + `</body>`];
+        let bl = new Blob(htmlContent, {type: "text/html"});
+
+        if (index == 0) {
+            zip.file(`index.html`, bl);
+        } else {
+            zip.file(`page${index + 1}.html`, bl);
+        }
+    });
+
+    zip.generateAsync({type:"blob"})
+    .then(function(content) {
+        saveAs(content, "flippad-book.zip");
+    });
+}
+
 // #endregion
 
 // #region toolbar tools
