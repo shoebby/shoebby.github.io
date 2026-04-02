@@ -43,7 +43,7 @@ function changeStylesheetRule(stylesheet, selector, property, value) {
     stylesheet.insertRule(selector + " { " + property + ": " + value + "; }", 0);
 }
 
-// #region desktop icons
+// #region desktop adder
 const shortcutTemplate = document.querySelector(".desktopTemplate");
 
 function addDesktopIcon(name, toyPath, iconPath, xpos, ypos) {
@@ -62,7 +62,7 @@ function addDesktopIcon(name, toyPath, iconPath, xpos, ypos) {
 
     document.body.appendChild(newDesktop);
 }
-addDesktopIcon("bignus", "./critterCrafter/", "../images/placeholder.jpg", "25vw", "25vw");
+//addDesktopIcon("bignus", "./critterCrafter/", "../images/placeholder.jpg", "25vw", "25vw");
 
 // #endregion
 

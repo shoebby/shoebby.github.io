@@ -130,6 +130,21 @@ red {
     top: 22.5vw;
     background-image: url(images/icon_flippa.png);
 }
+.cookbook {
+    right: 2.5vw;
+    bottom: 2.5vw;
+    background-image: url(images/placeholder.jpg);
+}
+.noiseboxx {
+    left: 2.5vw;
+    top: 12.5vw;
+    background-image: url(images/placeholder.jpg);
+}
+.puppetshop {
+    left: 2.5vw;
+    top: 17.5vw;
+    background-image: url(images/placeholder.jpg);
+}
 /* #endregion */
 
 /* #region window */
