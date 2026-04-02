@@ -145,6 +145,11 @@ red {
     top: 17.5vw;
     background-image: url(images/placeholder.jpg);
 }
+.typist {
+    left: 2.5vw;
+    top: 27.5vw;
+    background-image: url(images/placeholder.jpg);
+}
 /* #endregion */
 
 /* #region window */

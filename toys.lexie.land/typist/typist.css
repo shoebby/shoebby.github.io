@@ -1,0 +1,107 @@
+html, body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    flex-direction: row;
+}
+
+#text {
+    font-size: 1.8em;
+
+    width: 83%;
+    height: 96vh;
+
+    margin: 2vw;
+}
+
+#textStyles {
+    width: 15vw;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    row-gap: 1vw;
+
+    padding: 1vw;
+
+    background: silver;
+}
+#textStyles button {
+    width: 4vw;
+    height: 3vw;
+
+    border: 6px groove silver;
+    box-sizing: border-box;
+    border-radius: 0;
+
+    background: white;
+}
+#textStyles button:hover {
+    cursor: pointer;
+
+    border: 6px groove yellow;
+}
+#textStyles .container {
+    width: 8vw;
+    height: 3vw;
+
+    border: 6px groove silver;
+    box-sizing: border-box;
+    border-radius: 0;
+
+    background: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(-4px);
+    }
+    50% {
+        transform: translateX(4px);
+    }
+}
+@keyframes drip {
+    0% {
+        text-shadow: 0 0 0 black;
+    }
+    19% {
+        text-shadow: 0 10px 5px transparent;
+    }
+    20% {
+        text-shadow: 0 0 0 black;
+    }
+    49% {
+        text-shadow: 0 10px 5px transparent;
+    }
+    50% {
+        text-shadow: 0 0 0 black;
+    }
+    100% {
+        text-shadow: 0 10px 5px transparent;
+    }
+}
+@keyframes wave {
+    0%, 100% {
+        text-shadow: 0 0 2px blue;
+    }
+    25%, 75% {
+        text-shadow: 0 0 5px blue;
+    }
+    50% {
+        text-shadow: 0 0 10px blue;
+    }
+}

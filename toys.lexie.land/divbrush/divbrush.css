@@ -36,9 +36,6 @@ textarea, input {
 .container {
     width: 70vw;
     height: 39vw;
-
-    margin-left: 15vw;
-    margin-top: 5vw;
 }
 
 #canvas {
