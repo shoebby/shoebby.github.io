@@ -39,14 +39,34 @@ function changeStylesheetRule(stylesheet, selector, property, value) {
             return;
         }
     }
-  
     // Add it if it does not
     stylesheet.insertRule(selector + " { " + property + ": " + value + "; }", 0);
 }
 
+// #region desktop icons
+const shortcutTemplate = document.querySelector(".desktopTemplate");
 
+function addDesktopIcon(name, toyPath, iconPath, xpos, ypos) {
+    let newDesktop = shortcutTemplate.cloneNode(true);
+    newDesktop.setAttribute("value", name);
+    newDesktop.setAttribute("link", toyPath);
+    newDesktop.setAttribute("icon", iconPath);
+    newDesktop.style.display = "block";
 
-//settings
+    let newIcon = newDesktop.querySelector(".static");
+    newIcon.style.background = `url(${iconPath})`;
+    newIcon.style.left = xpos;
+    newIcon.style.top = ypos;
+
+    newDesktop.querySelector(".folderName").innerHTML = name;
+
+    document.body.appendChild(newDesktop);
+}
+addDesktopIcon("bignus", "./critterCrafter/", "../images/placeholder.jpg", "25vw", "25vw");
+
+// #endregion
+
+// #region settings
 const settingsWindow = document.querySelector("#settings");
 document.querySelector("a[target='openSettings']").addEventListener('click', (event) => {openSettings()});
 settingsWindow.querySelector("button[target='closeSettings']").addEventListener('click', (event) => {closeSettings()});
@@ -85,9 +105,9 @@ settingsWindow.querySelector("#set_frame").addEventListener('input', function() 
     changeStylesheetRule(mainStyle, "#settings", "border-bottom-color", this.value);
     changeStylesheetRule(mainStyle, "#taskbar", "background", this.value);
 });
+// #endregion
 
-
-//guymode
+// #region guymode
 document.querySelector("a[target='guyMode']").addEventListener('click', (event) => {guyMode()});
 
 function guyMode() {
@@ -109,8 +129,9 @@ function guyMode() {
 
     playAudio(guyLines[getRandomInt(guyLines.length)]);
 }
+// #endregion
 
-//spinny
+// #region spinny
 document.querySelector("a[target='spinny']").addEventListener('click', (event) => {spinny()});
 
 function spinny() {
@@ -123,17 +144,17 @@ function spinny() {
 
     playAudio("./sounds/webtoys/poppyHonk.mp3");
 }
+// #endregion
 
-//bin
-
+// #region bin
 document.querySelector("a[target='bin']").addEventListener('click', (event) => {bin()});
 
 function bin() {
     openWindow("Recycling Bin", "./bin/", "./images/placeholder.jpg");
 }
+// #endregion
 
-
-// poppy
+// #region poppy
 const poppy = document.querySelector("#poppy");
 const poppyBox = poppy.querySelector("div");
 const poppyDialog = poppy.querySelector("#poppyTxt");
@@ -232,8 +253,9 @@ function progressPoppy() {
             closePoppy();
     }
 }
+// #endregion
 
-// audio functionality
+// #region audio functionality
 document.querySelectorAll("button, summary, input, a").forEach(element => {
     element.addEventListener('click', (event) => {
         playAudio('./sounds/webtoys/click.mp3')
@@ -245,39 +267,15 @@ function playAudio(path) {
     const audio = new Audio(path);
     audio.play();
 }
+// #endregion
 
-// maximizing and closing windows
-document.querySelectorAll("button[target='maximize']").forEach(element => {
-    element.addEventListener('click', (event) => {
-        ToggleWindowSize(element);
-    })
-});
-function ToggleWindowSize(button) {
-    const target = button.parentNode.parentNode.parentNode;
-
-    if (button.getAttribute("aria-label") == 'Maximize') {
-        target.setAttribute('style', 'width: 100vw; height: 100vh; position: fixed; top: 0; left: 0;');
-        button.setAttribute('aria-label','Restore');
-    }
-    else if (button.getAttribute("aria-label") == 'Restore') {
-        const daddy = target.parentNode.id;
-        if (daddy == 'cat_fractal' || daddy == 'cat_popup' || daddy == 'cat_art'){
-            target.setAttribute('style', 'width: 36vw;');
-        } else if (daddy == 'cat_media') {
-            target.setAttribute('style', 'width: 25vw;');
-        } else if (daddy == 'cat_recurse') {
-            target.setAttribute('style', 'width: 90vw;');
-        }
-        button.setAttribute('aria-label','Maximize');
-    }
-}
+// #region window functionality
 document.querySelectorAll("button[target='close']").forEach(element => {
     element.addEventListener('click', (event) => {
         element.parentNode.parentNode.parentNode.parentNode.open = false;
     })
 });
 
-// creating and closing instantiated windows
 document.querySelectorAll("input[target='openWindow'], a[target='openWindow']").forEach(element => {
     element.addEventListener('click', (event) => {
         const page_title = element.getAttribute("value");
@@ -308,3 +306,4 @@ function openWindow(title, url, icon) {
 		distance: 0, /* I believe this has to do with mouse distance? */
     });
 }
+// #endregion
