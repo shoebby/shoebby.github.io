@@ -68,7 +68,7 @@ red {
 .bin {
     left: 2.5vw;
     top: 2.5vw;
-    background-image: url(images/placeholder.jpg);
+    background-image: url(images/icon_bin.png);
 }
 .myComputer {
     left: 2.5vw;
@@ -93,7 +93,7 @@ red {
 .about {
     left: 2.5vw;
     bottom: 12.5vw;
-    background-image: url(images/placeholder.jpg);
+    background-image: url(images/icon_about.png);
 }
 .popupcollage {
     left: 7.5vw;
@@ -138,17 +138,17 @@ red {
 .noiseboxx {
     left: 2.5vw;
     top: 12.5vw;
-    background-image: url(images/placeholder.jpg);
+    background-image: url(images/icon_noiseboxx.png);
 }
 .puppetshop {
     left: 2.5vw;
     top: 17.5vw;
-    background-image: url(images/placeholder.jpg);
+    background-image: url(images/icon_puppetshop.png);
 }
 .typist {
     left: 2.5vw;
     top: 27.5vw;
-    background-image: url(images/placeholder.jpg);
+    background-image: url(images/icon_typist.png);
 }
 /* #endregion */
 

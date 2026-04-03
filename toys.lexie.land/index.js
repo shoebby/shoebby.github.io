@@ -150,7 +150,7 @@ function spinny() {
 document.querySelector("a[target='bin']").addEventListener('click', (event) => {bin()});
 
 function bin() {
-    openWindow("Recycling Bin", "./bin/", "./images/placeholder.jpg");
+    openWindow("Recycling Bin", "./bin/", "./images/icon_bin.png");
 }
 // #endregion
 

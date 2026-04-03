@@ -16,9 +16,11 @@ html, body {
     font-size: 1.8em;
 
     width: 83%;
-    height: 96vh;
+    height: 100vh;
 
-    margin: 2vw;
+    background: url("assets/Maize_Bkgrd.jpg");
+
+    overflow: hidden;
 }
 
 #textStyles {

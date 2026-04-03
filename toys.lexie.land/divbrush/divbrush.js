@@ -1,4 +1,4 @@
-import stringifyStylesheet from 'https://unpkg.com/stringify-css-stylesheet/index.js'
+import stringifyStylesheet from '../libraries/stringify-css-rule.js'
 
 $( function() {
     $( ".tool" ).draggable({
