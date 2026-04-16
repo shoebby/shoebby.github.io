@@ -71,23 +71,6 @@ $(function () { /* Simplified this in order to future-proof the code */
 		},
 	});
 
-	/* Button for showing and hiding the dollmaker instructions */
-	$("#instrBtn").on("click", function () {
-		$("#instructions").slideToggle();
-	}
-	);
-
-	$("#thanksBtn").on("click", function () {
-		$("#terms").slideToggle();
-	});
-	/*NOTE: It would be better to use an implementation of this that uses nth child, and put the order the same in both cases.*/
-
-
-	$("#termBtn").on("click", function () {
-		$("#terms").slideToggle();
-	});
-	/*NOTE: It would be better to use an implementation of this that uses nth child, and put the order the same in both cases.*/
-
 	/* Returns basename of file string */
 	function basename(str, sep) {
 		return str.substr(str.lastIndexOf(sep) + 1);

@@ -1,3 +1,5 @@
+import stringifyStylesheet from '../libraries/stringify-css-rule.js'
+
 const writingText = document.querySelector("#text");
 let storedText = writingText.innerHTML;
 let replaceAll = false;
@@ -18,6 +20,15 @@ const buttonSounds = new Howl({
         tilt:   [4150,  825]
     }
 });
+
+const animStyle = document.createElement("style");
+document.head.appendChild(animStyle);
+const animsSheet = animStyle.sheet;
+animsSheet.insertRule(`@keyframes shake {0%, 100% {transform: translateX(-4px);}50% {transform: translateX(4px);}}`, animsSheet.cssRules.length);
+animsSheet.insertRule(`@keyframes shake {0%, 100% {transform: translateX(-4px);}50% {transform: translateX(4px);}}`, animsSheet.cssRules.length);
+animsSheet.insertRule(`@keyframes drip {0% {text-shadow: 0 0 0 black;}19% {text-shadow: 0 10px 5px transparent;}20% {text-shadow: 0 0 0 black;}49% {text-shadow: 0 10px 5px transparent;}50% {text-shadow: 0 0 0 black;}100% {text-shadow: 0 10px 5px transparent;}}`, animsSheet.cssRules.length);
+animsSheet.insertRule(`@keyframes wave {0%, 100% {text-shadow: 0 0 2px blue;}25%, 75% {text-shadow: 0 0 5px blue;}50% {text-shadow: 0 0 10px blue;}}`, animsSheet.cssRules.length);
+animsSheet.insertRule(`p { font-size: 1.8em; overflow: visible; }`, animsSheet.cssRules.length);
 
 let replaceModeToggle = document.querySelector("#replaceMode")
 replaceModeToggle.addEventListener('change', (event) => {replaceAll = !replaceAll; console.log(`replaceAll is ${replaceAll}`)})
@@ -76,16 +87,18 @@ writingText.addEventListener('input', (event) => {
     typingSound.play();
 });
 
-// switch (currentText) {
-//   case "1":
-//     console.log("1");
-//     break;
-//   case "2":
-//     console.log("3");
-//     break;
-//   case "3":
-//     console.log("3");
-//     break;
-//   default:
-//     console.log(`nuthin'`);
-// }
+document.querySelector("button[target='saveTypings']").addEventListener('click', function() {
+    capture();
+});
+
+function capture() {
+    let htmlContent = [`<head><style>${stringifyStylesheet(animsSheet)}</style></head><body><p>${writingText.innerHTML}</p></body>`];
+    let bl = new Blob(htmlContent, {type: "text/html"});
+    let a = document.createElement("a");
+    a.href = URL.createObjectURL(bl);
+    a.download = "typist-incantation.html";
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.innerHTML = "beep boop downloading";
+    a.click();
+}

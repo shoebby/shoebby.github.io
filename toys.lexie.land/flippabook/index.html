@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="flippabook.css">
-    <script src="flippabook.js" type="module"></script>
     <script src="../libraries/jquery-3.7.1.js"></script>
     <script src="../libraries/jquery-ui.js"></script>
     <script src="../libraries/FileSaver.js"></script>
     <script src="../libraries/jszip.js"></script>
+    <script src="../libraries/howler.min.js"></script>
+    <script src="flippabook.js" type="module"></script>
 </head>
 <body>
     <div class="main-grid">
@@ -31,7 +32,10 @@
         <div id="editor">
             <div id="currentSlide">
                 <div class="editslide slide1">
-                    1
+                    <div class="infoline">Flippabook is for making and exporting web-stories!</div>
+                    <div class="infoline">Let's get started by dragging and dropping local files into the slides!</div>
+                    <div class="infoline">Image, audio, video, and HTML files are all supported, so go wild!</div>
+                    <div class="infoline">Press the gun tool to shoot this text away and get started!</div>
                 </div>
             </div>
         </div>

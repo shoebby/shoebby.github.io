@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link id="main-css" rel="stylesheet" type="text/css" href="styles/mainstylesheet.css" charset="utf-8">
+	<link id="colors-css" rel="stylesheet" type="text/css" href="styles/colors.css" charset="utf-8">
+
+	<script type="text/javascript" src="../libraries/jquery-3.7.1.js"></script>
+	<script type="text/javascript" src="../libraries/jquery-ui.js"></script>
+	<script type="text/javascript" src="../libraries/jquery-ui-touch-punch.js"></script>
+	<script type="text/javascript" src="../libraries/FileSaver.js"></script>
+	<script type="text/javascript" src="../libraries/html2canvas.js"></script>
+	<script type="text/javascript" src="scripts/drag.js"></script>
+	<script src="scripts/dropping.js" type="module"></script>
+</head>
+<body>
+	<!-- <h1 id="page-header">Critter Crafter</h1>
+	<h2 id="page-subheader">Craft your very own critter and dress it up!</a></h2> -->
+
+	<div id="dollmaker_container">
+		<div class="dollmaker_leftcol">
+			<div id="bodyArea" class="ui-corner-all" title="Make your doll here.">
+				<img id="Doll-background" class="clickable">
+				<div id="avi-area"></div>
+			</div>
+
+			<div id="swatchesArea" class="ui-corner-all">
+				<button id="downloadDoll" alt="Click here to download your finished doll." title="Click here to download your finished doll.">Download Critter</button>
+				<button id="reset" alt="Click here to reset the dollmaker to its default settings."
+					title="Click here to reset the dollmaker to its default settings.">Reset</button>
+			</div>
+		</div>
+		
+		<div class="dollmaker_rightcol">
+			<div id="piecesArea" alt="You can drag pieces from this area." title="You can drag pieces from this area.">
+				<ul id="tabsbar">
+					<li><a href="#tabs-1">Heads</a></li>
+					<li><a href="#tabs-2">Features</a></li>
+					<li><a href="#tabs-3">Haircuts</a></li>
+					<li><a href="#tabs-4">Torsos</a></li>
+					<li><a href="#tabs-5">Arms</a></li>
+					<li><a href="#tabs-6">Legs</a></li>
+					<li><a href="#tabs-7">Your Parts</a></li>
+				</ul>
+
+				<div id="tabs-1">
+								<img src="images/1heads/head-1.webp">
+								<img src="images/1heads/head-2.webp">
+								<img src="images/1heads/head-3.webp">
+				</div>
+				<div id="tabs-2">
+								<img src="images/2features/mouth-1.webp">
+								<img src="images/2features/mouth-2.webp">
+								<img src="images/2features/eye-1.webp">
+								<img src="images/2features/eye-2.webp">
+								<img src="images/2features/eye-3.webp">
+				</div>
+				<div id="tabs-3">
+								<img src="images/3haircuts/">
+				</div>
+				<div id="tabs-4">
+								<img src="images/4torsos/torso-1.webp">
+								<img src="images/4torsos/torso-2.webp">
+				</div>
+				<div id="tabs-5">
+								<img src="images/5arms/arm-1-l.webp">
+								<img src="images/5arms/arm-1-r.webp">
+								<img src="images/5arms/arm-2-l.webp">
+								<img src="images/5arms/arm-2-r.webp">
+				</div>
+				<div id="tabs-6">
+								<img src="images/6legs/legs-1.webp">
+				</div>
+				<div id="tabs-7">
+					<span style="position: absolute; color: #0005; font-weight: bold;">· · ────── ꒰ঌ·Drop your files here!·໒꒱ ────── · ·</span>
+					<span style="position: absolute; color: #0005; font-weight: bold; padding-top: 2.5em;">(local files only!)</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer style="position: absolute; bottom: 2vh; width: 99%; text-align: center;">
+		Powered by <a href="https://github.com/malakhims/Dollmaker-Template/tree/v1.0.0">Malakhim's Dollmaker Template</a>
+	</footer>
+</body>
+</html>

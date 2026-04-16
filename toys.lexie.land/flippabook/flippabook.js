@@ -68,7 +68,7 @@ function AddSlide() {
     let newSlide = editableSlideTemplate.cloneNode(true);
     newSlide.classList.remove("slide1");
     newSlide.classList.add(`slide${slideAmount.toString()}`);
-    newSlide.innerHTML = `${slideAmount}`;
+    newSlide.innerHTML = ``;
     
     currentSlideElement.appendChild(newSlide);
 
@@ -178,10 +178,10 @@ function handleFiles(files) {
             ifr.scrolling = "no";
             divContainer.appendChild(ifr);
 
-            // $( div ).draggable({
-            //     stack: ".ui-draggable", /* Stack the currently dragged item on top of all other items. */
-            //     distance: 0, /* I believe this has to do with mouse distance? */
-            // });
+            $( divContainer ).draggable({
+                stack: ".ui-draggable", /* Stack the currently dragged item on top of all other items. */
+                distance: 0, /* I believe this has to do with mouse distance? */
+            });
 
             const reader = new FileReader();
             reader.onload = (e) => {
@@ -225,15 +225,13 @@ function ExportSlides() {
             element.style.maxHeight = "100%";
         });
         element.querySelectorAll("div.obj").forEach(element => {
-            element.style.top = "0";
-            element.style.left = "0";
             element.style.width = "100%";
             element.style.height = "100%";
         });
         element.querySelectorAll("iframe.obj").forEach(element => {
             element.style.width = "100%";
             element.style.height = "100%";
-            element.style.border = "2px solid black";
+            element.style.border = "none";
             element.style.boxSizing = "border-box";
             element.style.pointerEvents = "none";
         });
@@ -283,11 +281,21 @@ function GetActiveElements() {
     return activeSlide.querySelectorAll("video, div, img");
 }
 
-const clip_skew = new Audio("assets/skew.mp3");
-const clip_shuffle = new Audio("assets/shuffle.mp3");
-const clip_gun_unholster = new Audio("assets/gun_unholster.mp3");
-const clip_gun_holster = new Audio("assets/gun_holster.mp3");
-const clip_gun_fire = new Audio("assets/gun_fire.mp3");
+const clip_skew = new Howl({
+    src: ['./assets/skew.mp3']
+});
+const clip_shuffle = new Howl({
+    src: ['./assets/shuffle.mp3']
+});
+const clip_gun_unholster = new Howl({
+    src: ['./assets/gun_unholster.mp3']
+});
+const clip_gun_holster = new Howl({
+    src: ['./assets/gun_holster.mp3']
+});
+const clip_gun_fire = new Howl({
+    src: ['./assets/gun_fire.mp3']
+});
 
 const skewer = document.querySelector("button[target='skewer']");
 skewer.addEventListener('click', (event) => {
