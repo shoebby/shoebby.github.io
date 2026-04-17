@@ -1,5 +1,3 @@
-// #region drag-and-dropping files
-
 let dropbox;
 
 dropbox = document.querySelector("#tabs-7");
@@ -76,4 +74,3 @@ function handleFiles(files) {
         }
     }
 }
-// #endregion
