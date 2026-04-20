@@ -20,6 +20,9 @@ const dotTemplate = document.createElement('div');
 
 const canvasEl = document.querySelector("#canvas");
 
+let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+
 canvasEl.onmousemove = handleMouseMove;
 canvasEl.onmousedown = (event) => { isDrawing = true; if (!erasing) { setStroke(dotTemplate, false) }; handleMouseMove(event);}
 canvasEl.onmouseup = (event) => { isDrawing = false; };
@@ -89,8 +92,7 @@ function handleMouseMove(event) {
             strokingCount++;
             draw(event);
         }
-    }
-    else {
+    } else {
         strokingCount = 0;
         return;
     }
@@ -110,17 +112,23 @@ function setStroke(target, ispreview) {
     target.style.setProperty("border-bottom", input_borderB.value);
     target.style.setProperty("border-radius", input_borderRadius.value);
 
-    target.style.setProperty("width", input_width.value + "px");
-    target.style.setProperty("height", input_height.value + "px");
-
     target.style.setProperty("filter", input_filter);
 
     if (!ispreview) {
+        let newdot_width = (input_width.value / vw) * 100;
+        let newdot_height = (input_height.value / vh) * 100;
+
+        target.style.setProperty("width", newdot_width + "%");
+        target.style.setProperty("height", newdot_height + "%");
+
         target.style.setProperty("animation", `brushAnim${strokeOrder} ${input_animSettings.value}`);
         paintStyleSheet.insertRule(`@keyframes brushAnim${strokeOrder} {${input_animation.value}}`, paintStyleSheet.cssRules.length);
 
         target.classList = `brush stroke${strokeOrder}`;
         tallyCombo(1);
+    } else {
+        target.style.setProperty("width", input_width.value + "px");
+        target.style.setProperty("height", input_height.value + "px");
     }
 }
 
@@ -129,8 +137,15 @@ function draw(event) {
 
     newDot.style.animationDelay = (0.02 * strokingCount) + "s";
 
-    newDot.style.left = event.pageX - (input_width.value/2) + "px";
-    newDot.style.top = event.pageY - (input_height.value/2) + "px";
+    // console.log(`vw: ${vw} vh: ${vh} (in ???)`)
+    // console.log(`X: ${event.pageX} Y: ${event.pageY} (in pixels)`);
+    // console.log(`X: ${(event.pageX / vw) * 100} Y: ${(event.pageY / vh) * 100} (in %)`);
+
+    let dotpos_px_x = event.pageX - (input_width.value/2);
+    let dotpos_px_y = event.pageY - (input_height.value/2);
+
+    newDot.style.left = ((dotpos_px_x / vw) * 100) + "%";
+    newDot.style.top = ((dotpos_px_y / vh) * 100) + "%";
 
     canvasEl.appendChild(newDot);
 }
