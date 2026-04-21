@@ -3,6 +3,10 @@ html, body {
     overflow: hidden;
 }
 
+p, a, span, div {
+    user-select: none;
+}
+
 .main-grid {
     display: grid;
     grid-template-columns: 18vw 82vw;

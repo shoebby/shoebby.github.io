@@ -4,68 +4,220 @@ html, body {
     margin: 0;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
     overflow: hidden;
 
-    flex-direction: row;
+    flex-direction: column;
+}
+
+#background {
+    position: absolute;
+    z-index: -999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-color: black;
+}
+.point {
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 999px;
+    transform-origin: 50%;
+}
+.spins {
+    animation: pointAnim 32s linear infinite;
+}
+@keyframes pointAnim {
+    0% { rotate: 0deg }
+    100%{ rotate: 360deg }
+}
+
+#text-container {
+    margin: auto;
 }
 
 #text {
     font-size: 1.8em;
-
+    width: 35vw;
+    height: 25vh;
+    
     margin: 0;
-    padding: 1em;
+    padding: 2em;
 
-    background: url("assets/Maize_Bkgrd.jpg");
+    background: url("assets/scrap-paper.webp");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+
+    filter: saturate(10) drop-shadow(0 0 30px white);
 
     overflow: hidden;
 }
+@keyframes incant {
+    0% {
+        background: url("assets/scrap-paper.webp");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+
+        width: 15vw;
+    }
+    1% {
+        background: url("assets/ball-paper.webp");
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-position: center;
+
+        width: 35vw;
+
+        transform: rotate(0deg);
+    }
+    2% {
+        transform: rotate(-15deg);
+    }
+    4% {
+        transform: rotate(15deg);
+    }
+    5% {
+        transform: rotate(0deg);
+    }
+    15% {
+        transform: translateY(0);
+    }
+    30% {
+        background: url("assets/ball-paper.webp");
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-position: center;
+        
+        width: 35vw;
+
+        transform: translateY(100vh);
+    }
+    50% {
+        width: 100vw;
+    }
+    70% {
+        background: url("../divbrush/assets/flames.gif");
+        background-repeat: repeat-x;
+        background-size: auto 100%;
+        background-position: center;
+
+        transform: translateY(40vh);
+    }
+    75% {
+        transform: translateY(45vh);
+    }
+    80% {
+        transform: translateY(40vh);
+    }
+    85% {
+        transform: translateY(45vh);
+    }
+    90% {
+        background: url("../divbrush/assets/flames.gif");
+        background-repeat: repeat-x;
+        background-size: auto 100%;
+        background-position: center;
+
+        transform: translateY(100vh);
+        
+        width: 100vw;
+    }
+    95% {
+        background: url("assets/scrap-paper.webp");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+
+        width: 35vw;
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
 
 #textStyles {
-    width: 15vw;
-    height: 100%;
+    width: 100vw;
+
+    z-index: 999;
 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: center;
+    justify-content: space-around;
     row-gap: 1vw;
 
     padding: 1vw;
-
-    background: silver;
 }
 #textStyles button {
-    width: 4vw;
     height: 3vw;
+    padding: 0 1vw 0 1vw;
 
-    border: 6px groove silver;
-    box-sizing: border-box;
-    border-radius: 0;
+    margin: auto;
 
-    background: white;
+    box-sizing: content-box;
+    border-radius: 99%;
+
+    background: url(assets/stone.jpg);
+    background-size: auto 100%;
+    filter: brightness(2);
+
+    transition: .1s;
 }
 #textStyles button:hover {
     cursor: pointer;
 
-    border: 6px groove yellow;
+    box-shadow: lightgray 0 0 15px 2px;
+    filter: brightness(2) invert(2);
 }
+#textStyles button.save {
+    width: 4vw;
+    height: 4vw;
+    padding: 0;
+
+    border: none;
+
+    background: url(../divbrush/assets/ui_saver.webp);
+    background-size: 100% 100%;
+    filter: brightness(2);
+}
+#textStyles button.save:hover {
+    box-shadow: none;
+    filter: brightness(2) drop-shadow(0 0 20px lightgray);
+}
+
 #textStyles .container {
     width: 8vw;
     height: 3vw;
 
-    border: 6px groove silver;
-    box-sizing: border-box;
-    border-radius: 0;
+    box-sizing: content-box;
+    border-radius: 99%;
 
-    background: white;
+    background: url(assets/stone.jpg);
+    background-size: auto 100%;
+    filter: brightness(2);
 
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
+}
+#textStyles button:nth-child(odd) {
+    animation: wiggle 4s -1s linear infinite;
+}
+#textStyles button:nth-child(even) {
+    animation: wiggle 4s linear infinite;
+}
+@keyframes wiggle {
+    0%, 100% { rotate: -15deg; }
+    50% { rotate: 15deg; }    
 }
 
 @keyframes shake {
