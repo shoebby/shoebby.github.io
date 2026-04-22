@@ -42,7 +42,9 @@ animsSheet.insertRule(`@keyframes shake {0%, 100% {transform: translateX(-4px);}
 animsSheet.insertRule(`@keyframes shake {0%, 100% {transform: translateX(-4px);}50% {transform: translateX(4px);}}`, animsSheet.cssRules.length);
 animsSheet.insertRule(`@keyframes drip {0% {text-shadow: 0 0 0 black;}19% {text-shadow: 0 10px 5px transparent;}20% {text-shadow: 0 0 0 black;}49% {text-shadow: 0 10px 5px transparent;}50% {text-shadow: 0 0 0 black;}100% {text-shadow: 0 10px 5px transparent;}}`, animsSheet.cssRules.length);
 animsSheet.insertRule(`@keyframes wave {0%, 100% {text-shadow: 0 0 2px blue;}25%, 75% {text-shadow: 0 0 5px blue;}50% {text-shadow: 0 0 10px blue;}}`, animsSheet.cssRules.length);
-animsSheet.insertRule(`p { font-size: 1.8em; overflow: visible; }`, animsSheet.cssRules.length);
+animsSheet.insertRule(`body { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; margin: 0; }`, animsSheet.cssRules.length);
+animsSheet.insertRule(`p { font-size: 3vh; overflow: visible; margin: 0; }`, animsSheet.cssRules.length);
+animsSheet.disabled = true;
 
 let replaceModeToggle = document.querySelector("#replaceMode")
 replaceModeToggle.addEventListener('change', (event) => {replaceAll = !replaceAll; console.log(`replaceAll is ${replaceAll}`)})

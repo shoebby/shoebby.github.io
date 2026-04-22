@@ -106,6 +106,13 @@ function drop(e) {
     handleFiles(files);
 }
 
+function makeDraggable(file) {
+    $( file ).draggable({
+        stack: ".ui-draggable",
+        distance: 0,
+    });
+}
+
 function handleFiles(files) {
     let activeSlide = document.querySelector(".slide-focused");
 
@@ -119,10 +126,7 @@ function handleFiles(files) {
             img.file = file;
             activeSlide.appendChild(img);
 
-            $( img ).draggable({
-                stack: ".ui-draggable", /* Stack the currently dragged item on top of all other items. */
-                distance: 0, /* I believe this has to do with mouse distance? */
-            });
+            makeDraggable(img);
 
             const reader = new FileReader();
             reader.onload = (e) => {
@@ -138,10 +142,7 @@ function handleFiles(files) {
             vid.file = file;
             activeSlide.appendChild(vid);
 
-            $( vid ).draggable({
-                stack: ".ui-draggable", /* Stack the currently dragged item on top of all other items. */
-                distance: 0, /* I believe this has to do with mouse distance? */
-            });
+            makeDraggable(vid);
 
             const reader = new FileReader();
             reader.onload = (e) => {
@@ -157,10 +158,7 @@ function handleFiles(files) {
             aud.file = file;
             activeSlide.appendChild(aud);
 
-            $( aud ).draggable({
-                stack: ".ui-draggable", /* Stack the currently dragged item on top of all other items. */
-                distance: 0, /* I believe this has to do with mouse distance? */
-            });
+            makeDraggable(aud);
 
             const reader = new FileReader();
             reader.onload = (e) => {
@@ -178,10 +176,7 @@ function handleFiles(files) {
             ifr.scrolling = "no";
             divContainer.appendChild(ifr);
 
-            $( divContainer ).draggable({
-                stack: ".ui-draggable", /* Stack the currently dragged item on top of all other items. */
-                distance: 0, /* I believe this has to do with mouse distance? */
-            });
+            makeDraggable(divContainer);
 
             const reader = new FileReader();
             reader.onload = (e) => {
@@ -219,16 +214,19 @@ function ExportSlides() {
 
     let slides = document.querySelectorAll(".editslide");
 
-    slides.forEach((element, index) => {
-        element.querySelectorAll(".obj").forEach(element => {
+    slides.forEach((slide, index) => {
+        slide.querySelectorAll(".obj").forEach(element => {
+            element.style.width = window.getComputedStyle(element).getPropertyValue("width");
+            element.style.height = window.getComputedStyle(element).getPropertyValue("height");
+
             element.style.position = "absolute";
             element.style.maxHeight = "100%";
         });
-        element.querySelectorAll("div.obj").forEach(element => {
+        slide.querySelectorAll("div.obj").forEach(element => {
             element.style.width = "100%";
             element.style.height = "100%";
         });
-        element.querySelectorAll("iframe.obj").forEach(element => {
+        slide.querySelectorAll("iframe.obj").forEach(element => {
             element.style.width = "100%";
             element.style.height = "100%";
             element.style.border = "none";
@@ -258,10 +256,35 @@ function ExportSlides() {
         page.style.border = "2vw groove #FF0043";
         page.style.boxSizing = "content-box";
 
-        let elementClone = element.cloneNode(true);
+        let slideClone = slide.cloneNode(true);
+
+        let slideWidth = parseInt(window.getComputedStyle(document.querySelector('#currentSlide')).getPropertyValue("width"));
+        let slideHeight = parseInt(window.getComputedStyle(document.querySelector('#currentSlide')).getPropertyValue("height"));
+        let elementLeft
+        let elementTop
+
+        let elementWidth
+        let elementHeight
+
+        slideClone.querySelectorAll(".obj").forEach(element => {
+            element.classList.remove("ui-draggable", "ui-draggable-handle");
+
+            elementLeft = parseInt(element.style.left);
+            elementTop = parseInt(element.style.top);
+
+            element.style.left = `${(elementLeft / slideWidth) * 100}%`;
+            element.style.top = `${(elementTop / slideHeight) * 100}%`;
+        });
+        slideClone.querySelectorAll("img.obj, video.obj").forEach(element => {
+            elementWidth = parseInt(element.style.width);
+            elementHeight = parseInt(element.style.height);
+
+            element.style.width = `${(elementWidth / slideWidth) * 100}%`;
+            element.style.height = `${(elementHeight / slideHeight) * 100}%`;
+        });
 
         container.appendChild(page);
-        page.appendChild(elementClone);
+        page.appendChild(slideClone);
 
         if ((index + 1) < slides.length) {
             let nextBtn = document.createElement("a");
@@ -270,6 +293,7 @@ function ExportSlides() {
             
             nextBtn.style.position = "absolute";
             nextBtn.style.bottom = "0";
+            nextBtn.style.zIndex = "999";
             nextBtn.style.background = "#FF0043";
             nextBtn.style.border = "1vw groove #FF0043";
             nextBtn.style.fontFamily = "Arial";
