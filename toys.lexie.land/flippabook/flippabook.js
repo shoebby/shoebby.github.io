@@ -379,35 +379,44 @@ function Shuffle() {
     clip_shuffle.play();
 }
 
+const inputTools = {
+    gun: 1,
+    pump: 2,
+    needle: 3
+};
+let activeTool = null;
+
 const gun = document.querySelector("button[target='gun']");
 const gunIcon = gun.querySelector("img");
-let gunDrawn = false;
 gun.addEventListener('click', (event) => {
-    Gun();
+    HandleInputTool(inputTools.gun);
 });
-function Gun() {
-    gunDrawn = !gunDrawn;
+
+const pump = document.querySelector("button[target='pump']");
+const pumpIcon = pump.querySelector("img");
+pump.addEventListener('click', (event) => {
+    HandleInputTool(inputTools.pump);
+});
+const needle = document.querySelector("button[target='needle']");
+const needleIcon = needle.querySelector("img");
+needle.addEventListener('click', (event) => {
+    HandleInputTool(inputTools.needle);
+});
+
+function HandleInputTool(inputTool) {
     let elements = GetActiveElements();
 
-    if (!gunDrawn) {
-        gunIcon.src = "./assets/gun_inactive.png";
-        clip_gun_holster.load();
-        clip_gun_holster.play();
-        activeSlide.style.cursor = "default";
-        
-        elements.forEach(element => {
-            if (element.classList.contains("ui-draggable")) { $(element).draggable( "enable" ); }
-
-            element.removeEventListener('click', (event) => {
-                ShootElement(element);
-            });
-        });
+    if (activeTool == inputTool) {
+        cleanupActiveTool(elements);
+        return;
+    } else if (activeTool != null) {
+        cleanupActiveTool(elements);
     }
-    else {
-        gunIcon.src = "./assets/gun_active.png";
-        clip_gun_unholster.load();
-        clip_gun_unholster.play();
-        activeSlide.style.cursor = "crosshair";
+
+    if (inputTool == inputTools.gun) {
+        activeTool = inputTools.gun;
+
+        SetToolAssets(gunIcon, "./assets/gun_active.png", clip_gun_unholster, "url('./assets/cursor_gun.png') 0 0, auto");
 
         elements.forEach(element => {
             if (element.classList.contains("ui-draggable")) { $(element).draggable( "disable" ); }
@@ -416,12 +425,86 @@ function Gun() {
                 ShootElement(element);
             });
         });
+    } else if (inputTool == inputTools.pump) {
+        activeTool = inputTools.pump;
+
+        SetToolAssets(pumpIcon, "./assets/gun_active.png", clip_gun_unholster, "url('./assets/cursor_gun.png') 0 0, auto");
+
+        elements.forEach(element => {
+            if (element.classList.contains("ui-draggable")) { $(element).draggable( "disable" ); }
+
+            element.addEventListener('click', (event) => {
+                PumpElement(element);
+            });
+        });
+    } else if (inputTool == inputTools.needle) {
+        activeTool = inputTools.needle;
+
+        SetToolAssets(needleIcon, "./assets/gun_active.png", clip_gun_unholster, "url('./assets/cursor_gun.png') 0 0, auto");
+
+        elements.forEach(element => {
+            if (element.classList.contains("ui-draggable")) { $(element).draggable( "disable" ); }
+
+            element.addEventListener('click', () => {
+                PrickElement(element);
+            });
+        });
     }
 }
+
+function cleanupActiveTool(elements) {
+    if (activeTool == inputTools.gun) {
+        SetToolAssets(gunIcon, "./assets/gun_inactive.png", clip_gun_holster, "default");
+        
+        elements.forEach(element => {
+            if (element.classList.contains("ui-draggable")) { $(element).draggable( "enable" ); }
+
+            element.removeEventListener('click', (event) => {
+                ShootElement(element);
+            });
+        });
+    } else if (activeTool == inputTools.pump) {
+        SetToolAssets(pumpIcon, "./assets/gun_inactive.png", clip_gun_holster, "default");
+        
+        elements.forEach(element => {
+            if (element.classList.contains("ui-draggable")) { $(element).draggable( "enable" ); }
+
+            element.removeEventListener('click', () => {
+                PumpElement(element);
+            });
+        });
+    } else if (activeTool == inputTools.needle) {
+        SetToolAssets(needleIcon, "./assets/gun_inactive.png", clip_gun_holster, "default");
+        
+        elements.forEach(element => {
+            if (element.classList.contains("ui-draggable")) { $(element).draggable( "enable" ); }
+
+            element.removeEventListener('click', (event) => {
+                PrickElement(element);
+            });
+        });
+    }
+
+    activeTool = null;
+}
+
+function SetToolAssets(icon, icon_src, sound, cursor_src) {
+    icon.src = icon_src;
+    sound.play();
+    activeSlide.style.cursor = cursor_src;
+}
+
 function ShootElement(element) {
-    clip_gun_fire.load();
     clip_gun_fire.play();
     element.remove();
+}
+function PumpElement(element) {
+    let currentHeight = parseInt(window.getComputedStyle(element).getPropertyValue("height"));
+    element.style.height = (currentHeight + 10) + "px";
+}
+function PrickElement(element) {
+    let currentHeight = parseInt(window.getComputedStyle(element).getPropertyValue("height"));
+    element.style.height = (currentHeight - 10) + "px";
 }
 
 // #endregion

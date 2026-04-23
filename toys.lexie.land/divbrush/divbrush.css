@@ -257,17 +257,18 @@ textarea, input {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.preview .handle {
-    background: url("assets/ui_hold_preview.png");
-    background-size: contain;
+    
+    .handle {
+        background: url("assets/ui_hold_preview.png");
+        background-size: contain;
 
-    right: 4.5vw;
-    top: -.5vw;
-    rotate: -16deg;
+        right: 4.5vw;
+        top: -.5vw;
+        rotate: -16deg;
 
-    width: 5vw;
-    height: 5vw;
+        width: 5vw;
+        height: 5vw;
+    }
 }
 .saver {
     left: 2vw;
@@ -282,230 +283,253 @@ textarea, input {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.saver:hover {
-    filter: brightness(1.5);
-}
-.saver button {
-    width: 100%;
-    height: 100%;
 
-    cursor: pointer;
-    pointer-events: all;
-    background: none;
-    border: none;
-}
-.saver .handle {
-    background: url("assets/ui_hold_saver.png");
-    background-size: contain;
+    button {
+        width: 100%;
+        height: 100%;
+    
+        cursor: pointer;
+        pointer-events: all;
+        background: none;
+        border: none;
+    }
 
-    right: -.3vw;
-    top: 1.5vw;
-    rotate: 16deg;
+    .handle {
+        background: url("assets/ui_hold_saver.png");
+        background-size: contain;
+    
+        right: -.3vw;
+        top: 1.5vw;
+        rotate: 16deg;
+    
+        width: 5vw;
+        height: 5vw;
+    }
 
-    width: 5vw;
-    height: 5vw;
+    &:hover {
+        filter: brightness(1.5);
+    }
 }
 .mover {
     left: -5vw;
     bottom: 30vh;
     text-shadow: #FFF 0 0 .1vw, #FFF 0 0 .5vw, #FFF 0 0 1vw;
-}
-.mover .tool-content {
-    background: url("assets/ui_mover.gif");
-    background-size: cover;
-    border-left: 6px dotted white;
-    border-right: 6px dotted white;
-}
-.mover summary {
-    margin-top: 2vw;
-    width: 17vw;
-}
-.mover .handle {
-    background: url("assets/ui_hold_mover.png");
-    background-size: contain;
 
-    left: 13vw;
-    top: -.25vw;
-    rotate: 40deg;
+    .tool-content {
+        background: url("assets/ui_mover.gif");
+        background-size: cover;
+        border-left: 6px dotted white;
+        border-right: 6px dotted white;
+    }
 
-    width: 4.5vw;
-    height: 4.5vw;
+    summary {
+        margin-top: 2vw;
+        width: 17vw;
+    }
+
+    .handle {
+        background: url("assets/ui_hold_mover.png");
+        background-size: contain;
+    
+        left: 13vw;
+        top: -.25vw;
+        rotate: 40deg;
+    
+        width: 4.5vw;
+        height: 4.5vw;
+    }
 }
 .shaver {
     right: 1vw;
     bottom: 28vh;
-}
-.shaver .tool-content {
-    width: 11vw;
 
-    background: gray;
-    border-bottom-right-radius: 999px;
-    border-bottom: 1vw solid silver;
-    border-right: 1vw solid silver;
-}
-.shaver .handle {
-    background: url("assets/ui_hold_shaver.png");
-    background-size: contain;
+    .tool-content {
+        width: 11vw;
+    
+        background: gray;
+        border-bottom-right-radius: 999px;
+        border-bottom: 1vw solid silver;
+        border-right: 1vw solid silver;
+    }
 
-    left: -5.3vw;
-    top: -2.5vw;
-    rotate: 0;
-
-    width: 6vw;
-    height: 6vw;
-
-    z-index: 0;
+    .handle {
+        background: url("assets/ui_hold_shaver.png");
+        background-size: contain;
+    
+        left: -5.3vw;
+        top: -2.5vw;
+        rotate: 0;
+    
+        width: 6vw;
+        height: 6vw;
+    
+        z-index: 0;
+    }
 }
 .fencer {
     right: 15vw;
     bottom: 10vh;
-}
-.fencer .tool-content {
-    width: 11vw;
-    padding-top: 11vw;
 
-    background: url("assets/ui_fencer.webp");
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-.fencer summary {
-    position: relative;
-    top: -2vh;
-    left: 4vw;
-    z-index: 2;
-    color: white;
-}
-.fencer .cape {
-    position: relative;
-    top: -2vh;
-    right: -1.2vw;
-    width: 10vw;
-    background: black;
-    color: white;
-    padding: .5vw;
+    .tool-content {
+        width: 11vw;
+        padding-top: 11vw;
+    
+        background: url("assets/ui_fencer.webp");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
 
-    box-sizing: border-box;
-    border-left: groove #f701ff .3vw;
-    border-right: dashed #01A600 .3vw;
-    border-bottom: dotted #FF7101 .3vw;
-}
-.fencer .handle {
-    background: url("assets/ui_hold_ringer.webp");
-    background-size: contain;
+    summary {
+        position: relative;
+        top: -2vh;
+        left: 4vw;
+        z-index: 2;
+        color: white;
+    }
 
-    left: .2vw;
-    top: .1vw;
-    rotate: 0;
+    .cape {
+        position: relative;
+        top: -2vh;
+        right: -1.2vw;
+        width: 10vw;
+        background: black;
+        color: white;
+        padding: .5vw;
+    
+        box-sizing: border-box;
+        border-left: groove #f701ff .3vw;
+        border-right: dashed #01A600 .3vw;
+        border-bottom: dotted #FF7101 .3vw;
+    }
 
-    width: 11vw;
-    height: 11vw;
-}
-.fencer .handle:hover {
-    filter: invert(.3);
+    .handle {
+        background: url("assets/ui_hold_ringer.webp");
+        background-size: contain;
+    
+        left: .2vw;
+        top: .1vw;
+        rotate: 0;
+    
+        width: 11vw;
+        height: 11vw;
+
+        &:hover {
+            filter: invert(.3);
+        }
+    }
 }
 .filler {
     right: 8vw;
     top: -15vh;
-}
-.filler .tool-content {
-    width: 5vw;
-    height: 9vw;
 
-    background: url("assets/ui_filler.webp");
-    background-size: 100%;
-    background-repeat: no-repeat;
-
-    color: white;
-}
-.filler textarea {
-    position: relative;
-    top: -5vw;
-    left: -5vw;
-
-    z-index: -1;
-
-    width: 10vw;
-    height: 5vw;
-    rotate: 45deg;
-
-    background: url("assets/ui_filler_streak.png");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    .tool-content {
+        width: 5vw;
+        height: 9vw;
     
-    border: none;
+        background: url("assets/ui_filler.webp");
+        background-size: 100%;
+        background-repeat: no-repeat;
+    
+        color: white;
+    }
 
-    color: white;
-    text-shadow: #000 0 0 .1vw, #000 0 0 .5vw, #000 0 0 1vw;
-}
-.filler .handle {
-    background: url("assets/ui_hold_filler.webp");
-    background-size: contain;
+    textarea {
+        position: relative;
+        top: -5vw;
+        left: -5vw;
+    
+        z-index: -1;
+    
+        width: 10vw;
+        height: 5vw;
+        rotate: 45deg;
+    
+        background: url("assets/ui_filler_streak.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        
+        border: none;
+    
+        color: white;
+        text-shadow: #000 0 0 .1vw, #000 0 0 .5vw, #000 0 0 1vw;
+    }
 
-    top: 9.2vw;
-    right: -5.5vw;
-    rotate: 0;
+    .handle {
+        background: url("assets/ui_hold_filler.webp");
+        background-size: contain;
+        
+        position: relative;
 
-    width: 5.5vw;
-    height: 6vw;
+        top: 29vh;
+        right: 0;
+        rotate: 0;
+    
+        width: 5.5vw;
+        height: 6vw;
+    }
 }
 .stretcher {
     right: 4vw;
     bottom: 20vh;
-}
-.stretcher .tool-content {
-    width: 14vw;
-    height: 3.2vw;
 
-    background: url("assets/ui_stretcher.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-.stretcher summary {
-    position: relative;
-    top: 1vh;
-    left: 2.75vw;
+    .tool-content {
+        width: 14vw;
+        height: 3.2vw;
+    
+        background: url("assets/ui_stretcher.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
 
-    width: 8vw;
-    z-index: 2;
-}
-.stretcher .dough {
-    position: relative;
-    top: 3vh;
-    left: 1.5vw;
+    summary {
+        position: relative;
+        top: 1vh;
+        left: 2.75vw;
+    
+        width: 8vw;
+        z-index: 2;
+    }
 
-    width: 10vw;
-    height: 9vw;
+    .dough {
+        position: relative;
+        top: 3vh;
+        left: 1.5vw;
+    
+        width: 10vw;
+        height: 9vw;
+    
+        padding-top: 2.5vw;
+    
+        background: url("assets/ui_stretcher_dough.webp");
+        background-size: contain;
+        background-repeat: no-repeat;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        color: #000;
+        text-shadow: #FFF 0 0 .1vw, #FFF 0 0 .5vw, #FFF 0 0 1vw;
 
-    padding-top: 2.5vw;
+        input {
+            width: 7vw;
+        }
+    }
 
-    background: url("assets/ui_stretcher_dough.webp");
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    color: #000;
-    text-shadow: #FFF 0 0 .1vw, #FFF 0 0 .5vw, #FFF 0 0 1vw;
-}
-.stretcher .dough input {
-    width: 7vw;
-}
-.stretcher .handle {
-    background: url("assets/ui_hold_stretcher.webp");
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    top: 0;
-    left: 0;
-    rotate: 0;
-
-    width: 14.4vw;
-    height: 3.2vw;
-
-    z-index: 1;
+    .handle {
+        background: url("assets/ui_hold_stretcher.webp");
+        background-size: contain;
+        background-repeat: no-repeat;
+    
+        top: 0;
+        left: 0;
+        rotate: 0;
+    
+        width: 14.4vw;
+        height: 3.2vw;
+    
+        z-index: 1;
+    }
 }
 .presets {
     left: 35vw;
@@ -516,77 +540,85 @@ textarea, input {
 
     width: 15vw;
     height: 8vh;
-}
-.presets .handle {
-    background: url("assets/ui_hold_preview.png");
-    filter: hue-rotate(85deg);
-    background-size: contain;
-    background-repeat: no-repeat;
 
-    top: -2vh;
-    right: -1vw;
-    rotate: 45deg;
-    scale: 2;
-
-    z-index: 1;
-}
-.presets .handle:hover {
-    filter: invert(1);
-}
-.presets .tool-content {
-    color: white;
+    .handle {
+        background: url("assets/ui_hold_preview.png");
+        filter: hue-rotate(85deg);
+        background-size: contain;
+        background-repeat: no-repeat;
     
-    pointer-events: none;
-}
-.presets .tool-content summary {
-    position: relative;
-    top: 0;
-    left: 0;
+        top: -2vh;
+        right: -1vw;
+        rotate: 45deg;
+        scale: 2;
+    
+        z-index: 1;
 
-    width: 15vw;
-    height: 8vh;
-}
-.presets .tool-content .drawer {
-    width: 15vw;
-    height: 40vh;
+        &:hover {
+            filter: invert(1);
+        }
+    }
 
-    position: relative;
-    bottom: 50vh;
-    left: -.5vw;
+    .tool-content {
+        color: white;
 
-    background: url("assets/ui_drawer_inside.webp");
-    background-size: cover;
+        pointer-events: none;
 
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: .5vw;
-    row-gap: .5vw;
+        summary {
+            position: relative;
+            top: 0;
+            left: 0;
+        
+            width: 15vw;
+            height: 8vh;
+        }
 
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: brown black;
-}
-.presets .tool-content .drawer a {
-    width: 4vw;
-    height: 4vw;
+        .drawer {
+            width: 15vw;
+            height: 40vh;
+        
+            position: relative;
+            bottom: 50vh;
+            left: -.5vw;
+        
+            background: url("assets/ui_drawer_inside.webp");
+            background-size: cover;
+        
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: .5vw;
+            row-gap: .5vw;
+        
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: brown black;
 
-    background: #00000059;
-    border: 2px dashed black;
-    box-sizing: border-box;
+            a {
+                width: 4vw;
+                height: 4vw;
+            
+                background: #00000059;
+                border: 2px dashed black;
+                box-sizing: border-box;
+            
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            
+                pointer-events: all;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+                &:hover {
+                    border: 4px dashed white;
+                }
 
-    pointer-events: all;
-}
-.presets .tool-content .drawer a:hover {
-    border: 4px dashed white;
-}
-.presets .tool-content .drawer a.active {
-    border: 4px dashed white;
+                .active {
+                    border: 4px dashed white;
+                }
+            }
+        }
+    }
 }
 .eraser {
     left: 14vw;
@@ -600,54 +632,80 @@ textarea, input {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.eraser .handle {
-    background: url("assets/ui_hold_preview.png");
-    filter: hue-rotate(-85deg);
-    background-size: contain;
+
+    .handle {
+        background: url("assets/ui_hold_preview.png");
+        filter: hue-rotate(-85deg);
+        background-size: contain;
+        
+        transform: scaleX(-1);
     
-    transform: scaleX(-1);
-
-    top: 9vw;
-    left: 3.5vw;
-    scale: 2;
-
-    z-index: 1;
-}
-.eraser .handle:hover {
-    filter: hue-rotate(150deg);
-}
-.eraser .tool-content button {
-    background: none;
-    border: none;
-    cursor: pointer;
-
-    position: relative;
-    left: 1vw;
-
-    width: 1.5vw;
-    height: 1.5vw;
-    rotate: 420deg;
-    font-size: 1vw;
+        top: 9vw;
+        left: 3.5vw;
+        scale: 2;
     
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        z-index: 1;
 
-    filter: drop-shadow(0 0 2px white) drop-shadow(0 0 5px yellow) drop-shadow(0 0 10px orangered);
-}
-.eraser .tool-content:open > button {
-    animation: appleFall 2s linear 1;
-}
-.eraser .tool-content {
-    background: url(./assets/ui_eraser.png);
-    background-size: cover;
+        &:hover {
+            filter: hue-rotate(150deg);
+        }
+    }
 
-    width: 9vw;
-    height: 10vw;
-}
-.eraser .tool-content:open {
-    animation: treeShake 2s linear 1;
+    .tool-content {
+        background: url(./assets/ui_eraser.png);
+        background-size: cover;
+    
+        width: 9vw;
+        height: 10vw;
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        
+            position: relative;
+            left: 1vw;
+        
+            width: 1.5vw;
+            height: 1.5vw;
+            rotate: 420deg;
+            font-size: 1vw;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+            filter: drop-shadow(0 0 2px white) drop-shadow(0 0 5px yellow) drop-shadow(0 0 10px orangered);
+        }
+
+        &:open {
+            animation: treeShake 2s linear 1;
+        }
+
+        &:open > button {
+            animation: appleFall 2s linear 1;
+        }
+
+        summary {
+            position: relative;
+            top: 0;
+            left: 0;
+        
+            width: 9vw;
+            height: 10vw;
+        }
+    }
+
+    details {
+        summary {
+            &::-webkit-details-marker {
+                display:none;
+            }
+            &:first-of-type {
+                list-style-type: none;
+            }
+        }
+    }
 }
 @keyframes appleFall {
     0% {top: -5vw; rotate: 90deg;}
@@ -658,20 +716,6 @@ textarea, input {
     25% {transform: rotate(5deg);}
     50% {transform: rotate(-10deg);}
     75% {transform: rotate(5deg);}
-}
-.eraser .tool-content summary {
-    position: relative;
-    top: 0;
-    left: 0;
-
-    width: 9vw;
-    height: 10vw;
-}
-.eraser details summary::-webkit-details-marker {
-    display:none;
-}
-.eraser details > summary:first-of-type {
-    list-style-type: none;
 }
 .undo {
     left: 64vw;
@@ -687,67 +731,68 @@ textarea, input {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.undo .handle {
-    background: white;
-    mix-blend-mode: color;
 
-    left: 16%;
-    top: -2%;
-    rotate: -30deg;
-
-    height: 8vw;
-    width: 2vw;
-
-    z-index: 1;
-}
-.undo .handle:hover {
-    background: orangered;
-    border: 2px solid black;
-    border-radius: 2px;
-}
-.undo button {
-    pointer-events: all;
-    cursor: pointer;
-
-    width: 8.5vw;
-    height: 8vw;
-
-    background: url("./assets/undo.png");
-    background-size: cover;
-    border: none;
-    filter: drop-shadow(.05em 0 0 black) drop-shadow(-.05em 0 0 black) drop-shadow(0 .05em 0 black) drop-shadow(0 -.05em 0 black);
-
-    font-size: 5vw;
-    font-family: 'badaboom';
-    color: white;
-    -webkit-text-stroke: #000 .05em;
-
-    animation: comboSway 2s linear infinite;
-}
-@keyframes comboSway {
-    0%, 100% { rotate: -15deg; }
-    50% { rotate: 15deg; }
-}
-.undo .comboTitle {
-    position: absolute;
-    top: 19vw;
-    left: 3vw;
-
-    transform: rotateX(15deg) rotateY(15deg) rotateZ(15deg);
+    .handle {
+        background: white;
+        mix-blend-mode: color;
     
-    font-size: 4vw;
-    font-family: 'apple';
-    text-align: left;
-    line-height: 1vw;
+        left: 16%;
+        top: -2%;
+        rotate: -30deg;
+    
+        height: 8vw;
+        width: 2vw;
+    
+        z-index: 1;
 
-    text-shadow: 0 0 2px magenta, 0 0 5px magenta, 0 0 20px magenta;
+        &:hover {
+            background: orangered;
+            border: 2px solid black;
+            border-radius: 2px;
+        }
+    }
 
-    transition: 2s;
-}
-.undo .comboTitle emphasis {
-    font-size: 8vw;
-    color: white;
+    button {
+        pointer-events: all;
+        cursor: pointer;
+    
+        width: 8.5vw;
+        height: 8vw;
+    
+        background: url("./assets/undo.png");
+        background-size: cover;
+        border: none;
+        filter: drop-shadow(.05em 0 0 black) drop-shadow(-.05em 0 0 black) drop-shadow(0 .05em 0 black) drop-shadow(0 -.05em 0 black);
+    
+        font-size: 5vw;
+        font-family: 'badaboom';
+        color: white;
+        -webkit-text-stroke: #000 .05em;
+    
+        animation: comboSway 2s linear infinite;
+    }
+
+    .comboTitle {
+        position: absolute;
+        top: 19vw;
+        left: 3vw;
+    
+        transform: rotateX(15deg) rotateY(15deg) rotateZ(15deg);
+        
+        font-size: 4vw;
+        font-family: 'apple';
+        text-align: left;
+        line-height: 1vw;
+    
+        text-shadow: 0 0 2px magenta, 0 0 5px magenta, 0 0 20px magenta;
+    
+        transition: 2s;
+
+        emphasis {
+            font-size: 8vw;
+            color: white;
+        }
+    }
 }
 .comboFlames {
     position: absolute;
@@ -778,6 +823,11 @@ textarea, input {
 
     transition: 1s;
 }
+@keyframes comboSway {
+    0%, 100% { rotate: -15deg; }
+    50% { rotate: 15deg; }
+}
+
 /* #endregion */
 
 /* #region presets */
