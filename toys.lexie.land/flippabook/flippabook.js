@@ -347,6 +347,7 @@ const clip_skew = new Howl({
 const clip_shuffle = new Howl({
     src: ['./assets/shuffle.mp3']
 });
+
 const clip_gun_unholster = new Howl({
     src: ['./assets/gun_unholster.mp3']
 });
@@ -355,6 +356,26 @@ const clip_gun_holster = new Howl({
 });
 const clip_gun_fire = new Howl({
     src: ['./assets/gun_fire.mp3']
+});
+
+const clip_pump_unholster = new Howl({
+    src: ['./assets/pump_unholster.mp3']
+});
+const clip_pump_holster = new Howl({
+    src: ['./assets/pump_holster.mp3']
+});
+const clip_pump_fire = new Howl({
+    src: ['./assets/pump_fire.mp3']
+});
+
+const clip_needle_unholster = new Howl({
+    src: ['./assets/needle_unholster.mp3']
+});
+const clip_needle_holster = new Howl({
+    src: ['./assets/needle_holster.mp3']
+});
+const clip_needle_fire = new Howl({
+    src: ['./assets/needle_fire.mp3']
 });
 
 const skewer = document.querySelector("button[target='skewer']");
@@ -428,10 +449,10 @@ function HandleInputTool(inputTool) {
         SetToolAssets(gunIcon, "./assets/gun_active.png", clip_gun_unholster, "url('./assets/cursor_gun.png') 0 0, auto");
         break;
     case inputTools.pump:
-        SetToolAssets(pumpIcon, "./assets/pump_active.png", clip_gun_unholster, "url('./assets/cursor_pump.png') 0 0, auto");
+        SetToolAssets(pumpIcon, "./assets/pump_active.png", clip_pump_unholster, "url('./assets/cursor_pump.png') 0 0, auto");
         break;
     case inputTools.needle:
-        SetToolAssets(needleIcon, "./assets/needle_active.png", clip_gun_unholster, "url('./assets/cursor_needle.png') 0 0, auto");
+        SetToolAssets(needleIcon, "./assets/needle_active.png", clip_needle_unholster, "url('./assets/cursor_needle.png') 0 0, auto");
         break;
     default:
         console.log(`Can't find asset-setting function for a tool called ${inputTool}.`);
@@ -466,10 +487,10 @@ function cleanupActiveTool(elements) {
         SetToolAssets(gunIcon, "./assets/gun_inactive.png", clip_gun_holster, "default");
         break;
     case inputTools.pump:
-        SetToolAssets(pumpIcon, "./assets/pump_inactive.png", clip_gun_holster, "default");
+        SetToolAssets(pumpIcon, "./assets/pump_inactive.png", clip_pump_holster, "default");
         break;
     case inputTools.needle:
-        SetToolAssets(needleIcon, "./assets/needle_inactive.png", clip_gun_holster, "default");
+        SetToolAssets(needleIcon, "./assets/needle_inactive.png", clip_needle_holster, "default");
         break;
     default:
         console.log(`Can't find worker function for a tool called ${activeTool}.`);
@@ -489,8 +510,9 @@ function SetToolAssets(icon, icon_src, sound, cursor_src) {
 }
 
 function ShootElement(element) {
-    clip_gun_fire.play();
     element.remove();
+    
+    clip_gun_fire.play();
 }
 function PumpElement(element) {
     let currentHeight = parseInt(window.getComputedStyle(element).getPropertyValue("height"));
@@ -501,6 +523,8 @@ function PumpElement(element) {
     element.style.maxHeight = "none";
     element.style.height = (currentHeight + step) + "px";
     element.style.width = (currentWidth + (step * q)) + "px";
+
+    clip_pump_fire.play();
 }
 function PrickElement(element) {
     let currentHeight = parseInt(window.getComputedStyle(element).getPropertyValue("height"));
@@ -510,6 +534,8 @@ function PrickElement(element) {
 
     element.style.height = (currentHeight - step) + "px";
     element.style.width = (currentWidth - (step * q)) + "px";
+
+    clip_needle_fire.play();
 }
 
 // #endregion
