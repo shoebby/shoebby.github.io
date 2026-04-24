@@ -236,10 +236,6 @@ function ExportSlides() {
 
             element.style.position = "absolute";
         });
-        slide.querySelectorAll("div.obj").forEach(element => {
-            element.style.width = "100%";
-            element.style.height = "100%";
-        });
         slide.querySelectorAll("iframe.obj").forEach(element => {
             element.style.width = "100%";
             element.style.height = "100%";
@@ -289,7 +285,7 @@ function ExportSlides() {
             element.style.left = `${(elementLeft / slideWidth) * 100}%`;
             element.style.top = `${(elementTop / slideHeight) * 100}%`;
         });
-        slideClone.querySelectorAll("img.obj, video.obj").forEach(element => {
+        slideClone.querySelectorAll("img.obj, video.obj, div.obj").forEach(element => {
             elementWidth = parseInt(element.style.width);
             elementHeight = parseInt(element.style.height);
 
@@ -498,12 +494,16 @@ function ShootElement(element) {
 }
 function PumpElement(element) {
     let currentHeight = parseInt(window.getComputedStyle(element).getPropertyValue("height"));
+    let currentWidth = parseInt(window.getComputedStyle(element).getPropertyValue("width"));
     element.style.maxHeight = "none";
     element.style.height = (currentHeight + 10) + "px";
+    element.style.width = (currentWidth + 10) + "px";
 }
 function PrickElement(element) {
     let currentHeight = parseInt(window.getComputedStyle(element).getPropertyValue("height"));
+    let currentWidth = parseInt(window.getComputedStyle(element).getPropertyValue("width"));
     element.style.height = (currentHeight - 10) + "px";
+    element.style.width = (currentWidth - 10) + "px";
 }
 
 // #endregion
