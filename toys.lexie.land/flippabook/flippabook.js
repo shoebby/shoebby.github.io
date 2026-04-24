@@ -11,6 +11,13 @@ let activeSlide;
 let activeThumb;
 let slides = [];
 
+function init() {
+    let infoLines = document.querySelectorAll(".infoline");
+    infoLines.forEach(line => {
+        makeDraggable(line);
+    });
+}; init();
+
 function randomIntFromInterval(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -110,6 +117,10 @@ function makeDraggable(file) {
     $( file ).draggable({
         stack: ".ui-draggable",
         distance: 0,
+    });
+
+    file.addEventListener('click', () => {
+        DoToolEffect(file);
     });
 }
 
@@ -420,11 +431,8 @@ function HandleInputTool(inputTool) {
 
         elements.forEach(element => {
             if (element.classList.contains("ui-draggable")) { $(element).draggable( "disable" ); }
-
-            element.addEventListener('click', (event) => {
-                ShootElement(element);
-            });
         });
+
     } else if (inputTool == inputTools.pump) {
         activeTool = inputTools.pump;
 
@@ -432,11 +440,8 @@ function HandleInputTool(inputTool) {
 
         elements.forEach(element => {
             if (element.classList.contains("ui-draggable")) { $(element).draggable( "disable" ); }
-
-            element.addEventListener('click', (event) => {
-                PumpElement(element);
-            });
         });
+
     } else if (inputTool == inputTools.needle) {
         activeTool = inputTools.needle;
 
@@ -444,11 +449,23 @@ function HandleInputTool(inputTool) {
 
         elements.forEach(element => {
             if (element.classList.contains("ui-draggable")) { $(element).draggable( "disable" ); }
-
-            element.addEventListener('click', () => {
-                PrickElement(element);
-            });
         });
+    }
+}
+
+function DoToolEffect(element) {
+    switch (activeTool) {
+    case inputTools.gun:
+        ShootElement(element);
+        break;
+    case inputTools.pump:
+        PumpElement(element);
+        break;
+    case inputTools.needle:
+        PrickElement(element);
+        break;
+    default:
+        console.log(`Can't find worker function for a tool called ${activeTool}.`);
     }
 }
 
