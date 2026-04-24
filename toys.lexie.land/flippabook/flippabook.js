@@ -495,15 +495,21 @@ function ShootElement(element) {
 function PumpElement(element) {
     let currentHeight = parseInt(window.getComputedStyle(element).getPropertyValue("height"));
     let currentWidth = parseInt(window.getComputedStyle(element).getPropertyValue("width"));
+    let q = currentWidth / currentHeight;
+    let step = currentHeight / 10;
+
     element.style.maxHeight = "none";
-    element.style.height = (currentHeight + 10) + "px";
-    element.style.width = (currentWidth + 10) + "px";
+    element.style.height = (currentHeight + step) + "px";
+    element.style.width = (currentWidth + (step * q)) + "px";
 }
 function PrickElement(element) {
     let currentHeight = parseInt(window.getComputedStyle(element).getPropertyValue("height"));
     let currentWidth = parseInt(window.getComputedStyle(element).getPropertyValue("width"));
-    element.style.height = (currentHeight - 10) + "px";
-    element.style.width = (currentWidth - 10) + "px";
+    let q = currentWidth / currentHeight;
+    let step = currentHeight / 10;
+
+    element.style.height = (currentHeight - step) + "px";
+    element.style.width = (currentWidth - (step * q)) + "px";
 }
 
 // #endregion
