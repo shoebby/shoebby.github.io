@@ -424,33 +424,25 @@ function HandleInputTool(inputTool) {
         cleanupActiveTool(elements);
     }
 
-    if (inputTool == inputTools.gun) {
-        activeTool = inputTools.gun;
-
+    switch (inputTool) {
+    case inputTools.gun:
         SetToolAssets(gunIcon, "./assets/gun_active.png", clip_gun_unholster, "url('./assets/cursor_gun.png') 0 0, auto");
-
-        elements.forEach(element => {
-            if (element.classList.contains("ui-draggable")) { $(element).draggable( "disable" ); }
-        });
-
-    } else if (inputTool == inputTools.pump) {
-        activeTool = inputTools.pump;
-
+        break;
+    case inputTools.pump:
         SetToolAssets(pumpIcon, "./assets/gun_active.png", clip_gun_unholster, "url('./assets/cursor_gun.png') 0 0, auto");
-
-        elements.forEach(element => {
-            if (element.classList.contains("ui-draggable")) { $(element).draggable( "disable" ); }
-        });
-
-    } else if (inputTool == inputTools.needle) {
-        activeTool = inputTools.needle;
-
+        break;
+    case inputTools.needle:
         SetToolAssets(needleIcon, "./assets/gun_active.png", clip_gun_unholster, "url('./assets/cursor_gun.png') 0 0, auto");
-
-        elements.forEach(element => {
-            if (element.classList.contains("ui-draggable")) { $(element).draggable( "disable" ); }
-        });
+        break;
+    default:
+        console.log(`Can't find asset-setting function for a tool called ${inputTool}.`);
     }
+
+    activeTool = inputTool;
+
+    elements.forEach(element => {
+        if (element.classList.contains("ui-draggable")) { $(element).draggable( "disable" ); }
+    });
 }
 
 function DoToolEffect(element) {
@@ -470,37 +462,23 @@ function DoToolEffect(element) {
 }
 
 function cleanupActiveTool(elements) {
-    if (activeTool == inputTools.gun) {
+    switch (activeTool) {
+    case inputTools.gun:
         SetToolAssets(gunIcon, "./assets/gun_inactive.png", clip_gun_holster, "default");
-        
-        elements.forEach(element => {
-            if (element.classList.contains("ui-draggable")) { $(element).draggable( "enable" ); }
-
-            element.removeEventListener('click', (event) => {
-                ShootElement(element);
-            });
-        });
-    } else if (activeTool == inputTools.pump) {
+        break;
+    case inputTools.pump:
         SetToolAssets(pumpIcon, "./assets/gun_inactive.png", clip_gun_holster, "default");
-        
-        elements.forEach(element => {
-            if (element.classList.contains("ui-draggable")) { $(element).draggable( "enable" ); }
-
-            element.removeEventListener('click', () => {
-                PumpElement(element);
-            });
-        });
-    } else if (activeTool == inputTools.needle) {
+        break;
+    case inputTools.needle:
         SetToolAssets(needleIcon, "./assets/gun_inactive.png", clip_gun_holster, "default");
-        
-        elements.forEach(element => {
-            if (element.classList.contains("ui-draggable")) { $(element).draggable( "enable" ); }
-
-            element.removeEventListener('click', (event) => {
-                PrickElement(element);
-            });
-        });
+        break;
+    default:
+        console.log(`Can't find worker function for a tool called ${activeTool}.`);
     }
+
+    elements.forEach(element => {
+        if (element.classList.contains("ui-draggable")) { $(element).draggable( "enable" ); }
+    });
 
     activeTool = null;
 }
