@@ -113,14 +113,14 @@ function drop(e) {
     handleFiles(files);
 }
 
-function makeDraggable(file) {
-    $( file ).draggable({
+function makeDraggable(element) {
+    $( element ).draggable({
         stack: ".ui-draggable",
         distance: 0,
     });
 
-    file.addEventListener('click', () => {
-        DoToolEffect(file);
+    element.addEventListener('click', () => {
+        DoToolEffect(element);
     });
 }
 
@@ -135,6 +135,7 @@ function handleFiles(files) {
             const img = document.createElement("img");
             img.classList.add("obj");
             img.file = file;
+            img.style.maxHeight = "100%";
             activeSlide.appendChild(img);
 
             makeDraggable(img);
@@ -151,6 +152,7 @@ function handleFiles(files) {
             vid.loop = true;
             vid.autoplay = true;
             vid.file = file;
+            vid.style.maxHeight = "100%";
             activeSlide.appendChild(vid);
 
             makeDraggable(vid);
@@ -167,6 +169,7 @@ function handleFiles(files) {
             aud.loop = true;
             aud.autoplay = true;
             aud.file = file;
+            aud.style.maxHeight = "100%";
             activeSlide.appendChild(aud);
 
             makeDraggable(aud);
@@ -180,6 +183,7 @@ function handleFiles(files) {
         else if (/.*html/.test(file.type)) {
             const divContainer = document.createElement("div");
             divContainer.classList.add("obj");
+            divContainer.style.maxHeight = "100%";
             activeSlide.appendChild(divContainer);
 
             const ifr = document.createElement("iframe");
@@ -231,7 +235,6 @@ function ExportSlides() {
             element.style.height = window.getComputedStyle(element).getPropertyValue("height");
 
             element.style.position = "absolute";
-            element.style.maxHeight = "100%";
         });
         slide.querySelectorAll("div.obj").forEach(element => {
             element.style.width = "100%";
@@ -429,10 +432,10 @@ function HandleInputTool(inputTool) {
         SetToolAssets(gunIcon, "./assets/gun_active.png", clip_gun_unholster, "url('./assets/cursor_gun.png') 0 0, auto");
         break;
     case inputTools.pump:
-        SetToolAssets(pumpIcon, "./assets/gun_active.png", clip_gun_unholster, "url('./assets/cursor_gun.png') 0 0, auto");
+        SetToolAssets(pumpIcon, "./assets/pump_active.png", clip_gun_unholster, "url('./assets/cursor_pump.png') 0 0, auto");
         break;
     case inputTools.needle:
-        SetToolAssets(needleIcon, "./assets/gun_active.png", clip_gun_unholster, "url('./assets/cursor_gun.png') 0 0, auto");
+        SetToolAssets(needleIcon, "./assets/needle_active.png", clip_gun_unholster, "url('./assets/cursor_needle.png') 0 0, auto");
         break;
     default:
         console.log(`Can't find asset-setting function for a tool called ${inputTool}.`);
@@ -467,10 +470,10 @@ function cleanupActiveTool(elements) {
         SetToolAssets(gunIcon, "./assets/gun_inactive.png", clip_gun_holster, "default");
         break;
     case inputTools.pump:
-        SetToolAssets(pumpIcon, "./assets/gun_inactive.png", clip_gun_holster, "default");
+        SetToolAssets(pumpIcon, "./assets/pump_inactive.png", clip_gun_holster, "default");
         break;
     case inputTools.needle:
-        SetToolAssets(needleIcon, "./assets/gun_inactive.png", clip_gun_holster, "default");
+        SetToolAssets(needleIcon, "./assets/needle_inactive.png", clip_gun_holster, "default");
         break;
     default:
         console.log(`Can't find worker function for a tool called ${activeTool}.`);
@@ -495,6 +498,7 @@ function ShootElement(element) {
 }
 function PumpElement(element) {
     let currentHeight = parseInt(window.getComputedStyle(element).getPropertyValue("height"));
+    element.style.maxHeight = "none";
     element.style.height = (currentHeight + 10) + "px";
 }
 function PrickElement(element) {
