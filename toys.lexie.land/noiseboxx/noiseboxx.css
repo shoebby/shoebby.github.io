@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mastertable {
+    width: 50%;
+    height: 100%;
+
+    border-collapse: collapse;
+
+    td {
+        border: 1px solid black;
+        text-align: center;
+    }
+}
+
+.note {
+    text-align: center;
+}

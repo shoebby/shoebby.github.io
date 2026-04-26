@@ -410,6 +410,20 @@ const lock_icon_active = './assets/lock/lock_active.png';
 const lock_icon_inactive = './assets/lock/lock_inactive.png';
 const lock_cursor = './assets/lock/cursor_lock.png';
 
+// checker
+const clip_checker_unholster = new Howl({
+    src: ['./assets/checker/checker_unholster.mp3']
+});
+const clip_checker_holster = new Howl({
+    src: ['./assets/checker/checker_holster.mp3']
+});
+const clip_checker_fire = new Howl({
+    src: ['./assets/checker/checker_fire.mp3']
+});
+const checker_icon_active = './assets/checker/checker_active.png';
+const checker_icon_inactive = './assets/checker/checker_inactive.png';
+const checker_cursor = './assets/checker/cursor_checker.png';
+
 // #endregion
 
 const skewer = document.querySelector("button[target='skewer']");
@@ -460,7 +474,8 @@ const inputTools = {
     gun: 1,
     pump: 2,
     needle: 3,
-    lock: 4
+    lock: 4,
+    checker: 5
 };
 let activeTool = null;
 
@@ -485,6 +500,11 @@ const lockIcon = lock.querySelector("img");
 lock.addEventListener('click', () => {
     HandleInputTool(inputTools.lock);
 });
+const checker = document.querySelector("button[target='checker']");
+const checkerIcon = checker.querySelector("img");
+checker.addEventListener('click', () => {
+    HandleInputTool(inputTools.checker);
+});
 
 function HandleInputTool(inputTool) {
     let elements = GetActiveElements();
@@ -508,6 +528,9 @@ function HandleInputTool(inputTool) {
         break;
     case inputTools.lock:
         SetToolAssets(lockIcon, lock_icon_active, clip_lock_unholster, `url(${lock_cursor}) 0 0, auto`);
+        break;
+    case inputTools.checker:
+        SetToolAssets(checkerIcon, checker_icon_active, clip_checker_unholster, `url(${checker_cursor}) 0 0, auto`);
         break;
     default:
         console.log(`Can't find asset-setting function for a tool called ${inputTool}.`);
@@ -534,6 +557,9 @@ function DoToolEffect(element) {
     case inputTools.lock:
         LockElement(element);
         break;
+    case inputTools.checker:
+        checkerElement(element);
+        break;
     default:
         console.log(`Can't find worker function for a tool called ${activeTool}.`);
     }
@@ -552,6 +578,9 @@ function cleanupActiveTool(elements) {
         break;
     case inputTools.lock:
         SetToolAssets(lockIcon, lock_icon_inactive, clip_lock_holster, "default");
+        break;
+    case inputTools.checker:
+        SetToolAssets(checkerIcon, checker_icon_inactive, clip_checker_holster, "default");
         break;
     default:
         console.log(`Can't find worker function for a tool called ${activeTool}.`);
@@ -606,6 +635,27 @@ function LockElement(element) {
     }
 
     clip_lock_fire.play();
+}
+function checkerElement(element) {
+    if (element.classList.contains("checkered") || element.nodeName.toLowerCase() != "img")
+        return;
+    else
+        element.classList.add("checkered");
+
+    let slideWidth = parseInt(window.getComputedStyle(document.querySelector('#currentSlide')).getPropertyValue("width"));
+    let slideHeight = parseInt(window.getComputedStyle(document.querySelector('#currentSlide')).getPropertyValue("height"));
+    let elementWidth = parseInt(element.style.width);
+    let elementHeight = parseInt(element.style.height);
+
+    element.style.backgroundImage = `url(${element.getAttribute("src")})`;
+    element.style.backgroundSize = `${(elementWidth / slideWidth) * 100}% ${(elementHeight / slideHeight) * 100}%`;
+    element.setAttribute("src", "");
+    element.style.width = "100%";
+    element.style.height = "100%";
+    element.style.top = "0";
+    element.style.left = "0";
+
+    clip_checker_fire.play();
 }
 
 // #endregion

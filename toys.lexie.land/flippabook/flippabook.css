@@ -171,6 +171,9 @@ iframe.obj:hover {
     pointer-events: none;
     filter: grayscale(2);
 }
+.checkered {
+    z-index: -999;
+}
 
 .infoline {
     font-size: 2em;
