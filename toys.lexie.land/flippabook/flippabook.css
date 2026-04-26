@@ -145,6 +145,7 @@ p, a, span, div {
 
 .obj {
     position: absolute;
+    pointer-events: all;
 }
 div.obj {
     position: absolute;
@@ -164,6 +165,11 @@ iframe.obj {
     pointer-events: none;
 }
 iframe.obj:hover {
+}
+
+.locked {
+    pointer-events: none;
+    filter: grayscale(2);
 }
 
 .infoline {

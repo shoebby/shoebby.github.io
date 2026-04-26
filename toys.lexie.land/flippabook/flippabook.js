@@ -277,7 +277,7 @@ function ExportSlides() {
         let elementHeight
 
         slideClone.querySelectorAll(".obj").forEach(element => {
-            element.classList.remove("ui-draggable", "ui-draggable-handle");
+            element.classList.remove("ui-draggable", "ui-draggable-handle", "locked");
 
             elementLeft = parseInt(element.style.left);
             elementTop = parseInt(element.style.top);
@@ -341,42 +341,76 @@ function GetActiveElements() {
     return activeSlide.querySelectorAll("video, div, img");
 }
 
+// #region tool assets
+
+// general tools
 const clip_skew = new Howl({
-    src: ['./assets/skew.mp3']
+    src: ['./assets/skewer/skew.mp3']
 });
 const clip_shuffle = new Howl({
-    src: ['./assets/shuffle.mp3']
+    src: ['./assets/shuffler/shuffle.mp3']
+});
+const clip_unlocker = new Howl({
+    src: ['./assets/lock/unlocker.mp3']
 });
 
+// gun
 const clip_gun_unholster = new Howl({
-    src: ['./assets/gun_unholster.mp3']
+    src: ['./assets/gun/gun_unholster.mp3']
 });
 const clip_gun_holster = new Howl({
-    src: ['./assets/gun_holster.mp3']
+    src: ['./assets/gun/gun_holster.mp3']
 });
 const clip_gun_fire = new Howl({
-    src: ['./assets/gun_fire.mp3']
+    src: ['./assets/gun/gun_fire.mp3']
 });
+const gun_icon_active = './assets/gun/gun_active.png';
+const gun_icon_inactive = './assets/gun/gun_inactive.png';
+const gun_cursor = './assets/gun/cursor_gun.png';
 
+// pump
 const clip_pump_unholster = new Howl({
-    src: ['./assets/pump_unholster.mp3']
+    src: ['./assets/pump/pump_unholster.mp3']
 });
 const clip_pump_holster = new Howl({
-    src: ['./assets/pump_holster.mp3']
+    src: ['./assets/pump/pump_holster.mp3']
 });
 const clip_pump_fire = new Howl({
-    src: ['./assets/pump_fire.mp3']
+    src: ['./assets/pump/pump_fire.mp3']
 });
+const pump_icon_active = './assets/pump/pump_active.png';
+const pump_icon_inactive = './assets/pump/pump_inactive.png';
+const pump_cursor = './assets/pump/cursor_pump.png';
 
+// needle
 const clip_needle_unholster = new Howl({
-    src: ['./assets/needle_unholster.mp3']
+    src: ['./assets/needle/needle_unholster.mp3']
 });
 const clip_needle_holster = new Howl({
-    src: ['./assets/needle_holster.mp3']
+    src: ['./assets/needle/needle_holster.mp3']
 });
 const clip_needle_fire = new Howl({
-    src: ['./assets/needle_fire.mp3']
+    src: ['./assets/needle/needle_fire.mp3']
 });
+const needle_icon_active = './assets/needle/needle_active.png';
+const needle_icon_inactive = './assets/needle/needle_inactive.png';
+const needle_cursor = './assets/needle/cursor_needle.png';
+
+// lock
+const clip_lock_unholster = new Howl({
+    src: ['./assets/lock/lock_unholster.mp3']
+});
+const clip_lock_holster = new Howl({
+    src: ['./assets/lock/lock_holster.mp3']
+});
+const clip_lock_fire = new Howl({
+    src: ['./assets/lock/lock_fire.mp3']
+});
+const lock_icon_active = './assets/lock/lock_active.png';
+const lock_icon_inactive = './assets/lock/lock_inactive.png';
+const lock_cursor = './assets/lock/cursor_lock.png';
+
+// #endregion
 
 const skewer = document.querySelector("button[target='skewer']");
 skewer.addEventListener('click', (event) => {
@@ -384,10 +418,11 @@ skewer.addEventListener('click', (event) => {
 });
 function Skew() {
     GetActiveElements().forEach(element => {
-        element.style.rotate = `${randomIntFromInterval(-15,15)}deg`;
-        clip_skew.load();
-        clip_skew.play();
+        if (!element.classList.contains("locked")) {
+            element.style.rotate = `${randomIntFromInterval(-15,15)}deg`;
+        }
     });
+    clip_skew.play();
 }
 
 const shuffler = document.querySelector("button[target='shuffler']");
@@ -403,35 +438,52 @@ function Shuffle() {
     console.log(`elements: ${elements} ----------- count: ${count}`)
 
     elements.forEach(element => {
-        element.style.zIndex = `${randomIntFromInterval(0,count)}`;
+        if (!element.classList.contains("locked")) {
+            element.style.zIndex = `${randomIntFromInterval(0,count)}`;
+        }
     });
-
-    clip_shuffle.load();
     clip_shuffle.play();
+}
+
+const unlocker = document.querySelector("button[target='unlock']");
+unlocker.addEventListener('click', (event) => {
+    Unlock();
+});
+function Unlock() {
+    GetActiveElements().forEach(element => {
+        element.classList.remove("locked");
+    });
+    clip_unlocker.play();
 }
 
 const inputTools = {
     gun: 1,
     pump: 2,
-    needle: 3
+    needle: 3,
+    lock: 4
 };
 let activeTool = null;
 
 const gun = document.querySelector("button[target='gun']");
 const gunIcon = gun.querySelector("img");
-gun.addEventListener('click', (event) => {
+gun.addEventListener('click', () => {
     HandleInputTool(inputTools.gun);
 });
 
 const pump = document.querySelector("button[target='pump']");
 const pumpIcon = pump.querySelector("img");
-pump.addEventListener('click', (event) => {
+pump.addEventListener('click', () => {
     HandleInputTool(inputTools.pump);
 });
 const needle = document.querySelector("button[target='needle']");
 const needleIcon = needle.querySelector("img");
-needle.addEventListener('click', (event) => {
+needle.addEventListener('click', () => {
     HandleInputTool(inputTools.needle);
+});
+const lock = document.querySelector("button[target='lock']");
+const lockIcon = lock.querySelector("img");
+lock.addEventListener('click', () => {
+    HandleInputTool(inputTools.lock);
 });
 
 function HandleInputTool(inputTool) {
@@ -446,13 +498,16 @@ function HandleInputTool(inputTool) {
 
     switch (inputTool) {
     case inputTools.gun:
-        SetToolAssets(gunIcon, "./assets/gun_active.png", clip_gun_unholster, "url('./assets/cursor_gun.png') 0 0, auto");
+        SetToolAssets(gunIcon, gun_icon_active, clip_gun_unholster, `url(${gun_cursor}) 0 0, auto`);
         break;
     case inputTools.pump:
-        SetToolAssets(pumpIcon, "./assets/pump_active.png", clip_pump_unholster, "url('./assets/cursor_pump.png') 0 0, auto");
+        SetToolAssets(pumpIcon, pump_icon_active, clip_pump_unholster, `url(${pump_cursor}) 0 0, auto`);
         break;
     case inputTools.needle:
-        SetToolAssets(needleIcon, "./assets/needle_active.png", clip_needle_unholster, "url('./assets/cursor_needle.png') 0 0, auto");
+        SetToolAssets(needleIcon, needle_icon_active, clip_needle_unholster, `url(${needle_cursor}) 0 0, auto`);
+        break;
+    case inputTools.lock:
+        SetToolAssets(lockIcon, lock_icon_active, clip_lock_unholster, `url(${lock_cursor}) 0 0, auto`);
         break;
     default:
         console.log(`Can't find asset-setting function for a tool called ${inputTool}.`);
@@ -476,6 +531,9 @@ function DoToolEffect(element) {
     case inputTools.needle:
         PrickElement(element);
         break;
+    case inputTools.lock:
+        LockElement(element);
+        break;
     default:
         console.log(`Can't find worker function for a tool called ${activeTool}.`);
     }
@@ -484,13 +542,16 @@ function DoToolEffect(element) {
 function cleanupActiveTool(elements) {
     switch (activeTool) {
     case inputTools.gun:
-        SetToolAssets(gunIcon, "./assets/gun_inactive.png", clip_gun_holster, "default");
+        SetToolAssets(gunIcon, gun_icon_inactive, clip_gun_holster, "default");
         break;
     case inputTools.pump:
-        SetToolAssets(pumpIcon, "./assets/pump_inactive.png", clip_pump_holster, "default");
+        SetToolAssets(pumpIcon, pump_icon_inactive, clip_pump_holster, "default");
         break;
     case inputTools.needle:
-        SetToolAssets(needleIcon, "./assets/needle_inactive.png", clip_needle_holster, "default");
+        SetToolAssets(needleIcon, needle_icon_inactive, clip_needle_holster, "default");
+        break;
+    case inputTools.lock:
+        SetToolAssets(lockIcon, lock_icon_inactive, clip_lock_holster, "default");
         break;
     default:
         console.log(`Can't find worker function for a tool called ${activeTool}.`);
@@ -536,6 +597,15 @@ function PrickElement(element) {
     element.style.width = (currentWidth - (step * q)) + "px";
 
     clip_needle_fire.play();
+}
+function LockElement(element) {
+    if (element.classList.contains("locked")) {
+        element.classList.remove("locked");
+    } else {
+        element.classList.add("locked");
+    }
+
+    clip_lock_fire.play();
 }
 
 // #endregion
