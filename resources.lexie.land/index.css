@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+}
+
+#top-panel {
+    background: red;
+
+    padding: 1vw 2vw;
+}
+
+#container {
+    margin: 2vw;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .tex {
+        height: 20vh;
+
+        transition: 1.5s;
+
+        animation: texAppear 2s ease-out 1;
+    }
+}
+@keyframes texAppear {
+    0% { transform: scale(0); filter: opacity(0); }
+
+    100% { transform: scale(1); filter: opacity(1); }
+}
