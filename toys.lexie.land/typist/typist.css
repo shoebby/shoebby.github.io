@@ -41,24 +41,30 @@ html, body {
 
 #text-container {
     margin: auto;
-}
 
-#text {
-    font-size: 3vh;
-    width: 35vw;
-    height: 25vh;
+    width: 70vw;
+    height: 39vw;
     
-    margin: 0;
-    padding: 2em;
-
     background: url("assets/scrap-paper.webp");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
-
+    
     filter: saturate(10) drop-shadow(0 0 30px white);
+}
+
+#text {
+    font-size: 5vh;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    -webkit-text-stroke: .2vh black;
+
+    margin: 5% 25%;
 
     overflow: hidden;
+    
+    text-align: left;
 }
 @keyframes incant {
     0% {
@@ -68,6 +74,7 @@ html, body {
         background-position: center;
 
         width: 15vw;
+        height: 15vw;
     }
     1% {
         background: url("assets/ball-paper.webp");
@@ -75,7 +82,8 @@ html, body {
         background-size: auto 100%;
         background-position: center;
 
-        width: 35vw;
+        width: 15vw;
+        height: 15vw;
 
         transform: rotate(0deg);
     }
@@ -99,17 +107,17 @@ html, body {
         
         width: 35vw;
 
-        transform: translateY(100vh);
+        transform: translateY(150vh);
     }
     50% {
-        width: 100vw;
-    }
-    70% {
         background: url("../divbrush/assets/flames.gif");
         background-repeat: repeat-x;
         background-size: auto 100%;
         background-position: center;
-
+        
+        width: 100vw;
+    }
+    70% {
         transform: translateY(40vh);
     }
     75% {
@@ -127,7 +135,7 @@ html, body {
         background-size: auto 100%;
         background-position: center;
 
-        transform: translateY(100vh);
+        transform: translateY(150vh);
         
         width: 100vw;
     }
@@ -145,6 +153,9 @@ html, body {
 }
 
 #textStyles {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+
     width: 100vw;
 
     z-index: 999;

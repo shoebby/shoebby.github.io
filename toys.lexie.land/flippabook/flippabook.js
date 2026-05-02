@@ -7,7 +7,7 @@ const thumbnailTemplate = document.querySelector(".slide-thumbnail");
 
 const slidesContainer = document.querySelector("#slidesContainer");
 
-let activeSlide;
+let activeSlide = document.querySelector(".slide1");
 let activeThumb;
 let slides = [];
 
@@ -22,6 +22,14 @@ function randomIntFromInterval(min, max) { // min and max included
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+function PixelizeSize(element) {
+    let el_height = parseInt(window.getComputedStyle(element).getPropertyValue("height"));
+    let el_width = parseInt(window.getComputedStyle(element).getPropertyValue("width"));
+
+    element.style.height = el_height + "px";
+    element.style.width = el_width + "px";
+}
+
 const addSlideBtn = document.querySelector("button[target='addPage']");
 addSlideBtn.addEventListener('click', (event) => {
         AddSlide();
@@ -33,6 +41,10 @@ focusSlideBtn.addEventListener('click', (event) => {
 });
 
 function FocusSlide(int) {
+    activeSlide.querySelectorAll("div.obj, video.obj, img.obj").forEach(element => {
+        PixelizeSize(element);
+    });
+    
     document.querySelectorAll(".slide-thumbnail").forEach(element => {
         element.classList.remove("thumb-focused");
     });
@@ -222,7 +234,7 @@ function urlToPromise(url) {
 
 const exportBtn = document.querySelector("button[target='export']");
 exportBtn.addEventListener('click', (event) => {
-        ExportSlides();
+    ExportSlides();
 });
 function ExportSlides() {
     let zip = new JSZip();
@@ -270,24 +282,21 @@ function ExportSlides() {
 
         let slideWidth = parseInt(window.getComputedStyle(document.querySelector('#currentSlide')).getPropertyValue("width"));
         let slideHeight = parseInt(window.getComputedStyle(document.querySelector('#currentSlide')).getPropertyValue("height"));
-        let elementLeft
-        let elementTop
-
-        let elementWidth
-        let elementHeight
 
         slideClone.querySelectorAll(".obj").forEach(element => {
             element.classList.remove("ui-draggable", "ui-draggable-handle", "locked");
 
-            elementLeft = parseInt(element.style.left);
-            elementTop = parseInt(element.style.top);
+            let elementLeft = parseInt(element.style.left);
+            let elementTop = parseInt(element.style.top);
 
             element.style.left = `${(elementLeft / slideWidth) * 100}%`;
             element.style.top = `${(elementTop / slideHeight) * 100}%`;
         });
         slideClone.querySelectorAll("img.obj, video.obj, div.obj").forEach(element => {
-            elementWidth = parseInt(element.style.width);
-            elementHeight = parseInt(element.style.height);
+            let elementWidth = parseInt(element.style.width);
+            let elementHeight = parseInt(element.style.height);
+            console.log(`width: ${elementWidth}`);
+            console.log(`height: ${elementHeight}`);
 
             element.style.width = `${(elementWidth / slideWidth) * 100}%`;
             element.style.height = `${(elementHeight / slideHeight) * 100}%`;

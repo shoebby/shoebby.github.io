@@ -1,5 +1,6 @@
 import stringifyStylesheet from '../libraries/stringify-css-rule.js'
 
+const textContainer = document.querySelector("#text-container");
 const writingText = document.querySelector("#text");
 let replaceAll = false;
 
@@ -16,7 +17,8 @@ const buttonSounds = new Howl({
         shake:  [1966,  755],
         drip:   [2721,  633],
         glow:   [3354,  796],
-        tilt:   [4150,  825]
+        tilt:   [4150,  825],
+        highlight: [4975, 1142]
     }
 });
 
@@ -42,12 +44,9 @@ animsSheet.insertRule(`@keyframes shake {0%, 100% {transform: translateX(-4px);}
 animsSheet.insertRule(`@keyframes shake {0%, 100% {transform: translateX(-4px);}50% {transform: translateX(4px);}}`, animsSheet.cssRules.length);
 animsSheet.insertRule(`@keyframes drip {0% {text-shadow: 0 0 0 black;}19% {text-shadow: 0 10px 5px transparent;}20% {text-shadow: 0 0 0 black;}49% {text-shadow: 0 10px 5px transparent;}50% {text-shadow: 0 0 0 black;}100% {text-shadow: 0 10px 5px transparent;}}`, animsSheet.cssRules.length);
 animsSheet.insertRule(`@keyframes wave {0%, 100% {text-shadow: 0 0 2px blue;}25%, 75% {text-shadow: 0 0 5px blue;}50% {text-shadow: 0 0 10px blue;}}`, animsSheet.cssRules.length);
-animsSheet.insertRule(`body { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; margin: 0; }`, animsSheet.cssRules.length);
-animsSheet.insertRule(`p { font-size: 3vh; overflow: visible; margin: 0; }`, animsSheet.cssRules.length);
+animsSheet.insertRule(`body { display: flex; justify-content: center; align-items: center; width: 50%; margin: 0 auto; }`, animsSheet.cssRules.length);
+animsSheet.insertRule(`p { font-size: 5vh; overflow: visible; margin: 0; font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: white; -webkit-text-stroke: .2vh black; }`, animsSheet.cssRules.length);
 animsSheet.disabled = true;
-
-let replaceModeToggle = document.querySelector("#replaceMode")
-replaceModeToggle.addEventListener('change', (event) => {replaceAll = !replaceAll; console.log(`replaceAll is ${replaceAll}`)})
 
 function ApplyEffect(styleString, sound) {
     let startIndex = window.getSelection().anchorOffset; console.log(startIndex);
@@ -157,11 +156,23 @@ effect_yellow.addEventListener('click', (event) => {
 });
 const effect_blue = document.querySelector("button[target='eff_blue'");
 effect_blue.addEventListener('click', (event) => {
-    ApplyEffect(`style="color: transparent; text-transform: full-width; animation: wave 2s linear infinite;"`, 'blue');
+    ApplyEffect(`style="color: transparent; text-transform: full-width; animation: wave 2s linear infinite; -webkit-text-stroke: 0;"`, 'blue');
 });
 const effect_tilt = document.querySelector("button[target='eff_tilt'");
 effect_tilt.addEventListener('click', (event) => {
     ApplyEffect(`style="display: inline-block; rotate: 45deg; transform: skewX(45deg);"`, 'tilt');
+});
+const effect_hl = document.querySelector("button[target='eff_hl'");
+effect_hl.addEventListener('click', (event) => {
+    ApplyEffect(`style="background-color: yellow; -webkit-text-stroke: 0; color: black;"`, 'highlight');
+});
+const effect_cursive = document.querySelector("button[target='eff_cursive'");
+effect_cursive.addEventListener('click', (event) => {
+    ApplyEffect(`style="font-style: italic; vertical-align: super; font-size: .75em;"`, 'cursive');
+});
+const effect_bregje = document.querySelector("button[target='eff_bregje'");
+effect_bregje.addEventListener('click', (event) => {
+    ApplyEffect(`style="font-style: italic; color: magenta; font-family: 'Times New Roman', Times, serif; background: blue; -webkit-text-stroke: white .03em; border-radius: 99%;"`, 'cursive');
 });
 
 writingText.addEventListener('focus', (event) => {
@@ -179,7 +190,7 @@ document.querySelector("button[target='saveTypings']").addEventListener('click',
 });
 
 function capture() {
-    let htmlContent = [`<head><style>${stringifyStylesheet(animsSheet)}</style></head><body><p>${writingText.innerHTML}</p></body>`];
+    let htmlContent = [`<head><style>${stringifyStylesheet(animsSheet)}</style></head><body><p id="typist-text">${writingText.innerHTML}</p></body>`];
     let bl = new Blob(htmlContent, {type: "text/html"});
     let a = document.createElement("a");
     a.href = URL.createObjectURL(bl);
@@ -189,7 +200,7 @@ function capture() {
     a.innerHTML = "beep boop downloading";
 
     writingText.innerHTML = "";
-    writingText.style.animation = "incant 5s 1 ease-out";
+    textContainer.style.animation = "incant 5s 1 ease-out";
 
     paperSound_crush.rate(1.5);
     paperSound_crush.play();
@@ -214,7 +225,8 @@ function capture() {
     }, 4500);
 
     setTimeout(function(){
-        writingText.style.animation = "";
+        textContainer.style.animation = "";
+        writingText.innerHTML = "New Text";
         a.click();
     }, 5000);
 }
