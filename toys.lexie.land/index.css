@@ -153,6 +153,7 @@ red {
 /* #endregion */
 
 /* #region window */
+
 .window {
     background: white;
 
@@ -172,11 +173,12 @@ red {
 .title-bar-image {
 
     animation: windowIcon 2s infinite linear;
-}
-.title-bar-image img {
-    height: 4vh;
-    width: 4vh;
-    
+
+    img {
+        height: 4vh;
+        width: 4vh;
+        
+    }
 }
 @keyframes windowIcon {
     0%, 100% {
@@ -186,6 +188,7 @@ red {
         transform: translateX(-0.75vw) translateY(-0.25vw) rotate(15deg);
     }
 }
+
 .title-bar-text {
     height: 2.5vh;
     line-height: 2vh;
@@ -201,27 +204,27 @@ red {
     color: #000;
     text-shadow: #FFF 0 0 2px, #FFF 0 0 5px, #FFF 0 0 10px;
 }
+
 .title-bar-controls {
+    button {
+        border-radius: 0;
+        border: none;
 
-}
-.title-bar-controls button {
-    border-radius: 0;
-    border: none;
+        height: 2.5vh;
+        width: 2.5vh;
 
-    height: 2.5vh;
-    width: 2.5vh;
+        font-weight: 700;
+        font-size: 2vh;
+        text-align: center;
+        text-shadow: #FFF 0 0 2px, #FFF 0 0 5px, #FFF 0 0 10px;
 
-    font-weight: 700;
-    font-size: 2vh;
-    text-align: center;
-    text-shadow: #FFF 0 0 2px, #FFF 0 0 5px, #FFF 0 0 10px;
-
-    background: none;
-    cursor: pointer;
-    transition: 0.2s;
-}
-.title-bar-controls button:hover {
-    font-size: 4vh;
+        background: none;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    button:hover {
+        font-size: 4vh;
+    }
 }
 
 .window-body {
@@ -238,16 +241,19 @@ red {
     border-left-color: red;
     border-right-color: red;
     border-bottom-color: red;
-}
-.window-body iframe {
-    width: 100%;
-    height: 100%;
 
-    border: none;
+    iframe {
+        width: 100%;
+        height: 100%;
+
+        border: none;
+    }
 }
+
 /* #endregion */
 
 /* #region startup overlay */
+
 #startupOverlay {
     position: absolute;
     left: 0;
@@ -257,22 +263,102 @@ red {
     z-index: 999999;
     pointer-events: none;
 
-    background-color: rgb(0, 0, 0);
-
-    transition: 0;
-}
-#startupOverlay #scanlines {
-    width: 100%;
-    height: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 
-    animation: scanlines .2s linear infinite;
+    background-color: rgb(0, 0, 0);
 
-    box-shadow: inset black 0 0 3vw;
+    transition: 0;
+
+    #scanlines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        animation: scanlines .2s linear infinite;
+        box-shadow: inset black 0 0 3vw;
+    }
+
+    .title {
+        z-index: -3;
+
+        span {
+            font-family: 'appleGaramondLight';
+            font-size: 10vh;
+            color: #FFF;
+        }
+
+        vee {
+            font-family: 'appleGaramondLight';
+            font-size: 12vh;
+            color: #ff8500;
+        }
+        ooh {
+            font-family: 'appleGaramondLight';
+            font-size: 12vh;
+            color: #009bff;
+        }
+        ess {
+            font-family: 'appleGaramondLight';
+            font-size: 12vh;
+            color: #ff0043;
+        }
+    }
+
+    .buttonContainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        color: white;
+        font-size: 1.5vh;
+        text-align: center;
+
+        z-index: -1;
+
+        button {
+            pointer-events: all;
+            cursor: pointer;
+
+            margin-bottom: 1vh;
+
+            background: #000;
+            border: solid #ff8500 1px;
+            box-shadow: none;
+            color: #ff8500;
+
+            width: 35%;
+        }
+    }
+    .projector {
+        position: absolute;
+        width: 75vw;
+        height: 90vh;
+        top: -100vh;
+        z-index: -1;
+
+        background: url('./images/projectorscreen.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        video {
+            width: 80%;
+            padding-bottom: 17.5vh;
+
+            animation: flickering .2s linear infinite;
+        }
+
+        transition: 2s;
+        transition-timing-function: ease-out;
+    }
 }
 @keyframes scanlines {
     0% {
@@ -285,57 +371,37 @@ red {
         background: repeating-linear-gradient(rgba(36, 36, 36, 0.2) 2px, rgba(36, 36, 36, 0.2) 4px, transparent 6px, transparent 10px);
     }
 }
-#startupOverlay .title .subtitle {
-    z-index: -1;
-}
-#startupOverlay .title span {
-    font-family: 'appleGaramondLight';
-    font-size: 10vh;
-    color: #FFF;
-}
-#startupOverlay vee {
-    font-family: 'appleGaramondLight';
-    font-size: 12vh;
-    color: #ff8500;
-}
-#startupOverlay ooh {
-    font-family: 'appleGaramondLight';
-    font-size: 12vh;
-    color: #009bff;
-}
-#startupOverlay ess {
-    font-family: 'appleGaramondLight';
-    font-size: 12vh;
-    color: #ff0043;
+@keyframes flickering {
+    0%, 100% {
+        filter: 
+        drop-shadow(0 0 160px white) drop-shadow(0 0 100px white) drop-shadow(0 0 50px white)
+        opacity(80%)
+        contrast(150%);
+    }
+    25% {
+        filter:
+        drop-shadow(0 0 145px white) drop-shadow(0 0 100px white) drop-shadow(0 0 50px white)
+        opacity(82%)
+        contrast(150%);
+    }
+    50% {
+        filter:
+        drop-shadow(0 0 151px white) drop-shadow(0 0 100px white) drop-shadow(0 0 50px white)
+        opacity(79%)
+        contrast(150%);
+    }
+    75% {
+        filter:
+        drop-shadow(0 0 152px white) drop-shadow(0 0 100px white) drop-shadow(0 0 50px white)
+        opacity(81%)
+        contrast(150%);
+    }
 }
 
-#startupOverlay .buttonContainer {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    color: white;
-    font-size: 1.5vh;
-    text-align: center;
-
-    z-index: -1;
-}
-#startupOverlay .buttonContainer button {
-    pointer-events: all;
-    cursor: pointer;
-
-    margin-bottom: 1vh;
-
-    background: #000;
-    border: solid #ff8500 1px;
-    box-shadow: none;
-    color: #ff8500;
-
-    width: 35%;
-}
 /* #endregion */
 
 /* #region poppy */
+
 #poppy {
     position: absolute;
     bottom: 10vh;
@@ -344,43 +410,49 @@ red {
     z-index: 99999;
 
     transition: 1s;
-}
-#poppy div {
-    position: absolute;
-    top: 5%;
-    left: -150%;
 
-    transition: 1s;
-}
-#poppy input {
-    cursor: pointer;
-    border: none;
-    background: none;
-    text-decoration: underline;
-}
-#poppy p {
-    float: left;
-    background: #fff2a5;
-    padding: 1vw;
-    min-width: 10vw;
-    max-width: 15vw;
+    div {
+        position: absolute;
+        top: 5%;
+        left: -150%;
 
-    font-size: 1.5vh;
-}
-#poppy img {
-    width: 10vw;
-    height: 15vw;
+        transition: 1s;
+    }
 
-    animation: poppyAnim 2s linear infinite;
+    p {
+        float: left;
+        background: #fff2a5;
+        padding: 1vw;
+        min-width: 10vw;
+        max-width: 15vw;
+
+        font-size: 1.5vh;
+    }
+
+    input {
+        cursor: pointer;
+        border: none;
+        background: none;
+        text-decoration: underline;
+    }
+
+    img {
+        width: 10vw;
+        height: 15vw;
+
+        animation: poppyAnim 2s linear infinite;
+    }
 }
 @keyframes poppyAnim {
     0% { rotate: 15deg; }
     50% { rotate: -15deg; }
     100% { rotate: 15deg; }
 }
+
 /* #endregion */
 
 /* #region settings */
+
 #settings {
     width: 20vw;
     border-left: .3vw solid;
@@ -390,17 +462,21 @@ red {
     border-left-color: red;
     border-right-color: red;
     border-bottom-color: red;
+
+    .window-body {
+        height: 100%;
+        border: none;
+
+        fieldset {
+            margin: 1vh .5vw 1vh .5vw;
+        }
+    }
 }
-#settings .window-body {
-    height: 100%;
-    border: none;
-}
-#settings .window-body fieldset {
-    margin: 1vh .5vw 1vh .5vw;
-}
+
 /* #endregion */
 
 /* #region taskbar */
+
 #taskbar {
     position: absolute;
     left: 0;
@@ -415,12 +491,14 @@ red {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-}
-#taskbar #clock {
-    margin: 1vw;
-    border: .1vw solid black;
 
-    font-size: 1.5vh;
-    font-weight: 700;
+    #clock {
+        margin: 1vw;
+        border: .1vw solid black;
+
+        font-size: 1.5vh;
+        font-weight: 700;
+    }
 }
+
 /* #endregion */

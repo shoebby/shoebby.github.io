@@ -1,4 +1,5 @@
 const windowTemplate = document.querySelector("#windowNaked");
+
 const guyTemplate = document.querySelector("#guy");
 const guyLines = [
     'sounds/webtoys/jc_augmentedvision.mp3',
@@ -10,7 +11,15 @@ const guyLines = [
     'sounds/webtoys/jc_risk.mp3',
     'sounds/webtoys/jc_wontletdown.mp3',
 ];
+
 const mainStyle = document.styleSheets[0];
+
+const powerHum = new Howl({
+    src: ['./sounds/webtoys/powerHum.mp3'],
+    volume: .5,
+    loop: true,
+    autoplay: true
+});
 
 $( function() {
     $( ".container" ).draggable({
@@ -68,29 +77,39 @@ function addDesktopIcon(name, toyPath, iconPath, xpos, ypos) {
 
 // #region settings
 const settingsWindow = document.querySelector("#settings");
+const cbScanlines = settingsWindow.querySelector("#toggle_sl")
+const cbHum = settingsWindow.querySelector("#toggle_hum")
 document.querySelector("a[target='openSettings']").addEventListener('click', (event) => {openSettings()});
 settingsWindow.querySelector("button[target='closeSettings']").addEventListener('click', (event) => {closeSettings()});
 
-function openSettings(){
+function openSettings() {
     settingsWindow.style.setProperty("display", "inline-block");
 }
-function closeSettings(){
+function closeSettings() {
     settingsWindow.style.setProperty("display", "none");
 }
-
-settingsWindow.querySelector("#toggle_sl").addEventListener('change', function() {
-    if (this.checked) {
+function setScanlines() {
+    if (cbScanlines.checked) {
         scanlines.style.setProperty("display","flex");
     } else {
         scanlines.style.setProperty("display","none");
     }
-});
-settingsWindow.querySelector("#toggle_hum").addEventListener('change', function() {
-if (this.checked) {
+}
+function setHum() {
+    if (cbHum.checked) {
         powerHum.play();
     } else {
         powerHum.pause();
     }
+}
+setScanlines();
+setHum();
+
+settingsWindow.querySelector("#toggle_sl").addEventListener('change', function() {
+    setScanlines();
+});
+settingsWindow.querySelector("#toggle_hum").addEventListener('change', function() {
+    setHum();
 });
 settingsWindow.querySelector("#set_bg").addEventListener('input', function() {
     document.body.style.background = this.value;

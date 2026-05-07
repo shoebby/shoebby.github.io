@@ -9,29 +9,33 @@
         <link rel="stylesheet" href="index.css">
         <script src="index.js" type="module"></script>
         <script src="index_startup.js" type="module"></script>
+        <script src="./libraries/howler.min.js"></script>
         <script src="./libraries/jquery-3.7.1.js"></script>
         <script src="./libraries/jquery-ui.js"></script>
     </head>
     <body>
         <div id="startupOverlay">
-            <div id="scanlines">
-                <div class="title">
-                    <span>
-                        <vee>V</vee>isunov<ooh>O</ooh><ess>S</ess>
-                    </span>
-                </div>
-                <div class="buttonContainer">
-                    <p>
-                        < A TOYISTIC WEB-OS />
-                        <br>
-                        < BY ALEXANDRIA FRANKA MARIA VAN EEKELEN />
-                        <br>
-                        < REAL CLOWNS PLAY FULLSCREEN (F11) />
-                    </p>
-                    <button target="startup">BOOT</button>
-                    <button target="quickstart">QUICKBOOT</button>
-                </div>
+            <div class="title">
+                <span>
+                    <vee>V</vee>isunov<ooh>O</ooh><ess>S</ess>
+                </span>
             </div>
+            <div class="buttonContainer">
+                <p>
+                    < A TOYISTIC WEB-OS />
+                    <br>
+                    < BY ALEXANDRIA<sup>FM</sup> />
+                    <br>
+                    < REAL CLOWNS PLAY FULLSCREEN (F11) />
+                </p>
+                <button target="startup">BOOT</button>
+                <button target="quickstart">QUICKBOOT</button>
+                <button target="introseq">What is this?</button>
+            </div>
+            <div class="projector">
+            </div>
+            
+            <div id="scanlines"></div>
         </div>
 
         <a target="bin"><div class="static bin"><p class="folderName">Recycling Bin</p></div></a>
@@ -121,11 +125,5 @@
         <div id="guy" style="display: none; position: absolute; cursor: grab;">
             <img src="images/guymode.png">  
         </div>
-
-        <script>
-            const powerHum = new Audio('./sounds/webtoys/powerhum.mp3');
-            powerHum.loop = true;
-            powerHum.play();
-        </script>
     </body>
 </html>
