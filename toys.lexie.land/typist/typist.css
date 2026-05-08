@@ -66,6 +66,7 @@ html, body {
     
     text-align: left;
 }
+
 @keyframes incant {
     0% {
         background: url("assets/scrap-paper.webp");
@@ -167,64 +168,66 @@ html, body {
     row-gap: 1vw;
 
     padding: 1vw;
-}
-#textStyles button {
-    height: 3vw;
-    padding: 0 1vw 0 1vw;
 
-    margin: auto;
+    .container {
+        width: 8vw;
+        height: 3vw;
+    
+        box-sizing: content-box;
+        border-radius: 99%;
+    
+        background: url(assets/stone.jpg);
+        background-size: auto 100%;
+        filter: brightness(2);
+    
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
 
-    box-sizing: content-box;
-    border-radius: 99%;
+    .save {
+        width: 4vw;
+        height: 4vw;
+        padding: 0;
+    
+        border: none;
+    
+        background: url(../divbrush/assets/ui_saver.webp);
+        background-size: 100% 100%;
+        filter: brightness(2);
+    }
+    .save:hover {
+        box-shadow: none;
+        filter: brightness(2) drop-shadow(0 0 20px lightgray);
+    }
 
-    background: url(assets/stone.jpg);
-    background-size: auto 100%;
-    filter: brightness(2);
-
-    transition: .1s;
-}
-#textStyles button:hover {
-    cursor: pointer;
-
-    box-shadow: lightgray 0 0 15px 2px;
-    filter: brightness(2) invert(2);
-}
-#textStyles button.save {
-    width: 4vw;
-    height: 4vw;
-    padding: 0;
-
-    border: none;
-
-    background: url(../divbrush/assets/ui_saver.webp);
-    background-size: 100% 100%;
-    filter: brightness(2);
-}
-#textStyles button.save:hover {
-    box-shadow: none;
-    filter: brightness(2) drop-shadow(0 0 20px lightgray);
-}
-
-#textStyles .container {
-    width: 8vw;
-    height: 3vw;
-
-    box-sizing: content-box;
-    border-radius: 99%;
-
-    background: url(assets/stone.jpg);
-    background-size: auto 100%;
-    filter: brightness(2);
-
-    display: none;
-    align-items: center;
-    justify-content: center;
-}
-#textStyles button:nth-child(odd) {
-    animation: wiggle 4s -1s linear infinite;
-}
-#textStyles button:nth-child(even) {
-    animation: wiggle 4s linear infinite;
+    button {
+        height: 3vw;
+        padding: 0 1vw 0 1vw;
+    
+        margin: auto;
+    
+        box-sizing: content-box;
+        border-radius: 99%;
+    
+        background: url(assets/stone.jpg);
+        background-size: auto 100%;
+        filter: brightness(2);
+    
+        transition: .1s;
+    }
+    button:hover {
+        cursor: pointer;
+    
+        box-shadow: lightgray 0 0 15px 2px;
+        filter: brightness(2) invert(2);
+    }
+    button:nth-child(odd) {
+        animation: wiggle 4s -1s linear infinite;
+    }
+    button:nth-child(even) {
+        animation: wiggle 4s linear infinite;
+    }
 }
 @keyframes wiggle {
     0%, 100% { rotate: -15deg; }

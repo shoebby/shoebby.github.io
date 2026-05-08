@@ -8,8 +8,8 @@ const thumbnailTemplate = document.querySelector(".slide-thumbnail");
 const slidesContainer = document.querySelector("#slidesContainer");
 
 let activeSlide = document.querySelector(".slide1");
-let activeThumb;
-let slides = [];
+let activeThumb = document.querySelector(".thumb1");
+let activeSlideIndex = 1;
 
 function init() {
     let infoLines = document.querySelectorAll(".infoline");
@@ -30,6 +30,23 @@ function PixelizeSize(element) {
     element.style.width = el_width + "px";
 }
 
+function SetThumbImg(slide, thumb) {
+    let containerWidth = slide.offsetWidth;
+	let containerHeight = slide.offsetHeight;
+
+    html2canvas(slide, {
+        backgroundColor: null,
+        removeContainer: true,
+        scale: .1,
+        width: containerWidth,
+        height: containerHeight,
+        x: 0,
+        y: 0,
+    }).then(canvas => {
+        thumb.querySelector("img").src = canvas.toDataURL("image/webp");
+    });
+}
+
 const addSlideBtn = document.querySelector("button[target='addPage']");
 addSlideBtn.addEventListener('click', (event) => {
         AddSlide();
@@ -44,7 +61,7 @@ function FocusSlide(int) {
     activeSlide.querySelectorAll("div.obj, video.obj, img.obj").forEach(element => {
         PixelizeSize(element);
     });
-    
+
     document.querySelectorAll(".slide-thumbnail").forEach(element => {
         element.classList.remove("thumb-focused");
     });
@@ -58,6 +75,7 @@ function FocusSlide(int) {
 
     activeSlide = document.querySelector(`.slide${int}`);
     activeThumb = document.querySelector(`.thumb${int}`);
+    activeSlideIndex = int;
 
     activeThumb.classList.add("thumb-focused");
     activeSlide.classList.add("slide-focused");
@@ -65,11 +83,13 @@ function FocusSlide(int) {
     activeSlide.querySelectorAll("video, audio").forEach(element => {
         element.play();
     });
+
+    SetThumbImg(activeSlide, activeThumb);
 }
 FocusSlide(1);
 
 function AddSlide() {
-    slideAmount++
+    slideAmount++;
 
     let newThumb = thumbnailTemplate.cloneNode(true);
     newThumb.classList.remove("thumb1");
@@ -352,7 +372,7 @@ function GetActiveElements() {
 
 // #region tool assets
 
-// general tools
+// audio - general tools
 const clip_skew = new Howl({
     src: ['./assets/skewer/skew.mp3']
 });
@@ -361,6 +381,12 @@ const clip_shuffle = new Howl({
 });
 const clip_unlocker = new Howl({
     src: ['./assets/lock/unlocker.mp3']
+});
+const clip_cloner = new Howl({
+    src: ['']
+});
+const clip_destroyer = new Howl({
+    src: ['']
 });
 
 // gun
@@ -477,6 +503,44 @@ function Unlock() {
         element.classList.remove("locked");
     });
     clip_unlocker.play();
+}
+
+const cloner = document.querySelector("button[target='clone']");
+cloner.addEventListener('click', (event) => {
+    Clone();
+});
+function Clone() {
+    let newSlideContents = activeSlide.innerHTML;
+    
+    AddSlide();
+
+    activeSlide.innerHTML = newSlideContents;
+
+    GetActiveElements().forEach(element => {
+        makeDraggable(element);
+    });
+
+    clip_cloner.play();
+}
+
+const destroyer = document.querySelector("button[target='destroy']");
+destroyer.addEventListener('click', (event) => {
+    Destroy();
+});
+function Destroy() {
+    if (activeSlide == null)
+        return;
+
+    let targetSlide = document.querySelector(`.slide${activeSlideIndex}`);
+    let targetThumb = document.querySelector(`.thumb${activeSlideIndex}`);
+
+    alert("You're about to DESTROY this slide, are you sure?");
+    targetSlide.remove();
+    targetThumb.remove();
+
+    FocusSlide(activeSlideIndex - 1);
+
+    clip_destroyer.play();
 }
 
 const inputTools = {

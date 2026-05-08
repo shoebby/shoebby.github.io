@@ -73,8 +73,19 @@ p, a, span, div {
 
     background-color: white;
 
+    overflow: hidden;
     box-sizing: border-box;
     border: none;
+
+    img {
+        position: relative;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        pointer-events: none;
+    }
 }
 .slide-thumbnail button {
     width: 100%;
@@ -85,6 +96,7 @@ p, a, span, div {
     
     cursor: pointer;
 }
+
 .addPage {
     width: 16vw;
     height: 3vw;

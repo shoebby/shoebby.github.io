@@ -1,13 +1,18 @@
+//used to attach a stylesheet to the export
 import stringifyStylesheet from '../libraries/stringify-css-rule.js'
 
 const textContainer = document.querySelector("#text-container");
 const writingText = document.querySelector("#text");
-let replaceAll = false;
 
+// typing sound
 const typingSound = new Howl({
     src: ['./assets/type.mp3']
 });
+writingText.addEventListener('input', (event) => {
+    typingSound.play();
+});
 
+// incantation sounds
 const buttonSounds = new Howl({
     src: ['./assets/buttonsounds.mp3'],
     sprite: {
@@ -22,47 +27,64 @@ const buttonSounds = new Howl({
     }
 });
 
+// export sounds
 const fireSound = new Howl({
     src: ['../divbrush/assets/audio/flames.mp3']
 });
-
 const paperSound_reveal = new Howl({
     src: ['./assets/paper-reveal.mp3']
 });
 const paperSound_crush = new Howl({
     src: ['./assets/paper-crush.mp3']
 });
-
 const laughSound = new Howl({
     src: ['./assets/laugh.mp3']
 });
 
-const animStyle = document.createElement("style");
-document.head.appendChild(animStyle);
-const animsSheet = animStyle.sheet;
-animsSheet.insertRule(`@keyframes shake {0%, 100% {transform: translateX(-4px);}50% {transform: translateX(4px);}}`, animsSheet.cssRules.length);
-animsSheet.insertRule(`@keyframes shake {0%, 100% {transform: translateX(-4px);}50% {transform: translateX(4px);}}`, animsSheet.cssRules.length);
-animsSheet.insertRule(`@keyframes drip {0% {text-shadow: 0 0 0 black;}19% {text-shadow: 0 10px 5px transparent;}20% {text-shadow: 0 0 0 black;}49% {text-shadow: 0 10px 5px transparent;}50% {text-shadow: 0 0 0 black;}100% {text-shadow: 0 10px 5px transparent;}}`, animsSheet.cssRules.length);
-animsSheet.insertRule(`@keyframes wave {0%, 100% {text-shadow: 0 0 2px blue;}25%, 75% {text-shadow: 0 0 5px blue;}50% {text-shadow: 0 0 10px blue;}}`, animsSheet.cssRules.length);
-animsSheet.insertRule(`body { display: flex; justify-content: center; align-items: center; width: 50%; margin: 0 auto; }`, animsSheet.cssRules.length);
-animsSheet.insertRule(`p { font-size: 5vh; overflow: visible; margin: 0; font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: white; -webkit-text-stroke: .2vh black; }`, animsSheet.cssRules.length);
-animsSheet.disabled = true;
+// #region construct export stylesheet
 
-function ApplyEffect(styleString, sound) {
-    let startIndex = window.getSelection().anchorOffset; console.log(startIndex);
-    let endIndex = window.getSelection().focusOffset; console.log(endIndex);
+// need to do some weird stuff in order to prep a stylesheet for the export.
+// because most of the styling is applied directly to the element with spans this only handles out-of-element things like
+// animations and element-specific styling (<body>, <p>)
+// this code block is placed here to leave open the option to insert rules into it dynamically
 
-    let target = document.getSelection().toString();
-    let fulltext = writingText.innerHTML.toString();
+const exportStyle = document.createElement("style");
+document.head.appendChild(exportStyle);
+const exportSheet = exportStyle.sheet;
+exportSheet.insertRule(`@keyframes shake {0%, 100% {transform: translateX(-4px);}50% {transform: translateX(4px);}}`, exportSheet.cssRules.length);
+exportSheet.insertRule(`@keyframes shake {0%, 100% {transform: translateX(-4px);}50% {transform: translateX(4px);}}`, exportSheet.cssRules.length);
+exportSheet.insertRule(`@keyframes drip {0% {text-shadow: 0 0 0 black;}19% {text-shadow: 0 10px 5px transparent;}20% {text-shadow: 0 0 0 black;}49% {text-shadow: 0 10px 5px transparent;}50% {text-shadow: 0 0 0 black;}100% {text-shadow: 0 10px 5px transparent;}}`, exportSheet.cssRules.length);
+exportSheet.insertRule(`@keyframes wave {0%, 100% {text-shadow: 0 0 2px blue;}25%, 75% {text-shadow: 0 0 5px blue;}50% {text-shadow: 0 0 10px blue;}}`, exportSheet.cssRules.length);
+exportSheet.insertRule(`body { display: flex; justify-content: center; align-items: center; width: 50%; margin: 0 auto; }`, exportSheet.cssRules.length);
+exportSheet.insertRule(`p { font-size: 5vh; overflow: visible; margin: 0; font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: white; -webkit-text-stroke: .2vh black; filter: saturate(10); }`, exportSheet.cssRules.length);
+exportSheet.disabled = true;
 
-    if (replaceAll)
-        writingText.innerHTML = fulltext.replaceAll(target, `<span ${styleString}>${target}</span>`);
-    else if (!replaceAll)
-        writingText.innerHTML = fulltext.replace(target, `<span ${styleString}>${target}</span>`);
+// #endregion
 
-    buttonSounds.play(sound)
+// #region effect application function
+
+// this function finds the currently highlighted text and applies the selected style incantation to it
+// current problem with it is that it applies styling to the first instance of a word that occurs,
+// i.e. in the sentence "We live in dangerous times, but we live.", even when highlighting the second 'live',
+// text effects only ever get applied to the first instance. *NEEDS TO BE SOLVED*
+
+String.prototype.replaceAtIndex = function(index, replacement) {
+    return this.substring(0, index) + replacement + this.substring(index + replacement.length);
 }
 
+function ApplyEffect(styleString, sound) {
+
+    let targetString = window.getSelection().toString(); console.log(targetString);
+    let newString = `<span ${styleString}>${targetString}</span>`; console.log(newString);
+
+    writingText.innerHTML = writingText.innerHTML.replace(targetString, newString);
+
+    buttonSounds.play(sound);
+}
+
+// #endregion
+
+// #region background
 const bgparent = document.querySelector("#background");
 let pointsArray_circle = [[250, 0], [-250, 0], [0, -250], [0, 250], [175, 175], [-175, 175], [175, -175], [-175, -175]];
 
@@ -134,9 +156,15 @@ function setPointStyle(point, pointDepth) {
 }
 initbg(3);
 
+// #endregion
+
+// #region effect application functions
+
+// Every effect is a button with a 'target' attribute
+
 const effect_red = document.querySelector("button[target='eff_red'");
 effect_red.addEventListener('click', (event) => {
-    ApplyEffect(`style="color: red"`, 'red');
+    ApplyEffect(`style="color: red; -webkit-text-stroke: 0;"`, 'red');
 });
 const effect_shake = document.querySelector("button[target='eff_shake'");
 effect_shake.addEventListener('click', (event) => {
@@ -164,7 +192,7 @@ effect_tilt.addEventListener('click', (event) => {
 });
 const effect_hl = document.querySelector("button[target='eff_hl'");
 effect_hl.addEventListener('click', (event) => {
-    ApplyEffect(`style="background-color: yellow; -webkit-text-stroke: 0; color: black;"`, 'highlight');
+    ApplyEffect(`style="background-color: yellow; -webkit-text-stroke: 0;"`, 'highlight');
 });
 const effect_cursive = document.querySelector("button[target='eff_cursive'");
 effect_cursive.addEventListener('click', (event) => {
@@ -175,22 +203,16 @@ effect_bregje.addEventListener('click', (event) => {
     ApplyEffect(`style="font-style: italic; color: magenta; font-family: 'Times New Roman', Times, serif; background: blue; -webkit-text-stroke: white .03em; border-radius: 99%;"`, 'cursive');
 });
 
-writingText.addEventListener('focus', (event) => {
-    
-});
-writingText.addEventListener('blur', (event) => {
-    
-});
-writingText.addEventListener('input', (event) => {
-    typingSound.play();
-});
-
 document.querySelector("button[target='saveTypings']").addEventListener('click', function() {
     capture();
 });
 
+// #endregion
+
+// #region exporting
+
 function capture() {
-    let htmlContent = [`<head><style>${stringifyStylesheet(animsSheet)}</style></head><body><p id="typist-text">${writingText.innerHTML}</p></body>`];
+    let htmlContent = [`<head><style>${stringifyStylesheet(exportSheet)}</style></head><body><p id="typist-text">${writingText.innerHTML}</p></body>`];
     let bl = new Blob(htmlContent, {type: "text/html"});
     let a = document.createElement("a");
     a.href = URL.createObjectURL(bl);
@@ -230,3 +252,5 @@ function capture() {
         a.click();
     }, 5000);
 }
+
+// #endregion
