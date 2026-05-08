@@ -62,6 +62,8 @@ function FocusSlide(int) {
         PixelizeSize(element);
     });
 
+    SetThumbImg(activeSlide, activeThumb);
+
     document.querySelectorAll(".slide-thumbnail").forEach(element => {
         element.classList.remove("thumb-focused");
     });
