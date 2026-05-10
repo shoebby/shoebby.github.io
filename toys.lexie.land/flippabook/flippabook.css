@@ -129,10 +129,24 @@ p, a, span, div {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    .explosion {
+        display: none;
+
+        position: absolute;
+        top: 35%;
+        left: 35%;
+        width: 50%;
+        height: 50%;
+
+        z-index: 999;
+    }
 }
 #currentSlide {
     width: 70vw;
     height: 39vw;
+
+    
 }
 .editslide {
     width: 100%;

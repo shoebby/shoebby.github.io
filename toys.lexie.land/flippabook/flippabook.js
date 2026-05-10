@@ -385,10 +385,17 @@ const clip_unlocker = new Howl({
     src: ['./assets/lock/unlocker.mp3']
 });
 const clip_cloner = new Howl({
-    src: ['']
+    src: ['./assets/cloner/clone.mp3']
 });
-const clip_destroyer = new Howl({
-    src: ['']
+const clip_destroyer_hiss = new Howl({
+    src: ['./assets/destroyer/clip_destroyer_hiss.mp3']
+});
+const clip_destroyer_boom = new Howl({
+    src: ['./assets/destroyer/clip_destroyer_boom.mp3'],
+    volume: .5
+});
+const clip_destroyer_null = new Howl({
+    src: ['./assets/destroyer/clip_destroyer_null.mp3']
 });
 
 // gun
@@ -525,24 +532,43 @@ function Clone() {
     clip_cloner.play();
 }
 
+let destroy_countdown = 3;
 const destroyer = document.querySelector("button[target='destroy']");
+const explosion = document.querySelector(".explosion");
 destroyer.addEventListener('click', (event) => {
     Destroy();
 });
 function Destroy() {
-    if (activeSlide == null)
-        return;
-
     let targetSlide = document.querySelector(`.slide${activeSlideIndex}`);
     let targetThumb = document.querySelector(`.thumb${activeSlideIndex}`);
 
-    alert("You're about to DESTROY this slide, are you sure?");
-    targetSlide.remove();
-    targetThumb.remove();
+    console.log(targetSlide);
+    if (targetSlide == null) {
+        clip_destroyer_null.play();
+        return;
+    }
 
-    FocusSlide(activeSlideIndex - 1);
+    if (destroy_countdown == 1){
 
-    clip_destroyer.play();
+        explosion.style.display = "block";
+        clip_destroyer_boom.play();
+        
+        setTimeout(function(){
+            explosion.style.display = "none";
+        }, 1000);
+
+        targetSlide.remove();
+        targetThumb.remove();
+
+        destroy_countdown = 3;
+
+        if (document.querySelector(`.slide${activeSlideIndex - 1}`) != null)
+            FocusSlide(activeSlideIndex - 1);
+    } else {
+        clip_destroyer_hiss.play();
+        destroy_countdown--;
+    }
+    destroyer.querySelector("img").src = `./assets/destroyer/destroyer_${destroy_countdown}.png`;
 }
 
 const inputTools = {
