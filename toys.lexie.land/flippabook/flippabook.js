@@ -11,29 +11,46 @@ let activeSlide = document.querySelector(".slide1");
 let activeThumb = document.querySelector(".thumb1");
 let activeSlideIndex = 1;
 
-function init() {
-    let infoLines = document.querySelectorAll(".infoline");
-    infoLines.forEach(line => {
-        makeDraggable(line);
+let infoLines = document.querySelectorAll(".infoline");
+infoLines.forEach(line => {
+    makeDraggable(line);
+});
+
+// #region helper functions
+
+// perhaps more accurately makeInteractable, since it also adds the DoToolEffect() event listener
+// order of these is important, as the dragging functionality takes precedent this way unless it's disabled
+function makeDraggable(element) {
+    $( element ).draggable({
+        stack: ".ui-draggable",
+        distance: 0,
     });
-}; init();
+
+    element.addEventListener('click', () => {
+        DoToolEffect(element);
+    });
+}
 
 function randomIntFromInterval(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function PixelizeSize(element) {
+    //gets the width and height of an element in pixel units using getComputedStyle
     let el_height = parseInt(window.getComputedStyle(element).getPropertyValue("height"));
     let el_width = parseInt(window.getComputedStyle(element).getPropertyValue("width"));
 
+    //assigns new pixel-unit sizes to the element, the actual size of the element shouldn't change from this process
     element.style.height = el_height + "px";
     element.style.width = el_width + "px";
 }
 
 function SetThumbImg(slide, thumb) {
+    //the width and height of the thumbnail have to be identical to the slide at first
     let containerWidth = slide.offsetWidth;
 	let containerHeight = slide.offsetHeight;
 
+    //makes a similar-enough <canvas> copy of the slide, which is then turned into a webp which can then be freely scaled down to size
     html2canvas(slide, {
         backgroundColor: null,
         removeContainer: true,
@@ -47,6 +64,15 @@ function SetThumbImg(slide, thumb) {
     });
 }
 
+//returns an array of the elements inside of the focused slide
+function GetActiveElements() {
+    return activeSlide.querySelectorAll("video, div, img");
+}
+
+// #endregion
+
+// #region adding and focusing slides
+
 const addSlideBtn = document.querySelector("button[target='addPage']");
 addSlideBtn.addEventListener('click', (event) => {
         AddSlide();
@@ -58,34 +84,41 @@ focusSlideBtn.addEventListener('click', (event) => {
 });
 
 function FocusSlide(int) {
+    //converts an element's width/height values into px, which is necessary for exports to convert into % properly
     activeSlide.querySelectorAll("div.obj, video.obj, img.obj").forEach(element => {
         PixelizeSize(element);
     });
 
+    //sets thumbnail of the blurred slide
     SetThumbImg(activeSlide, activeThumb);
 
+    //removes the focus classes from the blurred slide/thumbnail pair, iterates through all slides/thumbnails
     document.querySelectorAll(".slide-thumbnail").forEach(element => {
         element.classList.remove("thumb-focused");
     });
     document.querySelectorAll(".editslide").forEach(element => {
         element.classList.remove("slide-focused");
     });
+
+    //pauses and resets any and all video/audio elements inside of the blurred slide
     document.querySelectorAll("video, audio").forEach(element => {
         element.pause();
         element.currentTime = 0;
     });
 
+    //sets and assigns classes to the focused slide
     activeSlide = document.querySelector(`.slide${int}`);
     activeThumb = document.querySelector(`.thumb${int}`);
     activeSlideIndex = int;
-
     activeThumb.classList.add("thumb-focused");
     activeSlide.classList.add("slide-focused");
 
+    //autoplay focused slide video/audio elements
     activeSlide.querySelectorAll("video, audio").forEach(element => {
         element.play();
     });
 
+    //sets thumbnail of the focused slide
     SetThumbImg(activeSlide, activeThumb);
 }
 FocusSlide(1);
@@ -93,34 +126,46 @@ FocusSlide(1);
 function AddSlide() {
     slideAmount++;
 
+    //creating a new thumbnail from template node
     let newThumb = thumbnailTemplate.cloneNode(true);
     newThumb.classList.remove("thumb1");
     newThumb.classList.add(`thumb${slideAmount.toString()}`);
     
+    //wiring up the new slide's thumbnail button
     let newFocus = newThumb.querySelector("button[target='focusPage']");
     newFocus.value = slideAmount.toString();
-    newFocus.innerHTML = `${slideAmount}`;
     newFocus.addEventListener('click', (event) => {
         FocusSlide(newFocus.value);
     });
     
-    slidesContainer.appendChild(newThumb);
-
+    //creating a new slide from template node
     let newSlide = editableSlideTemplate.cloneNode(true);
     newSlide.classList.remove("slide1");
     newSlide.classList.add(`slide${slideAmount.toString()}`);
     newSlide.innerHTML = ``;
     
+    //appending thumbnail and slide to document and focusing on the new slide
+    slidesContainer.appendChild(newThumb);
     currentSlideElement.appendChild(newSlide);
-
     FocusSlide(slideAmount)
 }
 
+// #endregion
+
 // #region drag-and-dropping files
+
+//this set of functions handles the dragging-and-dropping of various filetypes
+//each filetype needs to be handled specifically, because the function has to construct specific elements to accommodate them
+//verified support for:
+//// images (jpeg, png, gif, webp, avif, bmp, ico)
+//// video (mp4, mkv, webm)
+//// audio (mp3, wav, flac, avif)
+//// HTML
+//according to MDN docs, support for other markdown languages is theoretically possible, but would need additional parsing
 
 let dropbox;
 
-dropbox = document.getElementById("editor");
+dropbox = document.querySelector("#main-grid");
 dropbox.addEventListener("dragenter", dragenter);
 dropbox.addEventListener("dragover", dragover);
 dropbox.addEventListener("drop", drop);
@@ -147,24 +192,19 @@ function drop(e) {
     handleFiles(files);
 }
 
-function makeDraggable(element) {
-    $( element ).draggable({
-        stack: ".ui-draggable",
-        distance: 0,
-    });
-
-    element.addEventListener('click', () => {
-        DoToolEffect(element);
-    });
-}
-
 function handleFiles(files) {
     let activeSlide = document.querySelector(".slide-focused");
 
+    //for each file dragged into the window it checks the file's type with regex
+    //all elements' heights are initially capped to accommodate large-scale assets, but this gets ignored when pumped
+    //all elements are made draggable
+    //since the files are read as DataURL, they are stored in the page itself, which makes exporting easier!
+    //low-res assets are preferable however, because the huge blocks of text this generates quickly become unwieldy when further editing of an export is desired
     for (const file of files) {
 
         console.log(file)
 
+        //images are put into an <img> element
         if (/image\/.*/.test(file.type)) {
             const img = document.createElement("img");
             img.classList.add("obj");
@@ -180,6 +220,7 @@ function handleFiles(files) {
             };
             reader.readAsDataURL(file);
         }
+        // videos go into a <video> element, which loops and autoplays by default
         else if (/video\/.*/.test(file.type)) {
             const vid = document.createElement("video");
             vid.classList.add("obj");
@@ -197,6 +238,7 @@ function handleFiles(files) {
             };
             reader.readAsDataURL(file);
         }
+        // videos go into an <audio> element, which loops and autoplays by default
         else if (/audio\/.*/.test(file.type)) {
             const aud = document.createElement("audio");
             aud.classList.add("obj");
@@ -214,6 +256,7 @@ function handleFiles(files) {
             };
             reader.readAsDataURL(file);
         }
+        // HTML goes into an <iframe> element inside of a <div>
         else if (/.*html/.test(file.type)) {
             const divContainer = document.createElement("div");
             divContainer.classList.add("obj");
@@ -242,22 +285,11 @@ function handleFiles(files) {
 
 // #region exporting
 
-function urlToPromise(url) {
-    return new Promise(function(resolve, reject) {
-        JSZipUtils.getBinaryContent(url, function (err, data) {
-            if(err) {
-                reject(err);
-            } else {
-                resolve(data);
-            }
-        });
-    });
-}
-
 const exportBtn = document.querySelector("button[target='export']");
 exportBtn.addEventListener('click', (event) => {
     ExportSlides();
 });
+
 function ExportSlides() {
     let zip = new JSZip();
 
@@ -366,13 +398,13 @@ function ExportSlides() {
 
 // #endregion
 
-// #region toolbar tools
+// #region tools
 
-function GetActiveElements() {
-    return activeSlide.querySelectorAll("video, div, img");
-}
+
+
 
 // #region tool assets
+
 
 // audio - general tools
 const clip_skew = new Howl({
@@ -387,6 +419,8 @@ const clip_unlocker = new Howl({
 const clip_cloner = new Howl({
     src: ['./assets/cloner/clone.mp3']
 });
+
+// destroyer
 const clip_destroyer_hiss = new Howl({
     src: ['./assets/destroyer/clip_destroyer_hiss.mp3']
 });
@@ -469,6 +503,8 @@ const checker_icon_inactive = './assets/checker/checker_inactive.png';
 const checker_cursor = './assets/checker/cursor_checker.png';
 
 // #endregion
+
+// #region gentool functions
 
 const skewer = document.querySelector("button[target='skewer']");
 skewer.addEventListener('click', (event) => {
@@ -607,6 +643,17 @@ checker.addEventListener('click', () => {
     HandleInputTool(inputTools.checker);
 });
 
+// #endregion
+
+// #region inputtool functions
+
+// inputtools first disable the draggable event listener on the focused slide's elements
+// this makes the elements default to the doToolEffect() event listener, which checks which tool is currently active
+// there are arguably too many switch cases here, which makes adding inputtools a pain
+
+// gets active slide elements and disables their draggable eventlistener
+// checks if an inputtool is already active, and cleans up accordingly
+// sets inputtool assets based on the given inputtool and sets it as the active inputtool
 function HandleInputTool(inputTool) {
     let elements = GetActiveElements();
 
@@ -644,6 +691,7 @@ function HandleInputTool(inputTool) {
     });
 }
 
+// does a function based on which inputtool is active
 function DoToolEffect(element) {
     switch (activeTool) {
     case inputTools.gun:
@@ -666,6 +714,9 @@ function DoToolEffect(element) {
     }
 }
 
+// sets the active inputtool back to their default modus
+// sets active slide's elements back to draggable
+// sets active inputtool to null
 function cleanupActiveTool(elements) {
     switch (activeTool) {
     case inputTools.gun:
@@ -694,12 +745,14 @@ function cleanupActiveTool(elements) {
     activeTool = null;
 }
 
+// sets the visible/audible assets of a tool when it's (de)selected
 function SetToolAssets(icon, icon_src, sound, cursor_src) {
     icon.src = icon_src;
     sound.play();
     activeSlide.style.cursor = cursor_src;
 }
 
+// the functions of the specific inputtools
 function ShootElement(element) {
     element.remove();
     
@@ -758,5 +811,7 @@ function checkerElement(element) {
 
     clip_checker_fire.play();
 }
+
+// #endregion
 
 // #endregion

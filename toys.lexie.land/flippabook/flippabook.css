@@ -7,7 +7,7 @@ p, a, span, div {
     user-select: none;
 }
 
-.main-grid {
+#main-grid {
     display: grid;
     grid-template-columns: 18vw 82vw;
     grid-template-rows: 10% 90%;
