@@ -502,6 +502,34 @@ const checker_icon_active = './assets/checker/checker_active.png';
 const checker_icon_inactive = './assets/checker/checker_inactive.png';
 const checker_cursor = './assets/checker/cursor_checker.png';
 
+// mirrorer
+const clip_mirror_unholster = new Howl({
+    src: ['./assets/mirror/mirror_unholster.mp3']
+});
+const clip_mirror_holster = new Howl({
+    src: ['./assets/mirror/mirror_holster.mp3']
+});
+const clip_mirror_fire = new Howl({
+    src: ['./assets/mirror/mirror_fire.mp3']
+});
+const mirror_icon_active = './assets/mirror/mirror_active.png';
+const mirror_icon_inactive = './assets/mirror/mirror_inactive.png';
+const mirror_cursor = './assets/mirror/cursor_mirror.png';
+
+// deepfrier
+const clip_deepfry_unholster = new Howl({
+    src: ['./assets/deepfry/deepfry_unholster.mp3']
+});
+const clip_deepfry_holster = new Howl({
+    src: ['./assets/deepfry/deepfry_holster.mp3']
+});
+const clip_deepfry_fire = new Howl({
+    src: ['./assets/deepfry/deepfry_fire.mp3']
+});
+const deepfry_icon_active = './assets/deepfry/deepfry_active.png';
+const deepfry_icon_inactive = './assets/deepfry/deepfry_inactive.png';
+const deepfry_cursor = './assets/deepfry/cursor_deepfry.png';
+
 // #endregion
 
 // #region gentool functions
@@ -607,12 +635,18 @@ function Destroy() {
     destroyer.querySelector("img").src = `./assets/destroyer/destroyer_${destroy_countdown}.png`;
 }
 
+// #endregion
+
+// #region inputtool defining
+
 const inputTools = {
     gun: 1,
     pump: 2,
     needle: 3,
     lock: 4,
-    checker: 5
+    checker: 5,
+    mirror: 6,
+    deepfry: 7,
 };
 let activeTool = null;
 
@@ -621,7 +655,6 @@ const gunIcon = gun.querySelector("img");
 gun.addEventListener('click', () => {
     HandleInputTool(inputTools.gun);
 });
-
 const pump = document.querySelector("button[target='pump']");
 const pumpIcon = pump.querySelector("img");
 pump.addEventListener('click', () => {
@@ -642,6 +675,16 @@ const checkerIcon = checker.querySelector("img");
 checker.addEventListener('click', () => {
     HandleInputTool(inputTools.checker);
 });
+const mirror = document.querySelector("button[target='mirror']");
+const mirrorIcon = mirror.querySelector("img");
+mirror.addEventListener('click', () => {
+    HandleInputTool(inputTools.mirror);
+});
+const deepfry = document.querySelector("button[target='deepfry']");
+const deepfryIcon = deepfry.querySelector("img");
+deepfry.addEventListener('click', () => {
+    HandleInputTool(inputTools.deepfry);
+});
 
 // #endregion
 
@@ -654,6 +697,7 @@ checker.addEventListener('click', () => {
 // gets active slide elements and disables their draggable eventlistener
 // checks if an inputtool is already active, and cleans up accordingly
 // sets inputtool assets based on the given inputtool and sets it as the active inputtool
+
 function HandleInputTool(inputTool) {
     let elements = GetActiveElements();
 
@@ -679,6 +723,12 @@ function HandleInputTool(inputTool) {
         break;
     case inputTools.checker:
         SetToolAssets(checkerIcon, checker_icon_active, clip_checker_unholster, `url(${checker_cursor}) 0 0, auto`);
+        break;
+    case inputTools.mirror:
+        SetToolAssets(mirrorIcon, mirror_icon_active, clip_mirror_unholster, `url(${mirror_cursor}) 0 0, auto`);
+        break;
+    case inputTools.deepfry:
+        SetToolAssets(deepfryIcon, deepfry_icon_active, clip_deepfry_unholster, `url(${deepfry_cursor}) 0 0, auto`);
         break;
     default:
         console.log(`Can't find asset-setting function for a tool called ${inputTool}.`);
@@ -709,6 +759,12 @@ function DoToolEffect(element) {
     case inputTools.checker:
         checkerElement(element);
         break;
+    case inputTools.mirror:
+        mirrorElement(element);
+        break;
+        case inputTools.deepfry:
+            deepfryElement(element);
+            break;
     default:
         console.log(`Can't find worker function for a tool called ${activeTool}.`);
     }
@@ -733,6 +789,12 @@ function cleanupActiveTool(elements) {
         break;
     case inputTools.checker:
         SetToolAssets(checkerIcon, checker_icon_inactive, clip_checker_holster, "default");
+        break;
+    case inputTools.mirror:
+        SetToolAssets(mirrorIcon, mirror_icon_inactive, clip_mirror_holster, "default");
+        break;
+    case inputTools.deepfry:
+        SetToolAssets(deepfryIcon, deepfry_icon_inactive, clip_deepfry_holster, "default");
         break;
     default:
         console.log(`Can't find worker function for a tool called ${activeTool}.`);
@@ -810,6 +872,18 @@ function checkerElement(element) {
     element.style.left = "0";
 
     clip_checker_fire.play();
+}
+function mirrorElement(element) {
+    if (element.classList.contains("mirrored"))
+        element.classList.remove("mirrored");
+    else 
+        element.classList.add("mirrored");
+}
+function deepfryElement(element) {
+    if (element.classList.contains("deepfried"))
+        element.classList.remove("deepfried");
+    else 
+        element.classList.add("deepfried");
 }
 
 // #endregion

@@ -202,6 +202,12 @@ iframe.obj {
 .checkered {
     z-index: 0;
 }
+.mirrored {
+    transform: scaleX(-1);
+}
+.deepfried {
+    filter: saturate(4) contrast(3);
+}
 
 .infoline {
     font-size: 2em;
