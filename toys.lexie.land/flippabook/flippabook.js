@@ -311,26 +311,10 @@ function ExportSlides() {
         });
 
         const container = document.createElement("div");
-        container.style.display = "flex";
-        container.style.flexDirection = "column";
-        container.style.justifyContent = "center";
-        container.style.alignItems = "center";
-        container.style.width = "100vw";
-        container.style.height = "100vh";
-        container.style.overflow = "hidden";
-        container.style.background = "radial-gradient(circle at top left, #009bff 0%, #009bff 7%, transparent 7.5%),radial-gradient(circle at top, #ff8500 0%, #ff8500 7%, transparent 7.5%),radial-gradient(circle at top right, #009bff 0%, #009bff 7%, transparent 7.5%),radial-gradient(circle at center left, #ff0043 0%, #ff0043 7%, transparent 7.5%),radial-gradient(circle at center, #009bff 0%, #009bff 14%, transparent 15%),radial-gradient(circle at center right, #ff0043 0%, #ff0043 7%, transparent 7.5%),radial-gradient(circle at bottom left, #009bff 0%, #009bff 7%, transparent 7.5%),radial-gradient(circle at bottom, #ff8500 0%, #ff8500 7%, transparent 7.5%),radial-gradient(circle at bottom right, #009bff 0%, #009bff 7%, transparent 7.5%),#000";
-        container.style.backgroundSize = "10vw 10vw";
-        container.style.backgroundRepeat = "repeat";
-        container.style.backgroundPosition = "0 0";
+        container.classList.add("container");
 
         const page = document.createElement("div");
-        page.style.background = "white";
-        page.style.width = "70vw";
-        page.style.height = "39vw";
-        page.style.position = "relative";
-        page.style.overflow = "hidden";
-        page.style.border = "2vw groove #FF0043";
-        page.style.boxSizing = "content-box";
+        page.classList.add("page");
 
         let slideClone = slide.cloneNode(true);
 
@@ -361,26 +345,17 @@ function ExportSlides() {
 
         if ((index + 1) < slides.length) {
             let nextBtn = document.createElement("a");
+            nextBtn.classList.add("button-next");
             nextBtn.setAttribute("href", `page${index+1}.html`);
             nextBtn.innerHTML = "NEXT PAGE";
-            
-            nextBtn.style.position = "absolute";
-            nextBtn.style.bottom = "0";
-            nextBtn.style.zIndex = "999";
-            nextBtn.style.background = "#FF0043";
-            nextBtn.style.border = "1vw groove #FF0043";
-            nextBtn.style.fontFamily = "Arial";
-            nextBtn.style.fontWeight = "900";
-            nextBtn.style.fontSize = "3vh";
-            nextBtn.style.color = "white";
-            nextBtn.style.marginBottom = "3vh";
-            nextBtn.style.padding = "1vw";
-            nextBtn.style.textDecoration = "none";
             
             container.appendChild(nextBtn);
         } else {}
 
-        let htmlContent = [`<!DOCTYPE html><head><style>html,body{margin: 0; overflow: hidden;}</style></head><body>` + container.outerHTML + `</body>`];
+        let htmlContent = [`<!DOCTYPE html><head>
+            <link rel="stylesheet" href="style.css">
+            </head>
+            <body>` + container.outerHTML + `</body>`];
         let bl = new Blob(htmlContent, {type: "text/html"});
 
         if (index == 0) {
@@ -389,6 +364,48 @@ function ExportSlides() {
             zip.file(`page${index}.html`, bl);
         }
     });
+    let bl_css = new Blob([`
+        html, body { margin: 0; overflow: hidden; }
+        .mirrored { transform: scaleX(-1); }
+        .deepfried { filter: saturate(4) contrast(3); }
+        .button-next {
+            position: absolute;
+            bottom: 0;
+            z-index: 999;
+            background: #FF0043;
+            border: 1vw groove #FF0043;
+            font-family: 'Arial';
+            font-weight: 900;
+            font-size: 3vh;
+            color: white;
+            margin-bottom: 3vh;
+            padding: 1vw;
+            text-decoration: none;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: radial-gradient(circle at top left, #009bff 0%, #009bff 7%, transparent 7.5%),radial-gradient(circle at top, #ff8500 0%, #ff8500 7%, transparent 7.5%),radial-gradient(circle at top right, #009bff 0%, #009bff 7%, transparent 7.5%),radial-gradient(circle at center left, #ff0043 0%, #ff0043 7%, transparent 7.5%),radial-gradient(circle at center, #009bff 0%, #009bff 14%, transparent 15%),radial-gradient(circle at center right, #ff0043 0%, #ff0043 7%, transparent 7.5%),radial-gradient(circle at bottom left, #009bff 0%, #009bff 7%, transparent 7.5%),radial-gradient(circle at bottom, #ff8500 0%, #ff8500 7%, transparent 7.5%),radial-gradient(circle at bottom right, #009bff 0%, #009bff 7%, transparent 7.5%),#000;
+            background-size: 10vw 10vw;
+            background-repeat: repeat;
+            background-position: 0 0;
+        }
+        .page {
+            background: white;
+            width: 70vw;
+            height: 39vw;
+            position: relative;
+            overflow: hidden;
+            border: 2vw groove #FF0043;
+            box-sizing: content-box;
+        }
+    `], {type: "text/css"});
+    zip.file(`style.css`, bl_css);
 
     zip.generateAsync({type:"blob"})
     .then(function(content) {
