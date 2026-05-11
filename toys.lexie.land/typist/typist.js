@@ -216,7 +216,7 @@ function capture() {
     let bl = new Blob(htmlContent, {type: "text/html"});
     let a = document.createElement("a");
     a.href = URL.createObjectURL(bl);
-    a.download = "typist-incantation.html";
+    a.download = `${writingText.innerText.substring(0,10)}.html`;
     a.hidden = true;
     document.body.appendChild(a);
     a.innerHTML = "beep boop downloading";
