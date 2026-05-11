@@ -592,6 +592,7 @@ textarea, input {
             row-gap: .5vw;
         
             overflow-y: scroll;
+            overflow-x: hidden;
             scrollbar-width: thin;
             scrollbar-color: brown black;
 
@@ -979,6 +980,38 @@ textarea, input {
     90% {
         transform: translate(-7px, 4px);
         box-shadow: #ff000038 -5px 1px 0;
+    }
+}
+.eye {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 75% 0;
+
+    animation: eye .5s linear infinite;
+}
+@keyframes eye {
+    0%, 100% {
+        rotate: 45deg;
+
+        background:
+        linear-gradient(to bottom right, black 35%, transparent 36%),
+        radial-gradient(circle at center, black 0%, black 35%, green 36%, green 55%, white 56%);
+    }
+    25% {
+        background:
+        linear-gradient(to bottom right, black 50%, transparent 51%),
+        radial-gradient(circle at center, black 0%, black 35%, green 36%, green 55%, white 56%);
+    }
+    50% {
+        background:
+        linear-gradient(to bottom right, black 100%),
+        radial-gradient(circle at center, black 0%, black 35%, green 36%, green 55%, white 56%);
+    }
+    75% {
+        background:
+        linear-gradient(to bottom right, black 50%, transparent 51%),
+        radial-gradient(circle at center, black 0%, black 35%, green 36%, green 55%, white 56%);
     }
 }
 /* #endregion */

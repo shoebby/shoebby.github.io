@@ -443,48 +443,85 @@ function setBrush(brush) {
         input_width.value =         "10";
         input_height.value =        "80";
         input_animSettings.value =  ".5s linear infinite";
-        input_animation.value =
-`0%, 100% {
-    transform-origin: 50%;
-    transform: translate(0, 0);
-    box-shadow: #ff000038 8px -1px 0;
-}
-10% {
-    transform: translate(-9px, 1px);
-    box-shadow: #ff00009d 6px -7px 0;
-}
-20% {
-    transform: translate(1px, -5px);
-    box-shadow: #ff000080 0px -7px 0;
-}
-30% {
-    transform: translate(-5px, -3px);
-    box-shadow: #ff000038 1px 7px 0;
-}
-40% {
-    transform: translate(4px, 2px);
-    box-shadow: #ff000038 -9px 5px 0;
-}
-50% {
-    transform: translate(-3px, -8px);
-    box-shadow: #ff000038 -6px 3px 0;
-}
-60% {
-    transform: translate(1px, -2px);
-    box-shadow: #ff000038 -7px 1px 0;
-}
-70% {
-    transform: translate(1px, 9px);
-    box-shadow: #ff000038 6px 8px 0;
-}
-80% {
-    transform: translate(-4px, 3px);
-    box-shadow: #ff000038 2px -6px 0;
-}
-90% {
-    transform: translate(-7px, 4px);
-    box-shadow: #ff000038 -5px 1px 0;
-}`;
+        input_animation.value =     `
+                                        0%, 100% {
+                                            transform-origin: 50%;
+                                            transform: translate(0, 0);
+                                            box-shadow: #ff000038 8px -1px 0;
+                                        }
+                                        10% {
+                                            transform: translate(-9px, 1px);
+                                            box-shadow: #ff00009d 6px -7px 0;
+                                        }
+                                        20% {
+                                            transform: translate(1px, -5px);
+                                            box-shadow: #ff000080 0px -7px 0;
+                                        }
+                                        30% {
+                                            transform: translate(-5px, -3px);
+                                            box-shadow: #ff000038 1px 7px 0;
+                                        }
+                                        40% {
+                                            transform: translate(4px, 2px);
+                                            box-shadow: #ff000038 -9px 5px 0;
+                                        }
+                                        50% {
+                                            transform: translate(-3px, -8px);
+                                            box-shadow: #ff000038 -6px 3px 0;
+                                        }
+                                        60% {
+                                            transform: translate(1px, -2px);
+                                            box-shadow: #ff000038 -7px 1px 0;
+                                        }
+                                        70% {
+                                            transform: translate(1px, 9px);
+                                            box-shadow: #ff000038 6px 8px 0;
+                                        }
+                                        80% {
+                                            transform: translate(-4px, 3px);
+                                            box-shadow: #ff000038 2px -6px 0;
+                                        }
+                                        90% {
+                                            transform: translate(-7px, 4px);
+                                            box-shadow: #ff000038 -5px 1px 0;
+                                        }
+                                    `;
+        input_filter =              "none";
+        break;
+    case "eye":
+        input_background.value =    "none";
+        input_borderL.value =       "none";
+        input_borderR.value =       "none";
+        input_borderT.value =       "none";
+        input_borderB.value =       "none";
+        input_borderRadius.value =  "75% 0";
+        input_width.value =         "50";
+        input_height.value =        "50";
+        input_animSettings.value =  "infinite .5s linear";
+        input_animation.value =     `
+                                        0%, 100% {
+                                            rotate: 45deg;
+                                    
+                                            background:
+                                            linear-gradient(to bottom right, black 35%, transparent 36%),
+                                            radial-gradient(circle at center, black 0%, black 35%, green 36%, green 55%, white 56%);
+                                        }
+                                        25% {
+                                            background:
+                                            linear-gradient(to bottom right, black 50%, transparent 51%),
+                                            radial-gradient(circle at center, black 0%, black 35%, green 36%, green 55%, white 56%);
+                                        }
+                                        50% {
+                                            background:
+                                            linear-gradient(to bottom right, black 100%),
+                                            radial-gradient(circle at center, black 0%, black 35%, green 36%, green 55%, white 56%);
+                                        }
+                                        75% {
+                                            background:
+                                            linear-gradient(to bottom right, black 50%, transparent 51%),
+                                            radial-gradient(circle at center, black 0%, black 35%, green 36%, green 55%, white 56%);
+                                        }
+                                    `;
         input_filter =              "none";
         break;
     default:
