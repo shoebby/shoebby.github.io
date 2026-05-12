@@ -172,6 +172,7 @@ function spinny() {
     for (let i = 0; i < allDivs.length; i++){
         allDivs[i].style.setProperty("rotate", getRandomInt(360) + "deg");
         allDivs[i].style.setProperty("transition", ".2s");
+        allDivs[i].style.setProperty("filter", "grayscale(1)");
     }
 
     playAudio("./sounds/webtoys/poppyHonk.mp3");

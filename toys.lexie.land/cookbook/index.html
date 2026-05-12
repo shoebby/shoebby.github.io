@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="./cookbook.css">
+</head>
+<body>
+<div class="tab">
+    <button class="tab-link active" onclick="openTab(event, 'intro')">Introduction</button>
+    <section>Toywares</section>
+    <button class="tab-link" onclick="openTab(event, 'recurse')">Recurse³</button>
+    <button class="tab-link" onclick="openTab(event, 'sierpinski')">Sierpinskinator</button>
+    <button class="tab-link" onclick="openTab(event, 'popup')">Pop-Up Collager</button>
+    <button class="tab-link" onclick="openTab(event, 'noiseboxx')">Noiseboxx</button>
+    <button class="tab-link" onclick="openTab(event, 'puppet')">Puppetshop</button>
+    <button class="tab-link" onclick="openTab(event, 'divbrush')">DivBrush</button>
+    <button class="tab-link" onclick="openTab(event, 'typist')">Typist</button>
+    <button class="tab-link" onclick="openTab(event, 'flippa')">Flippabook</button>
+    <section>Desktop Toys</section>
+    <button class="tab-link" onclick="openTab(event, 'desk-guy')">GuyMode</button>
+    <button class="tab-link" onclick="openTab(event, 'desk-spin')">Spinny</button>
+    <section>Toymaker Guides</section>
+    <button class="tab-link" onclick="openTab(event, 'toymaker-desk')">Adding Desktop Toys</button>
+    <button class="tab-link" onclick="openTab(event, 'toymaker-toyware')">Adding Toywares</button>
+    <button class="tab-link" onclick="openTab(event, 'toymaker-flippa-general')">Flippabook - Adding A General Tool</button>
+    <button class="tab-link" onclick="openTab(event, 'toymaker-flippa-input')">Flippabook - Adding An Input Tool</button>
+    <button class="tab-link" onclick="openTab(event, 'toymaker-divbrush-preset')">DivBrush - Adding A Preset</button>
+    <button class="tab-link" onclick="openTab(event, 'toymaker-divbrush-tool')">DivBrush - Adding A Tool</button>
+    <button class="tab-link" onclick="openTab(event, 'toymaker-typist-incantation')">Typist - Adding An Incantation</button>
+</div>
+<div id="intro" class="tab-content">
+    intro
+</div>
+<div id="recurse" class="tab-content">
+    <h1>Recurse³</h1>
+    <p>
+        <b>Recurse³</b> is a binary fractal tree generator, constructed with &lt;div&gt; elements and styled with CSS. It can make for some compelling effects!
+    </p>
+    <p>
+        Its interface is relatively straight-forward compared to the other tools, but the number of options can be a bit overwhelming. We'll go over them one by one, after which I'll share some of my own recipes!
+    </p>
+    <h2>Branches</h2>
+    <p>
+        Branches make up the tree structure. They are &lt;div&gt; elements generated through JS, and positioned/styled with CSS.
+    </p>
+    <h3>Generation</h3>
+    <p>
+        <i>The Starting Values</i> influence the angle and length of the first branch, also called the 'root'. Its starting values are 150 pixels long and -90 degrees for a basic upright tree.
+    </p>
+    <p>
+        <i>The Angles</i> decide at what angle the splitting branches should diverge. These values can both be randomized as well within a set range.
+    </p>
+    <p>
+        <i>The Ratio</i> is the value that following branches are multiplied with. So for example, a starting length of 200 pixels with a <i>Ratio</i> of 75 means the next two branches will be 150 pixels long.
+    </p>
+    <p>
+        <i>The Depth</i> sets the number of 'splits' that take place. It's set to a maximum value of 12 for performance reasons, any higher than that will, unfortunately, just make the browser crash.
+    </p>
+    <h3>Styling</h3>
+    <h2>Flowers</h2>
+    <h3>Generation</h3>
+    <h3>Styling</h3>
+    <h2>Recipes</h2>
+    <div class="recipe-container">
+        <div class="recipe">
+            <h3>Crashing Wave</h3>
+            <img src="./assets/crashingwave.png">
+            <ul>
+                <li>Starting Length: 300</li>
+                <li>Starting Angle: -135</li>
+                <li>Left Angle: 90</li>
+                <li>Right Angle: 15</li>
+                <li>Ratio: 64</li>
+                <li>Depth: 9</li>
+                <li>Flowers: enabled</li>
+                <li>Flower Generation Mode: capped</li>
+                <li>Minimum Depth: 1</li>
+                <li>Maximum Depth: 6</li>
+            </ul>
+            
+            <b>Branch Style</b>
+            <ul>
+                <li>Width Mode: width == length</li>
+                <li>Background: depth-based (from dark blue to light blue)</li>
+            </ul>
+            
+            <b>Flower Style</b>
+            <ul>
+                <li>Width: 20</li>
+                <li>Height: 20</li>
+                <li>Corner Rounding: 999 / 999 / 999 / 999</li>
+                <li>Background: depth-based (from light blue to white)</li>
+                <li>Mix Blend Mode: screen</li>
+            </ul>
+        </div>
+        <div class="recipe">
+            <h3>Doom Spiral</h3>
+            <img src="./assets/doomspiral.png">
+            <ul>
+                <li>Starting Length: 450</li>
+                <li>Left Angle: -45</li>
+                <li>Right Angle: 45</li>
+                <li>Ratio: 70</li>
+                <li>Depth: 9</li>
+                <li>Flowers: enabled</li>
+                <li>Flower Generation Mode: flat</li>
+                <li>Flowers Per Branch: 1</li>
+                <li>Flower Length Position: -50 / 150</li>
+                <li>Flower Width Position: -50 / 150</li>
+            </ul>
+            
+            <b>Branch Style</b>
+            <ul>
+                <li>Width Mode: width == length</li>
+                <li>Background: center 100%/100% 100% url("LINK TO 1:1 ROUND RADIOACTIVE SYMBOL PNG")</li>
+            </ul>
+            
+            <b>Flower Style</b>
+            <ul>
+                <li>Width: Randomized 10 / 50</li>
+                <li>Height: Randomized 10 / 50</li>
+                <li>Background: center 100%/100% 100% url("LINK TO 1:1 ROUND RADIOACTIVE SYMBOL PNG")</li>
+            </ul>
+            <p>
+                <b>Note:</b> When using images as branch backgrounds, it's good to be aware that if the image gets taken offline, it'll cease to function as a background. While arguably a poetic and beautiful feature of the internet, for maximum stability of your image you can either turn it into a permalink, TinyURL, or host the image yourself!
+            </p>
+            
+        </div>
+    </div>
+</div>
+<div id="sierpinski" class="tab-content">
+    <p>
+        <b>Sierpinskinator</b> lets you construct Sierpinski-esque structures out of tiny &lt;div&gt;s by adding and positioning points to recurse from.
+    </p>
+    <p>
+        Currently does not feature an export function, so more of a desktop toy for the time being!
+    </p>
+</div>
+<div id="popup" class="tab-content">
+    popup
+</div>
+<div id="noiseboxx" class="tab-content">
+    <b>Noiseboxx</b> is still a work in progress, check back later!
+</div>
+<div id="puppet" class="tab-content">
+    <b>Puppetshop</b> lets you construct your own puppet characters out of a variety of bodypart PNGs, which can then be exported as a PNG for further use.
+</div>
+<div id="divbrush" class="tab-content">
+    <b>DivBrush</b> lets you paint with styled and animated &lt;div&gt; elements, featuring a range of preset brushes to pick from and further modify.
+</div>
+<div id="typist" class="tab-content">
+    <p>
+        <b>Typist</b> is the word processor of <b>VisunovOS</b>. It features various text styling incantations, some of which even make the text move!
+    </p>
+    <p>
+        It works by highlighting a section of text and then pressing the desired incantation, which are generally able to stack onto one another if they don't  directly override each other.
+    </p>
+    <p>
+        Be warned that Typist is quite buggy and prone to break your text! For example in the sentence:<br>
+        <i>"Good dogs are good, bad dogs are bad."</i><br>
+        Highlighting the final 'bad' and applying an incantation to it will instead style the first-most occuring 'bad', which is unintended and at times annoying.
+    </p>
+    <p>
+        Practice some patience, and if you want to add your own incantations to <b>Typist</b> go to section 6 of the Toymaker Guides!
+    </p>
+</div>
+<div id="flippa" class="tab-content">
+    flippa
+</div>
+<div id="desk-guy" class="tab-content">
+    desk-guy
+</div>
+<div id="desk-spin" class="tab-content">
+    desk-spin
+</div>
+<div id="toymaker-desk" class="tab-content">
+    <h2>Adding A Desktop Toy</h2>
+    <p>
+        <ol>
+            <li>
+                Navigate to <code>index.html</code> in the root directory.
+            </li>
+            <li>
+                Under guyMode and spinny, create a new <code>< a ></code> element with a similar structure as the other desktop toys.
+            </li>
+            <li>
+                Set the <code>target</code> attribute and second <code>class</code> of your toy to something short and descriptive, for example <code>greyout</code>.
+            </li>
+            <li>
+                Write a name in the <code>< p ></code> element with the <code>folderName</code> class, this is what be the text that appears under the toy icon.<br>
+                You should end up with something like:<br>
+                <code>< a target="greyout">< div class="static greyout">< p class="folderName">Old-Timey< /p>< /div>< /a></code>
+            </li>
+            <li>
+                Save and navigate to <code>index.js</code> in the root directory.
+            </li>
+            <li>
+                Create a query selector that targets the <code>< a ></code> element and attaches a click event to it, which then triggers a function called something similar and descriptive to the HTML element you just created.<br>
+                For example:<br>
+                <code>document.querySelector("a[target='greyout']").addEventListener('click', (event) => { Greyout() });</code>
+            </li>
+            <li>
+                Creat an accompanying function that does the thing you want your desktop toy to do. For example:<br>
+                <code>
+                    function Greyout() {<br>
+                    &emsp;let allDivs = document.querySelectorAll("div");<br>
+                    &emsp;for (let i = 0; i < allDivs.length; i++){<br>
+                    &emsp;&emsp;if (allDivs[i].classlist.contains("oldtimey") {<br>
+                    &emsp;&emsp;&emsp;allDivs[i].classlist.remove("oldtimey");<br>
+                    &emsp;&emsp;} else {<br>
+                    &emsp;&emsp;&emsp;allDivs[i].classlist.add("oldtimey");<br>
+                    &emsp;&emsp;}<br>
+                    &emsp;}<br>
+                    &emsp;playAudio("./sounds/webtoys/oldtimey.mp3");<br>
+                    }
+                </code>
+            </li>
+            <li>
+                Note: This setup is for desktop toys that immediately do something when clicked. Alternatives, like toys that have their own window pupup for example, are possible but require more work. The settings window is a good reference for something like that.
+            </li>
+        </ol>
+    </p>
+</div>
+<div id="toymaker-toyware" class="tab-content">
+    toymaker-toyware
+</div>
+<div id="toymaker-flippa-general" class="tab-content">
+    toymaker-flippa-general
+</div>
+<div id="toymaker-flippa-input" class="tab-content">
+    toymaker-flippa-input
+</div>
+<div id="toymaker-divbrush-preset" class="tab-content">
+    toymaker-divbrush-preset
+</div>
+<div id="toymaker-divbrush-tool" class="tab-content">
+    toymaker-divbrush-tool
+</div>
+<div id="toymaker-typist-incantation" class="tab-content">
+    toymaker-typist-incantation
+</div>
+<script>
+    function openTab(evt, tabName) {
+        // Declare all variables
+        let i, tabcontent, tablinks;
+
+        // Get all elements with class="tab-content" and hide them
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tab-link" and remove the class "active"
+        tablinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.querySelector(`#${tabName}`).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    document.querySelector(".active").click();
+</script>
+</body>
