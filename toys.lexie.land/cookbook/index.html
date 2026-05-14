@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-16">
     <link rel="stylesheet" href="./cookbook.css">
+    <script src="../libraries/howler.min.js"></script>
 </head>
 <body>
 <div class="tab">
@@ -429,6 +430,14 @@
     toymaker-typist-incantation
 </div>
 <script>
+    const bgmusic = new Howl({
+    src: ['./assets/whippingtofu.ogg'],
+    volume: 0,
+    autoplay: true,
+    loop: true,
+});
+bgmusic.fade(0, .05, 4000);
+
     function openTab(evt, tabName) {
         // Declare all variables
         let i, tabcontent, tablinks;
