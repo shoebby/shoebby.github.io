@@ -96,23 +96,507 @@ const websites = {
         cat: cats.tools
     },
     // #endregion
+    
     // #region Games and Toys
+    "Windows93": {
+        url: 'https://www.windows93.net/',
+        desc: "Accidentally ripped these people off with VisunovOS, I hope it can approach how awesome it is...",
+        cat: cats.games
+    },
+    "Kanoguti Soft - No.11": {
+        url: 'https://kanoguti93.neocities.org/main_page/soft/list-11',
+        desc: "Yummy softwares to nibble on mmmmm...",
+        cat: cats.games
+    },
+    "Aesthetic Computer": {
+        url: 'https://aesthetic.computer/',
+        desc: "A faux-command-line web-OS housing chats and toys alike, very compelling...!",
+        cat: cats.games
+    },
+    "Katie's Picture Day!": {
+        url: 'https://kate-bagenzo.github.io/katey-cam/',
+        desc: "Using the webcam for making neat dithered pictures, quick n easy n fun!",
+        cat: cats.games
+    },
+    "Game Saien": {
+        url: 'https://en.gamesaien.com/',
+        desc: "A Japanese HTML5 game developer or studio, not sure, my favourite of theirs is Fruit Box.",
+        cat: cats.games
+    },
+    "suikagame.com": {
+        url: 'https://suikagame.com/',
+        desc: "A free web ripoff of Suika Game, which is also a ripoff of a Chinese browser game. It came full circle and I think that's beautiful.",
+        cat: cats.games
+    },
+    "Nitrome": {
+        url: 'https://www.nitrome.com/',
+        desc: "A British indie game development studio. I've been playing their games since forever, probably since the site's inception. My favourite game from them is Skywire.",
+        cat: cats.games
+    },
+    "Patatap": {
+        url: 'https://patatap.com/',
+        desc: "An audiovisual soundboard kind of thing. Works on desktop, but works <i>better</i> on a touchscreen!",
+        cat: cats.games
+    },
+    "beepbox.co": {
+        url: 'https://www.beepbox.co/',
+        desc: "A web instrument, the parameters of which are saved in the URL, making sharing very easy. Really cool project!",
+        cat: cats.games
+    },
+    "17776": {
+        url: 'https://www.sbnation.com/a/17776-football',
+        desc: "A sort of multi-media browser-based visual novel...? All-time great narrative experience either way, go read it.",
+        cat: cats.games
+    },
+    "The Yume Nikki Online Project": {
+        url: 'https://ynoproject.net/',
+        desc: "Lets you play Yume Nikki and its many fangames in a sort of browser MMO way, it's basically Habbo Hotel.",
+        cat: cats.games
+    },
+    "laingame.net": {
+        url: 'https://laingame.net/',
+        desc: "Aims to reproduce the Serial Experiments Lain PS2 game in web form; good game, good project, no notes.",
+        cat: cats.games
+    },
+    "Lvllvl": {
+        url: 'https://lvllvl.com/',
+        desc: "Converts pictures into pictures made out of character sets. ALso lets you paint with them.",
+        cat: cats.games
+    },
+    "Entrance or Exit": {
+        url: 'https://entranceorexit.net/',
+        desc: "Roamable online exhibition type thing, very cool, very neat.",
+        cat: cats.games
+    },
+    "The Death Generator": {
+        url: 'https://deathgenerator.com/#gallery',
+        desc: "Generator for fake videogame screenshots, great for misinformation and reaction images :3",
+        cat: cats.games
+    },
     // #endregion
+    
     // #region Web People
+    "Everest Pipkin": {
+        url: 'https://everest-pipkin.com/',
+        desc: "Has a bunch of games, projects, drawings, writings, resources, tools; ton of cool stuff.",
+        cat: cats.people
+    },
+    "lyra.horse": {
+        url: 'https://lyra.horse/',
+        desc: "Incredible projects such as the Antonymph Audiovisual Experience and CSS-Clicker, and some neat tools like Arrupted.",
+        cat: cats.people
+    },
+    "heckscaper.com": {
+        url: 'https://heckscaper.com/',
+        desc: "Home of HALLEY LABS, great tune-craft resources and music.",
+        cat: cats.people
+    },
+    "sabrin.party": {
+        url: 'https://sabrin.party/',
+        desc: "Simply iconic and inspiring, violently personal just as it should be.",
+        cat: cats.people
+    },
+    "Maia Arson Crimew": {
+        url: 'https://maia.crimew.gay/',
+        desc: "Holy Fucking Bingle!!!",
+        cat: cats.people
+    },
+    "Beau Jean": {
+        url: 'https://beaujean.neocities.org/',
+        desc: "Beautiful website full of heart.",
+        cat: cats.people
+    },
+    "Melonking": {
+        url: 'https://melonking.net/',
+        desc: "Extremely inspiring world of projects and other silliness!",
+        cat: cats.people
+    },
     // #endregion
+    
     // #region Assets (Textures)
+    "TextureTown": {
+        url: 'https://textures.neocities.org/',
+        desc: "A wonderful Neocities website that hosts a ton of textures (3867 of them, as of writing) and even has a bunch of preview functionality!",
+        cat: cats.assets_textures
+    },
+    "SketchUp Texture Club": {
+        url: 'https://www.sketchuptextureclub.com/',
+        desc: "A ton of hi-res photo textures, including architectural features, materials, nature elements, and backgrounds & landscapes.<br>They're extremely well-categorized, and although maps and higher resolutions are paywalled, this is only 13 euros a year and they still have a ton of freebies. They also use '^-^' in their donation page so you know the money is in the right hands.",
+        cat: cats.assets_textures
+    },
+    "Texturer": {
+        url: 'http://texturer.com/',
+        desc: "A big variety of free textures free to use for personal and commercial purposes. I like to scale them down for PSX texturework.",
+        cat: cats.assets_textures
+    },
+    "textures.com": {
+        url: 'https://www.textures.com/',
+        desc: "They have a big library of high quality, seamless PBR materials. Their pricing scheme is a bit evil though; when you subscribe you get an amount of credits per month, but unused credits don't stack and disappear when your sub ends.",
+        cat: cats.assets_textures
+    },
+    "GRSites Textures": {
+        url: 'https://archive.org/details/grsites-textures/',
+        desc: "This internet archive item is, as far as I know, all that remains of GRSites' many resources. They also had stuff like fonts and neat tools like a logo maker, really sad that they shut down ;-;",
+        cat: cats.assets_textures
+    },
+    "Texturelabs": {
+        url: 'https://texturelabs.org/',
+        desc: "A ton of free textures. Also some tutorials and tools but they're centered around Adobe products like Photoshop and After Effects.",
+        cat: cats.assets_textures
+    },
+    "Seamless-Pixels": {
+        url: 'https://seamless-pixels.blogspot.com/',
+        desc: "Blogspot page with a ton of photo textures, you can either manually download them or get a big pack with all of them prepacked for $14.99.",
+        cat: cats.assets_textures
+    },
     // #endregion
+    
     // #region Assets (Audio)
+    "Freesound.org": {
+        url: 'https://freesound.org/',
+        desc: "Has... uh... free sounds.",
+        cat: cats.assets_audio
+    },
+    "The Mod Archive": {
+        url: 'https://modarchive.org/',
+        desc: "Hosts a ton of modules and an active forum of trackers; They're great!",
+        cat: cats.assets_audio
+    },
+    "Free Music Archive": {
+        url: 'https://freemusicarchive.org/home',
+        desc: "Archives... free music...",
+        cat: cats.assets_audio
+    },
+    "TK's Free Sound FX": {
+        url: 'https://taira-komori.jpn.org/freesounden.html',
+        desc: "A collection of free (game) sound effects created by the goat Taira Komori.",
+        cat: cats.assets_audio
+    },
+    "Rhythm Lab": {
+        url: 'https://rhythm-lab.com/',
+        desc: "All-time breakbeat bundles.",
+        cat: cats.assets_audio
+    },
+    "Mobygratis": {
+        url: 'https://mobygratis.com/',
+        desc: "No chuds, no meat and dairy promotion!",
+        cat: cats.assets_audio
+    },
+    "DiscMaster": {
+        url: 'https://discmaster.textfiles.com/',
+        desc: "Cool index site that contains manu many computer files pulled from archive.org, especially neat for music and SFX!",
+        cat: cats.assets_audio
+    },
+    "DOVA-SYNDROME": {
+        url: 'https://dova-s.jp/EN/',
+        desc: "Japanese royalty free background music and sound effects! Perfect for visual novels.",
+        cat: cats.assets_audio
+    },
     // #endregion
+    
     // #region Assets (Images)
+    "HNCGFF": {
+        url: 'https://www.hurtnullifiedcatgirlsfor.fun/',
+        desc: "Pictures, primarily for VN backgrounds, nice!",
+        cat: cats.assets_images
+    },
+    "Pexels": {
+        url: 'https://www.pexels.com/',
+        desc: "Free stock photos and videos, I'm pretty sure this is where a lot of slop-producers get their random stock footage from, which is funny to me.",
+        cat: cats.assets_images
+    },
+    "ICONS8": {
+        url: 'https://icons8.com/',
+        desc: "Primarily deals in icons in a variety of filetypes, their other stuff can safely be ignored, it's a bit shit and may be AI generated.",
+        cat: cats.assets_images
+    },
+    "BLKMARKET": {
+        url: 'https://beta.blkmarket.com/',
+        desc: "Sells really cool fonts and illustrations. Sadly they, like textures.com, have a shitty subscription pricing scheme, but they do have a small selection of free stuff.",
+        cat: cats.assets_images
+    },
+    "GifCities": {
+        url: 'https://gifcities.org/',
+        desc: "GIFCities bitch GIF GIF cities bitch (you can look up GIFs here that were scraped and preserved by the wayback machine).",
+        cat: cats.assets_images
+    },
+    "99GIF SHOP": {
+        url: 'https://99gifshop.neocities.org/',
+        desc: "More of a -curated- collection of GIFs, moreso part of the web1.0 revival movement.",
+        cat: cats.assets_images
+    },
     // #endregion
+    
     // #region Assets (Various)
+    "3D.sk": {
+        url: 'https://www.3d.sk/',
+        desc: "Has photo scan, 3D, and 2D assets of humans! A bunch of them are free, and they include things such as unwrapped face textures, (retopo'd) head and body scans, and reference photos.",
+        cat: cats.assets_various
+    },
+    "OpenGameArt.org": {
+        url: 'https://opengameart.org/',
+        desc: "A ton of free assets for game development, stuff like textures, models, sounds, fonts... Make sure to credit as is proper.",
+        cat: cats.assets_various
+    },
+    "The CC Search Portal": {
+        url: 'https://search.creativecommons.org/',
+        desc: "Basically a Creative Commons search engine that automatically directs you to material that has a CC license on different platforms, such as YouTube or Flickr.",
+        cat: cats.assets_various
+    },
+    "Pixabay": {
+        url: 'https://pixabay.com/',
+        desc: "Royalty-free (vector) images, videos, music, sound effects, and GIFs.",
+        cat: cats.assets_various
+    },
+    "The VG Resource": {
+        url: 'https://www.vg-resource.com/',
+        desc: "A wiki/forum dedicated to creating and ripping video-game content, including sprites, models, textures, and sounds from all sorts of games and console eras. They're fun to use as placeholders.",
+        cat: cats.assets_various
+    },
     // #endregion
+    
     // #region Tabletop
+    "Fantasy Name Generators": {
+        url: 'https://www.fantasynamegenerators.com/',
+        desc: "A website ran by a person known as Emily, who has hosted hundreds of name generators for over a decade. It has been an incredible resource for me, both for generating names and general inspiration.",
+        cat: cats.tabletop
+    },
+    "Kate Monk's Onomastikon": {
+        url: 'https://tekeli.li/onomastikon/',
+        desc: "A dictionary of real-world names. It also features a lot of the history behind these names. I used it a lot for the naming in one of my settings which was heavily inspired by Finnish folklore.",
+        cat: cats.tabletop
+    },
+    "World Anvil": {
+        url: 'https://www.worldanvil.com/',
+        desc: "A website I used for ages to write articles about my homebrewed-to-shit DnD 5e campaign.<br>Reason I'm not using it anymore is mostly due to pricy subscription and a lack of running TTRPG games.",
+        cat: cats.tabletop
+    },
+    "The Alignment System": {
+        url: 'https://easydamus.com/alignment.html',
+        desc: "A website that aims to explain the alignment system in a human-parseable way, moderately impossible but I appreciate the effort and have used it in the past to introduce new players to this heavily vibes-based system.",
+        cat: cats.tabletop
+    },
+    "Donjon": {
+        url: 'https://donjon.bin.sh/',
+        desc: "Features a ton of generators, the main one of which I used being their dungeon generators. There's clearly a lot of love behind this site and it has existed for ages. Buy them a coffee!",
+        cat: cats.tabletop
+    },
+    "Vulgarlang": {
+        url: 'https://www.vulgarlang.com/',
+        desc: "A fantasy language generator. Very useful to create a basis for things like naming and individual words to sprinkle into roleplay when, for instance, a character doesn't know a certain word in 'common'.",
+        cat: cats.tabletop
+    },
+    "Watabou's Procgen Arcana": {
+        url: 'https://watabou.github.io/index.html',
+        desc: "Tools to procedurally generate spaces of varying scale. I especially got a lot of use out of the city generator.",
+        cat: cats.tabletop
+    },
+    "Armoria": {
+        url: 'https://azgaar.github.io/Armoria/',
+        desc: "An incredible tool for procedurally generating and designing coats of arms and other armorial bearings.",
+        cat: cats.tabletop
+    },
+    "Art of MTG": {
+        url: 'https://www.artofmtg.com/',
+        desc: "Compiles hi-res card art made for the Magic: the Gathering TCG. I've often used these pieces for inspiration when trying to come up with characters, locations, and encounters. Fuck WotC though.",
+        cat: cats.tabletop
+    },
     // #endregion
+    
     // #region Webshops
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.shop
+    },
     // #endregion
+    
     // #region Neat Stuff
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
+    "": {
+        url: '',
+        desc: "",
+        cat: cats.neat
+    },
     // #endregion
 };
 
@@ -123,6 +607,7 @@ for (const [key, value] of Object.entries(websites)) {
     let newLink = newEntry.querySelector("a");
     let newDesc = newEntry.querySelector(".dropdown-content");
 
+    newEntry.style.display = "";
     newLink.href = value.url;
     newLink.innerHTML = key;
     newDesc.innerHTML = value.desc;
