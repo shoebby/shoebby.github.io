@@ -404,197 +404,212 @@ const websites = {
     // #endregion
     
     // #region Webshops
-    "": {
-        url: '',
-        desc: "",
+    "Dragonheart": {
+        url: 'https://www.dragonheart.nl/',
+        desc: "Dutch armorer, apparently sells some top of the line stuff and also is very cool.",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Jack of Dice": {
+        url: 'https://jackofdice.nl/',
+        desc: "A Dutch TTRPG seller, specializing in dice. They also sell handmade leather pouches!",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "The Queen Ring": {
+        url: 'https://thequeenring.com/',
+        desc: "A Dutch seller of everything chainmail, including materials, tools, instructions, etc.",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Gutterscotch": {
+        url: 'https://gutterscotch.shop/',
+        desc: "SICK chokers, need one so bad...",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Hobby Link Japan": {
+        url: 'https://www.hlj.com/',
+        desc: "Go-to for importing Japanese plastic.",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Archonia": {
+        url: 'https://www.archonia.com/nl-be/',
+        desc: "Dutch weeb seller, they deliver to my local manga shop who I prefer to support tbh...",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Thomann": {
+        url: 'https://www.thomann.de/intl/index.html',
+        desc: "Instruments!!! And such other wonderful musical things!!!",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "IAm8Bit": {
+        url: 'https://www.iam8bit.com/',
+        desc: "Game merch, also some cool OST releases.",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "FanGamer": {
+        url: 'https://www.fangamer.eu/',
+        desc: "ALSO game merch, I specifically love their plushies.",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Grailed": {
+        url: 'https://www.grailed.com/',
+        desc: "Game merch, I specifically love their plushies and such things.",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Mindfactory.de": {
+        url: 'https://www.mindfactory.de/',
+        desc: "German webshops are always cheaper and it's so fucked up.",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Spelspul": {
+        url: 'https://www.spelspul.nl/nl/',
+        desc: "Dutch seller of boardgames and boardgame supplies, very useful for prototyping.",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Cosplayshop": {
+        url: 'https://cosplayshop.be/en/',
+        desc: "Belgian cosplay supply store, stuff like foam for making props and armor.",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Boomsma": {
+        url: 'https://www.boomsma.nl/',
+        desc: "Leatherworking supply store in Den Bosch, awesome stuff but god it's so expensive.",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Tjin's International Foodstore": {
+        url: 'https://www.tjinstoko.eu/nl/',
+        desc: "They got damn near everything, very useful for some very specific recipes!",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Devil Inspired": {
+        url: 'https://www.devilinspired.com/',
+        desc: "Western JFashion seller, for cheaper options use a Bhiner/Taobao seller's services!",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Glitzy Wonderland": {
+        url: 'https://glitzywonderland.com/',
+        desc: "Western JFashion seller, for cheaper options use a Bhiner/Taobao seller's services!",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Betsy Johnson": {
+        url: 'https://www.tattydevine.com/',
+        desc: "Adorable jewelry, chunky, lotsa bling, extravagant and over the top. So cool!",
         cat: cats.shop
     },
-    "": {
-        url: '',
-        desc: "",
+    "Anthony Wang": {
+        url: 'https://shopanthonywang.com/',
+        desc: "Beautiful platform sneakers, finally also in my size!",
+        cat: cats.shop
+    },
+    "Minga London": {
+        url: 'https://eu.mingalondon.com/',
+        desc: "Really pretty fashion brand, their sustainability rating is quite mid though.",
+        cat: cats.shop
+    },
+    "Better World Books": {
+        url: 'https://www.betterworldbooks.com/',
+        desc: "My go-to source of books besides local bookstores, since Amazon bought and killed Book Depository. Still breaks my heart.",
         cat: cats.shop
     },
     // #endregion
     
     // #region Neat Stuff
-    "": {
-        url: '',
-        desc: "",
+    "32bit.cafe": {
+        url: 'https://32bit.cafe/',
+        desc: "Great source of knowledge on web-crafts, and a pretty healthy forum too!",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "Render96": {
+        url: 'https://github.com/Render96/Render96Wiki/wiki',
+        desc: "The render96 project, where they hunt down and present info on the texture and sound libraries Nintendo used in the creation of Super Mario 64's assets. Also a bunch of fun trivia!",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "Bawden Brothers Inc. Master Craft Homes": {
+        url: 'https://archive.org/details/BawdenBrothersIncMasterCraftHomes0001/page/n5/mode/1up',
+        desc: "A folder for American homes from 1935, good layout inspo and generally a wonderful bit of history. Homes folders in general are super neat and a lot of them can be found on the internet archive.",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "Earthbound Battle Background JS": {
+        url: 'https://www.gjtorikian.com/Earthbound-Battle-Backgrounds-JS/',
+        desc: "Combine Earthbound background layers to create neat GIFs!",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "Catlike Coding": {
+        url: 'https://catlikecoding.com/',
+        desc: "Tutorials by Jasper Flick, has been THE resource of learning Unity for me, and now also Godot.<br>Written tutorials are great and there should be more of them.",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "The Game UI Database": {
+        url: 'https://www.gameuidatabase.com/',
+        desc: "Compiled sets of screengrabs and GIFs of game interfaces to be used as reference.",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "Interface In Game": {
+        url: 'https://interfaceingame.com/',
+        desc: "Compiled sets of screengrabs and GIFs of game interfaces to be used as reference.",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "Wikioo": {
+        url: 'https://wikioo.org/en/',
+        desc: "A database of art. More browseable than Wikipedia, tightly categorized, and with some cool history about the pieces and artists. Good narrative inspo and fun to put in games as props.",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "Gamedevmap": {
+        url: 'https://gamedevmap.com/',
+        desc: "Aims to map out gamedev organizations on a living map, it's kinda neat.",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "Dataviz Inspiration": {
+        url: 'https://www.dataviz-inspiration.com/',
+        desc: "Lists cool data visualization projects, nicely categorized according to chart type.",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "GNOD": {
+        url: 'https://www.gnod.com/',
+        desc: "A sort of discovery-oriented search engine, currently supporting music, products, art, literature, and movies.<br>It can give recommendations for them based on your likes, or you can browse a sort of web where similar artists and such are grouped together.",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "Yarn": {
+        url: 'https://getyarn.io/',
+        desc: "Lets you look up words and sentences and spits out clips from movies and shows where that word or sentence is spoken. Fun for editing!",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "Unicode Index": {
+        url: 'http://xahlee.info/comp/unicode_index.html',
+        desc: "Project by Xah Lee, lists all(?) unicode characters. Xah Lee is an interesting character and his website is an incredible feat in and of itself; the web equivalent of a massive dusty tome.",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "The Web Design Museum": {
+        url: 'https://www.webdesignmuseum.org/',
+        desc: "An exhibit of old websites. My favourites include the Cartoon Network and 99rooms websites.",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "what the fuck should i listen to right now.com": {
+        url: 'https://whatthefuckshouldilistentorightnow.com/',
+        desc: "A question I ask myself often...",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "Noclip": {
+        url: 'https://noclip.website/',
+        desc: "Lets you freely explore various game environments, good for inspo and reference.",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "9/11 in Realtime": {
+        url: 'https://911realtime.org/',
+        desc: "Experience the American TV and news cycle on and around the 11th of September, 2001. Made to be educational material, RFK Jr. could use it.",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "The Apartment Webring": {
+        url: 'https://darkosparko.nekoweb.org/webrings%2Fapartments-webring/apartment-webring-main.html',
+        desc: "The most intriguing webring I've found so far.",
         cat: cats.neat
     },
-    "": {
-        url: '',
-        desc: "",
+    "Steve's Old Computer Museum": {
+        url: 'https://oldcomputers.net/',
+        desc: "Computer museum of someone called Steve. Incredibly in-depth and interesting to scroll through.",
+        cat: cats.neat
+    },
+    "Good On You": {
+        url: 'https://directory.goodonyou.eco/',
+        desc: "Fashion and makeup sustainability directory, rates and categorizes different brands. Wish they had a way to look up different -styles- of fashion but it works fine.",
         cat: cats.neat
     },
     // #endregion
