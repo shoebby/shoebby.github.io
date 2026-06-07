@@ -95,6 +95,11 @@ const websites = {
         desc: "Free and unrestricted access to scientific papers, so far has had everything I wanted to look up. The web3/crypto shit is a bit ick though but not unsurprising given the political overlap.",
         cat: cats.tools
     },
+    "BeepBox": {
+        url: 'https://www.beepbox.co/',
+        desc: "Ever wanted to make a little diddy on the webnet? It's literally so easy and fun!",
+        cat: cats.tools
+    },
     // #endregion
     
     // #region Games and Toys
@@ -211,6 +216,26 @@ const websites = {
         desc: "Extremely inspiring world of projects and other silliness!",
         cat: cats.people
     },
+    "Constraint Systems": {
+        url: 'https://constraint.systems/',
+        desc: "A collection of alt tools for making and editing images/text, made by Grant Custer.",
+        cat: cats.people
+    },
+    "awawawa.world": {
+        url: 'https://awawawa.world/',
+        desc: "Cute and fun website of artist/musician j! Especially like the roamable <i>virtual world</i>.",
+        cat: cats.people
+    },
+    "crow-queen.com": {
+        url: 'https://crow-queen.com/',
+        desc: "Came across this website through a picmix of Lain, and she has a ton of glitter graphics on this page as well. Also, just an all-around incredible website that closely reflects its owner, love that!!",
+        cat: cats.people
+    },
+    "Raphael Bottura": {
+        url: 'https://raphaelbottura.com/',
+        desc: "Web tool maker/creative coder, in the direction of graphics and print. Need to check their stuff out a bit more but the stuff I did see is incredible.",
+        cat: cats.people
+    },
     // #endregion
     
     // #region Assets (Textures)
@@ -323,6 +348,11 @@ const websites = {
     "99GIF SHOP": {
         url: 'https://99gifshop.neocities.org/',
         desc: "More of a -curated- collection of GIFs, moreso part of the web1.0 revival movement.",
+        cat: cats.assets_images
+    },
+    "artwork.neocities.org": {
+        url: 'https://artwork.neocities.org/',
+        desc: "Soooooo many pictures, sooooo cute!! Graphics section contains such a crazy amount of assets, perfect for toylike websites.",
         cat: cats.assets_images
     },
     // #endregion
@@ -610,6 +640,11 @@ const websites = {
     "Good On You": {
         url: 'https://directory.goodonyou.eco/',
         desc: "Fashion and makeup sustainability directory, rates and categorizes different brands. Wish they had a way to look up different -styles- of fashion but it works fine.",
+        cat: cats.neat
+    },
+    "Bookmarklets": {
+        url: 'https://poeticweb.com/bookmarklets/',
+        desc: "Bookmarklets are these tiny scripts you can run from your bookmarks bar, and this website contains a number of examples.",
         cat: cats.neat
     },
     // #endregion
