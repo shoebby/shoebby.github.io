@@ -279,3 +279,24 @@ a.username {
 #playlist div.albuminfo > .albumline a.album-title.extension {
   color: rgb(34 34 34 / .7);
 }
+
+@media (orientation: portrait) {
+  :host {
+    --header-height: .5ex;
+  }
+
+  .usernamecontainer {
+    display: none;
+  }
+
+  .header .avatar {
+    transform: translateX(2.5vw) translateY(-2.5vh);
+  }
+
+  #playlist > div.trackinfo {
+    display: block;
+  }
+  #playlist div.trackinfo .cover {
+    background: black;
+  }
+}

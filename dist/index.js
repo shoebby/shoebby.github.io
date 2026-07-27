@@ -35,13 +35,8 @@ nose.addEventListener("click", (e) => {
     avatar.src = "./images/index/avatar-headless.webp";
     controller.abort();
 
-    setTimeout(() => {
-        teethLeft.style.animation = "closeL .5s ease-in 1 forwards";
-        teethRight.style.animation = "closeR .5s ease-in 1 forwards";
-        setTimeout(() => {
-            linkHome.click();
-        }, 500);
-    }, 500);
+    Shoot(linkHome);
+
 }, { signal: controller.signal });
 
 uwu.addEventListener("mouseenter", (e) => { 
@@ -58,11 +53,24 @@ uwu.addEventListener("click", (e) => {
     avatar.src = "./images/index/avatar-srs.webp";
     controller.abort();
 
+    Shoot(linkPerv);
+
+}, { signal: controller.signal });
+
+function Shoot(href) {
+
     setTimeout(() => {
-        teethLeft.style.animation = "closeL .5s ease-in 1 forwards";
-        teethRight.style.animation = "closeR .5s ease-in 1 forwards";
+        if(window.innerHeight > window.innerWidth){
+            teethLeft.style.animation = "closeBottom .5s ease-in 1 forwards";
+            teethRight.style.animation = "closeTop .5s ease-in 1 forwards";
+        } else {
+            teethLeft.style.animation = "closeL .5s ease-in 1 forwards";
+            teethRight.style.animation = "closeR .5s ease-in 1 forwards";
+        }
+        
         setTimeout(() => {
-            linkPerv.click();
+            href.click();
         }, 500);
     }, 500);
-}, { signal: controller.signal });
+
+}
