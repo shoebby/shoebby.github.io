@@ -5,7 +5,9 @@ links[0].click();
 function initLinks() {
     for (let i = 0; i < links.length; i++) {
         links[i].addEventListener("click", (event) => {
-            openProject(event, 'proj-' + (i+1));
+            let el = event.target;
+            let target = el.getAttribute("target");
+            openProject(event, target);
         });
     }
 }

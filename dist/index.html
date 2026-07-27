@@ -8,81 +8,209 @@
         <title>LexieLand</title>
         <meta name="description" content="The home of a critter and its many wonderful tidbits, trinkets, and relics.
         If you ask it politely it might even share them with you!">
+        
+        <meta property="og:image" content="https://lexie.land/images/index/metaimg.webp"/>
 
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-        <link rel="stylesheet" href="mainstyle.css">
-        <Style>
-            body {
-                overflow: hidden;
-            }
-            .lexietop {
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-            .lexiebottom {
-                position: absolute;
-                top: 0;
-                left: 0;
-                background-image:
-                    radial-gradient(circle at center center,
-                        #000000,
-                        #ffa600),
-                    repeating-radial-gradient(circle at center center,
-                        #f7c1a1,
-                        #a02500,
-                        .2em,
-                        transparent .2em,
-                        transparent .1em);
-            }
-            .entranceImg {
-                animation: imgAnim linear 8s infinite;
-                image-rendering: pixelated;
-                filter: contrast(2);
-            }
-            @keyframes imgAnim {
-                0% {
-                    transform:
-                        rotate(5deg)
-                        scale(75%);
-                    filter: brightness(0.4) contrast(2);
-                }
-                25% {
-                    transform:
-                        rotate(0deg)
-                        scale(90%);
-                    filter: brightness(1) contrast(2);
-                }
-                50% {
-                    transform:
-                        rotate(-5deg)
-                        scale(75%);
-                    filter: brightness(0.4) contrast(2);
-                }
-                75% {
-                    transform:
-                        rotate(0deg)
-                        scale(90%);
-                    filter: brightness(1) contrast(2);
-                }
-                100% {
-                    transform:
-                        rotate(5deg)
-                        scale(75%);
-                    filter: brightness(0.4) contrast(2);
-                }
-            }
-        </Style>
+        <link rel="stylesheet" href="./mainstyle.css">
+        <link rel="stylesheet" href="./index.css">
+        <script type="module" src="./libraries/lastfm.js"></script>
+        <script type="module" src="./libraries/howler.min.js"></script>
+        <script type="module" src="./index.js"></script>
     </head>
     <body>
         <div class="lexietop"></div>
         <div class="lexiebottom"></div>
-        <div class="container">
-            <div style="text-align: center; margin-top: 25vh; height: 50vh;">
-                <img src="images/embedimg.jpg" class="entranceImg">
-                <br>
-                <a href="homepage.html" style="border: 1px outset white; padding: 3px 8px; font-size: 18pt;">GO TO LEXIELAND!!!</a>
+        <div class="grid">
+            <div class="cel decorL">
+                <img src="images/index/decor-left.webp">
+            </div>
+            <div class="cel decorR">
+                <img src="images/index/decor-right.webp">
+            </div>
+
+            <div class="cel linksL">
+                <div class="contact floaty">
+                    <div><p>TOUCH ME</p></div>
+                    <div>
+                        <img src="images/index/icons/email.webp">
+                        <p>alexandria@lexie.land</p>
+                    </div>
+                    <div>
+                        <img src="images/index/icons/discord.webp">
+                        <p>shoebby</p>
+                    </div>
+                    <div><p>&dagger;</p></div>
+                </div>
+                <div class="externals floaty">
+                    <a>
+                        <div>
+                            <p>EXXXTERNAL</p>
+                        </div>
+                    </a>
+                    <a href="https://shoebby.itch.io/">
+                        <div>
+                            <img src="images/index/icons/itch.webp">
+                            <p>Itch.io</p>
+                        </div>
+                    </a>
+                    <a href="https://lexieland.bandcamp.com">
+                        <div>
+                            <img src="images/index/icons/bandcamp.webp">
+                            <p>Bandcamp</p>
+                        </div>
+                    </a>
+                    <a href="https://bsky.app/profile/lexie.land">
+                        <div>
+                            <img src="images/index/icons/bsky.webp">
+                            <p>Bluesky</p>
+                        </div>
+                    </a>
+                    <a href="https://mastodon.social/@shoebby">
+                        <div>
+                            <img src="images/index/icons/masto.webp">
+                            <p>Mastodon</p>
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/@lexieland">
+                        <div>
+                            <img src="images/index/icons/yt.webp">
+                            <p>YouTube</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="disclaimer floaty">
+                    <p>&lt;!-- DISCLAIMER --&gt;</p>
+                    <p>Everything in LexieLand is written, drawn, composed, and designed by hand and paw.</p>
+                    <p>Treat these things kindly and they will treat you kindly in turn, such is the law of the land.</p>
+                    <div class="ratings">
+                        <img src="./images/index/rating-age.webp">
+                        <img src="./images/index/rating-online.webp">
+                        <img src="./images/index/rating-sex.webp">
+                        <img src="./images/index/rating-violence.webp">
+                    </div>
+                </div>
+            </div>
+            <div class="cel linksR">
+                <div class="internals floaty">
+                    <a>
+                        <div>
+                            <p>QUICKLINX</p>
+                        </div>
+                    </a>
+                    <a href="./portfolio.html">
+                        <div>
+                            <img src="images/index/icons/portfolio.webp">
+                            <p>Portfolio</p>
+                        </div>
+                    </a>
+                    <a href="./blog/blogindex.html">
+                        <div>
+                            <img src="images/index/icons/blog.webp">
+                            <p>Blog</p>
+                        </div>
+                    </a>
+                    <a href="https://journal.lexie.land">
+                        <div>
+                            <img src="images/index/icons/journal.webp">
+                            <p>Journal</p>
+                        </div>
+                    </a>
+                    <a href="https://lexieland.atabook.org/">
+                        <div>
+                            <img src="images/index/icons/guestbook.webp">
+                            <p>Guestbook</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="games floaty">
+                    <p class="title">HI-LIT PROJECTZ</p>
+                    <div class="games-grid">
+                        <a class="game" href="https://shoebby.itch.io/sfsc-minus1-couch-surfing">
+                            <div class="thumb">
+                                <img src="./images/index/games/couch.png">
+                            </div>
+                            <div class="desc">
+                                <p>Strawberry-Flavoured SATA-Cables: Partition -1: Couch Surfing</p>
+                                <p>Lesbian breakup prequel to the world of MAIDs.</p>
+                            </div>
+                        </a>
+                        <a class="game" href="https://shoebby.itch.io/flesh-and-pressure">
+                            <div class="thumb">
+                                <img src="./images/index/games/fnp.gif">
+                            </div>
+                            <div class="desc">
+                                <p>Flesh and Pressure</p>
+                                <p>First act of the Itske Anthology, it follows the tragi-comedic life of a transgender clowngirl.</p>
+                            </div>
+                        </a>
+                        <a class="game" href="https://shoebby.itch.io/oneirophobiaphrenia">
+                            <div class="thumb">
+                                <img src="./images/index/games/oneiro.png">
+                            </div>
+                            <div class="desc">
+                                <p>ONEIRO(PHOBIA/PHRENIA)</p>
+                                <p>CRT TV dreamscape simulator based on the dreams and nightmares of me and my loved ones.</p>
+                            </div>
+                        </a>
+                        <a class="game" href="https://shoebby.itch.io/the-anders-cyclopaedia">
+                            <div class="thumb">
+                                <img src="./images/index/games/anders.png">
+                            </div>
+                            <div class="desc">
+                                <p>The Anders Cyclopaedia</p>
+                                <p>Roam the digital realm of Anders and compile its alien wildlife on paper.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <a class="vos floaty" href="https://toys.lexie.land">
+                    <div>
+                        <p>
+                            Play <span style="color:#ff8500;">V</span>isunov<span style="color:#009bff;">O</span><span style="color:#ff0043;">S</span> today!
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="cel avi">
+                <img src="./images/index/avatar.webp">
+                <div id="nose"></div>
+                <div id="uwu"></div>
+            </div>
+
+            <div class="cel aotm">
+                <lastfm-tracks 
+                    user="shoebby" 
+                    tracks="1"
+                    class="no-albums">
+                </lastfm-tracks>
+
+                <!-- <a href="https://pharmakon.bandcamp.com/album/bestial-burden">
+                    <div class="header">ALBUM OF THE MONTH</div>
+                    <img class="album-icon" src="images/index/aotm.jpg">
+                    <div class="album-name">
+                        <p>Bestial Burden</p>
+                    </div>
+                    <div class="album-artist">
+                        <p>Pharmakon</p>
+                    </div>
+                </a> -->
+            </div>
+
+            <div class="cel cont">
+                <a>CLICK MY NOSE TO GO TO LEXIELAND!!!</a>
+                <img src="./images/buttons/lexieland.jpeg">
+            </div>
+
+            <div class="cel tag">
+                <img src="./images/index/tag.webp">
             </div>
         </div>
+        </div>
+        
+        
     </body>
 </HTML>

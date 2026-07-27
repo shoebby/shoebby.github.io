@@ -205,7 +205,7 @@
         background-size: 75px 75px;
         background-image:
             url("images/doitforyou.png");
-        animation: bgAnim 30s linear infinite;
+        animation: bgAnim 5s linear infinite;
     }
     .lexiebottom {
         font-family: Georgia, 'Times New Roman', Times, serif;
@@ -228,10 +228,10 @@
     }
     @keyframes bgAnim {
         0% {
-            background-position: top left;
+            background-position: 0 0;
         }
         100% {
-            background-position: bottom center;
+            background-position: 75px 75px;
         }
     }
 
