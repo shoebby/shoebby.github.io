@@ -1,16 +1,18 @@
 html {
     cursor: url("./images/index/cursor.webp") 32 32, auto;
     overflow: hidden;
+    user-select: none;
 }
 
-body {
+body, p {
     margin: 0;
 }
 a:hover {
     cursor: url("./images/index/cursor.webp") 32 32, auto;
 }
-p {
-    margin: 0;
+
+a div {
+    transition: transform .5s cubic-bezier(0, 0.997, 0.336, 0.884);
 }
 
 .lexietop {
@@ -172,6 +174,10 @@ p {
 
                 img {
                     height: 1em;
+                }
+                
+                p {
+                    user-select: text;
                 }
             }
             div:nth-child(1) {
@@ -452,7 +458,6 @@ p {
                 background: white;
                 color: black;
                 border: 1px solid white;
-
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -528,18 +533,18 @@ p {
 
 @keyframes closeL {
     0% {
-        transform: scaleX(1);
+        transform: scaleX(1) scaleY(1);
     }
     100% {
-        transform: scaleX(450%);
+        transform: scaleX(400%) scaleY(400%);
     }
 }
 @keyframes closeR {
     0% {
-        transform: scaleX(1);
+        transform: scaleX(1) scaleY(1);
     }
     100% {
-        transform: scaleX(450%);
+        transform: scaleX(400%) scaleY(400%);
     }
 }
 

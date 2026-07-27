@@ -10,6 +10,8 @@ const linkPerv = document.createElement('a');
 linkHome.href = './homepage.html';
 linkPerv.href = './pervzone';
 
+const anchors = document.querySelectorAll("a");
+
 const gun_cock = new Howl({
   src: ['./sounds/index/cocking.mp3'],
   volume: [.5]
@@ -19,7 +21,7 @@ var gun_fire = new Howl({
   volume: [.5]
 });
 
-const controller = new AbortController();
+let controller = new AbortController();
 
 nose.addEventListener("mouseenter", (e) => { 
     gun_cock.play();
@@ -57,6 +59,14 @@ uwu.addEventListener("click", (e) => {
 
 }, { signal: controller.signal });
 
+anchors.forEach((el) => {
+    el.addEventListener("click", () => {
+        let target = el.querySelector("div");
+        target.style.transform = "rotateY(1800deg)";
+        gun_fire.play();
+    });
+});
+
 function Shoot(href) {
 
     setTimeout(() => {
@@ -64,13 +74,26 @@ function Shoot(href) {
             teethLeft.style.animation = "closeBottom .5s ease-in 1 forwards";
             teethRight.style.animation = "closeTop .5s ease-in 1 forwards";
         } else {
-            teethLeft.style.animation = "closeL .5s ease-in 1 forwards";
-            teethRight.style.animation = "closeR .5s ease-in 1 forwards";
+            teethLeft.style.animation = "closeL .5s ease-out 1 forwards";
+            teethRight.style.animation = "closeR .5s ease-out 1 forwards";
         }
         
-        setTimeout(() => {
-            href.click();
-        }, 500);
+        setTimeout(() => { href.click(); }, 500);
+
     }, 500);
 
 }
+
+window.addEventListener( "pageshow", function ( event ) {
+    let historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
+
+    if ( historyTraversal ) {
+        // Handle page restore.
+        teethLeft.removeAttribute('style');
+        teethRight.removeAttribute('style');
+        avatar.src = "./images/index/avatar.webp";
+        gun_fire.stop();
+        controller = new AbortController();
+        window.location.reload();
+    }
+});

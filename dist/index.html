@@ -48,7 +48,7 @@
                             <p>EXXXTERNAL</p>
                         </div>
                     </a>
-                    <a href="https://shoebby.itch.io/">
+                    <a href="javascript:delay('https://shoebby.itch.io/')">
                         <div>
                             <img src="images/index/icons/itch.webp">
                             <p>Itch.io</p>
@@ -200,6 +200,10 @@
         </div>
         </div>
         
-        
+        <script>
+            function delay (URL) {
+                setTimeout( function() { window.location = URL }, 500 );
+            }
+        </script>
     </body>
 </HTML>
