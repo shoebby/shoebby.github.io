@@ -1,0 +1,307 @@
+html {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-color: yellow black;
+    cursor: url(../images/lexieland/cursor.png) 0 0, auto;
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    a:hover {
+        cursor: url(../images/lexieland/cursor_hover.webp) 0 0, auto;
+    }
+}
+
+.lexietop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -9;
+}
+.lexiebottom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -10;
+
+    background-image:
+        radial-gradient(circle at center 20%,
+            #000000 0%,
+            #ffa600 35%),
+        repeating-radial-gradient(circle at center 20%,
+            #f7c1a1,
+            #a02500,
+            .2em,
+            transparent .3em,
+            transparent .1em);
+}
+.sun {
+    position: fixed;
+    top: 0vh;
+    width: 20vw;
+    height: 20vw;
+    z-index: -8;
+
+    background-image: url(../images/lexieland/sunquestionmark.gif);
+    background-size: 100% 100%;
+}
+.cloud {
+    position: fixed;
+    width: 20vw;
+    height: 10vw;
+    z-index: -7;
+
+    background-size: 100% 100%;
+}
+.alpha {
+    top: 5vh;
+
+    background-image: url(../images/lexieland/cloud.webp);
+    animation: cloud1 300s -55s linear infinite;
+}
+.bravo {
+    top: 15vh;
+
+    background-image: url(../images/lexieland/cloudright.webp);
+    animation: cloud1 300s -15s linear reverse infinite;
+}
+@keyframes cloud1 {
+    0% {
+        right: -20vw;
+    }
+    100% {
+        right: 120vw;
+    }
+}
+
+#hud {
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+
+    pointer-events: none;
+
+    div {
+        img {
+            height: 100%;
+            image-rendering: pixelated;
+        }
+    }
+
+    #hud_tl {
+        top: 0;
+        left: 0;
+
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+    #hud_tr {
+        top: 0;
+        right: 0;
+
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 2;
+        grid-column-end: 3;
+
+        text-align: right;
+    }
+    #hud_bl {
+        top: 0;
+        left: 0;
+
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        
+        text-align: right;
+    }
+    #hud_br {
+        top: 0;
+        right: 0;
+
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        
+    }
+    #hand {
+        bottom: 0;
+        right: 0;
+
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 3;
+
+        transform: scaleX(-1);
+        filter: saturate(6) grayscale(1) contrast(10);
+
+        z-index: -1;
+    }
+}
+
+.ground {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -6;
+    padding-left: 45vw;
+    padding-right: 45vw;
+    
+    height: 100vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 25vw;
+
+    background-image: url(../images/lexieland/ground.webp);
+    background-size: auto 100%;
+
+    .house {
+        position: absolute;
+        bottom: 25vh;
+        left: 5vw;
+        width: 50vw;
+        height: 35vw;
+        z-index: -2;
+        background-image: url(../images/lexieland/house.webp);
+        background-size: 100% auto;
+        background-repeat: no-repeat
+    }
+    
+    .interactable {
+        height: 100%;
+        /* border: solid 3px blue; */
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        a {
+            margin-top: 55vh;
+
+            img {
+                image-rendering: pixelated;
+            }
+
+            .tooltip {
+                display: none;
+
+                position: absolute;
+                bottom: 50vh;
+
+                width: 10vw;
+                height: auto;
+
+                padding: 1em;
+
+                background: black;
+                border: 1px solid white;
+
+                .name {
+                    font-size: 1.2em;
+                    text-decoration: underline solid #FF1D00 .1em;
+                    margin-bottom: .2em;
+                }
+                .blurb {
+                    font-weight: 100;
+                }
+            }
+
+            .char {
+                height: 50vh;
+            }
+
+            .grabber {
+                position: absolute;
+                bottom: 0;
+
+                z-index: -1;
+                height: 75vh;
+                margin-left: -25vw;
+            }
+        }
+        a:hover {
+            .tooltip {
+                display: block;
+            }
+
+            img {
+                filter: contrast(2)
+            }
+        }
+    }
+    .interactable:nth-of-type(1) {
+        a {
+            margin-top: 40vh;
+            margin-right: 35vw;
+            
+            .char {
+                height: 30vh;
+            }
+        }
+    }
+    .interactable:nth-of-type(2) {
+        a {
+            margin-top: 50vh;
+            margin-right: 15vw;
+            
+            .char {
+                height: 40vh;
+            }
+        }
+    }
+    .interactable:nth-of-type(3) {
+        a {
+            margin-top: 55vh;
+            
+            .char {
+                height: 30vh;
+            }
+        }
+    }
+}
+@keyframes grabber {
+    0% {
+        bottom: -30vh;
+        margin-left: -30vw;
+    }
+    10% { margin-left: -31vw; }
+    20% { margin-left: -28vw; }
+    30% { margin-left: -29vw; }
+    50% { margin-left: -28vw; }
+    40% { margin-left: -26vw; }
+    60% { margin-left: -27vw; }
+    70% { margin-left: -26vw; }
+    80% { margin-left: -27vw; }
+    90% { margin-left: -24vw; }
+    100% {
+        bottom: -10vh;
+        margin-left: -25vw;
+        
+    }
+}

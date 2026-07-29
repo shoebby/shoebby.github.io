@@ -27,10 +27,8 @@
 /* Elements */
     body {
         background-color: black;
-        /* background-image: url("images/doitforyou.png"); */
-        background-repeat: repeat;
         color: white;
-        font-size: 1.16em;
+        font-size: 1.25em;
         image-rendering: pixelated;
         overflow-x: hidden;
         margin: 0;

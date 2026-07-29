@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LexieLand</title>
+    <meta name="description" content="The home of a critter and its many wonderful tidbits, trinkets, and relics. If you ask it politely it might even share them with you!">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="../mainstyle.css">
+    <link rel="stylesheet" href="./index.css">
+    <script type="module" src="../libraries/howler.min.js"></script>
+    <script type="module" src="./index.js"></script>
+    <script src="delay.js"></script>
+</head>
+<body>
+    <div class="lexietop"></div>
+    <div class="lexiebottom"></div>
+    <div class="sun"></div>
+    <div class="cloud alpha"></div>
+    <div class="cloud bravo"></div>
+
+    <div id="hud">
+        <div id="hud_tl">
+            <img src="../images/lexieland/hud_tl.webp">
+        </div>
+        <div id="hud_tr">
+            <img src="../images/lexieland/hud_tr.webp">
+        </div>
+        <div id="hud_bl">
+            <img src="../images/lexieland/hud_bl.webp">
+        </div>
+        <div id="hud_br">
+            <img src="../images/lexieland/hud_br.webp">
+        </div>
+        <div id="hand">
+            <img src="../images/lexieland/hand-idle.gif">
+        </div>
+    </div>
+    
+    <div class="ground">
+        <div class="interactable">
+            <a href="javascript:delay('../coolwebsites.html')">
+                <div class="tooltip">
+                    <p class="name">
+                        Jack the Bipper
+                    </p>
+                    <p class="blurb">
+                        Let me take you to cool websites... If you dare...!
+                    </p>
+                </div>
+                <img class="char" src="../images/lexieland/npc_jack.webp">
+                <img class="grabber" src="">
+            </a>
+        </div>
+        <div class="interactable">
+            <a href="javascript:delay('../about.html')">
+                <div class="tooltip">
+                    <p class="name">
+                        Smiling Melvin
+                    </p>
+                    <p class="blurb">
+                        My outfit was inspired by the flame of a candle, and much like it I plan to burn out within a day.
+                    </p>
+                </div>
+                <img class="char" src="../images/lexieland/npc_melvin.webp">
+                <img class="grabber" src="">
+            </a>
+        </div>
+        <div class="interactable">
+            <a href="javascript:delay('../interview.html')">
+                <div class="tooltip">
+                    <p class="name">
+                        Placeholder Perry
+                    </p>
+                    <p class="blurb">
+                    Wanna see a dead body?
+                    </p>
+                </div>
+                <img class="char" src="../images/lexieland/npc_placeholder.webp">
+                <img class="grabber" src="">
+            </a>
+        </div>
+
+
+        
+        <div class="house"></div>
+    </div>
+</body>

@@ -16,7 +16,7 @@ const gun_cock = new Howl({
   src: ['./sounds/index/cocking.mp3'],
   volume: [.5]
 });
-var gun_fire = new Howl({
+const gun_fire = new Howl({
   src: ['./sounds/index/shoot.mp3'],
   volume: [.5]
 });
