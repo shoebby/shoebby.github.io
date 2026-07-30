@@ -455,7 +455,7 @@ a div {
                 height: 7vw;
 
                 border-radius: 100%;
-                background: white;
+                background: radial-gradient(circle at center center, #FF1D00 0%, #FF1D00 20%, white 21%, white 50%, #FF1D00 51%, #FF1D00 55%, white 56%);
                 color: black;
                 border: 1px solid white;
                 display: flex;
@@ -468,7 +468,7 @@ a div {
                 }
             }
             div:hover {
-                background-color: black;
+                background: radial-gradient(circle at center center, #FF1D00 0%, #FF1D00 20%, black 21%, black 50%, #FF1D00 51%, #FF1D00 55%, black 56%);
                 color: white;
             }
         }

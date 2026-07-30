@@ -11,6 +11,11 @@
     <script type="module" src="../libraries/howler.min.js"></script>
     <script type="module" src="./index.js"></script>
     <script src="delay.js"></script>
+
+    <link rel="prefetch" as="document" href="./homepage.html">
+    <link rel="preload" as="image" type="image/webp" href="../images/lexieland/hand-grab-f1.webp">
+    <link rel="preload" as="image" type="image/webp" href="../images/lexieland/hand-grab-f2.webp">
+    <link rel="preload" as="image" type="image/gif" href="../images/lexieland/hand-snap.gif">
 </head>
 <body>
     <div class="lexietop"></div>
@@ -45,7 +50,7 @@
                         Jack the Bipper
                     </p>
                     <p class="blurb">
-                        Let me take you to cool websites... If you dare...!
+                        There's some cool websites in this house, wanna check it out with me?
                     </p>
                 </div>
                 <img class="char" src="../images/lexieland/npc_jack.webp">
@@ -80,9 +85,25 @@
                 <img class="grabber" src="">
             </a>
         </div>
+        <div class="interactable">
+            <a href="javascript:delay('../interview.html')">
+                <div class="tooltip">
+                    <p class="name">
+                        Trustworthy Clarence
+                    </p>
+                    <p class="blurb">
+                    Trust me?
+                    </p>
+                </div>
+                <img class="char" src="../images/lexieland/clarence.webp">
+                <img class="grabber" src="">
+            </a>
+        </div>
 
 
         
-        <div class="house"></div>
+        <div class="house one"><img src="../images/lexieland/house.webp"></div>
+        <div class="house two"><img src="../images/lexieland/house-2.webp"></div>
+        <div class="house three"><img src="../images/lexieland/house-3.webp"></div>
     </div>
 </body>

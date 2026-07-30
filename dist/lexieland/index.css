@@ -183,15 +183,27 @@ html {
     .house {
         position: absolute;
         bottom: 25vh;
-        left: 5vw;
         width: 50vw;
         height: 35vw;
         z-index: -2;
-        background-image: url(../images/lexieland/house.webp);
-        background-size: 100% auto;
-        background-repeat: no-repeat
+
+        img {
+            image-rendering: pixelated;
+            width: 100%;
+        }
     }
-    
+    .one {
+        left: 5vw;
+    }
+    .two {
+        left: 45vw;
+    }
+    .three {
+        left: 90vw;
+        bottom: 27vh;
+    }
+
+
     .interactable {
         height: 100%;
         /* border: solid 3px blue; */
@@ -213,6 +225,7 @@ html {
 
                 position: absolute;
                 bottom: 50vh;
+                margin-left: -3vw;
 
                 width: 10vw;
                 height: auto;
@@ -257,11 +270,11 @@ html {
     }
     .interactable:nth-of-type(1) {
         a {
-            margin-top: 40vh;
+            margin-top: 20vh;
             margin-right: 35vw;
             
             .char {
-                height: 30vh;
+                height: 15vh;
             }
         }
     }
@@ -281,6 +294,18 @@ html {
             
             .char {
                 height: 30vh;
+            }
+        }
+    }
+    .interactable:nth-of-type(4) {
+        a {
+            margin-top: 20vh;
+            
+            .char {
+                height: 30vh;
+            }
+            .tooltip {
+                bottom: 60vh;
             }
         }
     }

@@ -17,11 +17,11 @@ const snap = new Howl({
 });
 const grab = new Howl({
   src: ['../sounds/lexieland/grab.wav'],
-  volume: [1]
+  volume: [.2]
 });
 const leadup = new Howl({
   src: ['../sounds/lexieland/grab-leadup.wav'],
-  volume: [1]
+  volume: [.5]
 });
 
 document.addEventListener("wheel", function(e) {
