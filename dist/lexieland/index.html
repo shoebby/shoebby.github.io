@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="./index.css">
     <script type="module" src="../libraries/howler.min.js"></script>
     <script type="module" src="./index.js"></script>
-    <script src="delay.js"></script>
 
     <link rel="prefetch" as="document" href="./homepage.html">
     <link rel="preload" as="image" type="image/webp" href="../images/lexieland/hand-grab-f1.webp">
@@ -40,21 +39,46 @@
         <div id="hand">
             <img src="../images/lexieland/hand-idle.gif">
         </div>
+        <div id="talker">
+            <img src="../images/lexieland/jack_talk.gif">
+
+            <div id="dialogue">
+                <p id="name">
+                    ???
+                </p>
+                <p id="text">
+                    ???
+                </p>
+                <div id="buttons">
+                    <a id="link">
+                        ???
+                    </a>
+                    <a id="cancel">
+                        ???
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div id="clap">
+            <img src="../images/lexieland/hand-clap.gif">
+        </div>
     </div>
     
     <div class="ground">
         <div class="interactable">
-            <a href="javascript:delay('../coolwebsites.html')">
+            <a id="jack">
                 <div class="tooltip">
                     <p class="name">
                         Jack the Bipper
                     </p>
-                    <p class="blurb">
-                        There's some cool websites in this house, wanna check it out with me?
-                    </p>
+                    <ul>
+                        <li>Tiny</li>
+                        <li>Vampiric</li>
+                        <li>Eats fujos</li>
+                    </ul>
                 </div>
                 <img class="char" src="../images/lexieland/npc_jack.webp">
-                <img class="grabber" src="">
             </a>
         </div>
         <div class="interactable">
@@ -82,7 +106,6 @@
                     </p>
                 </div>
                 <img class="char" src="../images/lexieland/npc_placeholder.webp">
-                <img class="grabber" src="">
             </a>
         </div>
         <div class="interactable">
@@ -96,7 +119,6 @@
                     </p>
                 </div>
                 <img class="char" src="../images/lexieland/clarence.webp">
-                <img class="grabber" src="">
             </a>
         </div>
 

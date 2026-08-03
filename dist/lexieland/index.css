@@ -12,8 +12,9 @@ html {
         margin: 0;
     }
 
-    p {
+    p, ul {
         margin: 0;
+        padding: 0;
     }
 
     a:hover {
@@ -159,6 +160,87 @@ html {
 
         z-index: -1;
     }
+    #clap {
+        display: none;
+        
+        bottom: 0;
+        left: 0;
+
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 3;
+
+        z-index: -1;
+
+        img {
+            width: 100%;
+            image-rendering: pixelated;
+            filter: saturate(4) grayscale(1) contrast(10);
+        }
+    }
+    #talker {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 25vw;
+        width: 50vw;
+        height: 50vw;
+        z-index: -1;
+
+        image-rendering: pixelated;
+    }
+    #dialogue {
+        position: fixed;
+        top: 5vh;
+        left: 37.5vw;
+        width: 25vw;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        background-color: #000000;
+        border: #FF1D00 .1em solid;
+
+        #name {
+            padding: 1em 3em 0 3em;
+            font-size: 1.2em;
+            font-weight: 900;
+
+            border-bottom: #FF1D00 .1em solid;
+        }
+        #text {
+            padding: .5em 3em 1em 3em;
+            text-align: justify;
+        }
+        #buttons {
+            display: flex;
+            flex-direction: row;
+            gap: 1em;
+            padding: .5em 3em 1em 3em;
+
+            #link, #cancel {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                font-family: 'RainyHearts';
+                font-size: .9em;
+                text-align: center;
+                background: #000000;
+                border: #FF1D00 1px solid;
+                color: #FF1D00;
+                
+                padding: .1em;
+                margin-bottom: 1em;
+                flex: 1;
+                
+                pointer-events: all;
+            }
+        }
+    }
 }
 
 .ground {
@@ -211,6 +293,7 @@ html {
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: -1;
 
 
         a {
@@ -240,8 +323,10 @@ html {
                     text-decoration: underline solid #FF1D00 .1em;
                     margin-bottom: .2em;
                 }
-                .blurb {
+                ul {
+                    margin-left: -.2em;
                     font-weight: 100;
+                    list-style: square;
                 }
             }
 
