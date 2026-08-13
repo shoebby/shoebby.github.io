@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        @font-face {
+            font-family: 'atkinson';
+            src: url(./assets/fonts/AtkinsonHyperlegible-Regular.ttf) format("truetype");
+        }
+        @font-face {
+            font-family: 'atkinson';
+            src: url(./assets/fonts/AtkinsonHyperlegible-Italic.ttf) format("truetype");
+            font-style: italic;
+        }
+        @font-face {
+            font-family: 'atkinson';
+            src: url(./assets/fonts/AtkinsonHyperlegible-Bold.ttf) format("truetype");
+            font-weight: bold;
+        }
+        @font-face {
+            font-family: 'atkinson';
+            src: url(./assets/fonts/AtkinsonHyperlegible-BoldItalic.ttf) format("truetype");
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        html, body {
+            margin: 0;
+        }
+
+        body {
+            padding: 0 1em;
+            font-size: 1.2em;
+            font-family: 'atkinson';
+            text-align: justify;
+            background: black;
+            color: white;
+            overflow-y: scroll;
+        }
+
+        .publication {
+
+            .topbar {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                gap: 1em;
+                padding: 0 1em;
+                
+                box-sizing: border-box;
+                border: .1em solid silver;
+                cursor: pointer;
+            }
+            .content {
+                box-sizing: border-box;
+                border: .1em solid silver;
+                padding: 2em 2em;
+
+                columns: 4;
+                
+                .image, .audio, .video, article {
+                    padding: 1em;
+                    margin-bottom: 2em;
+                    break-inside: avoid-column;
+                    
+                    box-sizing: border-box;
+                    border: .1em solid silver;
+                }
+
+                article {
+                    h3 {
+                        margin: 0;
+                    }
+
+                    .writer {
+                        float: left;
+                        width: 8em;
+                        margin: 0 1em 0 0;
+                        filter: invert(2);
+                    }
+                }
+                article.cuppy {
+                    color: #ff4800;
+                }
+                article.ruppy {
+                    color: #00ff00;
+                }
+                article.shared {
+                    color: #ffd900;
+                }
+
+                .image {
+                    img {
+                        width: 100%;
+                    }
+                    p {
+                        margin: .4em 0 0 0;
+                        font-variant-position: sub;
+                        font-style: italic;
+                        border-top: .1em gray solid;
+                    }
+                }
+
+                .audio {
+                    audio {
+                        width: 100%;
+                    }
+                }
+
+                .video {
+                    video {
+                        width: 100%;
+                    }
+                }
+            }
+            .contents {
+                box-sizing: border-box;
+                border: .1em solid silver;
+                columns: 2;
+                column-rule: .1em solid silver;
+
+                article {
+                    padding: 1em;
+                    margin-bottom: 2em;
+                    break-inside: avoid-column;
+                    columns: 2;
+
+                    .selfie {
+                        float: left;
+                        width: 8em;
+                        height: 8em;
+                        margin: 0 .5em .5em 0;
+                        filter: saturate(0) contrast(3);
+                    }
+                    audio, .image, video {
+                        width: 100%;
+                        box-sizing: border-box;
+                    }
+                    p {
+                        break-inside: avoid-column;
+
+                        img {
+                            float: right;
+                            width: 50%;
+                            margin: 0 0 .5em .5em;
+                        }
+                    }
+                    p:nth-of-type(1) {
+                        margin-top: 0;
+                    }
+                    sub {
+                        font-style: italic;
+                    }
+                }
+                article.cuppy {
+                    audio, .image, video {
+                        border: #ff1e00 solid .1em;
+                    }
+                    p:first-letter {
+                        color: #ff1e00;
+                    }
+                }
+                article.ruppy {
+                    audio, .image, video {
+                        border: #00ff15 solid .1em;
+                    }
+                    p:first-letter {
+                        color: #00ff15;
+                    }
+                }
+            }
+            .contentz {
+                box-sizing: border-box;
+                border: .1em solid silver;
+                padding: 2em 2em;
+
+                display: grid;
+                grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+                grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
+
+                .cel {
+                    border: .1em solid silver;
+                    box-sizing: border-box;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .cel.text {
+                    padding: 1em;
+                    overflow-y: scroll;
+                    max-height: 30em;
+
+                    p {
+                        margin-top: 0;
+                    }
+                }
+                .cel:nth-of-type(1) {
+                    grid-column-start: 3;
+                    grid-column-end: 6;
+                    grid-row-start: 2;
+                    grid-row-end: 9;
+                }
+                .cel:nth-of-type(2) {
+                    grid-column-start: 8;
+                    grid-column-end: 11;
+                    grid-row-start: 1;
+                    grid-row-end: 3;
+                }
+                .cel:nth-of-type(3) {
+                    grid-column-start: 1;
+                    grid-column-end: 3;
+                    grid-row-start: 9;
+                    grid-row-end: 11;
+                }
+                .cel:nth-of-type(4) {
+                    grid-column-start: 1;
+                    grid-column-end: 3;
+                    grid-row-start: 1;
+                    grid-row-end: 4;
+                }
+                .cel:nth-of-type(5) {
+                    grid-column-start: 3;
+                    grid-column-end: 8;
+                    grid-row-start: 1;
+                    grid-row-end: 2;
+                }
+                .cel:nth-of-type(6) {
+                    grid-column-start: 6;
+                    grid-column-end: 7;
+                    grid-row-start: 2;
+                    grid-row-end: 3;
+                }
+                .cel:nth-of-type(7) {
+                    grid-column-start: 7;
+                    grid-column-end: 8;
+                    grid-row-start: 2;
+                    grid-row-end: 3;
+                }
+                .cel:nth-of-type(8) {
+                    grid-column-start: 9;
+                    grid-column-end: 11;
+                    grid-row-start: 3;
+                    grid-row-end: 11;
+                }
+                .cel:nth-of-type(9) {
+                    grid-column-start: 6;
+                    grid-column-end: 8;
+                    grid-row-start: 3;
+                    grid-row-end: 11;
+                }
+                .cel:nth-of-type(10) {
+                    grid-column-start: 8;
+                    grid-column-end: 9;
+                    grid-row-start: 3;
+                    grid-row-end: 9;
+                }
+                .cel:nth-of-type(11) {
+                    grid-column-start: 3;
+                    grid-column-end: 8;
+                    grid-row-start: 9;
+                    grid-row-end: 11;
+                }
+                .cel:nth-of-type(12) {
+                    grid-column-start: 1;
+                    grid-column-end: 3;
+                    grid-row-start: 4;
+                    grid-row-end: 9;
+                }
+                .cel:nth-of-type(13) {
+                    grid-column-start: 8;
+                    grid-column-end: 11;
+                    grid-row-start: 9;
+                    grid-row-end: 11;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>(C/R)UPPY NON-TEMPORAL DIGEST</h1>
+    <details class="publication">
+        <summary class="topbar">
+            <p>XX.XX.20XX</p>
+            <p><b>「 Nice computer. Here's suck my dick dot com. 」</b></p>
+        </summary>
+        <div class="content">
+            <div class="image">
+                <img src="./assets/jester.gif">
+                <p>Doing my jesta dance in my jesta ways</p>
+            </div>
+
+            <div class="video">
+                <video src="./assets/video.webm" controls="true"></video>
+            </div>
+
+            <article class="article cuppy">
+                <img class="writer" src="./assets/writer-cuppy.png">
+                <h3>Article Title</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate. Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+                <p>
+                    Suspendisse gravida arcu odio. Suspendisse sit amet purus placerat, condimentum felis eu, bibendum ante. Donec sed est non velit venenatis porttitor nec ut massa. Vestibulum cursus nisi nulla, eu consequat quam hendrerit vitae. Ut semper massa at odio faucibus, quis pharetra felis egestas.
+                </p>
+                <p>
+                    Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius. Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate. Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+                <p>
+                    Suspendisse gravida arcu odio. Suspendisse sit amet purus placerat, condimentum felis eu, bibendum ante. Donec sed est non velit venenatis porttitor nec ut massa. Vestibulum cursus nisi nulla, eu consequat quam hendrerit vitae. Ut semper massa at odio faucibus, quis pharetra felis egestas. Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius. Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+            </article>
+            
+            <div class="audio">
+                <audio src="./assets/audio.mp3" controls="true"></audio>
+            </div>
+
+            <div class="image">
+                <img src="./assets/cuppynose.jpg">
+                <p>Corpselike doll goes viral in 21 countries.</p>
+            </div>
+
+            <article class="article ruppy">
+                <img class="writer" src="./assets/writer-ruppy.png">
+                <h3>Article Title</h3>
+                <p>
+                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam blandit, lorem non sodales feugiat, lectus est lacinia mauris, ac suscipit urna tortor elementum dolor. Donec fringilla lacus lectus, quis auctor enim cursus quis. Praesent tincidunt tortor at odio ultrices sollicitudin. Etiam consectetur aliquet magna, nec eleifend velit commodo ut. Morbi ex leo, blandit ac suscipit vitae, mollis eu metus. Ut sed ipsum porta, commodo massa id, ultrices erat. Praesent vehicula pharetra augue, eget imperdiet diam bibendum sit amet. Nulla gravida metus risus, ac venenatis magna gravida eget. Praesent placerat hendrerit est. 
+                </p>
+            </article>
+
+            <article class="article shared">
+                <img class="writer" src="./assets/writer-cuppy.png">
+                <img class="writer" src="./assets/writer-ruppy.png">
+                <h3>Article Title</h3>
+                <p>
+                    Sed efficitur felis tortor, at venenatis nisi pretium ac. Proin congue nisi eu nisl consectetur congue. Etiam ornare dictum ex, imperdiet commodo tellus aliquam eget. Cras in elit ex. Aliquam libero enim, ultricies auctor mattis non, placerat ultrices eros. Donec quis arcu risus. Nam lacus diam, pretium eu purus sit amet, mollis congue sapien. Vivamus malesuada cursus mi quis suscipit. Proin tristique ligula vitae felis dictum, nec pretium nibh tincidunt. Phasellus tempus cursus sapien sit amet aliquam. Integer at velit malesuada, eleifend urna vel, venenatis sapien. Vestibulum a blandit augue.
+                </p>
+                <p>
+                    Curabitur nunc lacus, fermentum eu libero at, bibendum vehicula orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis convallis, ligula a ultricies eleifend, augue nibh auctor purus, eget auctor leo lacus ut magna. Praesent accumsan ante et quam sagittis, at vestibulum lectus lacinia. Nunc tempor tempus mauris, et efficitur ante volutpat vel. Proin quis hendrerit ligula. Quisque non nibh finibus, tempus nunc id, suscipit elit. Maecenas ut lacus dapibus, ultrices augue in, imperdiet turpis. Integer tristique a sem ac tincidunt. Fusce vitae ullamcorper est, et malesuada diam. 
+                </p>
+            </article>
+        </div>
+    </details>
+    <details class="publication">
+        <summary class="topbar">
+            <p>XX.XX.20XX</p>
+            <p><b>「 I'm a pimp. And pimps don't commit suicide. 」</b></p>
+        </summary>
+        <div class="contents">
+            <article class="cuppy">
+                <img class="selfie" src="./assets/cuppynose.jpg">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate. Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+                <audio src="./assets/audio.mp3" controls="true"></audio>
+                <p>
+                    Suspendisse gravida arcu odio. Suspendisse sit amet purus placerat, condimentum felis eu, bibendum ante. Donec sed est non velit venenatis porttitor nec ut massa. Vestibulum cursus nisi nulla, eu consequat quam hendrerit vitae. Ut semper massa at odio faucibus, quis pharetra felis egestas.
+                </p>
+                <img class="image" src="./assets/clowny.jpg">
+                <sub>I'm a darned clown aren't I...</sub>
+                <p>
+                    Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius. Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+                <p>
+                    <img src="./assets/jester.gif">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate. Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+                <video src="./assets/video.webm" controls="true"></video>
+                <p>
+                    Suspendisse gravida arcu odio. Suspendisse sit amet purus placerat, condimentum felis eu, bibendum ante. Donec sed est non velit venenatis porttitor nec ut massa. Vestibulum cursus nisi nulla, eu consequat quam hendrerit vitae. Ut semper massa at odio faucibus, quis pharetra felis egestas. Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius. Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+            </article>
+            <article class="ruppy">
+                <img class="selfie" src="./assets/ruppysmile.JPG">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate. Duis consectetur dui mi, nec aliquet purus porttitor in.
+                </p>
+                <p>
+                    Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+                <p>
+                    Suspendisse gravida arcu odio. Suspendisse sit amet purus placerat, condimentum felis eu, bibendum ante. Donec sed est non velit venenatis porttitor nec ut massa. Vestibulum cursus nisi nulla, eu consequat quam hendrerit vitae. Ut semper massa at odio faucibus, quis pharetra felis egestas. Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius. Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor.
+                </p>
+                <p>
+                    Nam dignissim lacus ac mollis vulputate. Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+                <p>
+                    Suspendisse gravida arcu odio. Suspendisse sit amet purus placerat, condimentum felis eu, bibendum ante. Donec sed est non velit venenatis porttitor nec ut massa. Vestibulum cursus nisi nulla, eu consequat quam hendrerit vitae. Ut semper massa at odio faucibus, quis pharetra felis egestas. Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius.
+                </p>
+                <p>
+                    Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate. Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+                <p>
+                    Suspendisse gravida arcu odio. Suspendisse sit amet purus placerat, condimentum felis eu, bibendum ante.
+                </p>
+                <p>
+                    Donec sed est non velit venenatis porttitor nec ut massa. Vestibulum cursus nisi nulla, eu consequat quam hendrerit vitae. Ut semper massa at odio faucibus, quis pharetra felis egestas. Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius. Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+            </article>
+        </div>
+    </details>
+    <details class="publication" open>
+        <summary class="topbar">
+            <p>XX.XX.20XX</p>
+            <p><b>「 The blood of these whores is killing me. 」</b></p>
+        </summary>
+        <div class="contentz">
+            <div class="cel"><img src="./assets/clowny.jpg"></div>
+            <div class="cel"><img src="./assets/cuppynose.jpg"></div>
+            <div class="cel"><img src="./assets/jester.gif"></div>
+            <div class="cel text">
+                <p>
+                    Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius. Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate. Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+            </div>
+            <div class="cel text">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate.
+                </p>
+                <p>
+                    Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+            </div>
+            <div class="cel">
+                <img src="./assets/writer-cuppy.png">
+            </div>
+            <div class="cel">
+                <img src="./assets/writer-ruppy.png">
+            </div>
+            <div class="cel text">
+                <p>
+                    Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius. Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate. Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate.
+                </p>
+                <p>
+                    Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius. Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+            </div>
+            <div class="cel text">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate.
+                </p>
+                <p>
+                    Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius. Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate. Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+                <p>
+                    Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+            </div>
+            <div class="cel">
+                <img src="./assets/doortime.gif">
+            </div>
+            <div class="cel text">
+                <p>
+                    Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius. Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate. Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate.
+                </p>
+                <p>
+                    Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius. Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+            </div>
+            <div class="cel text">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate.
+                </p>
+                <p>
+                    Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius. Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate. Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+                <p>
+                    Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+            </div>
+            <div class="cel text">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate.
+                </p>
+                <p>
+                    Curabitur auctor dapibus quam. Curabitur suscipit erat sed tristique elementum. Morbi cursus tristique magna at varius. Aenean hendrerit neque quis nibh hendrerit bibendum. Donec facilisis placerat sapien quis finibus. Nulla a nulla sem. Nam eu augue malesuada, vehicula massa id, porttitor turpis. In ac augue in felis porta pretium a vitae enim. 
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam diam nec rhoncus finibus. Pellentesque elit purus, venenatis ac elit et, pharetra tempor dolor. Nam dignissim lacus ac mollis vulputate. Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+                <p>
+                    Duis consectetur dui mi, nec aliquet purus porttitor in. Fusce eget mattis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam euismod ligula leo, quis pharetra quam maximus in. Maecenas ultrices erat quis augue accumsan semper. Vivamus sodales nunc ut odio luctus accumsan. Nunc fringilla ex sit amet nisi faucibus, egestas suscipit libero interdum. Suspendisse feugiat eu justo eget faucibus.
+                </p>
+            </div>
+        </div>
+    </details>
+</body>

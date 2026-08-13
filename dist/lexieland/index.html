@@ -6,8 +6,13 @@
     <title>LexieLand</title>
     <meta name="description" content="The home of a critter and its many wonderful tidbits, trinkets, and relics. If you ask it politely it might even share them with you!">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
     <link rel="stylesheet" href="../mainstyle.css">
     <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="https://yurievnring.neocities.org/css/yurievnring.css">
+    <link rel="stylesheet" href="https://www.kazehai.com/css/tyvnjam.css">
+
+    <script type="module" src="../libraries/lastfm.js"></script>
     <script type="module" src="../libraries/howler.min.js"></script>
     <script type="module" src="./index.js"></script>
 
@@ -24,17 +29,63 @@
     <div class="cloud bravo"></div>
 
     <div id="hud">
+        <div id="frame"></div>
         <div id="hud_tl">
-            <img src="../images/lexieland/hud_tl.webp">
+            <img src="../images/lexieland/health.gif" name="your health">
+            <img src="../images/lexieland/spells.gif">
         </div>
         <div id="hud_tr">
-            <img src="../images/lexieland/hud_tr.webp">
+            <div id="lastfm">
+                <lastfm-tracks
+                    user="shoebby" 
+                    tracks="1"
+                    class="no-albums">
+                </lastfm-tracks>
+            </div>
+            <a href="https://lexieland.atabook.org/" id="guestbook"></a>
+            <a href="https://journal.lexie.land" id="journal"></a>
         </div>
         <div id="hud_bl">
-            <img src="../images/lexieland/hud_bl.webp">
+            <div id="item-left">
+            </div>
+            <div id="item-focus">
+                <span id="item-focus-name">GAMES</span>
+            </div>
+            <div id="item-right">
+            </div>
+            
         </div>
-        <div id="hud_br">
-            <img src="../images/lexieland/hud_br.webp">
+        <div id="hud_mr">
+            <div id='tyvnjam'>
+                <script type="text/javascript" src="https://www.kazehai.com/else/tyvnjam/variables.js"></script>
+                <script type="text/javascript" src="https://www.kazehai.com/else/tyvnjam/widget.js"></script>
+            </div>
+            <div id='yevn'>
+                <script type="text/javascript" src="https://yurievnring.neocities.org/js/yurievnring-variables.js"></script>
+                <script type="text/javascript" src="https://yurievnring.neocities.org/js/yurievnring-widget.js"></script>
+            </div>
+            <div id="buttons">
+                <img src="../images/buttons/lexieland.jpeg">
+                <img src="../images/buttons/button-88-2.gif">
+                <img src="../images/buttons/button-hill.gif">
+                <img src="../images/buttons/button-imgay.jpg">
+                <img src="../images/buttons/button-cuppydog.jpg">
+                <img src="../images/buttons/button-likecomputer.jpg">
+                <img src="../images/buttons/button-ralsei.gif">
+                <img src="../images/buttons/button-internetarchive.gif">
+                <img src="../images/buttons/button-vibri.gif">
+                <img src="../images/buttons/button-wikipedia.gif">
+                <img src="../images/buttons/button-trans.jpg">
+                <img src="../images/buttons/valid-rss-rogers.png">
+                <img src="../images/buttons/seb-button.png">
+            </div>
+        </div>
+        <div id="hud_bio">
+            <div id="bio-handle">?</div>
+            <img id="itske" src="../images/lexieland/itske/itske_neutral.webp">
+            <p>
+                Blablabla bio lalala jada jada
+            </p>
         </div>
         <div id="hand">
             <img src="../images/lexieland/hand-idle.gif">
@@ -64,7 +115,7 @@
             <img src="../images/lexieland/hand-clap.gif">
         </div>
     </div>
-    
+
     <div class="ground">
         <div class="interactable">
             <a id="jack">
@@ -75,7 +126,7 @@
                     <ul>
                         <li>Tiny</li>
                         <li>Vampiric</li>
-                        <li>Eats fujos</li>
+                        <li>Eats expensive watches</li>
                     </ul>
                 </div>
                 <img class="char" src="../images/lexieland/npc_jack.webp">
@@ -127,5 +178,6 @@
         <div class="house one"><img src="../images/lexieland/house.webp"></div>
         <div class="house two"><img src="../images/lexieland/house-2.webp"></div>
         <div class="house three"><img src="../images/lexieland/house-3.webp"></div>
+        <div class="house four"><img src="../images/lexieland/house-4.webp"></div>
     </div>
 </body>
