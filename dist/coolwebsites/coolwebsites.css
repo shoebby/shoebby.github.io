@@ -1,11 +1,11 @@
 @font-face {
     font-family: "RainyHearts";
-    src: url("fonts/rainyhearts.ttf") format("truetype");
+    src: url("../fonts/rainyhearts.ttf") format("truetype");
 }
 
 body {
-    background: url("images/doitforyou.png"), black;
-    font-size: 14pt;
+    background: black;
+    font-size: 1.2em;
     font-family:"RainyHearts";
     color: white;
 }
@@ -17,6 +17,10 @@ a {
 }
 a:hover {
     color: rgb(207, 207, 207);
+}
+
+h2 {
+    margin: 0;
 }
 
 h3 {
@@ -34,37 +38,39 @@ h4 {
 
 footer {
     text-align: center;
-    color: #fc8e4e;
+    color: #FF1D00;
     margin-top: 100px;
     margin-bottom: 100px;
 }
 
-.container {
-    width: 50%;
-    margin: 0 auto;
-}
-
 .navbar {
-    text-align: center;
+    display: flex;
+    gap: 1em;
+    align-items: center;
     background-color: black;
-    flex: 1;
     padding: .5em;
     border: .1em solid rgb(207, 207, 207);
 }
 
-.flex-grid {
+.container {
     display: flex;
-    gap: 1em;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .category {
     padding: 0 1em 1em 1em;
-    margin: .5em 0 .5em 0;
-    flex: 1;
-    transition: .25s;
+    margin: .5em 0;
 
     border: .1em solid rgb(207, 207, 207);
     background: black;
+}
+
+.assets-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .category:hover {

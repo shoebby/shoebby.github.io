@@ -100,6 +100,16 @@ const websites = {
         desc: "Ever wanted to make a little diddy on the webnet? It's literally so easy and fun!",
         cat: cats.tools
     },
+    "Hyperblam": {
+        url: 'https://hyperblam.how/',
+        desc: "HTML elements for making music, sickkkkkkkkkk",
+        cat: cats.tools
+    },
+    "GitPub": {
+        url: 'https://www.gitpub.directory/',
+        desc: "Turn your writing process into a Git process, and use this tool to accompany your publication with the making of itself. Kicking myself for not using it for my thesis.",
+        cat: cats.tools
+    },
     // #endregion
     
     // #region Games and Toys
@@ -234,6 +244,11 @@ const websites = {
     "Raphael Bottura": {
         url: 'https://raphaelbottura.com/',
         desc: "Web tool maker/creative coder, in the direction of graphics and print. Need to check their stuff out a bit more but the stuff I did see is incredible.",
+        cat: cats.people
+    },
+    "Espy.World": {
+        url: 'https://espy.world/',
+        desc: "Cool web critter, very inspiring, especially the landing page!",
         cat: cats.people
     },
     // #endregion
@@ -645,6 +660,16 @@ const websites = {
     "Bookmarklets": {
         url: 'https://poeticweb.com/bookmarklets/',
         desc: "Bookmarklets are these tiny scripts you can run from your bookmarks bar, and this website contains a number of examples.",
+        cat: cats.neat
+    },
+    "UserStyles.world": {
+        url: 'https://userstyles.world/',
+        desc: "Wonderful DIY approach to web-browsing. Hate a design decision? Change it! It's that easy.",
+        cat: cats.neat
+    },
+    "Valerie": {
+        url: 'https://valerie.vg/',
+        desc: "Real ones know.",
         cat: cats.neat
     },
     // #endregion
