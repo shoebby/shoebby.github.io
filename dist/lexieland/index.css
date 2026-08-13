@@ -283,12 +283,12 @@ html {
         left: 35vw;
 
         width: 30vw;
-        height: 75vh;
+        height: 82vh;
 
         background: black;
         border: #FF1D00 .1em solid;
 
-        transform: translateY(65vh);
+        transform: translateY(73vh);
 
         display: flex;
         flex-direction: column;
@@ -324,6 +324,143 @@ html {
         }
         #bio-handle:hover {
             cursor: url(../images/lexieland/cursor_hover.webp) 0 0, auto;
+        }
+        #bio-content {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            grid-template-rows: 25% 25% 25% 25%;
+
+            #bio-stats {
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 1;
+                grid-row-end: 2;
+
+                margin: 0 .25em .25em .5em;
+
+                overflow: hidden;
+                border: .01em solid yellow;
+                padding: .5em;
+            }
+            #skills {
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 2;
+                grid-row-end: 4;
+
+                margin: .25em .25em .25em .5em;
+
+                overflow: hidden;
+                border: .01em solid yellow;
+                padding: .5em;
+
+                display: flex;
+                flex-direction: column;
+
+                .skill {
+                    display: grid;
+                    grid-template-columns: 25% 75%;
+                    grid-template-rows: 25% 75%;
+                    
+                    font-size: .8em;
+
+                    .cost, .name, .desc {
+                        padding: .25em;
+                    }
+                    .cost {
+                        grid-column-start: 1;
+                        grid-column-end: 2;
+                        grid-row-start: 1;
+                        grid-row-end: 2;
+                    }
+                    .name {
+                        grid-column-start: 2;
+                        grid-column-end: 3;
+                        grid-row-start: 1;
+                        grid-row-end: 2;
+                    }
+                    .desc {
+                        grid-column-start: 1;
+                        grid-column-end: 3;
+                        grid-row-start: 2;
+                        grid-row-end: 3;
+                        
+                        border-top: .1em solid silver;
+                        text-align: justify;
+                    }
+                }
+                .skill:nth-of-type(1) {
+                    border-bottom: .1em solid yellow;
+                }
+                .skill:nth-of-type(3) {
+                    border-top: .1em solid yellow;
+                }
+            }
+            #obsessions {
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 4;
+                grid-row-end: 5;
+
+                margin: .25em .25em 0 .5em;
+
+                overflow: hidden;
+                text-align: justify;
+                border: .01em solid yellow;
+                padding: .5em;
+
+                p:nth-of-type(1) {
+                    border-bottom: solid .1em silver;
+                }
+                p:nth-of-type(2) {
+                    font-size: .8em;
+                }
+            }
+            #backstory {
+                grid-column-start: 2;
+                grid-column-end: 3;
+                grid-row-start: 1;
+                grid-row-end: 4;
+
+                margin: 0 .5em .25em .25em;
+
+                overflow: hidden;
+                border: .01em solid yellow;
+                padding: .5em;
+                text-align: justify;
+
+                p:nth-of-type(1) {
+                    border-bottom: solid .1em silver;
+                    font-size: 1.2em;
+
+                    span {
+                        color: silver;
+                        font-style: italic;
+                    }
+                }
+            }
+            #inventory {
+                grid-column-start: 2;
+                grid-column-end: 3;
+                grid-row-start: 4;
+                grid-row-end: 5;
+
+                margin: .25em .5em 0 .25em;
+
+                overflow: hidden;
+                border: .01em solid yellow;
+                border-collapse: collapse;
+
+                tr {
+                    td {
+                        vertical-align: middle;
+                        text-align: center;
+
+                        padding: .25em;
+                        border: .01em solid silver;
+                    }
+                }
+            }
         }
     }
     #hand {
